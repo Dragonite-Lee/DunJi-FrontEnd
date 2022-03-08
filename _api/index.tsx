@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const api = axios.create({
     baseURL: "http://3.39.129.136:8090/DungziProject",
 });
@@ -28,4 +29,9 @@ export const mapApi = {
     getRoomDetail: (ROOMID: string | string[] | undefined) =>
 
         api.get("/room/detail", { params: { ROOMID } }),
+}
+export const logInApi = {
+    postPermissionCode: (code: any) =>
+        api.get("/login/oauth_kakao", { params: { code: code } }),
+
 };
