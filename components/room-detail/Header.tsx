@@ -1,10 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type propsType = {
-    title: string;
-};
-export default function Header({ title }: propsType) {
+export default function Header() {
     return (
         <header
             className="flex w-full justify-between px-standard_pd 
@@ -21,7 +18,7 @@ export default function Header({ title }: propsType) {
                         />
                     </a>
                 </Link>
-                <div className="ml-4">{title}</div>
+                <div className="ml-4">흥부하우스B동</div>
             </div>
             <div className="flex gap-4">
                 <Image

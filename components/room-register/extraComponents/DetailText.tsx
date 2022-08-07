@@ -4,7 +4,7 @@ import { dispatchExplain } from "store/modules/roomRegister";
 
 export default function Parking() {
     const [state, dispatch] = useRoomRegisterRedux();
-    const explain = state.explain;
+    const explain = state.EXPLAIN;
     return (
         <>
             <CategoryHeader title="상세설명" />

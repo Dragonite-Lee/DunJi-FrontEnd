@@ -5,7 +5,7 @@ import ChooseOneBtn from "../../common/ChooseOneBtn";
 export default function Parking() {
     const [state, dispatch] = useRoomRegisterRedux();
 
-    const loan = state.loan;
+    const loan = state.LOAN;
     const checkHandler = (index: number) => {
         if (loan === index) dispatch(dispatchLoan(2));
         else dispatch(dispatchLoan(index));

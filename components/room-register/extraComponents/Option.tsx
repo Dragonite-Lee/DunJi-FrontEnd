@@ -25,7 +25,7 @@ export default function Option() {
     );
     const state = useSelector((state: RootState) => state.roomRegister);
 
-    const optionSelectStateArr = state.option;
+    const optionSelectStateArr = state.OPTION;
 
     const [checkHandler] = DuplicateSelect(
         optionSelectStateArr,

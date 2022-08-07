@@ -14,11 +14,11 @@ export default function Price() {
     const [state, dispatch] = useRoomRegisterRedux();
 
     // 관리비
-    const fee = state.manageCost;
+    const fee = state.MANAGE_COST;
     // 관리비 유무(있으면 1, 없으면 0)
-    const noFeeCheck = state.manage;
+    const noFeeCheck = state.MANAGE;
     // 관리비 카테고리 배열
-    const selectArr = state.manageSelect;
+    const selectArr = state.MANAGE_SELECT;
 
     const feeHandler = (value: string) => {
         const num = Number(value);

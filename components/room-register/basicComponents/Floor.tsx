@@ -6,17 +6,17 @@ import {
     dispatchCurrentFloor,
     dispatchElevator,
     dispatchEntireFloor,
-    dispatchStruct,
+    dispatchStructure,
 } from "store/modules/roomRegister";
 import InputSelectBox from "components/common/InputSelectBox";
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 export default function Floor() {
     const [state, dispatch] = useRoomRegisterRedux();
 
-    const totalFloor = state.entireFloor;
-    const currentFloor = state.floor;
-    const structure = state.struct;
-    const elevatorCheck = state.elevator;
+    const totalFloor = state.ENTIRE_FLOOR;
+    const currentFloor = state.CURRENT_FLOOR;
+    const structure = state.STRUCTURE;
+    const elevatorCheck = state.ELEVATOR;
 
     const [openModal, setOpenModal] = useState(false); // 모달 오픈 변수
     const [targetArr, setTargetArr] = useState([""]); // 모달 내 컨텐츠 배열
@@ -26,7 +26,7 @@ export default function Floor() {
     const dispatchArr = [
         dispatchEntireFloor,
         dispatchCurrentFloor,
-        dispatchStruct,
+        dispatchStructure,
     ];
 
     const modalHandler = (
@@ -59,7 +59,7 @@ export default function Floor() {
             valueArr: ["오픈형", "분리형", "복층형"],
             title: "구조",
             value: structure,
-            dispatchHandler: dispatchStruct,
+            dispatchHandler: dispatchStructure,
         },
     ];
 

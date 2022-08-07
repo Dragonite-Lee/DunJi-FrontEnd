@@ -4,80 +4,62 @@ type initialStateTypes = {
     COMPONENT_HANDLER: number;
     POSTCODE_OPEN: boolean;
     ADDRESS_OPEN: boolean;
-    longitude: null | number;
-    latitude: null | number;
-    address: string;
-    sido: string;
-    sigungu: string;
-    dong: string;
-    ri: string;
-    jibun: string;
-    detailAddress: string;
+    MAIN_ADDRESS: null | string;
+    DETAIL_ADDRESS: null | string;
     DETAIL_COMPONENT_OPEN: boolean;
-    roomType: string;
-    dealType: string;
-    priceUnit: string;
-    deposit: number | string;
-    price: number | string;
-    manage: 0 | 1;
-    manageCost: number | string;
-    manageSelect: Array<number>;
-    entireFloor: number | string;
-    floor: number | string;
-    struct: string;
-    elevator: 0 | 1;
-    roomSize: number | string;
-    availPeriodFrom: string;
-    availPeriodTo: string;
-    availPeriodConsul: 0;
-    option: Array<number>;
-    car: 0 | 1 | 2;
-    pet: 0 | 1 | 2;
-    loan: 0 | 1 | 2;
-    title: string;
-    explain: string;
-    postRoomSuccess: any;
-    postRoomFailure: any;
+    ROOM_TYPE: string;
+    TRANSACTION_TYPE: string;
+    PRICE_UNIT: string;
+    DEPOSIT: number | string;
+    MONTHLY: number | string;
+    MANAGE: 0 | 1;
+    MANAGE_COST: number | string;
+    MANAGE_SELECT: Array<number>;
+    ENTIRE_FLOOR: number | string;
+    CURRENT_FLOOR: number | string;
+    STRUCTURE: string;
+    ELEVATOR: 0 | 1;
+    SIZE: number | string;
+    PERIOD_FROM: string;
+    PERIOD_TO: string;
+    PERIOD_NEGOTIABLE: 0;
+    OPTION: Array<number>;
+    CAR: 0 | 1 | 2;
+    PET: 0 | 1 | 2;
+    LOAN: 0 | 1 | 2;
+    TITLE: string;
+    EXPLAIN: string;
 };
 
 const initialState: initialStateTypes = {
-    longitude: null,
-    latitude: null,
     COMPONENT_HANDLER: 0,
     POSTCODE_OPEN: false,
     ADDRESS_OPEN: true,
-    address: "",
-    sido: "",
-    sigungu: "",
-    dong: "",
-    ri: "",
-    jibun: "",
-    detailAddress: "",
+    MAIN_ADDRESS: null,
+    DETAIL_ADDRESS: null,
     DETAIL_COMPONENT_OPEN: false,
-    roomType: "",
-    dealType: "",
-    priceUnit: "",
-    deposit: "",
-    price: "",
-    manage: 1,
-    manageCost: "",
-    manageSelect: [0, 0, 0, 0, 0],
-    entireFloor: "전체층",
-    floor: "현재층",
-    struct: "구조",
-    elevator: 0,
-    roomSize: "",
-    availPeriodFrom: "",
-    availPeriodTo: "",
-    availPeriodConsul: 0,
-    option: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    car: 2,
-    pet: 2,
-    loan: 2,
-    title: "",
-    explain: "",
-    postRoomSuccess: null,
-    postRoomFailure: null,
+    ROOM_TYPE: "",
+    TRANSACTION_TYPE: "",
+    PRICE_UNIT: "",
+    DEPOSIT: "",
+    MONTHLY: "",
+    MANAGE: 1,
+    MANAGE_COST: "",
+    MANAGE_SELECT: [0, 0, 0, 0, 0],
+    ENTIRE_FLOOR: "전체층",
+    CURRENT_FLOOR: "현재층",
+    STRUCTURE: "구조",
+    ELEVATOR: 0,
+    SIZE: "",
+    PERIOD_FROM: "",
+    PERIOD_TO: "",
+    PERIOD_NEGOTIABLE: 0,
+    OPTION: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    CAR: 2,
+    PET: 2,
+    LOAN: 2,
+    TITLE: "",
+    EXPLAIN: "",
 };
 
 const roomRegister = createSlice({
@@ -88,7 +70,7 @@ const roomRegister = createSlice({
             state.COMPONENT_HANDLER = action.payload;
         },
         dispatchRoomType: (state, action) => {
-            state.roomType = action.payload;
+            state.ROOM_TYPE = action.payload;
         },
         dispatchPostCodeOpen: (state, action) => {
             state.POSTCODE_OPEN = action.payload;
@@ -97,106 +79,76 @@ const roomRegister = createSlice({
             state.ADDRESS_OPEN = action.payload;
         },
         dispatchMainAddress: (state, action) => {
-            state.address = action.payload;
-        },
-        dispatchLongitude: (state, action) => {
-            state.longitude = action.payload;
-        },
-        dispatchLatitude: (state, action) => {
-            state.latitude = action.payload;
-        },
-        dispatchSido: (state, action) => {
-            state.sido = action.payload;
-        },
-        dispatchSigungu: (state, action) => {
-            state.sigungu = action.payload;
-        },
-        dispatchDong: (state, action) => {
-            state.dong = action.payload;
-        },
-        dispatchRi: (state, action) => {
-            state.ri = action.payload;
-        },
-        dispatchJibun: (state, action) => {
-            state.jibun = action.payload;
+            state.MAIN_ADDRESS = action.payload;
         },
         dispatchDetailAddress: (state, action) => {
-            state.detailAddress = action.payload;
+            state.DETAIL_ADDRESS = action.payload;
         },
         detailComponentHandle: (state, action) => {
             state.DETAIL_COMPONENT_OPEN = action.payload;
         },
         dispatchTransactionType: (state, action) => {
-            state.dealType = action.payload;
+            state.TRANSACTION_TYPE = action.payload;
         },
         dispatchPriceUnit: (state, action) => {
-            state.priceUnit = action.payload;
+            state.PRICE_UNIT = action.payload;
         },
         dispatchDeposit: (state, action) => {
-            state.deposit = action.payload;
+            state.DEPOSIT = action.payload;
         },
-        dispatchPrice: (state, action) => {
-            state.price = action.payload;
+        dispatchMonthly: (state, action) => {
+            state.MONTHLY = action.payload;
         },
         dispatchManage: (state, action) => {
-            state.manage = action.payload;
+            state.MANAGE = action.payload;
         },
         dispatchManageCost: (state, action) => {
-            state.manageCost = action.payload;
+            state.MANAGE_COST = action.payload;
         },
         dispatchManageSelect: (state, action) => {
-            state.manageSelect = action.payload;
+            state.MANAGE_SELECT = action.payload;
         },
         dispatchEntireFloor: (state, action) => {
-            state.entireFloor = action.payload;
+            state.ENTIRE_FLOOR = action.payload;
         },
         dispatchCurrentFloor: (state, action) => {
-            state.floor = action.payload;
+            state.CURRENT_FLOOR = action.payload;
         },
-        dispatchStruct: (state, action) => {
-            state.struct = action.payload;
+        dispatchStructure: (state, action) => {
+            state.STRUCTURE = action.payload;
         },
         dispatchElevator: (state, action) => {
-            state.elevator = action.payload;
+            state.ELEVATOR = action.payload;
         },
-        dispatchRoomSize: (state, action) => {
-            state.roomSize = action.payload;
+        dispatchSize: (state, action) => {
+            state.SIZE = action.payload;
         },
         dispatchPeriodFrom: (state, action) => {
-            state.availPeriodFrom = action.payload;
+            state.PERIOD_FROM = action.payload;
         },
         dispatchPeriodTo: (state, action) => {
-            state.availPeriodTo = action.payload;
+            state.PERIOD_TO = action.payload;
         },
         dispatchPeriodNegotiable: (state, action) => {
-            state.availPeriodConsul = action.payload;
+            state.PERIOD_NEGOTIABLE = action.payload;
         },
         dispatchOptionSelect: (state, action) => {
-            state.option = action.payload;
+            state.OPTION = action.payload;
         },
         dispatchCar: (state, action) => {
-            state.car = action.payload;
+            state.CAR = action.payload;
         },
         dispatchPet: (state, action) => {
-            state.pet = action.payload;
+            state.PET = action.payload;
         },
         dispatchLoan: (state, action) => {
-            state.loan = action.payload;
+            state.LOAN = action.payload;
         },
         dispatchTitle: (state, action) => {
-            state.title = action.payload;
+            state.TITLE = action.payload;
         },
         dispatchExplain: (state, action) => {
-            state.explain = action.payload;
-        },
-        postRoom: (state, action) => {}, // state,action이 인자로 선언되어 있어야 postRoom을 처리하는 postRoomSaga에서 action.payload(즉 여기선 방 등록 정보인 formData)를 자동으로 인자로 받음
-        postRoomSuccess: (state, action) => {
-            state.postRoomSuccess = action.payload;
-            state.postRoomFailure = null;
-        },
-        postRoomFailure: (state, action) => {
-            state.postRoomFailure = action.payload;
-            state.postRoomSuccess = null;
+            state.EXPLAIN = action.payload;
         },
     },
 });
@@ -209,27 +161,20 @@ export const {
     dispatchPostCodeOpen,
     dispatchAddressOpen,
     dispatchMainAddress,
-    dispatchLongitude,
-    dispatchLatitude,
-    dispatchSido,
-    dispatchSigungu,
-    dispatchDong,
-    dispatchRi,
-    dispatchJibun,
     dispatchDetailAddress,
     detailComponentHandle,
     dispatchTransactionType,
     dispatchPriceUnit,
     dispatchDeposit,
-    dispatchPrice,
+    dispatchMonthly,
     dispatchManage,
     dispatchManageCost,
     dispatchManageSelect,
     dispatchEntireFloor,
     dispatchCurrentFloor,
-    dispatchStruct,
+    dispatchStructure,
     dispatchElevator,
-    dispatchRoomSize,
+    dispatchSize,
     dispatchPeriodFrom,
     dispatchPeriodTo,
     dispatchOptionSelect,
@@ -239,5 +184,4 @@ export const {
     dispatchLoan,
     dispatchTitle,
     dispatchExplain,
-    postRoom,
 } = roomRegister.actions;
