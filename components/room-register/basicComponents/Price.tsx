@@ -46,6 +46,10 @@ export default function Price() {
         unitHandler();
     }, [unit]);
 
+    const errorHandler = (index: number) => {
+        if (unit ==="전세" && index === 1) priceArr[index].value = 0;
+    }
+
     return (
         <>
             <CategoryHeader title="가격" />
@@ -63,6 +67,7 @@ export default function Price() {
                                     value={item.value}
                                     onChange={(e) => {
                                         onChangeHandler(e, item.valueHandler);
+                                        errorHandler(index);
                                     }}
                                 />
                                 <div
