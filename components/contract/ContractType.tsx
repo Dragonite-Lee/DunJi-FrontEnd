@@ -20,7 +20,7 @@ export default function contractType() {
             {contractTypeArr.map((item, index) => (
                 <div
                     key={index}
-                    className="py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-xl flex justify-between items-center" 
+                    className="Pretendard-SemiBold py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-xl flex justify-between items-center" 
                 >
                     <div>{item.type}</div>
                     <FontAwesomeIcon icon="chevron-down" />
