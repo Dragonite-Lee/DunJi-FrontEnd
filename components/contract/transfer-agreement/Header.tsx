@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,15 +13,15 @@ export default function Header() {
             >
                 <div className="flex text-2xl items-center">
                     <div>
-                        <Link href="/">
+                        <Link href="/room/contract">
                             <a>
                                 <FontAwesomeIcon icon="chevron-left" />
                             </a>
                         </Link>
                     </div>
-                    <div className="text-3xl ml-4 Pretendard-SemiBold">계약서 가이드</div>
+                    <div className="text-3xl ml-4 Pretendard-SemiBold">양도양수 계약서 가이드</div>
                 </div>
-                <Image  src={require("../../assets/icon/더보기.svg")} />
+                <Image  src={require("../../../assets/icon/더보기.svg")} />
             </header>
         </>
     );

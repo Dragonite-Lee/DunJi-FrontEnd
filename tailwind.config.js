@@ -32,6 +32,7 @@ module.exports = {
                 component_white: "#F9F9F9",
                 font_gray: "#A9A7A2",
                 black: "#3F3C3A",
+                red: "#FF9240",
             },
             fontFamily: {
                 sans: ["SegoeUI"],
@@ -56,6 +57,7 @@ module.exports = {
             },
             margin: {
                 standard_m: "6vw",
+                mt_106: "30rem"
             },
             height: {
                 "10vh": "10vh",
