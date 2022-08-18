@@ -33,7 +33,7 @@ export default function contractType() {
                     </Link>
                 </div>
                 <div
-                    className="static Pretendard-SemiBold py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-2xl flex justify-between items-center" 
+                    className="relative Pretendard-SemiBold py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-2xl flex justify-between items-center" 
                 >
                     <div>파일 다운로드</div>
                     {openModal === true ?(
