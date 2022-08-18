@@ -1,8 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
+import DownloadModal from "./DownloadModal";
 
 export default function contractType() {
+
+    const direction = ["right", "down"];
+    const [openModal,setopenModal] = useState(false);
 
     return (
         
@@ -28,11 +33,21 @@ export default function contractType() {
                     </Link>
                 </div>
                 <div
-                    className="Pretendard-SemiBold py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-2xl flex justify-between items-center" 
+                    className="static Pretendard-SemiBold py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-2xl flex justify-between items-center" 
                 >
                     <div>파일 다운로드</div>
-                    <FontAwesomeIcon icon="chevron-right" />
+                    {openModal === true ?(
+                        <FontAwesomeIcon icon="chevron-down" 
+                            onClick={() => {setopenModal(!openModal)}}
+                        />
+                    ):(
+                        <FontAwesomeIcon icon="chevron-right" 
+                            onClick={() => {setopenModal(!openModal)}}
+                        />
+                    )}
+                    {openModal === true &&(<DownloadModal />)}
                 </div>
+                
             
             <span
                 className="text-red text-center mt-mt_106 block text-xl"
