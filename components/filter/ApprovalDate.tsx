@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import CommonBtn from "../common/Btn";
-import { RootState } from "store";
+import { RootState } from "../../store/modules/index";
 import CategoryHeader from "components/common/CategoryHeader";
 
 export default function TransactionType() {
