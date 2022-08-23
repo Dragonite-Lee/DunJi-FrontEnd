@@ -12,6 +12,7 @@ export default function TransactionType() {
     const [btn2Check, setBtn2Check] = useState(false);
     const [btn3Check, setBtn3Check] = useState(false);
 
+    
     const btnArr = [
         {
             check: btn1Check,
