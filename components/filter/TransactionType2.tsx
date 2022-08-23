@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import CommonBtn from "../common/Btn";
-import { RootState } from "store";
+import { RootState } from "../../store/modules/index";
 import CategoryHeader2 from "components/common/CategoryHeader2";
 
 export default function TransactionType() {
@@ -12,6 +12,7 @@ export default function TransactionType() {
     const [btn2Check, setBtn2Check] = useState(false);
     const [btn3Check, setBtn3Check] = useState(false);
 
+    
     const btnArr = [
         {
             check: btn1Check,
