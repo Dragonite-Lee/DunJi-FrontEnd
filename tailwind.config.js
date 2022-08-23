@@ -19,6 +19,7 @@ module.exports = {
             screen: "calc(var(--vh) * 100)",
             "100vh": "calc(var(--vh) * 100)",
         }),
+        
         extend: {
             colors: {
                 background_beige: "#F1EEE8",
@@ -33,6 +34,11 @@ module.exports = {
                 font_gray: "#A9A7A2",
                 black: "#3F3C3A",
                 red: "#FF9240",
+            },
+            fontSize: {
+                footer: ['0.55rem', {
+                    lineHeight: '10px',
+                }],
             },
             fontFamily: {
                 sans: ["SegoeUI"],
@@ -103,6 +109,7 @@ module.exports = {
             gap: {
                 room_register_gap: "0.5rem",
             },
+            
         },
     },
     plugins: [],
