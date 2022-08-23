@@ -5,24 +5,18 @@ export default function Home() {
     return (
         <div className="h-screen">
             <div className="h-2/5 bg-yellow">
-                <header className="flex items-center text-4xl justify-between py-10 mx-12">
-                    <div className="flex items-center">
-                        <div className="w-16 h-16 mr-4">
+                <header className="flex items-center text-4xl justify-between py-9 mx-10">
+                    <div className="flex items-end justify-between">
+                        <div className="w-4/5">
                             <Image
-                                src={require("../assets/icon/main/logo.png")}
-                                alt="logo"
-                            />
+                                src={require("../assets/icon/main/main_char.png")}
+                                alt=""
+                            ></Image>
                         </div>
-                        <h2 className="text-title_color ">DUNGJI</h2>
-                    </div>
-                    <div className="flex items-center ">
-                        <div className="w-10 h-10 mr-4">
-                            <Image
-                                src={require("../assets/icon/main/ring_icon.png")}
-                                alt="Picture of the author"
-                            />
+                        <div className="text-4xl w-3/5 mb-5 Pretendard-SemiBold">
+                            어떤 방을<br/>
+                            찾고 계신가요?
                         </div>
-                        <FontAwesomeIcon icon="bars" />
                     </div>
                 </header>
                 <section className="mx-20">
