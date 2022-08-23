@@ -44,6 +44,7 @@ body {
         font-weight: 600;
         font-style: normal;
     }
+<<<<<<< HEAD
     @font-face {
         font-family: 'Pretendard-Regular';
         src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -59,3 +60,7 @@ body {
     font-family: "Pretendard-Regular";
 }
 
+=======
+
+
+>>>>>>> 24ccfa8 (<#10> 메인페이지 로고 설정)

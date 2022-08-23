@@ -9,6 +9,7 @@ export default function Home() {
 
     return (
         <div className="h-screen">
+
             <div className="py-10">
                 {/* *학교필터 */}
                 <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-10">
@@ -31,6 +32,7 @@ export default function Home() {
                                 어떤 방을<br/>
                                 찾고 계신가요?
                             </div>
+
                         </div>
                     </div>
                 </header>
@@ -44,6 +46,7 @@ export default function Home() {
             <nav className="p-12 bg-component_white">
                 <span className="text-2xl">이런 서비스도 있어요</span>
                 <div className="grid grid-cols-3 gap-5 my-12">
+
                     <div className="w-32">
                         <div className="flex justify-center items-center bg-light_yellow  w-32 h-32 rounded-3xl border border-title_color">
                             <div className="w-32 h-32 flex items-center">
@@ -57,6 +60,10 @@ export default function Home() {
                             짐 보관
                         </span>
                     </div>
+
+                    
+                    
+
                 </div>
             </nav>
             {/* *로고와 사업자명 등등 푸터 */}
