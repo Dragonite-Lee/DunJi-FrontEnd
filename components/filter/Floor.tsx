@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import CommonBtn from "../common/Btn";
-import { RootState } from "store";
+import { RootState } from "../../store/modules/index";
 import CategoryHeader2 from "components/common/CategoryHeader2";
 
 export default function Floor() {
