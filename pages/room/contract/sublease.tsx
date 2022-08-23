@@ -1,4 +1,3 @@
-import ContractType from "../../../components/contract/ContractType";
 import Header from "../../../components/contract/sublease/Header";
 import Explanation from "../../../components/contract/sublease/Explanation";
 import ContractContent from "../../../components/contract/sublease/ContractContent";

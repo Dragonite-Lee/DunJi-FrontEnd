@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
-import DownloadModal from "./DownloadModal";
+
 
 export default function contractType() {
 
@@ -33,19 +33,14 @@ export default function contractType() {
                     </Link>
                 </div>
                 <div
-                    className="relative Pretendard-SemiBold py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-2xl flex justify-between items-center" 
+                    className="Pretendard-SemiBold py-10 px-standard_pd my-4 mx-12 bg-white rounded-standard_rounded h-room_register_btn_height1 text-2xl flex justify-between items-center" 
                 >
                     <div>파일 다운로드</div>
-                    {openModal === true ?(
-                        <FontAwesomeIcon icon="chevron-down" 
-                            onClick={() => {setopenModal(!openModal)}}
-                        />
-                    ):(
-                        <FontAwesomeIcon icon="chevron-right" 
-                            onClick={() => {setopenModal(!openModal)}}
-                        />
-                    )}
-                    {openModal === true &&(<DownloadModal />)}
+                    <Link href="/room/contract/download">
+                        <a>
+                            <FontAwesomeIcon icon="chevron-right" />
+                        </a>
+                    </Link>
                 </div>
                 
             
