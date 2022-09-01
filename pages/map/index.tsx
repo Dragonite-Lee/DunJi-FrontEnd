@@ -53,7 +53,7 @@ export default function Map() {
         {
             onSuccess: (data) => {
                 dispatch(dispatchMapRoomList(data)); // 지도 상에 보이는 매물 리덕스로 관리
-                window.kakao.maps.load(() => {
+                window.kakao && window.kakao.maps.load(() => {
                     addOverlay(mapVar.current, data);
                 });
             },
@@ -161,7 +161,14 @@ export default function Map() {
         if (load) {
             // kakao map api 로드 이후에 동작하게 함
             var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);
-            mapVar.current.panTo(moveLatLon);
+            const container = document.getElementById("map");
+            const options = {
+                center: new window.kakao.maps.LatLng(latitude, longitude),
+                level: 6,
+            };
+            const map = new window.kakao.maps.Map(container, options);
+            mapVar.current = map;
+            map.panTo(moveLatLon);
         }
     }, [latitude, load, longitude]);
     return (
