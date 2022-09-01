@@ -5,7 +5,12 @@ const api = axios.create({
 });
 
 export const roomApi = {
-    postRoom: (data: any) => api.post("/room/registerAction", data),
+    postRoom: (data: any) => api.post("/room/registerAction",  
+    JSON.stringify(data),
+        {headers: {
+          "Content-Type": `application/json`,
+        }}
+    )
 };
 
 export const mapApi = {
