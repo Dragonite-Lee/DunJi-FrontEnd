@@ -1,4 +1,4 @@
-import DaumPostcode from "react-daum-postcode";
+import DaumPostcodeEmbed from "react-daum-postcode";
 import {
     dispatchMainAddress,
     dispatchPostCodeOpen,
@@ -30,7 +30,7 @@ const PostCode = () => {
     return (
         <>
             {state.ADDRESS_OPEN && (
-                <DaumPostcode
+                <DaumPostcodeEmbed
                     style={postCodeStyle}
                     onComplete={handleComplete}
                 />
