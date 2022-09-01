@@ -70,7 +70,7 @@ export default function Home() {
                     서비스 이용문의 : 010-9210-2745<br />
                     이메일 jjangjjh2222@naver.com<br />
                     주소 : 한양대학교 ERICA 제5공학관 SW창업1실<br />
-                    통신 판매업 신고번호 : 제0000-0000-00000호<br />
+                    통신 판매업 신고번호 : 제2022-대전중구-0621호<br />
                 </div>
             </footer>
         </div>

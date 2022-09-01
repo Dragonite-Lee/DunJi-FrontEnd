@@ -23,6 +23,6 @@ export const mapApi = {
                 endLatitude: coordinate[3],
             },
         }),
-    getRoomDetail: (ROOMID: string) =>
+    getRoomDetail: (ROOMID: string | string[] | undefined) =>
         api.get("/room/detail", { params: { ROOMID } }),
 };
