@@ -1,13 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
-import { useState } from "react";
 import Link from "next/link";
 
 
 export default function contractType() {
 
     const direction = ["right", "down"];
-    const [openModal,setopenModal] = useState(false);
+    
 
     return (
         
