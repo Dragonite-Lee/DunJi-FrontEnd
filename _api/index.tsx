@@ -5,6 +5,7 @@ const api = axios.create({
 });
 
 export const roomApi = {
+
     postRoom: (data: any) => api.post("/room/registerAction",  
     JSON.stringify(data),
         {headers: {
@@ -23,6 +24,8 @@ export const mapApi = {
                 endLatitude: coordinate[3],
             },
         }),
+
     getRoomDetail: (ROOMID: string | string[] | undefined) =>
+
         api.get("/room/detail", { params: { ROOMID } }),
 };

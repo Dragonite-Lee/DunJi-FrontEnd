@@ -18,7 +18,9 @@
         "downlevelIteration": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
+
         // "types": ["kakao.maps.d.ts"]
+
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "store"],
     "exclude": ["node_modules"]
