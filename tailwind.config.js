@@ -41,9 +41,10 @@ module.exports = {
                 }],
             },
             fontFamily: {
-                sans: ["SegoeUI"],
-                HANDotum: ["HANDotum"],
-                NotoSansKR: ["NotoSansKR"],
+                'sans': ["SegoeUI"],
+                'HANDotum': ["HANDotum"],
+                'NotoSansKR': ["NotoSansKR"],
+                
             },
             width: {
                 main_width: "70vw",
