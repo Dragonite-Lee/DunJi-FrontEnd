@@ -1,5 +1,5 @@
 module.exports = {
-    content: [
+    purge: [
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
     ],
@@ -34,11 +34,7 @@ module.exports = {
                 font_gray: "#A9A7A2",
                 black: "#3F3C3A",
                 red: "#FF9240",
-            },
-            fontSize: {
-                footer: ['0.55rem', {
-                    lineHeight: '10px',
-                }],
+                slide: "#0000004D"
             },
             fontFamily: {
                 'sans': ["SegoeUI"],
