@@ -3,6 +3,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import { all } from "redux-saga/effects";
 import roomRegister from "./roomRegister";
 import room from "./room";
+import main from "./main";
 import { roomRegisterSaga } from "saga/roomRegisterSaga";
 import loading from "./loading";
 
@@ -17,6 +18,7 @@ const reducer = (state: any, action: any) => {
         roomRegister,
         room,
         loading,
+        main,
     })(state, action);
 };
 export type RootState = ReturnType<typeof reducer>;

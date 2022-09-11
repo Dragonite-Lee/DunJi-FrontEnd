@@ -1,10 +1,16 @@
+import useMainRedux from "hooks/useMainRedux";
 import Image from "next/image";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import CommonBtn from "./CommonBtn";
 import { map_header_height } from "./Variable";
+import { dispatchSearchResult } from "store/modules/main";
+
 
 export default function Header({ setLatitude, setLongitude }: any) {
+    
+    
+
     const [searchVal, setSearchVal] = useState("");
     const [filterSelect1, setFilterSelect1] = useState(false);
     const [filterSelect2, setFilterSelect2] = useState(false);
@@ -12,6 +18,8 @@ export default function Header({ setLatitude, setLongitude }: any) {
     const [filterSelect4, setFilterSelect4] = useState(false);
     const [filterSelect5, setFilterSelect5] = useState(false);
     const [searchResult, setSearchResult] = useState([]);
+
+    
 
     const btnArr = [
         {
@@ -69,6 +77,7 @@ export default function Header({ setLatitude, setLongitude }: any) {
         setSearchVal("");
         setSearchResult([]);
     };
+    
 
     return (
         <>
@@ -89,7 +98,7 @@ export default function Header({ setLatitude, setLongitude }: any) {
                     <div className="relative h-[3.5rem] w-[90%]">
                         <input
                             type="text"
-                            className="bg-white  rounded-[10rem] h-full text-xl pl-8 placeholder-font_gray outline-0 w-full"
+                            className="bg-white rounded-[8rem] h-full text-xl pl-8 placeholder-font_gray outline-0 w-full"
                             placeholder="지역 검색"
                             value={searchVal}
                             onChange={(e) => inputHandler(e)}
@@ -141,7 +150,7 @@ export default function Header({ setLatitude, setLongitude }: any) {
                             onClick={() => clickHander(item)}
                         >
                             <div className="text-2xl">
-                                {item.place_name.split(searchVal)[0]}
+                                {/* {item.place_name.split(searchVal)[0]} */}
                                 <span className="text-main">{searchVal}</span>
                                 {item.place_name.split(searchVal)[1]}
                             </div>
