@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const api = axios.create({
     baseURL: "http://3.39.129.136:8090/DungziProject",
 });
@@ -36,4 +35,5 @@ export const logInApi = {
         // api.get("https://kauth.kakao.com/oauth/authorize?client_id=b99bba6a1951beda24353d74dfa952d3&redirect_uri=http://3.39.129.136:8090/DungziProject/login/oauth_kakao&response_type=code")
     postToken: (token: any) =>
         api.get(`/login/oauth_kakao`)
+
 };
