@@ -34,7 +34,8 @@ module.exports = {
                 font_gray: "#A9A7A2",
                 black: "#3F3C3A",
                 red: "#FF9240",
-                slide: "#0000004D"
+                slide: "#0000004D",
+                kakao: "#FAE100",
             },
             fontFamily: {
                 'sans': ["SegoeUI"],

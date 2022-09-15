@@ -6,6 +6,7 @@ import room from "./room";
 import main from "./main";
 import { roomRegisterSaga } from "saga/roomRegisterSaga";
 import loading from "./loading";
+import login from "./login";
 
 const reducer = (state: any, action: any) => {
     if (action.type === HYDRATE) {
@@ -19,6 +20,7 @@ const reducer = (state: any, action: any) => {
         room,
         loading,
         main,
+        login,
     })(state, action);
 };
 export type RootState = ReturnType<typeof reducer>;
