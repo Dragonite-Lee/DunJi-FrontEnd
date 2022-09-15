@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Dispatch } from "redux";
 
+
 export default function Login({}) {
     const [check, setCheck] = useState(false);
     const checkBoxHandler = (check: boolean) => {
@@ -10,81 +11,51 @@ export default function Login({}) {
     };
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}&response_type=code`;
 
-    const loginHandler = (e: any) => {
-        e.preventDefault();
-        console.log(1);
-    };
+    
     return (
-        <div className="h-screen flex min-w-20 items-center flex-col mx-auto my-40 w-main_width  font-bold ">
-            <h1 className="text-6xl mb-8  text-yellow font-NotoSansKR">
-                DUNGJI
-            </h1>
-            <form className="w-full flex flex-col">
-                <input
-                    className=" p-4 mb-4 h-16 border-solid border border-black text-blur rounded-2xl  outline-0
-                    focus:border-yellow"
-                    placeholder="이메일 주소 입력"
-                ></input>
-                <input
-                    className=" p-4 mb-4 h-16 border-solid border border-black text-blur rounded-2xl  outline-0
-                    focus:border-yellow"
-                    placeholder="비밀번호 입력"
-                ></input>
-                <button
-                    className="bg-yellow h-16  text-2xl"
-                    onClick={(e) => loginHandler(e)}
-                >
-                    로그인
-                </button>
-            </form>
-            <div className="w-full flex items-center h-16 mb-4 ">
-                <input
-                    type="checkbox"
-                    id="id-save"
-                    defaultChecked={check}
-                    className="hidden"
-                />
-                <label
-                    htmlFor="id-save"
-                    className={`font-SegoeUI   inline-block before:content-[''] w-6 h-6 border border-blur mr-2  algin-middle font-NotoSansKR  rounded-md text-center ${
-                        check ? "before:content-['✔️'] text-white " : ""
-                    }`}
-                    onClick={() => checkBoxHandler(check)}
-                ></label>
-                <span className="text-blur text-xl font-normal">
-                    아이디 저장
-                </span>
-                <div className="ml-auto font-normal">
-                    <Link href="/register/policy">
-                        <a className="  mr-2 after:content-['|'] after:pl-2">
-                            회원가입
-                        </a>
-                    </Link>
-                    <Link href="/password_reset">비밀번호 재설정</Link>
+        <div>
+            <div className="flex items-center flex-col mt-56">
+                <div className="flex flex-col items-center">
+                    <div className="px-52">
+                        <Image
+                            alt="둥지로고"
+                            src={require("../assets/icon/logo/logo_main.png")}
+                        />
+                    </div>
+                    
+                    <div className="text-center mt-12 text-[14px] Pretendard-Regular leading-7">
+                        간편하게 로그인하고 <br />
+                        <span className="Pretendard-SemiBold">둥지의 다양한 서비스를</span> 이용하세요
+                    </div>
                 </div>
             </div>
-            <div className="w-full flex flex-col items-center gap-4 border-t border-blur pt-8">
-                <div className="mb-8 text-xl font-normal">간편 로그인하기</div>
-                <span className="flex gap-6">
-                    <Image
-                        width={30}
-                        height={30}
-                        src={require("../assets/icon/logo/naver_logo.png")}
-                        alt="naver_logo"
+            <Link href={KAKAO_AUTH_URL}>
+                <div className="flex mt-96 items-center justify-center bg-kakao mx-12 py-3.5 rounded-standard_rounded">
+                    <Image 
+                        width={26}
+                        height={26}
+                        alt="카카오톡로고"
+                        src={require("../assets/icon/logo/kakao_logo.png")}
                     />
-                    <Link href={KAKAO_AUTH_URL}>
-                        <a>
-                            <Image
-                                width={30}
-                                height={30}
-                                src={require("../assets/icon/logo/kakao_logo.png")}
-                                alt="naver_logo"
-                            />
-                        </a>
-                    </Link>
-                </span>
+                    <div className="ml-4 text-[16px] Pretendard-Regular">
+                        카카오톡으로 시작하기
+                    </div>
+                </div>
+            </Link>
+            <div className="flex mt-4 items-center justify-center bg-white mx-12 py-3.5 rounded-standard_rounded">
+                <Image 
+                    width={26}
+                    height={26}
+                    alt="구글로고"
+                    src={require("../assets/icon/logo/google_logo.png")}
+                />
+                <div className="ml-4 text-[16px] Pretendard-Regular">
+                    Google로 시작하기
+                </div>
             </div>
         </div>
+            
+        
     );
 }
 Login.displayName = "MyPage";

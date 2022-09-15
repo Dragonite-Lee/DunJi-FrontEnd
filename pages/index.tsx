@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import { dispatchSlideBox } from "store/modules/main";
 import useMainRedux from "hooks/useMainRedux";
-import Header from "components/map/Header";
+import Header from "components/map/Header"; 
 import Link from "next/link";
 import Carousel from "components/main/Carousel";
 
@@ -21,9 +21,14 @@ export default function Home() {
                 <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-7">
                     <div className="flex items-center justify-between">
                         <FontAwesomeIcon icon="chevron-down" />
-                        <div className="px-4 Pretendard-SemiBold">한양대 ERICA</div>
+                        <div className="px-4 Pretendard-Regular">한양대 ERICA</div>
                     </div>
-                    <Image src={require("../assets/icon/더보기.svg")} />
+                    <div className="flex Pretendard-Regular items-center justify-between">
+                        <Link href="/login">
+                            <div>회원가입</div>
+                        </Link>
+                        <Image src={require("../assets/icon/더보기.svg")} />
+                    </div>
                 </div>
                 {/* *로고와 메인글 */}
                 <header className="flex items-center text-4xl justify-between pt-8 pb-3 mx-7">
