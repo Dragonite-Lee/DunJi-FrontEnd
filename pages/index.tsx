@@ -37,9 +37,9 @@ export default function Home() {
     return (
         <div className="h-screen ">
 
-            <div className="pb-10 w-full">
+            <div className="pb-12 w-full">
                 {/* *학교필터 */}
-                <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-7">
+                <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-[18px]">
                     <div className="flex items-center justify-between">
                         <FontAwesomeIcon icon="chevron-down" />
                         <div className="px-4 Pretendard-Regular">한양대 ERICA</div>
@@ -52,7 +52,7 @@ export default function Home() {
                     </div>
                 </div>
                 {/* *로고와 메인글 */}
-                <header className="flex items-center text-4xl justify-between pt-8 pb-3 mx-7">
+                <header className="flex items-center text-4xl justify-between pt-8 pb-3 mx-[18px]">
                     <div>
                         <div className="flex items-end justify-between">
                             <div className="w-4/5">
@@ -71,7 +71,7 @@ export default function Home() {
                     </div>
                 </header>
                 {/* *지역검색  */}
-                <div className="relative h-20 mx-7">
+                <div className="relative h-20 mx-[18px]">
                     <div className="absolute  left-6 bottom-[0] flex items-center h-full">
                         <Image
                             alt="돋보기"
@@ -94,39 +94,64 @@ export default function Home() {
                 </div>
             </div>
 
-            <nav className="p-10 bg-component_white">
-                <span className="text-2xl">이런 서비스도 있어요</span>
-                <div className="grid grid-cols-3 gap-5 my-12">
-
-                    <div className="w-32">
-                        <div className="flex justify-center items-center bg-light_yellow  w-32 h-32 rounded-3xl border border-title_color">
-                            <div className="w-32 h-32 flex items-center">
-                                <Image
-                                    alt="box"
-                                    src={require("../assets/icon/main/box_icon.png")}
-                                ></Image>
-                            </div>
+            <div className="pt-[35px] px-[18px] bg-component_white">
+                {/* *하나부터 열까지 둥지와 함께 서비스 */}
+                <div>
+                    <div className="text-[16px] Pretendard-SemiBold">하나부터 열까지 둥지와 함께!</div>
+                    <div className="mt-[16px] grid grid-cols-2 gap-[8px]">
+                        <div className="px-[20px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                            <Image 
+                                alt="트럭"
+                                src={require("../assets/icon/main/service/서비스_이삿짐.svg")}
+                            />
+                            <div>둥지 서비스</div>
                         </div>
-                        <span className="flex justify-center my-2 text-xl">
-                            짐 보관
-                        </span>
+                        <div className="pl-[28px] pr-[32px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                            <Image 
+                                alt="트럭"
+                                src={require("../assets/icon/main/service/메인_공지사항.svg")}
+                            />
+                            <div>공지사항</div>
+                        </div>
+                        <Link href="/room/contract">
+                            <div className="pl-[16px] pr-[16px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                                <Image 
+                                
+                                    alt="트럭"
+                                    src={require("../assets/icon/main/service/계약서가이드.svg")}
+                                />
+                                <div>계약서 가이드</div>
+                            </div>
+                        </Link>
+                        <div className="px-[32px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                            <Image 
+                                alt="트럭"
+                                src={require("../assets/icon/main/service/마이_커뮤니티 활동.svg")}
+                            />
+                            <div>커뮤니티</div>
+                        </div>
                     </div>
-
-                    
-                    
-
                 </div>
-            </nav>
+                
+                    
+                    
+
+            </div>
             {/* *로고와 사업자명 등등 푸터 */}
-            <footer className="bg-component_white flex items-center justify-between py-36 px-7 w-full">
-                <div className="w-1/4">
-                <Image src={require("../assets/icon/main/logo_gray.png")} />
+            <footer className="bg-component_white flex items-center justify-between py-36 px-[18px] w-full">
+                <div className="w-[9rem]">
+                <Image 
+                    width={77}
+                    height={33}
+                    alt="둥지로고"
+                    src={require("../assets/icon/main/logo_gray.png")} 
+                />
                 </div>
-                <div className="w-3/4 text-font_gray text-xs px-4 leading-5">
+                <div className="w-[25rem] text-font_gray text-[9px] leading-4 Pretendard-Regular">
                     상호 : 네스트소프트 | 대표 : 정재현 |
                     사업자등록번호 : 317-06-02039<br />
                     서비스 이용문의 : 010-9210-2745 |
-                    이메일 jjangjjh2222@naver.com
+                    이메일 jjangjjh2222@diver.com
                     주소 : 한양대학교 ERICA 제5공학관 SW창업1실<br />
                     통신 판매업 신고번호 : 제2022-대전중구-0621호<br />
                 </div>
