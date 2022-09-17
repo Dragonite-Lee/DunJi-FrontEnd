@@ -5,7 +5,7 @@ import useLoginRedux from "hooks/useLoginRedux";
 import { dispatchHandleLogin } from "store/modules/login";
 // import { kakaoLogin } from "store/modules/login";
 import React from "react";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 
 interface ResponseType {
     ok: boolean;
