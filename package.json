@@ -37,7 +37,8 @@
     "devDependencies": {
         "@types/next-redux-saga": "^3.0.2",
         "@types/node": "17.0.23",
-        "@types/react": "17.0.43",
+        "@types/react": "^18.0.20",
+        "@types/react-dom": "^18.0.6",
         "@types/react-slick": "^0.23.10",
         "@types/redux-actions": "^2.6.2",
         "eslint": "8.12.0",
