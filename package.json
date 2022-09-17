@@ -45,5 +45,10 @@
         "eslint-config-next": "12.1.1",
         "tailwindcss": "^3.1.8",
         "typescript": "4.6.3"
-    }
+    },
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://dragonite-lee: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@github.com/Nestsoft-Team/DunJi-FrontEnd",
+    "author": "dragonite-lee <ross1222@naver.com>",
+    "license": "MIT"
 }
