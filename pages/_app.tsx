@@ -5,6 +5,7 @@ import "../styles/FontAwesome";
 import { wrapper } from "store/index";
 import Layout from "components/layout";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Script from 'next/script'
 
 declare global {
     interface Window {
@@ -18,7 +19,7 @@ function App({ Component, pageProps }: AppProps) {
 
     function kakaoInit() {
         window.Kakao.init(process.env.NEXT_PUBLIC_JAVASCRIPT_KEY);
-        console.log(window.Kakao.isInitialized());
+        // console.log(window.Kakao.isInitialized());
     }
    
     return (
@@ -26,9 +27,10 @@ function App({ Component, pageProps }: AppProps) {
             <QueryClientProvider client={queryClient}>
                 <Layout>
                     <Component {...pageProps} />
-                    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"
+                    <Script src="https://developers.kakao.com/sdk/js/kakao.min.js"
                         onLoad={kakaoInit}
-                    ></script>
+                        
+                    ></Script>
                 </Layout>
             </QueryClientProvider>
         
