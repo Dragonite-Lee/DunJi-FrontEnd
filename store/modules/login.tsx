@@ -2,13 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import { logInApi } from "_api";
 
 type initialStateTypes = {
-    USER: any,
-    IS_LOGIN: boolean
+    value: {
+        USER_ID: any,
+        USER_NICKNAME: any,
+        IS_LOGIN: boolean
+    }
 }
 
 const initialState: initialStateTypes = {
-    USER: null,
-    IS_LOGIN: false,
+    value: {
+        USER_ID: '',
+        USER_NICKNAME: '',
+        IS_LOGIN: false,
+    }
+    
 }
 
 const login = createSlice({
@@ -16,8 +23,7 @@ const login = createSlice({
     initialState,
     reducers: {
         dispatchHandleLogin: (state, action) => {
-            state.USER = action.payload;
-            state.IS_LOGIN = true;
+            state.value = action.payload
         }
     }
 })

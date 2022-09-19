@@ -1,38 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
-import { dispatchSlideBox } from "store/modules/main";
 import useMainRedux from "hooks/useMainRedux";
-import Header from "components/map/Header"; 
+import useLoginRedux from "hooks/useLoginRedux";
+import {dispatchHandleLogin } from "store/modules/login";
 import Link from "next/link";
 import Carousel from "components/main/Carousel";
 import TabBar from "components/main/TabBar";
 
 export default function Home() {
 
-    const [state,dispatch] = useMainRedux();
     
-    
-    // const Kakao = () => {
-    //     const KakaoLogout = () => {
-    //         const kakao = kakaoInit();
-    
-    //         console.log(kakao.Auth.getAccessToken()); // 카카오 접근 토큰 확인 (로그인 후 해당 토큰을 이용하여 추가 기능 수행 가능)
-    
-    //         // 카카오 로그인 링크 해제
-    //         kakao.API.request({
-    //             url: '/v1/user/unlink',
-    //             success: (res: any) => {
-    //                 // 로그인 성공할 경우 정보 확인 후 / 페이지로 push
-    //                 console.log(res);
-                    
-    //             },
-    //             fail: (error: any) => {
-    //                 console.log(error);
-    //             }
-    //         })
-    //     }
-    // }
+    const [state,dispatch] = useLoginRedux();  
 
     return (
         <div className="h-screen ">
@@ -43,10 +21,15 @@ export default function Home() {
                     <div className="flex items-center justify-between">
                         <FontAwesomeIcon icon="chevron-down" />
                         <div className="px-4 Pretendard-Regular">한양대 ERICA</div>
+                        {state.value ? (
+                            <div className="text-xl">{state.value.USER_NICKNAME}님 안녕</div>
+                        ) : (
+                            <div>로그인 해주세요</div>
+                        )}
                     </div>
                     <div className="flex Pretendard-Regular items-center justify-between">
                         <Link href="/login">
-                            <div>회원가입</div>
+                            <div>간편로그인</div>
                         </Link>
                         <Image src={require("../assets/icon/더보기.svg")} />
                     </div>
