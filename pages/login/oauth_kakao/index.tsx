@@ -2,30 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { logInApi } from "_api";
 import useLoginRedux from "hooks/useLoginRedux";
-import { dispatchHandleLogin } from "store/modules/login";
-// import { kakaoLogin } from "store/modules/login";
+import {dispatchHandleLogin } from "store/modules/login";
 import React from "react";
 import Router from "next/router";
 
-interface ResponseType {
-    ok: boolean;
-    error?: any;
-  }
 
 export default function Auth() {
 
     const [state,dispatch] = useLoginRedux();    
-
-    function kakaologin(code: any) {
-        logInApi
-            .postPermissionCode(code)
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }
 
     useEffect(() => {
         let href;
@@ -40,9 +24,20 @@ export default function Auth() {
                 .postPermissionCode(code)
                 .then((res) => {
                     console.log(res)
+                    localStorage.setItem('userId', res.data.user_id);
+                    localStorage.setItem('userNickname', res.data.user_nickname);
+                    dispatch(dispatchHandleLogin({
+                        USER_ID: res.data.user_id,
+                        USER_NICKNAME: res.data.user_nickname,
+                        IS_LOGIN: true,
+                    }));
+                    console.log(state.USER_ID)
+                    Router.push('/')
                 })
                 .catch((error) => {
                     console.log(error)
+                    window.alert('로그인실패')
+                    Router.push('/login')
                 })
             
         };     
