@@ -14,17 +14,17 @@ export default function Home() {
 
     return (
         <div className="h-screen ">
-            <TabBar />
+            {/* <TabBar /> */}
             <div className="pb-12 w-full">
                 {/* *학교필터 */}
                 <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-[18px]">
                     <div className="flex items-center justify-between">
                         <FontAwesomeIcon icon="chevron-down" />
                         <div className="px-4 Pretendard-Regular">한양대 ERICA</div>
-                        {state.value ? (
+                        {state.value.USER_NICKNAME ? (
                             <div className="text-xl">{state.value.USER_NICKNAME}님 안녕</div>
                         ) : (
-                            <div>로그인 해주세요</div>
+                            <div className="text-xl">로그인하셈</div>
                         )}
                     </div>
                     <div className="flex Pretendard-Regular items-center justify-between">

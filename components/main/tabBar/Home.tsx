@@ -9,21 +9,46 @@ export default function Home() {
     const [state,dispatch] = useMainRedux();
     
     console.log(state.TABBAR_OPEN_HOME)
-    // let href = window.location.href
+    
+    
     function close() {
-        if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == true) {
-            dispatch(
-                dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
-            )
-            dispatch(
-                dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
-            )
+        if( typeof window !== 'undefined') {
+            if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == true && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
+                dispatch(
+                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
+                )
+                sessionStorage.setItem("home",'true')
+                dispatch(
+                    dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
+                )
+                sessionStorage.removeItem("search")
+            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == true && state.TABBAR_OPEN_MYPAGE == false) {
+                dispatch(
+                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
+                )
+                sessionStorage.setItem("home",'true')
+                dispatch(
+                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
+                )
+                sessionStorage.removeItem("chat")
+            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
+                dispatch(
+                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
+                )
+                sessionStorage.setItem("home",'true')
+                dispatch(
+                    dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
+                )
+                sessionStorage.removeItem("mypage")
+            }
         }
+        
+        
     }
-
+    const home = typeof window !== 'undefined' ? sessionStorage.getItem("home") : null;
     return (
         <div>
-            {state.TABBAR_OPEN_HOME ? (
+            {home ? (
                 <Image 
                     onClick={() => {
                         dispatch(

@@ -8,22 +8,47 @@ export default function Chat() {
 
     const [state,dispatch] = useMainRedux();
     
-    console.log(state.TABBAR_OPEN_CHAT)
-    // let href = window.location.href
+    
+    
     function close() {
-        if(state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_SEARCH == true) {
-            dispatch(
-                dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
-            )
-            dispatch(
-                dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
-            )
+        if( typeof window !== 'undefined') {
+            if(state.TABBAR_OPEN_HOME == true && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
+                dispatch(
+                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
+                )
+                sessionStorage.setItem("chat",'true')
+                dispatch(
+                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
+                )
+                sessionStorage.removeItem("home")
+            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == true && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
+                dispatch(
+                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
+                )
+                sessionStorage.setItem("chat",'true')
+                dispatch(
+                    dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
+                )
+                sessionStorage.removeItem("search")
+            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
+                dispatch(
+                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
+                )
+                sessionStorage.setItem("chat",'true')
+                dispatch(
+                    dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
+                )
+                sessionStorage.removeItem("mypage")
+            }
         }
+        
+        
     }
+    const chat = typeof window !== 'undefined' ? sessionStorage.getItem("chat") : null;
 
     return (
         <div>
-            {state.TABBAR_OPEN_CHAT ? (
+            {chat ? (
                 <Image 
                     onClick={() => {
                         dispatch(
@@ -32,7 +57,7 @@ export default function Chat() {
                     }}
                     width={30}
                     height={30}
-                    alt="홈로고"
+                    alt="채팅로고"
                     src={require("../../../assets/icon/main/tabBar/메뉴바_채팅_활성화.svg")} 
                 />
             ) : (
@@ -41,7 +66,7 @@ export default function Chat() {
                         onClick={close}
                         width={30}
                         height={30}
-                        alt="홈로고"
+                        alt="채팅로고"
                         src={require("../../../assets/icon/main/tabBar/메뉴바_채팅_비활성화.svg")} 
                     />
                 </Link>

@@ -7,22 +7,47 @@ import { dispatchTabBarOpenHome, dispatchTabBarOpenSearch, dispatchTabBarOpenCha
 export default function Search() {
 
     const [state,dispatch] = useMainRedux();
+
     
+
     function close() {
-        if(state.TABBAR_OPEN_HOME == true && state.TABBAR_OPEN_SEARCH == false) {
-            dispatch(
-                dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
-            )
-            dispatch(
-                dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
-            )
+        if( typeof window !== 'undefined') {
+            if(state.TABBAR_OPEN_HOME == true && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
+                dispatch(
+                    dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
+                )
+                sessionStorage.setItem("search",'true')
+                dispatch(
+                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
+                )
+                sessionStorage.removeItem("home")
+            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == true && state.TABBAR_OPEN_MYPAGE == false) {
+                dispatch(
+                    dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
+                )
+                sessionStorage.setItem("search",'true')
+                dispatch(
+                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
+                )
+                sessionStorage.removeItem("chat")
+            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
+                dispatch(
+                    dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
+                )
+                sessionStorage.setItem("search",'true')
+                dispatch(
+                    dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
+                )
+                sessionStorage.removeItem("mypage")
+            }
         }
+        
     }
-    
+    const search = typeof window !== 'undefined' ? sessionStorage.getItem("search") : null;
 
     return (
         <div>
-            {state.TABBAR_OPEN_SEARCH ? (
+            {search ? (
                 <Image 
                     onClick={() => {
                         dispatch(

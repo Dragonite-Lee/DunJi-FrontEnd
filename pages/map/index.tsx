@@ -178,7 +178,7 @@ export default function Map() {
     }, [latitude, load, longitude]);
     return (
         <>
-            <TabBar />
+            {/* <TabBar /> */}
             <Script
                 onLoad={onLoadKakaoMap}
                 src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY}&libraries=services,clusterer&autoload=false`}
