@@ -59,7 +59,7 @@ export default function RoomListHeader({
         if (touchY >= windowHeight * 0.65) {
             setUpDown(0);
             setMargin({
-                marginTop: `calc(${innerHeight}px - 15.5rem)`,
+                marginTop: `calc(${innerHeight}px - 22.5rem)`,
             }); // 컴포넌트가 화면 하단만 가린 상태. 15.5rem(Header높이(9.5rem) + 하단 n개방 컴포넌트 헤더(6rem))을 제외한 margin
             setTouchY(windowHeight);
         } else if (

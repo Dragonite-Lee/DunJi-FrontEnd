@@ -6,7 +6,7 @@ import useMainRedux from "hooks/useMainRedux";
 import Header from "components/map/Header"; 
 import Link from "next/link";
 import Carousel from "components/main/Carousel";
-
+import TabBar from "components/main/TabBar";
 
 export default function Home() {
 
@@ -36,7 +36,7 @@ export default function Home() {
 
     return (
         <div className="h-screen ">
-
+            <TabBar />
             <div className="pb-12 w-full">
                 {/* *학교필터 */}
                 <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-[18px]">
