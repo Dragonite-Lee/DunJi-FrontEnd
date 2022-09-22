@@ -6,28 +6,30 @@ import { wrapper } from "store/index";
 import Layout from "components/layout";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Script from 'next/script'
+// import { persistor } from 'store/index';
+// import {PersistGate} from 'redux-persist/integration/react';
 
-declare global {
-    interface Window {
-        Kakao: any;
-    }
-}
+
+
 
 
 function App({ Component, pageProps }: AppProps) {
     const queryClient = new QueryClient();
-
+    
    
     return (
-        
-            <QueryClientProvider client={queryClient}>
-                <Layout>
-                    <Component {...pageProps} />
-                    <Script src="https://developers.kakao.com/sdk/js/kakao.min.js"
-                    ></Script>
-                </Layout>
-            </QueryClientProvider>
-        
+            
+            <>
+                <QueryClientProvider client={queryClient}>
+                    {/* <PersistGate persistor={persistor} loading={<div>loading</div>}> */}
+                        <Layout>
+                            <Component {...pageProps} />
+                            <Script src="https://developers.kakao.com/sdk/js/kakao.min.js"
+                            ></Script>
+                        </Layout>
+                    {/* </PersistGate> */}
+                </QueryClientProvider>
+            </>
     );
 }
 

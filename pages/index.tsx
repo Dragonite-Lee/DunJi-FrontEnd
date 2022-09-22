@@ -6,31 +6,52 @@ import {dispatchHandleLogin } from "store/modules/login";
 import Link from "next/link";
 import Carousel from "components/main/Carousel";
 import TabBar from "components/main/TabBar";
+import { useEffect } from "react";
+import PostModal from "components/main/PostModal";
 
 export default function Home() {
-
     
     const [state,dispatch] = useLoginRedux();  
+    let userID;
+    let userNickname;
+    if (typeof window !== 'undefined') {
+        userID = localStorage.getItem('userId');
+        userNickname = localStorage.getItem('userNickname');
+    };
+
+    function loggedOut() {
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem('userId');
+            localStorage.removeItem('userNickname')
+        }
+        location.reload()
+        
+    }
 
     return (
         <div className="h-screen ">
-            {/* <TabBar /> */}
+            <TabBar />
             <div className="pb-12 w-full">
                 {/* *학교필터 */}
                 <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-[18px]">
                     <div className="flex items-center justify-between">
                         <FontAwesomeIcon icon="chevron-down" />
                         <div className="px-4 Pretendard-Regular">한양대 ERICA</div>
-                        {state.value.USER_NICKNAME ? (
-                            <div className="text-xl">{state.value.USER_NICKNAME}님 안녕</div>
+                        {userID ? (
+                            <div className="text-xl">{userNickname}님 안녕</div>
                         ) : (
                             <div className="text-xl">로그인하셈</div>
                         )}
                     </div>
                     <div className="flex Pretendard-Regular items-center justify-between">
                         <Link href="/login">
-                            <div>간편로그인</div>
+                            <div className="text-xl">간편로그인</div>
                         </Link>
+                        <div className="text-xl px-1"
+                            onClick={loggedOut}
+                        >
+                            로그아웃
+                        </div>
                         <Image src={require("../assets/icon/더보기.svg")} />
                     </div>
                 </div>
@@ -38,14 +59,14 @@ export default function Home() {
                 <header className="flex items-center text-4xl justify-between pt-8 pb-3 mx-[18px]">
                     <div>
                         <div className="flex items-end justify-between">
-                            <div className="w-4/5">
+                            <div className="w-[215px]">
                                 <Image
                                     width={215}
                                     height={157}
                                     src={require("../assets/icon/main/main_char.png")}
                                 />
                             </div>
-                            <div className="text-4xl w-3/5 mb-5 Pretendard-SemiBold">
+                            <div className="absolute right-[35px] top-[180px] text-[23px] w-[140px] mb-5 Pretendard-SemiBold">
                                 어떤 방을<br/>
                                 찾고 계신가요?
                             </div>

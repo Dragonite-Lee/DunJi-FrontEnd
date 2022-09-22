@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import useMainRedux from "hooks/useMainRedux";
-import { dispatchTabBarOpenHome, dispatchTabBarOpenSearch, dispatchTabBarOpenChat, dispatchTabBarOpenMypage} from "store/modules/main";
+import useTabRedux from "hooks/useTabRedux";
+import { dispatchTabBarOpenHome, dispatchTabBarOpenSearch, dispatchTabBarOpenChat, dispatchTabBarOpenMypage} from "store/modules/tab";
 
 export default function Search() {
 
-    const [state,dispatch] = useMainRedux();
+    const [state,dispatch] = useTabRedux();
 
     
 
@@ -16,34 +16,34 @@ export default function Search() {
                 dispatch(
                     dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
                 )
-                sessionStorage.setItem("search",'true')
+                localStorage.setItem("search",'true')
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                sessionStorage.removeItem("home")
+                localStorage.removeItem("home")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == true && state.TABBAR_OPEN_MYPAGE == false) {
                 dispatch(
                     dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
                 )
-                sessionStorage.setItem("search",'true')
+                localStorage.setItem("search",'true')
                 dispatch(
                     dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
                 )
-                sessionStorage.removeItem("chat")
+                localStorage.removeItem("chat")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
                 dispatch(
                     dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
                 )
-                sessionStorage.setItem("search",'true')
+                localStorage.setItem("search",'true')
                 dispatch(
                     dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
                 )
-                sessionStorage.removeItem("mypage")
+                localStorage.removeItem("mypage")
             }
         }
         
     }
-    const search = typeof window !== 'undefined' ? sessionStorage.getItem("search") : null;
+    const search = typeof window !== 'undefined' ? localStorage.getItem("search") : null;
 
     return (
         <div>

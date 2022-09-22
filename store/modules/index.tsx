@@ -7,6 +7,16 @@ import main from "./main";
 import { roomRegisterSaga } from "saga/roomRegisterSaga";
 import loading from "./loading";
 import login from "./login";
+import tab from "./tab";
+// import storage from 'redux-persist/lib/storage'
+
+
+// export const persistConfig = {
+//     key: 'tab',
+//     storage,
+//     version: 1,
+//     whitelist: ['tab']
+// }
 
 const reducer = (state: any, action: any) => {
     if (action.type === HYDRATE) {
@@ -21,11 +31,14 @@ const reducer = (state: any, action: any) => {
         loading,
         main,
         login,
+        tab,
     })(state, action);
 };
+
 export type RootState = ReturnType<typeof reducer>;
 
 export default reducer;
+
 
 export function* rootSaga() {
     // all 함수는 여러 사가를 합쳐주는 역할을 합니다.

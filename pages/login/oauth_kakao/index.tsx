@@ -19,7 +19,7 @@ export default function Auth() {
             code = new URL(href).searchParams.get("code");
             
 
-        console.log(code)
+        // console.log(code)
             logInApi
                 .postPermissionCode(code)
                 .then((res) => {
@@ -29,9 +29,8 @@ export default function Auth() {
                     dispatch(dispatchHandleLogin({
                         USER_ID: res.data.user_id,
                         USER_NICKNAME: res.data.user_nickname,
-                        IS_LOGIN: true,
+                        status: true
                     }));
-                    console.log(state.USER_ID)
                     Router.push('/')
                 })
                 .catch((error) => {
