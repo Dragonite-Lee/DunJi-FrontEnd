@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { logInApi } from "_api";
 
 type initialStateTypes = {
     value: {
-        USER_ID: any,
-        USER_NICKNAME: any,
+        USER_ID: string,
+        USER_NICKNAME: string,
         IS_LOGIN: boolean
     }
 }
@@ -15,15 +15,16 @@ const initialState: initialStateTypes = {
         USER_NICKNAME: '',
         IS_LOGIN: false,
     }
-    
 }
 
 const login = createSlice({
     name: "login",
     initialState,
     reducers: {
-        dispatchHandleLogin: (state, action) => {
-            state.value = action.payload
+        dispatchHandleLogin: (state, action: PayloadAction<{USER_ID: string; USER_NICKNAME: string; status: boolean}> ) => {
+            state.value.USER_ID = action.payload.USER_ID;
+            state.value.USER_NICKNAME = action.payload.USER_NICKNAME;
+            state.value.IS_LOGIN = action.payload.status;
         }
     }
 })

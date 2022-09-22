@@ -8,7 +8,7 @@ export default function Mypage() {
     
     return (
         <div>
-            {/* <TabBar /> */}
+            <TabBar />
             Mypage 개발중
         </div>
     );

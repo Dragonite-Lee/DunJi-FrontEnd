@@ -8,7 +8,7 @@ export default function Chat() {
     
     return (
         <div>
-            {/* <TabBar /> */}
+            <TabBar />
             Chat 개발중
         </div>
     );

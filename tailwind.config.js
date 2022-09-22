@@ -23,16 +23,16 @@ module.exports = {
         extend: {
             colors: {
                 background_beige: "#F1EEE8",
+                dark: "#000000",
                 dark_yellow: "#e58e26",
                 yellow: "#fbd40a",
                 light_yellow: "#FEECA3",
                 title_color: "#282F66",
-                blur: "rgba(0,0,0,0.4)",
+                blur: "rgba(0,0,0,0.3)",
                 main: "#FF9240",
                 border_color: "#E3E2E0",
                 component_white: "#F9F9F9",
                 font_gray: "#A9A7A2",
-                black: "#3F3C3A",
                 red: "#FF9240",
                 slide: "#0000004D",
                 kakao: "#FAE100",

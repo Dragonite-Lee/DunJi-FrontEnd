@@ -1,14 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import useMainRedux from "hooks/useMainRedux";
-import { dispatchTabBarOpenHome, dispatchTabBarOpenSearch, dispatchTabBarOpenChat, dispatchTabBarOpenMypage} from "store/modules/main";
+import useTabRedux from "hooks/useTabRedux";
+import { dispatchTabBarOpenHome, dispatchTabBarOpenSearch, dispatchTabBarOpenChat, dispatchTabBarOpenMypage} from "store/modules/tab";
 
 export default function Home() {
 
-    const [state,dispatch] = useMainRedux();
+    const [state,dispatch] = useTabRedux();
     
-    console.log(state.TABBAR_OPEN_HOME)
+    // console.log(state.TABBAR_OPEN_HOME)
+    
     
     
     function close() {
@@ -17,37 +18,35 @@ export default function Home() {
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                sessionStorage.setItem("home",'true')
+                localStorage.setItem("home",'true')
                 dispatch(
                     dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
                 )
-                sessionStorage.removeItem("search")
+                localStorage.removeItem("search")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == true && state.TABBAR_OPEN_MYPAGE == false) {
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                sessionStorage.setItem("home",'true')
+                localStorage.setItem("home",'true')
                 dispatch(
                     dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
                 )
-                sessionStorage.removeItem("chat")
+                localStorage.removeItem("chat")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                sessionStorage.setItem("home",'true')
+                localStorage.setItem("home",'true')
                 dispatch(
                     dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
                 )
-                sessionStorage.removeItem("mypage")
-            }
-        }
-        
-        
+                localStorage.removeItem("mypage")
+            } 
+        }  
     }
-    const home = typeof window !== 'undefined' ? sessionStorage.getItem("home") : null;
+    const home = typeof window !== 'undefined' ? localStorage.getItem("home") : null;
     return (
-        <div>
+        <div className="pl-[36px]">
             {home ? (
                 <Image 
                     onClick={() => {
