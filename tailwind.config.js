@@ -27,6 +27,7 @@ module.exports = {
                 dark_yellow: "#e58e26",
                 yellow: "#fbd40a",
                 light_yellow: "#FEECA3",
+                hover_orange: "#FF9240",
                 title_color: "#282F66",
                 blur: "rgba(0,0,0,0.3)",
                 main: "#FF9240",

@@ -9,7 +9,7 @@ export default function PostModal() {
     const [state,dispatch] = useTabRedux();
 
     return (
-        <div className="bg-blur w-full h-screen fixed z-20"
+        <div className="bg-blur w-full sm:w-[375px] h-screen fixed z-20"
             onClick={(e) => {
                 if(e.target == e.currentTarget) {
                     dispatch(
@@ -21,8 +21,8 @@ export default function PostModal() {
                 }
             }}
         >
-            <div className="gap-4 flex items-center justify-between bg-white top-[285px] w-[250px] h-[120px] absolute z-20 rounded-standard_rounded mx-[62px]">
-                <div className="">
+            <div className="gap-4 flex items-center justify-between bg-white top-[350px] w-[250px] h-[120px] absolute z-20 rounded-standard_rounded translate-x-2/4 right-[50%] ">
+                <div className="hover:text-hover_orange">
                     <div className="ml-[44px]">
                         <Image
                             alt="채팅로고"

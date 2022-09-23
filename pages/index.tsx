@@ -29,7 +29,7 @@ export default function Home() {
     }
 
     return (
-        <div className="h-screen ">
+        <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">
             <TabBar />
             <div className="pb-12 w-full">
                 {/* *학교필터 */}
@@ -58,7 +58,7 @@ export default function Home() {
                 {/* *로고와 메인글 */}
                 <header className="flex items-center text-4xl justify-between pt-8 pb-3 mx-[18px]">
                     <div>
-                        <div className="flex items-end justify-between">
+                        <div className="sm:relative flex items-end justify-between">
                             <div className="w-[215px]">
                                 <Image
                                     width={215}
@@ -66,7 +66,7 @@ export default function Home() {
                                     src={require("../assets/icon/main/main_char.png")}
                                 />
                             </div>
-                            <div className="absolute right-[35px] top-[180px] text-[23px] w-[140px] mb-5 Pretendard-SemiBold">
+                            <div className="absolute sm:left-[190px] sm:top-[85px] right-[35px] top-[180px] text-[23px] w-[140px] mb-5 Pretendard-SemiBold">
                                 어떤 방을<br/>
                                 찾고 계신가요?
                             </div>
@@ -103,14 +103,14 @@ export default function Home() {
                 <div>
                     <div className="text-[16px] Pretendard-SemiBold">하나부터 열까지 둥지와 함께!</div>
                     <div className="mt-[16px] grid grid-cols-2 gap-[8px]">
-                        <div className="px-[20px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                        <div className="px-[20px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                             <Image 
                                 alt="트럭"
                                 src={require("../assets/icon/main/service/서비스_이삿짐.svg")}
                             />
                             <div>둥지 서비스</div>
                         </div>
-                        <div className="pl-[28px] pr-[32px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                        <div className="pl-[28px] pr-[32px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                             <Image 
                                 alt="트럭"
                                 src={require("../assets/icon/main/service/메인_공지사항.svg")}
@@ -118,7 +118,7 @@ export default function Home() {
                             <div>공지사항</div>
                         </div>
                         <Link href="/room/contract">
-                            <div className="pl-[16px] pr-[16px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                            <div className="pl-[16px] pr-[16px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                                 <Image 
                                 
                                     alt="트럭"
@@ -127,7 +127,7 @@ export default function Home() {
                                 <div>계약서 가이드</div>
                             </div>
                         </Link>
-                        <div className="px-[32px] py-[27px] flex items-center justify-between Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                        <div className="px-[32px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                             <Image 
                                 alt="트럭"
                                 src={require("../assets/icon/main/service/마이_커뮤니티 활동.svg")}
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
             {/* *로고와 사업자명 등등 푸터 */}
             <footer className="bg-component_white flex items-center justify-between py-36 px-[18px] w-full">
-                <div className="w-[9rem]">
+                <div className="sm:w-[9rem] w-1/4">
                 <Image 
                     width={77}
                     height={33}
@@ -151,7 +151,7 @@ export default function Home() {
                     src={require("../assets/icon/main/logo_gray.png")} 
                 />
                 </div>
-                <div className="w-[25rem] text-font_gray text-[9px] leading-4 Pretendard-Regular">
+                <div className="sm:w-[25rem] w-full text-font_gray text-[9px] leading-4 Pretendard-Regular">
                     상호 : 네스트소프트 | 대표 : 정재현 |
                     사업자등록번호 : 317-06-02039<br />
                     서비스 이용문의 : 010-9210-2745 |

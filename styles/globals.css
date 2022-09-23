@@ -2,8 +2,9 @@
 html {
     font-size: 62.5%;
     -webkit-tap-highlight-color: transparent;
-    background-color: #f1eee8;
+    background-color: #eee;
     /* font-family: NotoSansKR; */
+    min-width: 375px;
 }
 body {
     overscroll-behavior-y: none;

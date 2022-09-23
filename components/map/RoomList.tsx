@@ -40,7 +40,7 @@ export default function RoomList({ openPopup, focusRoomId }: propsType) {
     }, [innerHeight]);
 
     return (
-        <div className="w-full  z-10" style={margin}>
+        <div className="w-full sm:w-[375px] z-10" style={margin}>
             {upDown === 0 && openPopup && touchY === windowHeight && (
                 <Popup data={data} />
             )}
