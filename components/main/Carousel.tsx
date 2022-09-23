@@ -25,16 +25,17 @@ export default function Carousel() {
     
 
     return (
-        <div className="carousel px-7 pt-12">
+        <div className="carousel px-7 pt-12 w-full">
             <Slider {...settings}>
                 {slideImg.map((item:any,index:number) => (
                     <div key={index} className="relative">
-                        <Image
-                            width={340}
-                            height={100}
-                            alt="슬라이더"
-                            src={require(`../../assets/icon/main/slide/cat${index+1}.jpg`)}
-                        ></Image>
+                        <div className="sm:w-[340px] w-full h-[100px]">
+                            <Image
+                                height={100}
+                                alt="슬라이더"
+                                src={require(`../../assets/icon/main/slide/cat${index+1}.jpg`)}
+                            ></Image>
+                        </div>
                         <div className="absolute z-10 right-3 bottom-4 bg-slide px-4 py-1 rounded-standard_rounded">
                             <p className="text-white">
                                 <span className="Pretendard-Bold">{index+1}</span><span className="Regular"> / {slideImg.length}</span>

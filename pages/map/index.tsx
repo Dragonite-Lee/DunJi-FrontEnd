@@ -177,7 +177,7 @@ export default function Map() {
         }
     }, [latitude, load, longitude]);
     return (
-        <>
+        <div className="h-screen sm:w-[375px] sm:m-auto">
             <TabBar />
             <Script
                 onLoad={onLoadKakaoMap}
@@ -188,6 +188,6 @@ export default function Map() {
                 <RoomList openPopup={openPopup} focusRoomId={focusRoomId} />
                 <div className="absolute top-0 w-screen h-screen" id="map" />
             </div>
-        </>
+        </div>
     );
 }
