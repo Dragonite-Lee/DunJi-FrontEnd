@@ -76,7 +76,7 @@ export default function RoomListHeader({
 
     return (
         <div
-            className={`w-screen   bg-white flex flex-col items-center
+            className={`w-screen sm:w-[375px]  bg-white flex flex-col items-center
              border-b border-1 h-[6rem] relative`}
             onTouchMove={touchHandler}
             onTouchEnd={touchEndHandler}
