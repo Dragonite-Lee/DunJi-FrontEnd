@@ -155,7 +155,7 @@ export default function BottomNextBtn() {
 
     return (
         <div
-            className="bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+            className="sm:w-[375px] sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
             onClick={checkHandler}
         >
             <div className="text-2xl text-white">방 내놓기</div>

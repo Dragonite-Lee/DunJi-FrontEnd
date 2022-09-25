@@ -7,7 +7,7 @@ import PhotoRegister from "components/room-register/PhotoComponents";
 
 export default function Register() {
     return (
-        <div className="pb-[12rem] min-h-screen relative">
+        <div className="bg-background_beige sm:w-[375px] sm:m-auto pb-[12rem] min-h-screen relative">
             <Header />
             <AddressRegister />
             <BasicInfo />
