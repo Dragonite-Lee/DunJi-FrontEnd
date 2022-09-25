@@ -9,7 +9,7 @@ export default function PostModal() {
     const [state,dispatch] = useTabRedux();
 
     return (
-        <div className="bg-blur w-full sm:w-[375px] h-screen fixed z-20"
+        <div className="bg-blur w-full sm:w-[375px] h-screen fixed z-30"
             onClick={(e) => {
                 if(e.target == e.currentTarget) {
                     dispatch(
@@ -21,25 +21,27 @@ export default function PostModal() {
                 }
             }}
         >
-            <div className="gap-4 flex items-center justify-between bg-white top-[350px] w-[250px] h-[120px] absolute z-20 rounded-standard_rounded translate-x-2/4 right-[50%] ">
-                <div className="hover:text-hover_orange">
-                    <div className="ml-[44px]">
-                        <Image
-                            alt="채팅로고"
-                            src={require("../../assets/icon/main/tabBar/채팅메뉴_작성.svg")}
-                        />
+            <div className="gap-4 flex items-center justify-between bg-white top-[350px] w-[250px] h-[120px] absolute z-30 rounded-standard_rounded translate-x-2/4 right-[50%] ">
+                <Link href="/room/register/agreePage">
+                    <div className="ml-[36px] hover:text-hover_orange">
+                        <div className="ml-[6px]">
+                            <Image
+                                alt="채팅로고"
+                                src={require("../../assets/icon/main/tabBar/채팅메뉴_작성.svg")}
+                            />
+                        </div>
+                        <div className=" Pretendard-SemiBold text-[15px]">방 내놓기</div>
                     </div>
-                    <div className="ml-[36px] Pretendard-SemiBold text-[15px]">방 내놓기</div>
-                </div>
+                </Link>
                 <div className="h-full border-r"></div>
-                <div>
-                    <div className="ml-[7px]">
+                <div className="mr-[36px] hover:text-hover_orange">
+                    <div className="ml-[8px]">
                         <Image
                             alt="채팅로고"
                             src={require("../../assets/icon/main/tabBar/채팅메뉴_작성.svg")}
                         />
                     </div>
-                    <div className="mr-[36px] Pretendard-SemiBold text-[15px]">후기 작성</div>
+                    <div className=" Pretendard-SemiBold text-[15px]">후기 작성</div>
                 </div>
             </div>
         </div>

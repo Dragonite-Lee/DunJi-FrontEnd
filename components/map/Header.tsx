@@ -82,7 +82,7 @@ export default function Header({ setLatitude, setLongitude }: any) {
     return (
         <>
             <div
-                className={`h-[${map_header_height}] w-screen px-standard_pd pt-6 z-10 bg-background_beige `}
+                className={`h-[${map_header_height}] w-screen sm:w-[375px] px-7 pt-6 z-10 bg-background_beige `}
             >
                 <div className="text-2xl h-[3.5rem] flex items-center justify-between">
                     <Link href="/">

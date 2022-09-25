@@ -27,7 +27,7 @@ export default function TabBar() {
             ) : (
                 null
             )}
-            <div className="min-w-[375px] sm:w-[375px] z-10 flex items-center justify-between fixed bottom-0 w-full h-[73px] bg-background_beige">
+            <div className="min-w-[375px] sm:w-[375px] z-20 flex items-center justify-between fixed bottom-0 w-full h-[73px] bg-background_beige">
                 <Home />
                 <Search />
                 <Plus />

@@ -177,16 +177,17 @@ export default function Map() {
         }
     }, [latitude, load, longitude]);
     return (
-        <div className="h-screen sm:w-[375px] sm:m-auto">
-            <TabBar />
+        <div>
+            
             <Script
                 onLoad={onLoadKakaoMap}
                 src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY}&libraries=services,clusterer&autoload=false`}
             />
-            <div className="flex flex-col w-screen  h-screen relative overflow-hidden">
+            <div className="flex flex-col w-full sm:w-[375px] sm:m-auto h-screen relative overflow-hidden">
+                <TabBar />
                 <Header setLatitude={setLatitude} setLongitude={setLongitude} />
                 <RoomList openPopup={openPopup} focusRoomId={focusRoomId} />
-                <div className="absolute top-0 w-screen h-screen" id="map" />
+                <div className="absolute top-0 w-screen sm:w-full h-screen" id="map" />
             </div>
         </div>
     );
