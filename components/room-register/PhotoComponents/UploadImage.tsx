@@ -2,17 +2,23 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dispatch, SetStateAction } from "react";
 
+
 type propsType = {
     file: string;
     setFile: Dispatch<SetStateAction<string>>;
 };
 
 export default function UploadImage({ file, setFile }: propsType) {
+
+    
+
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader();
-        if (e.target.files instanceof FileList)
+        if (e.target.files instanceof FileList) {
             reader.readAsDataURL(e.target.files[0]);
+        }
         reader.onload = () => setFile(String(reader.result));
+
     };
     return (
         <div className="bg-component_white h-full w-full rounded-standard_rounded flex items-center justify-center relative">
@@ -37,10 +43,17 @@ export default function UploadImage({ file, setFile }: propsType) {
             ) : (
                 <>
                     <label
-                        className="text-4xl  border-2 border-border_color rounded-[50%] text-border_color w-24 h-24 flex items-center justify-center"
+                        className="Pretendard-Regular text-[12px] text-center text-font_gray w-24 h-28  items-center justify-center"
                         htmlFor="image-upload"
                     >
-                        <FontAwesomeIcon icon="plus" />
+                        {/* <FontAwesomeIcon icon="plus" /> */}
+                        <Image 
+                            width={50}
+                            height={50}
+                            alt="사진로고"
+                            src={require("../../../assets/icon/채팅메뉴_앨범.svg")} 
+                        />
+                        <div>사진 선택</div>
                     </label>
                     <input
                         onChange={onChange}
@@ -54,3 +67,5 @@ export default function UploadImage({ file, setFile }: propsType) {
         </div>
     );
 }
+
+

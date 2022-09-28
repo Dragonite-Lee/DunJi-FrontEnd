@@ -15,11 +15,11 @@ export default function DetailRegister() {
     return (
         <>
             {roomRegister.COMPONENT_HANDLER === 1 && (
-                <div className="h-full">
+                <div className="h-full ">
                     <SubHeader />
-                    <div className="px-standard_pd w-screen mb-4">
-                        <RoomType />
+                    <div className="px-[18px] w-screen mb-4 sm:w-[375px] sm:m-auto">
                         <TransactionType />
+                        <RoomType />
                         <PriceUnit />
                         <Price />
                         <ManagementFee />

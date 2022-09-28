@@ -1,4 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+type Image = [
+    {
+        main: string
+    },
+    {
+        room1: string[]
+    },
+    {
+        room2: string[]
+    }
+]
 
 type initialStateTypes = {
     COMPONENT_HANDLER: number;
@@ -30,12 +42,17 @@ type initialStateTypes = {
     availPeriodFrom: string;
     availPeriodTo: string;
     availPeriodConsul: 0;
+    optionAll: number;
     option: Array<number>;
     car: 0 | 1 | 2;
     pet: 0 | 1 | 2;
+    women: 0 | 1 | 2;
     loan: 0 | 1 | 2;
     title: string;
     explain: string;
+    mainImage: string,
+    room1Image: string[],
+    room2Image: string[],
     postRoomSuccess: any;
     postRoomFailure: any;
 };
@@ -70,12 +87,17 @@ const initialState: initialStateTypes = {
     availPeriodFrom: "",
     availPeriodTo: "",
     availPeriodConsul: 0,
+    optionAll: 1,
     option: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     car: 2,
     pet: 2,
+    women: 2,
     loan: 2,
     title: "",
     explain: "",
+    mainImage: "",
+    room1Image: [],
+    room2Image: [],
     postRoomSuccess: null,
     postRoomFailure: null,
 };
@@ -171,6 +193,9 @@ const roomRegister = createSlice({
         dispatchPeriodNegotiable: (state, action) => {
             state.availPeriodConsul = action.payload;
         },
+        dispatchOption: (state, action) => {
+            state.optionAll = action.payload;
+        },
         dispatchOptionSelect: (state, action) => {
             state.option = action.payload;
         },
@@ -180,6 +205,9 @@ const roomRegister = createSlice({
         dispatchPet: (state, action) => {
             state.pet = action.payload;
         },
+        dispatchWomen: (state, action) => {
+            state.women = action.payload;
+        },
         dispatchLoan: (state, action) => {
             state.loan = action.payload;
         },
@@ -188,6 +216,15 @@ const roomRegister = createSlice({
         },
         dispatchExplain: (state, action) => {
             state.explain = action.payload;
+        },
+        dispatchMainImage: (state, action) => {
+            state.mainImage = action.payload;
+        },
+        dispatchRoom1Image: (state, action) => {
+            state.room1Image = action.payload;
+        },
+        dispatchRoom2Image: (state, action) => {
+            state.room2Image = action.payload;
         },
         postRoom: (state, action) => {}, // state,action이 인자로 선언되어 있어야 postRoom을 처리하는 postRoomSaga에서 action.payload(즉 여기선 방 등록 정보인 formData)를 자동으로 인자로 받음
         postRoomSuccess: (state, action) => {
@@ -232,12 +269,17 @@ export const {
     dispatchRoomSize,
     dispatchPeriodFrom,
     dispatchPeriodTo,
+    dispatchOption,
     dispatchOptionSelect,
     dispatchPeriodNegotiable,
     dispatchCar,
     dispatchPet,
+    dispatchWomen,
     dispatchLoan,
     dispatchTitle,
     dispatchExplain,
+    dispatchMainImage,
+    dispatchRoom1Image,
+    dispatchRoom2Image,
     postRoom,
 } = roomRegister.actions;

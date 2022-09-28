@@ -3,7 +3,9 @@ import DuplicateSelect from "hooks/useDuplicateSelect";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "store/modules";
-import { dispatchOptionSelect } from "store/modules/roomRegister";
+import { dispatchOption, dispatchOptionSelect } from "store/modules/roomRegister";
+import InputSelectBox from "components/common/InputSelectBox";
+import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 
 export default function Option() {
     const typeArr = useMemo(
@@ -23,18 +25,39 @@ export default function Option() {
         ],
         []
     );
-    const state = useSelector((state: RootState) => state.roomRegister);
+    const [state, dispatch] = useRoomRegisterRedux();
+    // const state = useSelector((state: RootState) => state.roomRegister);
 
     const optionSelectStateArr = state.option;
+    const optionCheck = state.optionAll;//해당없으면 0 옵션있으면1
 
-    const [checkHandler] = DuplicateSelect(
+    
+    const OptionHandler = () => {
+        if (optionCheck === 0) dispatch(dispatchOption(1));
+        else {
+            dispatch(dispatchOption(0));
+            resetHandler();
+        }
+    };
+
+    const [checkHandler, resetHandler] = DuplicateSelect(
         optionSelectStateArr,
         typeArr,
         dispatchOptionSelect
     );
     return (
         <>
-            <div className="py-4 text-2xl mt-4">옵션</div>
+            <div className="flex items-center justify-between mt-[26px] pb-[8px]">
+                <div className="text-[17px]  Pretendard-SemiBold">옵션</div>
+                <div className="text-[15px] Pretendard-Regular">
+                    <InputSelectBox
+                            check={optionCheck}
+                            content="해당 없음"
+                            checkHandler={OptionHandler}
+                            converse={true}
+                    />
+                </div>
+            </div>
             <div className=" grid grid-cols-3 gap-room_register_gap ">
                 {typeArr.map((item, index) => (
                     <DuplicateSelectBtn
@@ -43,9 +66,10 @@ export default function Option() {
                         check={optionSelectStateArr[index]}
                         index={index}
                         checkHandler={checkHandler}
-                        blockCheck={1}
+                        blockCheck={optionCheck}
                     />
                 ))}
+                
             </div>
         </>
     );

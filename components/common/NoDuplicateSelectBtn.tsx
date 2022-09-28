@@ -13,7 +13,7 @@ export default function NoDuplicateSelectBtn({
 }: propsType) {
     return (
         <button
-            className={`focus-bg-black  rounded-standard_rounded h-room_register_btn_height1 w-full   text-[1.3rem]   ${
+            className={`focus-bg-black  rounded-standard_rounded h-room_register_btn_height1 w-full   text-[15px]    ${
                 check
                     ? "bg-font_gray border-0 text-white"
                     : "border border-font_gray"

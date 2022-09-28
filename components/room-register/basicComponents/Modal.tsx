@@ -24,6 +24,7 @@ export default function Modal({
             dispatch(dispatchHandler(Number(arr[index].slice(0, -1))));
         } else dispatch(dispatchHandler(arr[index]));
     };
+    
 
     const [value, setValue] = useState("");
 
@@ -32,9 +33,15 @@ export default function Modal({
         else dispatch(dispatchHandler(title));
     }, [value, dispatch, dispatchHandler, title]);
     return (
-        <div className="absolute top-0 left-0 bg-black/[0.5]  w-screen h-[100%] flex-col items-center flex z-50">
-            <div className="rounded-standard_rounded  w-64 bg-component_white text-xl mt-[82rem]">
-                <div className="relative border-b h-14 flex flex-col items-center justify-center">
+        <div className="absolute top-0 left-0 bg-black/[0.5]  sm:w-[375px] sm:m-auto w-screen h-[100%] flex-col items-center flex z-50"
+            onClick={(e) => {
+                if(e.target == e.currentTarget) {
+                    openHandler(false)
+                }
+            }}
+        >
+            <div className="rounded-standard_rounded  w-[180px] bg-component_white text-[15px] mt-[82rem]">
+                <div className="relative border-b h-14 flex flex-col items-center justify-center Pretendard-SemiBold">
                     {title}
                     <FontAwesomeIcon
                         onClick={() => openHandler(false)}
@@ -44,7 +51,7 @@ export default function Modal({
                 </div>
                 {arr.map((item, index) => (
                     <div
-                        className="h-14 flex flex-col items-center justify-center hover:text-main"
+                        className="h-14 flex flex-col items-center justify-center hover:text-main Pretendard-Regular"
                         key={index}
                         onClick={() => onClick(index)}
                     >
@@ -56,8 +63,8 @@ export default function Modal({
                         <input
                             type="text"
                             maxLength={2}
-                            className="text-center h-14 bg-component_white outline-0  placeholder:text-black hover:text-main"
-                            placeholder="직접입력"
+                            className="w-[180px] text-center h-14 rounded-b-standard_rounded bg-component_white outline-0 border-t-2 border-gray Pretendard-Regular placeholder:text-main text-main"
+                            placeholder="입력"
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
                         />

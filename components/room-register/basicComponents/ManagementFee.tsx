@@ -53,11 +53,11 @@ export default function Price() {
     return (
         <>
             <CategoryHeader title="관리비" />
-            <div className="w-full grid grid-cols-[2fr_1fr] h-[3.5rem] mb-4">
+            <div className="w-full grid grid-cols-[2fr_1fr] h-[3.5rem] mb-4 Pretendard-Regular">
                 <div className="relative h-full mb-4">
                     <input
                         type="number"
-                        className="bg-white  w-full rounded-standard_rounded h-full text-xl pl-4 placeholder-font_gray outline-0"
+                        className="bg-white  w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-font_gray outline-0"
                         placeholder="관리비"
                         value={fee}
                         onChange={(e) => {
@@ -65,7 +65,7 @@ export default function Price() {
                         }}
                     ></input>
                     <div
-                        className="absolute  text-xl
+                        className="absolute  text-[15px]
             right-8 bottom-[50%] translate-y-[50%]"
                     >
                         만원
@@ -78,7 +78,7 @@ export default function Price() {
                     converse={true}
                 />
             </div>
-            <div className="w-full grid grid-cols-3 h-[7rem] gap-2">
+            <div className="w-full grid grid-cols-3 h-[7rem] gap-2 Pretendard-Regular">
                 {typeArr.map((item, index) => (
                     <DuplicateSelectBtn
                         key={index}

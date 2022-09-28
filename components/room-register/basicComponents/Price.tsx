@@ -53,14 +53,14 @@ export default function Price() {
     return (
         <>
             <CategoryHeader title="가격" />
-            <div className="  mb-4 w-full rounded-standard_rounded overflow-hidden">
+            <div className="mb-4 w-full rounded-standard_rounded overflow-hidden Pretendard-Regular">
                 {priceArr.map(
                     (item, index) =>
                         (unit !== "전세" || index === 0) && (
                             <div className="relative" key={index}>
                                 <input
                                     type="number"
-                                    className={`h-room_register_btn_height2 w-full text-xl pl-4 placeholder-font_gray outline-0   ${
+                                    className={`h-room_register_btn_height2 w-full text-[15px] pl-4 placeholder-font_gray outline-0   ${
                                         index === 0 && "border-b"
                                     }`}
                                     placeholder={item.placeHolder}
@@ -71,7 +71,7 @@ export default function Price() {
                                     }}
                                 />
                                 <div
-                                    className="absolute  text-xl
+                                    className="absolute  text-[15px]
             right-8 bottom-[50%] translate-y-[50%] "
                                 >
                                     만원

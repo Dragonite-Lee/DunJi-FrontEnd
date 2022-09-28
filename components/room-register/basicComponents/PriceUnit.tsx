@@ -7,7 +7,7 @@ import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 
 export default function PriceUnit() {
     const typeArr = useMemo(
-        () => ["일세", "주세", "월세", "반전세", "전세"],
+        () => ["주세", "월세", "전세", "반전세"],
         []
     );
     const [state] = useRoomRegisterRedux();
@@ -21,7 +21,7 @@ export default function PriceUnit() {
     return (
         <>
             <CategoryHeader title="가격 단위" />
-            <div className="w-full grid grid-cols-3 gap-room_register_gap">
+            <div className="w-full grid grid-cols-2 gap-room_register_gap Pretendard-Regular">
                 {typeArr.map((item, index) => (
                     <NoDuplicateSelectBtn
                         key={index}

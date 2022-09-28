@@ -11,7 +11,7 @@ export default function Header() {
         <>
             {state.POSTCODE_OPEN ? (
                 <header
-                    className="flex w-screen justify-between px-standard_pd 
+                    className="flex w-screen justify-between px-[18px]
         py-4  h-24 items-center text-xl  border-b sm:w-[375px] sm:m-auto "
                 >
                     <div className="flex text-2xl items-center">

@@ -41,10 +41,12 @@ export default function Floor() {
         setModalTitle(title);
         dispatchIndex.current = index;
     };
-    const floorArr = ["1층", "2층", "3층", "4층", "5층"];
+    const AllfloorArr = ["1층", "2층", "3층", "4층", "5층"];
+    const floorArr = ["반지하", "1층", "2층", "3층", "4층", "5층"];
+    const roomStructureArr = ["오픈형 (방1)", "분리형 (방1,거실1)", "복층형", "해당없음"]
     const modalArr = [
         {
-            valueArr: floorArr,
+            valueArr: AllfloorArr,
             title: "전체층",
             value: totalFloor,
             dispatchHandler: dispatchEntireFloor,
@@ -56,7 +58,7 @@ export default function Floor() {
             dispatchHandler: dispatchCurrentFloor,
         },
         {
-            valueArr: ["오픈형", "분리형", "복층형"],
+            valueArr: roomStructureArr,
             title: "구조",
             value: structure,
             dispatchHandler: dispatchStruct,
@@ -78,11 +80,11 @@ export default function Floor() {
                     dispatchHandler={dispatchArr[dispatchIndex.current]}
                 />
             )}
-            <div className="w-full grid grid-cols-2 gap-room_register_gap">
+            <div className="w-full grid grid-cols-2 gap-room_register_gap Pretendard-Regular">
                 {modalArr.map((item, index) => (
                     <div
                         key={index}
-                        className="bg-white  w-full rounded-standard_rounded h-room_register_btn_height1 text-xl px-4 flex justify-between items-center"
+                        className="bg-white  w-full rounded-standard_rounded h-room_register_btn_height1 text-[15px] px-4 flex justify-between items-center"
                         onClick={() =>
                             modalHandler(
                                 openModal,

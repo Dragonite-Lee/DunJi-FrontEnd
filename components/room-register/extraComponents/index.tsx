@@ -4,6 +4,7 @@ import Option from "./Option";
 import DetailText from "./DetailText";
 import Pet from "./Pet";
 import Loan from "./Loan";
+import OnlyWomen from "./OnlyWomen";
 import Title from "./Title";
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 
@@ -15,11 +16,15 @@ export default function DetailRegister() {
             {state.COMPONENT_HANDLER === 2 && (
                 <div className="h-full">
                     <SubHeader />
-                    <div className="px-standard_pd w-screen mb-4">
+                    <div className="px-[18px] w-screen mb-4 sm:w-[375px] sm:m-auto">
                         <Option />
-                        <div className="pt-4 mt-8 border-t border-border_color">
+                        <div className="text-[17px]  mt-[30px] Pretendard-SemiBold">
+                            기타
+                        </div>
+                        <div className="mt-[16px] Pretendard-Regular">
                             <Parking />
                             <Pet />
+                            <OnlyWomen />
                             <Loan />
                         </div>
                         <Title />

@@ -9,6 +9,7 @@ type propsType = {
 };
 
 export default function UploadImageSmall({ file, setFile, index }: propsType) {
+    
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader();
         if (e.target.files instanceof FileList)
@@ -16,6 +17,7 @@ export default function UploadImageSmall({ file, setFile, index }: propsType) {
         reader.onload = () => {
             if (reader.readyState === 2) setFile(String(reader.result));
         };
+        
     };
     return (
         <div className="bg-component_white h-full w-full rounded-standard_rounded flex items-center justify-center relative">
@@ -40,10 +42,16 @@ export default function UploadImageSmall({ file, setFile, index }: propsType) {
             ) : (
                 <>
                     <label
-                        className="text-2xl  border-[0.1rem] border-border_color rounded-[50%] text-border_color w-14 h-14 flex items-center justify-center "
+                        className="Pretendard-Regular text-[12px] text-center text-font_gray w-15 h-18"
                         htmlFor={`image-upload-${index}`}
                     >
-                        <FontAwesomeIcon icon="plus" />
+                        <Image 
+                            width={40}
+                            height={40}
+                            alt="사진로고"
+                            src={require("../../../assets/icon/채팅메뉴_앨범.svg")} 
+                        />
+                        <div>사진 선택</div>
                     </label>
                     <input
                         onChange={onChange}
