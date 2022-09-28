@@ -6,7 +6,7 @@ import NoDuplicateSelectBtn from "components/common/NoDuplicateSelectBtn";
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 
 export default function TransactionType() {
-    const typeArr = useMemo(() => ["단기임대", "임대", "양도"], []);
+    const typeArr = useMemo(() => ["단기임대", "양도"], []);
     const [state] = useRoomRegisterRedux();
 
     const [selectArr, checkHandler] = useNoDuplicateSelect(
@@ -18,7 +18,7 @@ export default function TransactionType() {
     return (
         <>
             <CategoryHeader title="거래유형" />
-            <div className="w-full flex gap-room_register_gap  h-room_register_btn_height1">
+            <div className="w-full flex gap-room_register_gap Pretendard-Regular h-room_register_btn_height1">
                 {typeArr.map((item, index) => (
                     <NoDuplicateSelectBtn
                         key={index}

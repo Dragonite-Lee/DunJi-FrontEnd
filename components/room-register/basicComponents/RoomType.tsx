@@ -6,7 +6,7 @@ import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 
 export default function RoomType() {
     const typeArr = useMemo(
-        () => ["원룸", "투룸", "쓰리룸 이상", "반지하", "옥탑방"],
+        () => ["원룸", "투룸", "쓰리룸 이상"],
         []
     );
     const [state] = useRoomRegisterRedux();
@@ -19,8 +19,8 @@ export default function RoomType() {
 
     return (
         <>
-            <div className="py-4 text-2xl  mt-4">방 종류</div>
-            <div className="w-full grid grid-cols-3 gap-room_register_gap">
+            <div className="pt-[30px] text-[17px] Pretendard-SemiBold">방 종류</div>
+            <div className="w-full grid grid-cols-3 gap-room_register_gap Pretendard-Regular">
                 {typeArr.map((item, index) => (
                     <NoDuplicateSelectBtn
                         key={index}

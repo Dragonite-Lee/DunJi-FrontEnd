@@ -2,6 +2,7 @@ import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 import { useCallback, useState } from "react";
 import { postRoom } from "store/modules/roomRegister";
 
+
 export default function BottomNextBtn() {
     const [state, dispatch] = useRoomRegisterRedux();
     const isEmpty = useCallback(function (value: any) {
@@ -17,16 +18,19 @@ export default function BottomNextBtn() {
         } else {
             return false;
         }
-    }, []);
-
+    }, []); 
+    
+    
     const checkHandler = () => {
         let formData = new FormData();
+        // console.log(formData)
         for (const item in state) {
-            if (!isEmpty(state[item])) formData.append(item, state[item]);
+            if (!isEmpty(state[item])) formData.append(item, state[item]); //formdata에 값 입력
+            
         }
 
         // isEmpty에서 적절하게 처리 안되는 항목 제거 후 따로 formData에 입력
-        const delete_arr = ["manageSelect", "option", "car", "pet", "loan"];
+        const delete_arr = ["manageSelect", "option", "car", "pet", "loan","onlyWomen","mainImage","room1Image","room2Image"];
         for (let i = 0; i < delete_arr.length; i++)
             formData.delete(delete_arr[i]);
 
@@ -62,17 +66,27 @@ export default function BottomNextBtn() {
         // 상단 isEmpty에서 필터링 되는 항목들 따로 입력
 
         if (state.manage === 0) formData.append("manageCost", "0");
-        const chooseOneArr = ["car", "pet", "loan"]; // 두 항목 중 하나를 고르는 경우 (주차공간, 반려동물, 전세대출)
+        if (state.optionAll === 0) {
+            for (let i = 0; i <option_arr.length; i++) {
+                formData.append(option_arr[i], "0")
+            }
+        }
+        const chooseOneArr = ["car", "pet", "onlyWomen", "loan"]; // 두 항목 중 하나를 고르는 경우 (주차공간, 반려동물, 전세대출)
 
         for (let i = 0; i < chooseOneArr.length; i++)
             if (state[chooseOneArr[i]] !== 2)
                 formData.append(chooseOneArr[i], state[chooseOneArr[i]]);
 
-        const checkBox_arr = ["manage", "elevator", "availPeriodConsul"];
+        const checkBox_arr = ["manage", "elevator", "availPeriodConsul","optionAll"];
 
         for (let i = 0; i < checkBox_arr.length; i++)
             formData.append(checkBox_arr[i], state[checkBox_arr[i]]);
 
+        const image_arr = [state.mainImage, ...state.room1Image, ...state.room2Image];
+        
+        for (let i = 0; i < image_arr.length; i++)
+            formData.append("image",image_arr[i]);
+        
         const all_items_arr = [
             { longitude: "주소를" },
             { latitude: "주소를" },
@@ -103,6 +117,7 @@ export default function BottomNextBtn() {
             { availPeriodFrom: "입주 가능 기간(시작 시점)을" },
             { availPeriodTo: "입주 가능 기간(종료 시점)을" },
             { availPeriodConsul: "입주 기간 협의 여부를" },
+            { optionAll: "옵션 유무를"},
             { aircon: "옵션을" },
             { refri: "옵션을" },
             { washer: "옵션을" },
@@ -120,6 +135,8 @@ export default function BottomNextBtn() {
             { loan: "옵션을" },
             { title: "방 제목을" },
             { explain: "상세설명을" },
+            { image : "사진을"},
+    
         ];
 
         try {

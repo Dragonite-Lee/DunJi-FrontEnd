@@ -31,6 +31,7 @@ const PostCode = () => {
         <>
             {state.ADDRESS_OPEN && (
                 <DaumPostcode 
+                    className=""
                     style={postCodeStyle}
                     onComplete={handleComplete}
                 />

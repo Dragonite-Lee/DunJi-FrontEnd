@@ -28,11 +28,11 @@ export default function Size() {
     return (
         <>
             <CategoryHeader title="방 크기" />
-            <div className="flex gap-room_register_gap">
+            <div className="flex gap-room_register_gap Pretendard-Regular">
                 <div className="relative h-room_register_btn_height2 mb-4 w-full">
                     <input
                         type="number"
-                        className="w-full rounded-standard_rounded h-full text-xl pl-4 placeholder-text_gray outline-0 focus:border-main"
+                        className="w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-text_gray outline-0 focus:border-main"
                         placeholder="실평수"
                         value={pyeong}
                         onChange={(e) => {
@@ -45,7 +45,7 @@ export default function Size() {
                         }}
                     ></input>
                     <div
-                        className="absolute  text-xl
+                        className="absolute  text-[15px]
             right-8 bottom-[50%] translate-y-[50%]"
                     >
                         평
@@ -54,7 +54,7 @@ export default function Size() {
                 <div className="relative h-room_register_btn_height2 mb-4 w-full">
                     <input
                         type="number"
-                        className="w-full rounded-standard_rounded h-full text-xl pl-4 placeholder-text_gray outline-0 focus:border-main"
+                        className="w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-text_gray outline-0 focus:border-main"
                         placeholder="전용 면적"
                         value={size}
                         onChange={(e) => {
@@ -66,7 +66,7 @@ export default function Size() {
                         }}
                     ></input>
                     <div
-                        className="absolute  text-xl
+                        className="absolute  text-[15px]
             right-8 bottom-[50%] translate-y-[50%]"
                     >
                         m<sup>2</sup>

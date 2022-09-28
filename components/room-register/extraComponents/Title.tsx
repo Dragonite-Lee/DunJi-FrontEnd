@@ -9,9 +9,9 @@ export default function Title() {
         <>
             <CategoryHeader title="방 제목" />
             <input
-                className="h-room_register_btn_height1 w-full rounded-standard_rounded  text-xl pl-4 placeholder-font_gray outline-0"
+                className="h-[50px] w-full rounded-standard_rounded  text-[15px] pl-4 placeholder-font_gray outline-0 Pretendard-Regular "
                 value={title}
-                placeholder="제목"
+                placeholder="방 특성이 드러나는 제목을 입력해주세요.(20자 이내)"
                 onChange={(e) => dispatch(dispatchTitle(e.target.value))}
             />
         </>
