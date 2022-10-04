@@ -2,14 +2,17 @@ import { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { logInApi } from "_api";
 import useLoginRedux from "hooks/useLoginRedux";
+import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 import {dispatchHandleLogin } from "store/modules/login";
+import { dispatchRegistrant } from "store/modules/roomRegister";
 import React from "react";
 import Router from "next/router";
 
 
 export default function Auth() {
 
-    const [state,dispatch] = useLoginRedux();    
+    const [state,dispatch] = useLoginRedux()
+    const [state2,dispatch2] = useRoomRegisterRedux();    
 
     useEffect(() => {
         let href;
@@ -31,7 +34,8 @@ export default function Auth() {
                         USER_NICKNAME: res.data.user_nickname,
                         status: true
                     }));
-                    Router.push('/')
+                    Router.push('/');
+                    
                 })
                 .catch((error) => {
                     console.log(error)

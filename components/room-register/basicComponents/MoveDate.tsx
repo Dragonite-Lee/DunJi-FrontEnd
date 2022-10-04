@@ -1,7 +1,7 @@
 import {
-    dispatchPeriodFrom,
-    dispatchPeriodNegotiable,
-    dispatchPeriodTo,
+    dispatchFrom,
+    dispatchNegotiable,
+    dispatchTo,
 } from "store/modules/roomRegister";
 import InputSelectBox from "components/common/InputSelectBox";
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
@@ -9,14 +9,14 @@ import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 export default function MoveDate() {
     const [state, dispatch] = useRoomRegisterRedux();
 
-    const periodFrom = state.availPeriodFrom;
-    const periodTo = state.availPeriodTo;
-    const negotiable = state.availPeriodConsul;
+    const periodFrom = state.availFrom;
+    const periodTo = state.availTo;
+    const negotiable = state.availConsul;
 
     const checkHandler = () => {
         negotiable === 0
-            ? dispatch(dispatchPeriodNegotiable(1))
-            : dispatch(dispatchPeriodNegotiable(0));
+            ? dispatch(dispatchNegotiable(1))
+            : dispatch(dispatchNegotiable(0));
     };
 
     return (
@@ -35,7 +35,7 @@ export default function MoveDate() {
                     type="date"
                     className="text-center Pretendard-Regular bg-white  w-full rounded-standard_rounded h-full text-[15px] px-4 placeholder-black outline-0 "
                     onChange={(e) => {
-                        dispatch(dispatchPeriodFrom(e.target.value));
+                        dispatch(dispatchFrom(e.target.value));
                     }}
                     value={periodFrom}
                 />
@@ -44,7 +44,7 @@ export default function MoveDate() {
                     type="date"
                     className="text-center Pretendard-Regular bg-white  w-full rounded-standard_rounded h-full text-[15px] px-4 placeholder-black outline-0 "
                     onChange={(e) => {
-                        dispatch(dispatchPeriodTo(e.target.value));
+                        dispatch(dispatchTo(e.target.value));
                     }}
                     value={periodTo}
                 />

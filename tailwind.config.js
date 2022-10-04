@@ -31,6 +31,7 @@ module.exports = {
                 title_color: "#282F66",
                 blur: "rgba(0,0,0,0.3)",
                 main: "#FF9240",
+                dealType_Btn: "#7DE1FF",
                 border_color: "#E3E2E0",
                 component_white: "#F9F9F9",
                 font_gray: "#A9A7A2",

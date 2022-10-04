@@ -10,66 +10,79 @@ import Location from "components/room-detail/Location";
 import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import { mapApi } from "_api";
+import { dispatchRoomInfoList, dispatchRoomPostList } from "store/modules/room";
+import useRoomRedux from "hooks/useRoomRedux";
+import { useEffect } from "react";
+import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 // import LifeInfo from "components/room-detail/LifeInfo";
 
 export default function RoomDetail() {
+    const [state,dispatch] = useRoomRedux();
+    const [state2, dispatch2] = useRoomRegisterRedux();
     const router = useRouter();
     const { id } = router.query;
-    const { status, data } = useQuery(
-        ["getRoomDetailData", id],
-        () => mapApi.getRoomDetail(id),
-        { enabled: id !== undefined }
-    );
-    const roomData = data && data?.data.Room_Data;
+    
+    useEffect(() => {
+        mapApi.getRoomDetail(id)
+        .then((res) => {
+            console.log(res);
+            dispatch(dispatchRoomPostList(res.data.Room_Post));
+            dispatch(dispatchRoomInfoList(res.data.Room_Info));
+        })
+        console.log(state.ROOM_POST.image)
+    },[id])
+
 
     return (
-        <div className="pb-[12rem] w-screen">
-            {status === "success" && (
-                <>
-                    <Header title={roomData.address} />
-                    <ImageSlide />
-                    <div className="px-standard_pd">
-                        <Title
-                            title={roomData.address}
-                            price={roomData.price}
-                            deposit={roomData.deposit}
-                            priceUnit={roomData.priceUnit}
-                        />
-                        <BriefInfo
-                            roomSize={roomData.roomSize}
-                            floor={roomData.floor}
-                            entireFloor={roomData.entireFloor}
-                            struct={roomData.struct}
-                        />
-                        <Review explain={roomData.explain} />
-                        <Info
-                            availPeriodFrom={roomData.availPeriodFrom}
-                            availPeriodTo={roomData.availPeriodTo}
-                            availPeriodConsul={roomData.availPeriodConsul}
-                            roomSize={roomData.roomSize}
-                            floor={roomData.floor}
-                            struct={roomData.struct}
-                            detailAddress={roomData.detailAddress}
-                        />
-                        <Price
-                            price={roomData.price}
-                            deposit={roomData.deposit}
-                            manageCost={roomData.manageCost}
-                            manageElec={roomData.manageElec}
-                            manageGas={roomData.manageGas}
-                            manageWater={roomData.manageWater}
-                            manageInternet={roomData.manageInternet}
-                            manageTV={roomData.manageTV}
-                        />
-                        {/* <LifeInfo />  생략 컴포넌트 */}
-                        <Option />
-                        <Location
-                            latitude={roomData.latitude}
-                            longitude={roomData.longitude}
-                        />
-                    </div>
-                </>
-            )}
+        
+        <div className="pb-[12rem] sm:w-[375px] sm:m-auto w-screen bg-background_beige">
+            <>
+                <Header title={state.ROOM_POST.address} />
+                {/* <ImageSlide RoomID={state.ROOM_POST.roomID}/> */}
+                <div className="px-[18px]">
+                    <Title
+                        buildingID={state.ROOM_POST.buildingID}
+                        dealType={state.ROOM_INFO.dealType}
+                        title={state.ROOM_POST.title}
+                        price={state.ROOM_INFO.price}
+                        deposit={state.ROOM_INFO.deposit}
+                        priceUnit={state.ROOM_INFO.priceUnit}
+                    />
+                    <BriefInfo
+                        roomSize={state.ROOM_INFO.roomSize}
+                        floor={state.ROOM_INFO.floor}
+                        wholeFloor={state.ROOM_INFO.wholeFloor}
+                        struct={state.ROOM_INFO.struct}
+                        roomType={state.ROOM_INFO.roomType}
+                    />
+                    <Review explain={state.ROOM_POST.explain} />
+                    <Info
+                        availPeriodFrom={state.ROOM_POST.availFrom}
+                        availPeriodTo={state.ROOM_POST.availTo}
+                        availPeriodConsul={state.ROOM_POST.availConsul}
+                        roomSize={state.ROOM_INFO.roomSize}
+                        floor={state.ROOM_INFO.floor}
+                        struct={state.ROOM_INFO.struct}
+                        detailAddress={state.ROOM_POST.detailAddress}
+                    />
+                    <Price
+                        price={state.ROOM_INFO.price}
+                        deposit={state.ROOM_INFO.deposit}
+                        manageCost={state.ROOM_INFO.manageCost}
+                        manageElec={state.ROOM_INFO.manageElec}
+                        manageGas={state.ROOM_INFO.manageGas}
+                        manageWater={state.ROOM_INFO.manageWater}
+                        manageInternet={state.ROOM_INFO.manageInternet}
+                        manageTV={state.ROOM_INFO.manageTV}
+                    />
+                    {/* <LifeInfo />  생략 컴포넌트 */}
+                    <Option />
+                    <Location
+                        latitude={state2.latitude}
+                        longitude={state2.longitude}
+                    />
+                </div>
+            </>
         </div>
     );
 }

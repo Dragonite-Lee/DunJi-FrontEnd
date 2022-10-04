@@ -12,8 +12,8 @@ export default function Login({}) {
     
     
     return (
-        <div>
-            <div className="flex items-center flex-col mt-56">
+        <div className="h-screen bg-background_beige sm:w-[375px] sm:m-auto">
+            <div className="flex items-center flex-col pt-56">
                 <div className="flex flex-col items-center">
                     <div className="px-52">
                         <Image

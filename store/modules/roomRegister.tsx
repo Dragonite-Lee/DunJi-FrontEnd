@@ -34,14 +34,14 @@ type initialStateTypes = {
     manage: 0 | 1;
     manageCost: number | string;
     manageSelect: Array<number>;
-    entireFloor: number | string;
+    wholeFloor: number | string;
     floor: number | string;
     struct: string;
     elevator: 0 | 1;
     roomSize: number | string;
-    availPeriodFrom: string;
-    availPeriodTo: string;
-    availPeriodConsul: 0;
+    availFrom: string;
+    availTo: string;
+    availConsul: 0;
     optionAll: number;
     option: Array<number>;
     car: 0 | 1 | 2;
@@ -55,6 +55,7 @@ type initialStateTypes = {
     room2Image: string[],
     postRoomSuccess: any;
     postRoomFailure: any;
+    registrant: string;
 };
 
 const initialState: initialStateTypes = {
@@ -79,14 +80,14 @@ const initialState: initialStateTypes = {
     manage: 1,
     manageCost: "",
     manageSelect: [0, 0, 0, 0, 0],
-    entireFloor: "전체층",
+    wholeFloor: "전체층",
     floor: "현재층",
     struct: "구조",
     elevator: 0,
     roomSize: "",
-    availPeriodFrom: "",
-    availPeriodTo: "",
-    availPeriodConsul: 0,
+    availFrom: "",
+    availTo: "",
+    availConsul: 0,
     optionAll: 1,
     option: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     car: 2,
@@ -100,6 +101,7 @@ const initialState: initialStateTypes = {
     room2Image: [],
     postRoomSuccess: null,
     postRoomFailure: null,
+    registrant: ""
 };
 
 const roomRegister = createSlice({
@@ -169,8 +171,8 @@ const roomRegister = createSlice({
         dispatchManageSelect: (state, action) => {
             state.manageSelect = action.payload;
         },
-        dispatchEntireFloor: (state, action) => {
-            state.entireFloor = action.payload;
+        dispatchWholeFloor: (state, action) => {
+            state.wholeFloor = action.payload;
         },
         dispatchCurrentFloor: (state, action) => {
             state.floor = action.payload;
@@ -184,14 +186,14 @@ const roomRegister = createSlice({
         dispatchRoomSize: (state, action) => {
             state.roomSize = action.payload;
         },
-        dispatchPeriodFrom: (state, action) => {
-            state.availPeriodFrom = action.payload;
+        dispatchFrom: (state, action) => {
+            state.availFrom = action.payload;
         },
-        dispatchPeriodTo: (state, action) => {
-            state.availPeriodTo = action.payload;
+        dispatchTo: (state, action) => {
+            state.availTo = action.payload;
         },
-        dispatchPeriodNegotiable: (state, action) => {
-            state.availPeriodConsul = action.payload;
+        dispatchNegotiable: (state, action) => {
+            state.availConsul = action.payload;
         },
         dispatchOption: (state, action) => {
             state.optionAll = action.payload;
@@ -235,6 +237,9 @@ const roomRegister = createSlice({
             state.postRoomFailure = action.payload;
             state.postRoomSuccess = null;
         },
+        dispatchRegistrant: (state, action) => {
+            state.registrant = action.payload;
+        },
     },
 });
 
@@ -262,16 +267,16 @@ export const {
     dispatchManage,
     dispatchManageCost,
     dispatchManageSelect,
-    dispatchEntireFloor,
+    dispatchWholeFloor,
     dispatchCurrentFloor,
     dispatchStruct,
     dispatchElevator,
     dispatchRoomSize,
-    dispatchPeriodFrom,
-    dispatchPeriodTo,
+    dispatchFrom,
+    dispatchTo,
     dispatchOption,
     dispatchOptionSelect,
-    dispatchPeriodNegotiable,
+    dispatchNegotiable,
     dispatchCar,
     dispatchPet,
     dispatchWomen,
@@ -282,4 +287,5 @@ export const {
     dispatchRoom1Image,
     dispatchRoom2Image,
     postRoom,
+    dispatchRegistrant,
 } = roomRegister.actions;
