@@ -6,7 +6,7 @@ const POST_ROOM = "roomRegister/postRoom";
 const POST_ROOM_SUCCESS = "roomRegister/POST_SUCCESS";
 
 const getPostSaga = createRequestSaga(POST_ROOM, roomApi.postRoom);
-
+// console.log(getPostSaga)
 export function* roomRegisterSaga() {
     yield takeLatest(POST_ROOM, getPostSaga);
 }

@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 import { dispatchPostCodeOpen } from "store/modules/roomRegister";
-import { useRouter } from 'next/router'
+import Router from "next/router";
 
 export default function Header() {
     const [state, dispatch] = useRoomRegisterRedux();
-    const router = useRouter();
+    
 
     return (
         <>
@@ -40,7 +40,7 @@ export default function Header() {
                     </div>
                     <div className="text-main text-[12px] Pretendard-Regular"
                         onClick={() => {
-                            router.back()
+                            Router.push('/');
                         }}
                     >취소</div>
                 </header>

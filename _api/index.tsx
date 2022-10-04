@@ -8,10 +8,11 @@ export const roomApi = {
 
     postRoom: (data: any) => 
         api.post("/room/registerAction",  
-        JSON.stringify(data),
-            {headers: {
-                "Content-Type": `application/json`,
-            }}
+        data, {
+            headers: {
+                "Content-Type": `multipart/form-data`,
+            }
+        }
     )
 };
 
@@ -28,7 +29,7 @@ export const mapApi = {
 
     getRoomDetail: (ROOMID: string | string[] | undefined) =>
 
-        api.get("/room/detail", { params: { ROOMID } }),
+        api.get("/room/detail", { params: { RoomID : ROOMID } }),
 }
 export const logInApi = {
     postPermissionCode: (code: any) =>

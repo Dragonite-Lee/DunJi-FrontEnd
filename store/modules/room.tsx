@@ -1,17 +1,74 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type initialStateTypes = {
-    ROOM_LIST: { [id: string]: listTypes };
+    ROOM_INFO: { [id: string]: RoomInfolistTypes };
+    ROOM_REVIEW: {[id: string]: RoomReviewlistTypes};
+    ROOM_POST: {[id: string]: RoomPostlistTypes};
     MAP_ROOM_LIST: { [id: string]: listTypes }; // 지도 상에 보이는 매물 정보
     ROOM_ID: string;
 };
-
+type RoomReviewlistTypes = {
+    accessible: number;
+    address : string;
+    count : number;
+    buildingID : string;
+    clean : number;
+    sound : number;
+    total : number;
+    landlord : number;
+    facility : number;
+}
+type RoomPostlistTypes = {
+    title : any;
+    registrant : number;
+    roomID : string;
+    detailAddress : any;
+    regDate : string;
+    explain : any;
+    image : number;
+    recommend : number;
+    buildingID : string;
+    address : any;
+}
+type RoomInfolistTypes = {
+    aircon: boolean;
+    availConsul: boolean;
+    availFrom: string;
+    availTo: string;
+    bed: boolean;
+    car: boolean;
+    closet: boolean;
+    dealType: string;
+    deposit: number;
+    desk: boolean;
+    elevator: boolean;
+    wholeFloor: number;
+    floor: number;
+    gas: boolean;
+    induc: boolean;
+    loan: boolean;
+    manage: number;
+    manageInclude : any;
+    micro: boolean;
+    pet: boolean;
+    price: number;
+    priceUnit: string;
+    refri: boolean;
+    roomSize: number;
+    roomType: string;
+    shelf: boolean;
+    shoe: boolean;
+    sink: boolean;
+    struct: string;
+    washer: boolean;
+    women: boolean;
+}
 type listTypes = {
     address: string;
     aircon: boolean;
-    availPeriodConsul: boolean;
-    availPeriodFrom: string;
-    availPeriodTo: string;
+    availConsul: boolean;
+    availFrom: string;
+    availTo: string;
     bed: boolean;
     car: boolean;
     closet: boolean;
@@ -21,7 +78,7 @@ type listTypes = {
     detailAddress: string;
     dong: string;
     elevator: boolean;
-    entireFloor: number;
+    wholeFloor: number;
     explain: string;
     floor: number;
     fullOption: false;
@@ -59,23 +116,45 @@ type listTypes = {
 };
 
 const initialState: initialStateTypes = {
-    ROOM_LIST: {},
+    ROOM_INFO: {},
+    ROOM_REVIEW: {},
+    ROOM_POST: {},
     MAP_ROOM_LIST: {},
-    ROOM_ID: "312312123",
+    ROOM_ID: "",
 };
 
+type ReviewitemTypes = { [id: string]: RoomReviewlistTypes }; //list[id].뭐시기하면 나옴
+type PostitemTypes = { [id: string]: RoomPostlistTypes };
+type InfoitemTypes = { [id: string]: RoomInfolistTypes };
 type itemTypes = { [id: string]: listTypes };
 
 const room = createSlice({
     name: "room",
     initialState,
     reducers: {
-        dispatchRoomList: (state, action) => {
-            let list: itemTypes = {};
-            for (const item of action.payload) {
-                list[item.roomID] = item;
+        dispatchRoomReviewList: (state, action) => {
+            let list: ReviewitemTypes = {};
+            for (const item of Object.keys(action.payload)) {
+                const content = action.payload[item];
+                list[item] = content;
             }
-            state.ROOM_LIST = { ...state.ROOM_LIST, ...list };
+            state.ROOM_REVIEW = { ...state.ROOM_REVIEW, ...list };
+        },
+        dispatchRoomPostList: (state, action) => {
+            let list: PostitemTypes = {};
+            for (const item of Object.keys(action.payload)) {
+                const content = action.payload[item];
+                list[item] = content;
+            }
+            state.ROOM_POST = { ...state.ROOM_POST, ...list };
+        },
+        dispatchRoomInfoList: (state, action) => {
+            let list: InfoitemTypes = {};
+            for (const item of Object.keys(action.payload)) {
+                const content = action.payload[item];
+                list[item] = content;
+            }
+            state.ROOM_INFO = { ...state.ROOM_INFO, ...list };
         },
         dispatchMapRoomList: (state, action) => {
             let list: itemTypes = {};
@@ -92,7 +171,7 @@ const room = createSlice({
 
 export default room.reducer;
 
-const { dispatchRoomList, dispatchMapRoomList, dispatchRoomId } = room.actions;
+const { dispatchRoomReviewList, dispatchRoomPostList, dispatchRoomInfoList,  dispatchMapRoomList, dispatchRoomId } = room.actions;
 
-export { dispatchRoomList, dispatchMapRoomList, dispatchRoomId };
+export { dispatchRoomReviewList,dispatchRoomPostList,dispatchRoomInfoList, dispatchMapRoomList, dispatchRoomId };
 export type { listTypes };

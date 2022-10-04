@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router"; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type propsType = {
     title: string;
@@ -7,20 +9,17 @@ type propsType = {
 export default function Header({ title }: propsType) {
     return (
         <header
-            className="flex w-full justify-between px-standard_pd 
-        py-4  h-24 items-center text-xl  border-b"
+            className="flex w-full justify-between px-[18px] 
+        py-4  Pretendard-SemiBold h-24 items-center text-[17px]  border-b"
         >
-            <div className="flex text-2xl items-center">
-                <Link href="/map">
-                    <a>
-                        <Image
-                            src={require("assets/icon/화살표.svg")}
-                            width={20}
-                            height={20}
-                            alt="arrow"
-                        />
+            <div className="flex items-center">
+                    <a
+                        onClick={() => {
+                            Router.back();
+                        }}
+                    >
+                        <FontAwesomeIcon icon="chevron-left" />
                     </a>
-                </Link>
                 <div className="ml-4">{title}</div>
             </div>
             <div className="flex gap-4">

@@ -1,10 +1,14 @@
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 import { useCallback, useState } from "react";
 import { postRoom } from "store/modules/roomRegister";
-
+import { dispatchRoomId } from "store/modules/room";
+import { roomApi } from "_api";
+import Router from "next/router";
+import useRoomRedux from "hooks/useRoomRedux";
 
 export default function BottomNextBtn() {
     const [state, dispatch] = useRoomRegisterRedux();
+    const [state2, dispatch2] = useRoomRedux();
     const isEmpty = useCallback(function (value: any) {
         if (
             value == "" ||
@@ -20,19 +24,50 @@ export default function BottomNextBtn() {
         }
     }, []); 
     
-    
-    const checkHandler = () => {
+    console.log(state)
+    const checkHandler = async () => {
         let formData = new FormData();
-        // console.log(formData)
+        console.log(formData)
+        const user_id = state.registrant;
+        
+        // console.log(state)
         for (const item in state) {
             if (!isEmpty(state[item])) formData.append(item, state[item]); //formdata에 값 입력
             
         }
 
         // isEmpty에서 적절하게 처리 안되는 항목 제거 후 따로 formData에 입력
-        const delete_arr = ["manageSelect", "option", "car", "pet", "loan","onlyWomen","mainImage","room1Image","room2Image"];
+        const delete_arr = [
+            "ADDRESS_OPEN",
+            "COMPONENT_HANDLER",
+            "DETAIL_COMPONENT_OPEN",
+            "POSTCODE_OPEN",
+            "sido",
+            "ri",
+            "jibun",
+            "manageSelect",
+            "option", 
+            "car",
+            "pet",
+            "loan",
+            "onlyWomen",
+            "manageCost",
+            "magage",
+            "mainImage",
+            "room1Image",
+            "room2Image",
+            "optionAll",
+            "postRoomFailure",
+        ];
         for (let i = 0; i < delete_arr.length; i++)
             formData.delete(delete_arr[i]);
+
+        //전세를 택하면 월세가 사라짐
+        if (formData.get("priceUnit") == "전세") {
+            formData.set("price","0")
+        }
+        
+
 
         // redux에서 관리비 전기세,가스,수도,인터넷,TV를 배열관리하여 formData에선 각 항목을 입력
         const manage_arr = [
@@ -65,36 +100,44 @@ export default function BottomNextBtn() {
 
         // 상단 isEmpty에서 필터링 되는 항목들 따로 입력
 
-        if (state.manage === 0) formData.append("manageCost", "0");
+        if (state.manage === 0) {
+            formData.append("manage", "0");
+        } else if ( state.manage !== 0) {
+            formData.append("manage",state.manageCost)
+        }
         if (state.optionAll === 0) {
             for (let i = 0; i <option_arr.length; i++) {
                 formData.append(option_arr[i], "0")
             }
         }
-        const chooseOneArr = ["car", "pet", "onlyWomen", "loan"]; // 두 항목 중 하나를 고르는 경우 (주차공간, 반려동물, 전세대출)
+        const chooseOneArr = ["car", "pet", "women", "loan"]; // 두 항목 중 하나를 고르는 경우 (주차공간, 반려동물, 전세대출)
 
         for (let i = 0; i < chooseOneArr.length; i++)
             if (state[chooseOneArr[i]] !== 2)
                 formData.append(chooseOneArr[i], state[chooseOneArr[i]]);
 
-        const checkBox_arr = ["manage", "elevator", "availPeriodConsul","optionAll"];
+        const checkBox_arr = ["elevator", "availConsul"];
 
         for (let i = 0; i < checkBox_arr.length; i++)
             formData.append(checkBox_arr[i], state[checkBox_arr[i]]);
 
         const image_arr = [state.mainImage, ...state.room1Image, ...state.room2Image];
         
-        for (let i = 0; i < image_arr.length; i++)
-            formData.append("image",image_arr[i]);
+        for (let i = 0; i < image_arr.length; i++) {
+            formData.append("file",image_arr[i])
+        }
+        // formData.append("file",state.mainImage)
+            
+        
         
         const all_items_arr = [
             { longitude: "주소를" },
             { latitude: "주소를" },
-            { sido: "주소를" },
+            // { sido: "주소를" },
             { sigungu: "주소를" },
             { dong: "주소를" },
-            { ri: "주소를" },
-            { jibun: "주소를" },
+            // { ri: "주소를" },
+            // { jibun: "주소를" },
             { address: "주소를" },
             { detailAddress: "상세주소를" },
             { roomType: "방 종류를" },
@@ -103,21 +146,21 @@ export default function BottomNextBtn() {
             { deposit: "보증금을" },
             { price: "일/주/월세를" },
             { manage: "관리비를" },
-            { manageCost: "관리비 유무를" },
+            // { manageCost: "관리비 유무를" },
             { manageElec: "관리비 옵션를" },
             { manageGas: "관리비 옵션을" },
             { manageWater: "관리비 옵션을" },
             { manageInternet: "관리비 옵션을" },
             { manageTV: "관리비 옵션을" },
-            { entireFloor: "전체 층을" },
+            { wholeFloor: "전체 층을" },
             { floor: "현재 층을" },
             { struct: "층/구조 -> 구조를" },
             { elevator: "엘리베이터 유무를" },
             { roomSize: "방 크기를" },
-            { availPeriodFrom: "입주 가능 기간(시작 시점)을" },
-            { availPeriodTo: "입주 가능 기간(종료 시점)을" },
-            { availPeriodConsul: "입주 기간 협의 여부를" },
-            { optionAll: "옵션 유무를"},
+            { availFrom: "입주 가능 기간(시작 시점)을" },
+            { availTo: "입주 가능 기간(종료 시점)을" },
+            { availConsul: "입주 기간 협의 여부를" },
+            // { optionAll: "옵션 유무를"},
             { aircon: "옵션을" },
             { refri: "옵션을" },
             { washer: "옵션을" },
@@ -133,14 +176,16 @@ export default function BottomNextBtn() {
             { car: "옵션을" },
             { pet: "옵션을" },
             { loan: "옵션을" },
+            { women: "옵션을" },
             { title: "방 제목을" },
             { explain: "상세설명을" },
-            { image : "사진을"},
+            { file : "사진을"},
     
         ];
 
         try {
             for (let item of all_items_arr) {
+                
                 const key = Object.keys(item)[0];
                 const message = Object.values(item)[0];
                 if (!formData.has(key)) {
@@ -163,8 +208,18 @@ export default function BottomNextBtn() {
                     throw "구조를";
                 }
             }
-
+            for (let i of formData.entries()) {
+                console.log(i);
+            }
             dispatch(postRoom(formData));
+            
+            await roomApi.postRoom(formData)
+            .then((res)=>{
+                console.log(res)
+                dispatch2(dispatchRoomId(res.data.Room_ID))
+                Router.push(`/room/${res.data.Room_ID}`)
+            });
+            
         } catch (e) {
             alert(e + " 입력해 주세요");
         }

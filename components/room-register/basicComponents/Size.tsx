@@ -23,7 +23,7 @@ export default function Size() {
     };
 
     const round = (num: number | string, mul: number): number => {
-        return Math.round(Number(num) * 10 * mul) / 10;
+        return Math.round(Number(num) * 10 * mul / 10);
     };
     return (
         <>

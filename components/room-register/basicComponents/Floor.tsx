@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import {
     dispatchCurrentFloor,
     dispatchElevator,
-    dispatchEntireFloor,
+    dispatchWholeFloor,
     dispatchStruct,
 } from "store/modules/roomRegister";
 import InputSelectBox from "components/common/InputSelectBox";
@@ -13,7 +13,7 @@ import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 export default function Floor() {
     const [state, dispatch] = useRoomRegisterRedux();
 
-    const totalFloor = state.entireFloor;
+    const totalFloor = state.wholeFloor;
     const currentFloor = state.floor;
     const structure = state.struct;
     const elevatorCheck = state.elevator;
@@ -24,7 +24,7 @@ export default function Floor() {
     const dispatchIndex = useRef(0);
 
     const dispatchArr = [
-        dispatchEntireFloor,
+        dispatchWholeFloor,
         dispatchCurrentFloor,
         dispatchStruct,
     ];
@@ -43,13 +43,13 @@ export default function Floor() {
     };
     const AllfloorArr = ["1층", "2층", "3층", "4층", "5층"];
     const floorArr = ["반지하", "1층", "2층", "3층", "4층", "5층"];
-    const roomStructureArr = ["오픈형 (방1)", "분리형 (방1,거실1)", "복층형", "해당없음"]
+    const roomStructureArr = ["오픈형", "분리형", "복층형", "해당없음"]
     const modalArr = [
         {
             valueArr: AllfloorArr,
             title: "전체층",
             value: totalFloor,
-            dispatchHandler: dispatchEntireFloor,
+            dispatchHandler: dispatchWholeFloor,
         },
         {
             valueArr: floorArr,

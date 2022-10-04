@@ -35,7 +35,7 @@ export default function Home() {
                 {/* *학교필터 */}
                 <div className="flex items-center border-b-2 border-border_color text-3xl justify-between py-8 px-[18px]">
                     <div className="flex items-center justify-between">
-                        <FontAwesomeIcon icon="chevron-down" />
+                        
                         <div className="px-4 Pretendard-Regular">한양대 ERICA</div>
                         {userID ? (
                             <div className="text-xl">{userNickname}님 안녕</div>
