@@ -24,10 +24,10 @@ export default function BottomNextBtn() {
         }
     }, []); 
     
-    console.log(state)
+    // console.log(state)
     const checkHandler = async () => {
         let formData = new FormData();
-        console.log(formData)
+        
         const user_id = state.registrant;
         
         // console.log(state)
@@ -121,14 +121,56 @@ export default function BottomNextBtn() {
         for (let i = 0; i < checkBox_arr.length; i++)
             formData.append(checkBox_arr[i], state[checkBox_arr[i]]);
 
-        const image_arr = [state.mainImage, ...state.room1Image, ...state.room2Image];
         
+        
+        
+            function base64toFile(base_data: any) {
+        
+                const BASE64_MARKER = ';base64,'
+                
+                // base64로 인코딩 되어있지 않을 경우
+                if (base_data.indexOf(BASE64_MARKER) === -1) {
+                    const parts = base_data.split(',')
+                    const contentType = parts[0].split(':')[1]
+                    const raw = parts[1]
+                    return new Blob([raw], {
+                    type: contentType,
+                    })
+                }
+                // base64로 인코딩 된 이진데이터일 경우
+                const parts = base_data.split(BASE64_MARKER)
+                const contentType = parts[0].split(':')[1]
+                const raw = window.atob(parts[1])
+                // atob()는 Base64를 디코딩하는 메서드
+                const rawLength = raw.length
+                // 부호 없는 1byte 정수 배열을 생성
+                const uInt8Array = new Uint8Array(rawLength) // 길이만 지정된 배열
+                let i = 0
+                while (i < rawLength) {
+                    uInt8Array[i] = raw.charCodeAt(i)
+                    i++
+                }
+                return new Blob([uInt8Array], {
+                    type: contentType,
+                })
+                  
+            }
+        const mainImg = base64toFile(state.mainImage);
+        const mainImgURL = URL.createObjectURL(mainImg)
+        const room1Img1 = base64toFile(state.room1Image[0]);
+        const room1Img1URL = URL.createObjectURL(room1Img1)
+        const room1Img2 = base64toFile(state.room1Image[1]);
+        const room1Img3 = base64toFile(state.room1Image[2]);
+        const room2Img1 = base64toFile(state.room2Image[0]);
+        const room2Img1URL = URL.createObjectURL(room2Img1)
+        const room2Img2 = base64toFile(state.room2Image[1]);
+        const room2Img3 = base64toFile(state.room2Image[2]);
+
+        const image_arr = [mainImgURL,room1Img1URL,room2Img1URL];
+        console.log(mainImgURL)
         for (let i = 0; i < image_arr.length; i++) {
             formData.append("file",image_arr[i])
-        }
-        // formData.append("file",state.mainImage)
-            
-        
+        };
         
         const all_items_arr = [
             { longitude: "주소를" },
@@ -227,10 +269,10 @@ export default function BottomNextBtn() {
 
     return (
         <div
-            className="sm:w-[375px] sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+            className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
             onClick={checkHandler}
         >
-            <div className="text-2xl text-white">방 내놓기</div>
+            <div className="text-[17px] text-white">방 내놓기</div>
             <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
         </div>
     );

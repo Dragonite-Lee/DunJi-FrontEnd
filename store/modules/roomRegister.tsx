@@ -52,6 +52,7 @@ type initialStateTypes = {
     explain: string;
     mainImage: string,
     room1Image: string[],
+    room1ImageUrl: string[],
     room2Image: string[],
     postRoomSuccess: any;
     postRoomFailure: any;
@@ -98,6 +99,7 @@ const initialState: initialStateTypes = {
     explain: "",
     mainImage: "",
     room1Image: [],
+    room1ImageUrl: [],
     room2Image: [],
     postRoomSuccess: null,
     postRoomFailure: null,
@@ -225,6 +227,9 @@ const roomRegister = createSlice({
         dispatchRoom1Image: (state, action) => {
             state.room1Image = action.payload;
         },
+        dispatchRoom1ImageUrl: (state, action) => {
+            state.room1ImageUrl = action.payload;
+        },
         dispatchRoom2Image: (state, action) => {
             state.room2Image = action.payload;
         },
@@ -285,6 +290,7 @@ export const {
     dispatchExplain,
     dispatchMainImage,
     dispatchRoom1Image,
+    dispatchRoom1ImageUrl,
     dispatchRoom2Image,
     postRoom,
     dispatchRegistrant,

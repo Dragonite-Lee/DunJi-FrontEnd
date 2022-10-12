@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 type propsType = {
+    title: string;
     explain: string;
 };
 export default function Review({ explain }: propsType) {
@@ -13,10 +14,7 @@ export default function Review({ explain }: propsType) {
                 onClick={openHandler}
                 className={`${open && `border-b border-border_color`}`}
             >
-                <div className=" h-28 flex items-center px-standard_pd">
-                    <div className="w-16 h-16 rounded-[50%] overflow-hidden">
-                        <Image src={require("./person.png")} alt="person" />
-                    </div>
+                <div className=" h-28 flex items-center px-[18px]">
                     <div className="ml-4">
                         <div className="text-[1.5rem] font-[600]">둥지냉면</div>
                         <div className="flex gap-1 text-font_gray ">
@@ -35,39 +33,13 @@ export default function Review({ explain }: propsType) {
                             alt="arrow"
                             objectFit="contain"
                             layout="fill"
+                            className="rotate-180"
                         />
                     </div>
                 </div>
             </div>
             {open && (
-                <div className="px-standard_pd">
-                    <div>
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_비활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                    </div>
+                <div className="px-[18px]">
                     <div className="text-[1.5rem] pb-4">{explain}</div>
                 </div>
             )}

@@ -11,7 +11,7 @@ export const roomApi = {
         data, {
             headers: {
                 "Content-Type": `multipart/form-data`,
-            }
+            },
         }
     )
 };

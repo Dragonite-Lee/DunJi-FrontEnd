@@ -61,7 +61,7 @@ export default function agreePage() {
                     <div
                     className="min-w-[375px] sm:w-[375px] sm:m-auto bg-main fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
                     >
-                        <div className="text-2xl text-white">방 내놓기</div>
+                        <div className="text-[17px] Pretendard-SemiBold text-white">방 내놓기</div>
                         <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
                     </div>
                 </Link>
@@ -69,7 +69,7 @@ export default function agreePage() {
                 <div
                 className="min-w-[375px] sm:w-[375px] sm:m-auto bg-font_gray fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
                 >
-                    <div className="text-2xl text-white">방 내놓기</div>
+                    <div className="text-[17px] Pretendard-SemiBold text-white">방 내놓기</div>
                     <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
                 </div>
             )}  

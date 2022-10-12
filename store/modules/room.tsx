@@ -66,9 +66,9 @@ type RoomInfolistTypes = {
 type listTypes = {
     address: string;
     aircon: boolean;
-    availConsul: boolean;
-    availFrom: string;
-    availTo: string;
+    availPeriodConsul: boolean;
+    availPeriodFrom: string;
+    availPeriodTo: string;
     bed: boolean;
     car: boolean;
     closet: boolean;

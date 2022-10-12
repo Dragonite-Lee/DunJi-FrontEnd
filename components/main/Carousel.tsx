@@ -33,7 +33,7 @@ export default function Carousel() {
                             <Image
                                 height={100}
                                 alt="슬라이더"
-                                src={require(`../../assets/icon/main/slide/cat${index+1}.jpg`)}
+                                src={require(`../../assets/icon/main/slide/slide${index+1}.png`)}
                             ></Image>
                         </div>
                         <div className="absolute z-10 right-3 bottom-4 bg-slide px-4 py-1 rounded-standard_rounded">

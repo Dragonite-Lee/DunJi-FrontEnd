@@ -103,14 +103,14 @@ export default function Home() {
                 <div>
                     <div className="text-[16px] Pretendard-SemiBold">하나부터 열까지 둥지와 함께!</div>
                     <div className="mt-[16px] grid grid-cols-2 gap-[8px]">
-                        <div className="px-[20px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                        <div className="px-[19px] py-[27px] h-[80px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                             <Image 
                                 alt="트럭"
                                 src={require("../assets/icon/main/service/서비스_이삿짐.svg")}
                             />
                             <div>둥지 서비스</div>
                         </div>
-                        <div className="pl-[28px] pr-[32px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                        <div className="pl-[27px] pr-[31px] h-[80px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                             <Image 
                                 alt="트럭"
                                 src={require("../assets/icon/main/service/메인_공지사항.svg")}
@@ -118,7 +118,7 @@ export default function Home() {
                             <div>공지사항</div>
                         </div>
                         <Link href="/room/contract">
-                            <div className="pl-[16px] pr-[16px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                            <div className="pl-[15px] pr-[15px] h-[80px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                                 <Image 
                                 
                                     alt="트럭"
@@ -127,7 +127,7 @@ export default function Home() {
                                 <div>계약서 가이드</div>
                             </div>
                         </Link>
-                        <div className="px-[32px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                        <div className="px-[28px] py-[27px] h-[80px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                             <Image 
                                 alt="트럭"
                                 src={require("../assets/icon/main/service/마이_커뮤니티 활동.svg")}

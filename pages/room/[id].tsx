@@ -29,13 +29,13 @@ export default function RoomDetail() {
             dispatch(dispatchRoomPostList(res.data.Room_Post));
             dispatch(dispatchRoomInfoList(res.data.Room_Info));
         })
-        console.log(state.ROOM_POST.image)
+        // console.log(state.ROOM_POST.image)
     },[id])
 
 
     return (
         
-        <div className="pb-[12rem] sm:w-[375px] sm:m-auto w-screen bg-background_beige">
+        <div className="pb-[12rem] h-screen sm:w-[375px] sm:m-auto w-screen bg-background_beige">
             <>
                 <Header title={state.ROOM_POST.address} />
                 {/* <ImageSlide RoomID={state.ROOM_POST.roomID}/> */}
@@ -43,7 +43,7 @@ export default function RoomDetail() {
                     <Title
                         buildingID={state.ROOM_POST.buildingID}
                         dealType={state.ROOM_INFO.dealType}
-                        title={state.ROOM_POST.title}
+                        
                         price={state.ROOM_INFO.price}
                         deposit={state.ROOM_INFO.deposit}
                         priceUnit={state.ROOM_INFO.priceUnit}
@@ -55,7 +55,10 @@ export default function RoomDetail() {
                         struct={state.ROOM_INFO.struct}
                         roomType={state.ROOM_INFO.roomType}
                     />
-                    <Review explain={state.ROOM_POST.explain} />
+                    <Review 
+                        title={state.ROOM_POST.title}
+                        explain={state.ROOM_POST.explain} 
+                    />
                     <Info
                         availPeriodFrom={state.ROOM_POST.availFrom}
                         availPeriodTo={state.ROOM_POST.availTo}

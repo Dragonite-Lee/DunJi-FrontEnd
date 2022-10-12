@@ -10,16 +10,19 @@ type propsType = {
 
 export default function UploadImage({ file, setFile }: propsType) {
 
-    
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader();
+        
         if (e.target.files instanceof FileList) {
             reader.readAsDataURL(e.target.files[0]);
         }
+        
         reader.onload = () => setFile(String(reader.result));
-
+        
     };
+    
+    
     return (
         <div className="bg-component_white h-full w-full rounded-standard_rounded flex items-center justify-center relative">
             {file ? (
@@ -29,6 +32,7 @@ export default function UploadImage({ file, setFile }: propsType) {
                             layout="fill"
                             objectFit="contain"
                             src={file}
+                            id="mainImg"
                             alt="preview-img"
                         />
                     </label>

@@ -1,67 +1,142 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState, useEffect  } from "react";
+import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
+import { dispatchRoom1Image, dispatchRoom1ImageUrl } from "store/modules/roomRegister";
 
-type propsType = {
-    file: string;
-    setFile: Dispatch<SetStateAction<string>>;
-    index: number;
-};
 
-export default function UploadImageSmall({ file, setFile, index }: propsType) {
+export default function UploadImageSmall() {
     
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const reader = new FileReader();
-        if (e.target.files instanceof FileList)
-            reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
-            if (reader.readyState === 2) setFile(String(reader.result));
-        };
+    const [state, dispatch] = useRoomRegisterRedux();
+    
+    let showResult:any = [];
+    //이미지 상대경로로 저장
+    let file:any;
+    let imageUrlLists:any = [];
+    let imageShowLists: (string | ArrayBuffer | null)[] = [];
+    
+    const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
         
+        const imageLists = e.target.files;
+
+        if (imageLists instanceof FileList) {
+            let filesLength = imageLists.length > 6 ? 6 : imageLists.length;    
+            for (let i = 0; i < filesLength; i++) {
+                
+                // *서버에보낼 용도
+                const currentImageUrl = imageLists[i].name;
+                imageUrlLists.push(currentImageUrl);
+                // *프리뷰 용도
+                file = imageLists[i];
+                let reader = new FileReader();
+                reader.onload = () => {
+                    imageShowLists[i] = reader.result;
+                    dispatch(dispatchRoom1ImageUrl([...imageShowLists]))
+                }
+                reader.readAsDataURL(file)
+            }
+        }
+
+        dispatch(dispatchRoom1Image(imageUrlLists))
     };
+
+    
+
+    // *사진첨부 누를 때마다 리렌더링
+    useEffect(() => {
+        showResult=state.room1ImageUrl;
+    },[handleAddImages])
+    
+    let url:any = [];
+
+    if (state.room1ImageUrl.length) {
+        for (let i = 0; i < state.room1ImageUrl.length; i++) {
+            url.push(state.room1ImageUrl[i]);
+        }
+    }
+
+    const handleDeleteImage = (id:any) => {
+        const newUrl = url.filter((index:any) => index ==id);
+        dispatch(dispatchRoom1ImageUrl([newUrl]))
+    }
+
+    console.log(url);
+    console.log(state.room1Image)
+    
+    const map_result = url.map(function(image: any,index: any) {
+        return (
+            <div className="w-[100px] h-[80px] mr-[8px]" key={index}>
+                <Image
+                    className="rounded-standard_rounded"
+                    layout="fixed"
+                    objectFit="fill"
+                    width={100}
+                    height={80}
+                    src={image}
+                />
+                <div onClick={()=>handleDeleteImage(index)}>삭제</div>
+            </div>
+        )
+    })
+
     return (
-        <div className="bg-component_white h-full w-full rounded-standard_rounded flex items-center justify-center relative">
-            {file ? (
-                <div>
-                    <label htmlFor="image-upload">
-                        <Image
-                            layout="fill"
-                            objectFit="contain"
-                            src={file}
-                            alt="preview-img"
+        <>
+            <div>
+                {state.room1ImageUrl.length ? (
+                    <div className="flex">
+                        <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
+                            <label
+                                className="Pretendard-Regular text-[12px] text-center text-font_gray w-[100px] h-[80px] mr-[8px] items-center justify-center"
+                                htmlFor="image-upload-room"
+                            >
+                                {/* <FontAwesomeIcon icon="plus" /> */}
+                                <Image 
+                                    width={50}
+                                    height={50}
+                                    alt="사진로고"
+                                    src={require("../../../assets/icon/채팅메뉴_앨범.svg")} 
+                                />
+                                <div>사진 선택</div>
+                            </label>
+                            <input
+                                onChange={handleAddImages}
+                                type="file"
+                                className="hidden"
+                                id="image-upload-room"
+                                accept="image/*"
+                                multiple
+                            />
+                        </div>
+                        {/* *이미지 미리보기  */}
+                        <div className="flex h-[100px] overflow-x-auto overflow-y-hidden">
+                            {map_result}
+                        </div>
+                    </div>
+                ):(
+                    <div className="bg-component_white h-[80px] w-full rounded-standard_rounded flex items-center justify-center relative">
+                        <label
+                            className="Pretendard-Regular text-[12px] text-center text-font_gray w-24 h-28  items-center justify-center"
+                            htmlFor="image-upload-room"
+                        >
+                            <Image 
+                                width={50}
+                                height={50}
+                                alt="사진로고"
+                                src={require("../../../assets/icon/채팅메뉴_앨범.svg")} 
+                            />
+                            <div>사진 선택</div>
+                        </label>
+                        <input
+                            onChange={handleAddImages}
+                            type="file"
+                            className="hidden"
+                            id="image-upload-room"
+                            accept="image/*"
+                            multiple
                         />
-                    </label>
-                    <input
-                        onChange={onChange}
-                        type="file"
-                        className="hidden"
-                        id="image-upload"
-                        accept="image/*"
-                    />
-                </div>
-            ) : (
-                <>
-                    <label
-                        className="Pretendard-Regular text-[12px] text-center text-font_gray w-15 h-18"
-                        htmlFor={`image-upload-${index}`}
-                    >
-                        <Image 
-                            width={40}
-                            height={40}
-                            alt="사진로고"
-                            src={require("../../../assets/icon/채팅메뉴_앨범.svg")} 
-                        />
-                        <div>사진 선택</div>
-                    </label>
-                    <input
-                        onChange={onChange}
-                        type="file"
-                        className="hidden"
-                        id={`image-upload-${index}`}
-                        accept="image/*"
-                    />
-                </>
-            )}
-        </div>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }

@@ -6,7 +6,7 @@ import Script from "next/script";
 import { useQuery } from "react-query";
 import { mapApi } from "_api";
 import useRoomRedux from "hooks/useRoomRedux";
-import { dispatchRoomList, dispatchMapRoomList } from "store/modules/room";
+import { dispatchRoomPostList,dispatchRoomInfoList, dispatchMapRoomList } from "store/modules/room";
 import TabBar from "components/main/TabBar";
 
 export default function Map() {
