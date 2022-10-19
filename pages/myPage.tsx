@@ -7,7 +7,7 @@ export default function Mypage() {
     
     
     return (
-        <div>
+        <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">
             <TabBar />
             Mypage 개발중
         </div>

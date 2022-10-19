@@ -42,7 +42,7 @@ export default function Floor() {
         dispatchIndex.current = index;
     };
     const AllfloorArr = ["1층", "2층", "3층", "4층", "5층"];
-    const floorArr = ["반지하", "1층", "2층", "3층", "4층", "5층"];
+    const floorArr = ["1층", "2층", "3층", "4층", "5층"];
     const roomStructureArr = ["오픈형", "분리형", "복층형", "해당없음"]
     const modalArr = [
         {

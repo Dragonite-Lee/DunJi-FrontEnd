@@ -16,49 +16,48 @@ export default function Chat() {
                 dispatch(
                     dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
                 )
-                localStorage.setItem("chat",'true')
+                sessionStorage.setItem("chat",'true')
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                localStorage.removeItem("home")
+                sessionStorage.removeItem("home")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == true && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
                 dispatch(
                     dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
                 )
-                localStorage.setItem("chat",'true')
+                sessionStorage.setItem("chat",'true')
                 dispatch(
                     dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
                 )
-                localStorage.removeItem("search")
+                sessionStorage.removeItem("search")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
                 dispatch(
                     dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
                 )
-                localStorage.setItem("chat",'true')
+                sessionStorage.setItem("chat",'true')
                 dispatch(
                     dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
                 )
-                localStorage.removeItem("mypage")
+                sessionStorage.removeItem("mypage")
             }
         }
         
         
     }
-    const chat = typeof window !== 'undefined' ? localStorage.getItem("chat") : null;
+    const chat = typeof window !== 'undefined' ? sessionStorage.getItem("chat") : null;
 
     return (
         <div>
             {chat ? (
                 <Image 
-                    onClick={() => {
-                        dispatch(
-                            dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
-                        )
-                    }}
                     width={30}
                     height={30}
                     alt="채팅로고"
                     src={require("../../../assets/icon/main/tabBar/메뉴바_채팅_활성화.svg")} 
+                    onLoad={() => {
+                        sessionStorage.clear();
+                        sessionStorage.setItem("chat",'true');
+                    }}
                 />
             ) : (
                 <Link href="/chat">

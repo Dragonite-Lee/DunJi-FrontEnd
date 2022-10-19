@@ -4,6 +4,7 @@ type initialStateTypes = {
     ROOM_INFO: { [id: string]: RoomInfolistTypes };
     ROOM_REVIEW: {[id: string]: RoomReviewlistTypes};
     ROOM_POST: {[id: string]: RoomPostlistTypes};
+    ROOM_LIST: { [id: string]: listTypes };
     MAP_ROOM_LIST: { [id: string]: listTypes }; // 지도 상에 보이는 매물 정보
     ROOM_ID: string;
 };
@@ -66,9 +67,9 @@ type RoomInfolistTypes = {
 type listTypes = {
     address: string;
     aircon: boolean;
-    availConsul: boolean;
-    availFrom: string;
-    availTo: string;
+    availPeriodConsul: boolean;
+    availPeriodFrom: string;
+    availPeriodTo: string;
     bed: boolean;
     car: boolean;
     closet: boolean;
@@ -119,6 +120,7 @@ const initialState: initialStateTypes = {
     ROOM_INFO: {},
     ROOM_REVIEW: {},
     ROOM_POST: {},
+    ROOM_LIST: {},
     MAP_ROOM_LIST: {},
     ROOM_ID: "",
 };
@@ -156,6 +158,13 @@ const room = createSlice({
             }
             state.ROOM_INFO = { ...state.ROOM_INFO, ...list };
         },
+        dispatchRoomList: (state, action) => {
+            let list: itemTypes = {};
+            for (const item of action.payload) {
+                list[item.roomID] = item;
+            }
+            state.ROOM_LIST = { ...state.ROOM_LIST, ...list };
+        },
         dispatchMapRoomList: (state, action) => {
             let list: itemTypes = {};
             for (const item of action.payload.data) {
@@ -171,7 +180,7 @@ const room = createSlice({
 
 export default room.reducer;
 
-const { dispatchRoomReviewList, dispatchRoomPostList, dispatchRoomInfoList,  dispatchMapRoomList, dispatchRoomId } = room.actions;
+const { dispatchRoomReviewList, dispatchRoomPostList, dispatchRoomInfoList, dispatchRoomList, dispatchMapRoomList, dispatchRoomId } = room.actions;
 
-export { dispatchRoomReviewList,dispatchRoomPostList,dispatchRoomInfoList, dispatchMapRoomList, dispatchRoomId };
+export { dispatchRoomReviewList,dispatchRoomPostList,dispatchRoomInfoList, dispatchRoomList, dispatchMapRoomList, dispatchRoomId };
 export type { listTypes };

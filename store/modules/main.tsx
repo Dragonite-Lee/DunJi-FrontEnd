@@ -13,7 +13,7 @@ type initialStateTypes = {
 const initialState: initialStateTypes = {
     SEARCHMODAL_OPEN: false,
     SEARCHRESULT: [],
-    SLIDEBOX: ["../assets/icon/main/slide/cat1.jpg","../assets/icon/main/slide/cat2.jpg","../assets/icon/main/slide/cat3.jpg"],
+    SLIDEBOX: ["../assets/icon/main/slide/slide1.jpg","../assets/icon/main/slide/slide2.jpg","../assets/icon/main/slide/slide3.jpg"],
 }
 
 const main = createSlice({

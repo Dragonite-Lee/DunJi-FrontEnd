@@ -50,9 +50,12 @@ type initialStateTypes = {
     loan: 0 | 1 | 2;
     title: string;
     explain: string;
-    mainImage: string,
+    mainImage: string[],
+    mainImageUrl: string[],
     room1Image: string[],
+    room1ImageUrl: string[],
     room2Image: string[],
+    room2ImageUrl: string[],
     postRoomSuccess: any;
     postRoomFailure: any;
     registrant: string;
@@ -96,9 +99,12 @@ const initialState: initialStateTypes = {
     loan: 2,
     title: "",
     explain: "",
-    mainImage: "",
+    mainImage: [],
+    mainImageUrl: [],
     room1Image: [],
+    room1ImageUrl: [],
     room2Image: [],
+    room2ImageUrl: [],
     postRoomSuccess: null,
     postRoomFailure: null,
     registrant: ""
@@ -222,11 +228,20 @@ const roomRegister = createSlice({
         dispatchMainImage: (state, action) => {
             state.mainImage = action.payload;
         },
+        dispatchMainImageUrl: (state, action) => {
+            state.mainImageUrl = action.payload;
+        },
         dispatchRoom1Image: (state, action) => {
             state.room1Image = action.payload;
         },
+        dispatchRoom1ImageUrl: (state, action) => {
+            state.room1ImageUrl = action.payload;
+        },
         dispatchRoom2Image: (state, action) => {
             state.room2Image = action.payload;
+        },
+        dispatchRoom2ImageUrl: (state, action) => {
+            state.room2ImageUrl = action.payload;
         },
         postRoom: (state, action) => {}, // state,action이 인자로 선언되어 있어야 postRoom을 처리하는 postRoomSaga에서 action.payload(즉 여기선 방 등록 정보인 formData)를 자동으로 인자로 받음
         postRoomSuccess: (state, action) => {
@@ -284,8 +299,11 @@ export const {
     dispatchTitle,
     dispatchExplain,
     dispatchMainImage,
+    dispatchMainImageUrl,
     dispatchRoom1Image,
+    dispatchRoom1ImageUrl,
     dispatchRoom2Image,
+    dispatchRoom2ImageUrl,
     postRoom,
     dispatchRegistrant,
 } = roomRegister.actions;

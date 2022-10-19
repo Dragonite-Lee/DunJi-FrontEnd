@@ -24,13 +24,13 @@ export default function BottomNextBtn() {
         }
     }, []); 
     
-    console.log(state)
+    // console.log(state)
     const checkHandler = async () => {
         let formData = new FormData();
-        console.log(formData)
+        
         const user_id = state.registrant;
         
-        // console.log(state)
+        console.log(state)
         for (const item in state) {
             if (!isEmpty(state[item])) formData.append(item, state[item]); //formdata에 값 입력
             
@@ -52,12 +52,20 @@ export default function BottomNextBtn() {
             "loan",
             "onlyWomen",
             "manageCost",
-            "magage",
+            "manage",
             "mainImage",
+            "mainImageUrl",
             "room1Image",
+            "room1ImageUrl",
             "room2Image",
+            "room2ImageUrl",
             "optionAll",
             "postRoomFailure",
+            // "manageElec",
+            // "manageGas",
+            // "manageWater",
+            // "manageInternet",
+            // "manageTV",
         ];
         for (let i = 0; i < delete_arr.length; i++)
             formData.delete(delete_arr[i]);
@@ -102,9 +110,10 @@ export default function BottomNextBtn() {
 
         if (state.manage === 0) {
             formData.append("manage", "0");
-        } else if ( state.manage !== 0) {
+        } else if ( state.manage == 1) {
             formData.append("manage",state.manageCost)
         }
+
         if (state.optionAll === 0) {
             for (let i = 0; i <option_arr.length; i++) {
                 formData.append(option_arr[i], "0")
@@ -121,14 +130,11 @@ export default function BottomNextBtn() {
         for (let i = 0; i < checkBox_arr.length; i++)
             formData.append(checkBox_arr[i], state[checkBox_arr[i]]);
 
-        const image_arr = [state.mainImage, ...state.room1Image, ...state.room2Image];
-        
+        const image_arr = [...state.mainImage,...state.room1Image,...state.room2Image]
+        // console.log(image_arr)
         for (let i = 0; i < image_arr.length; i++) {
             formData.append("file",image_arr[i])
-        }
-        // formData.append("file",state.mainImage)
-            
-        
+        };
         
         const all_items_arr = [
             { longitude: "주소를" },
@@ -227,10 +233,10 @@ export default function BottomNextBtn() {
 
     return (
         <div
-            className="sm:w-[375px] sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+            className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
             onClick={checkHandler}
         >
-            <div className="text-2xl text-white">방 내놓기</div>
+            <div className="text-[17px] text-white">방 내놓기</div>
             <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
         </div>
     );

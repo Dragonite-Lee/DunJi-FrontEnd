@@ -7,10 +7,10 @@ export default function TransferAgreement() {
     
 
     return (
-        <>
+        <div className="min-w-[375px] sm:w-[375px] mx-auto h-[100%] bg-background_beige">
             <Header />
             <Explanation />
             <ContractContent />
-        </>
+        </div>
     )
 }

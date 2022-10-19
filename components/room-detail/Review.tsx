@@ -2,27 +2,24 @@ import Image from "next/image";
 import { useState } from "react";
 
 type propsType = {
+    regDate: string;
     explain: string;
 };
-export default function Review({ explain }: propsType) {
+export default function Review({ regDate, explain }: propsType) {
     const [open, setOpen] = useState(false);
     const openHandler = () => setOpen(!open);
+
     return (
         <div className="w-full rounded-standard_rounded bg-component_white my-4">
             <div
                 onClick={openHandler}
                 className={`${open && `border-b border-border_color`}`}
             >
-                <div className=" h-28 flex items-center px-standard_pd">
-                    <div className="w-16 h-16 rounded-[50%] overflow-hidden">
-                        <Image src={require("./person.png")} alt="person" />
-                    </div>
-                    <div className="ml-4">
-                        <div className="text-[1.5rem] font-[600]">둥지냉면</div>
-                        <div className="flex gap-1 text-font_gray ">
-                            <span className="border-[0.1rem] w-24 text-center py-[0.1rem] rounded-[0.6rem]  border-border_color">
-                                대학생
-                            </span>
+                <div className=" h-28 flex justify-between items-center px-[18px]">
+                    <div>
+                        <div className="text-[17px] Pretendard-SemiBold">둥지냉면</div>
+                        <div className="flex gap-1 text-font_gray text-[14px] Pretendard-Regular">
+                            {regDate &&  regDate.slice(0,-9)}
                         </div>
                     </div>
                     <div
@@ -35,40 +32,14 @@ export default function Review({ explain }: propsType) {
                             alt="arrow"
                             objectFit="contain"
                             layout="fill"
+                            className="rotate-180"
                         />
                     </div>
                 </div>
             </div>
             {open && (
-                <div className="px-standard_pd">
-                    <div>
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                        <Image
-                            src={require("assets/icon/별점_비활성화.svg")}
-                            alt="star"
-                            width={20}
-                        />
-                    </div>
-                    <div className="text-[1.5rem] pb-4">{explain}</div>
+                <div className="px-[18px]">
+                    <div className="text-[14px] Pretendard-Regular py-[16px]">{explain}</div>
                 </div>
             )}
         </div>

@@ -4,7 +4,7 @@ export default function Explanation() {
     
     return (
         <div className=" px-standard_pd items-center">
-            <div className="Pretendard-SemiBold text-2xl">
+            <div className="Pretendard-SemiBold text-[17px]">
                 양도양수 계약일 경우
             </div>
             <div className="text-font_gray mt-10 text-lg">

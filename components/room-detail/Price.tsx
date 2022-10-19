@@ -11,6 +11,7 @@ type propsType = {
     manageInternet: number;
     manageTV: number;
     manageCost: number;
+    manageInclude: string;
 };
 
 export default function Price({
@@ -22,6 +23,7 @@ export default function Price({
     manageWater,
     manageInternet,
     manageTV,
+    manageInclude,
 }: propsType) {
     const [open, setOpen] = useState(false);
 
@@ -32,16 +34,10 @@ export default function Price({
         { value: manageInternet, type: "인터넷" },
         { value: manageTV, type: "티비" },
     ];
-
-    let optionString = "";
-    optionArr.forEach((item, index) => {
-        if (item.value) {
-            optionString += item.type + ", ";
-        }
-        if (index === optionArr.length - 1 && optionString !== "")
-            optionString = optionString.slice(0, -2);
+    const manageContent = manageCost + "만원" + "\n관리비에 포함" + manageInclude;
+    const manageContentEnter = manageContent.split('\n').map( line => {
+        return (<span>{line}<br/></span>)
     });
-
     const arr = [
         {
             title: "월세",
@@ -50,8 +46,8 @@ export default function Price({
         { title: "보증금", data: deposit + "만원" },
         {
             title: "관리비",
-            data: manageCost + "만원" + " (" + optionString + ")",
-        },
+            data: manageContentEnter,
+        }
     ];
     return (
         <OpenLayout open={open} setOpen={setOpen} title="가격 정보">

@@ -2,14 +2,13 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dispatch, SetStateAction, useState, useEffect  } from "react";
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
-import { dispatchRoom1Image, dispatchRoom1ImageUrl } from "store/modules/roomRegister";
+import { dispatchRoom2Image, dispatchRoom2ImageUrl } from "store/modules/roomRegister";
 
 
-export default function UploadImageSmall() {
+export default function UploadImageEtc() {
     
     const [state, dispatch] = useRoomRegisterRedux();
     
-    let showResult:any = [];
     //이미지 상대경로로 저장
     let file:any;
     let imageUrlLists:any = [];
@@ -31,25 +30,25 @@ export default function UploadImageSmall() {
                 let reader = new FileReader();
                 reader.onload = () => {
                     imageShowLists[i] = reader.result;
-                    dispatch(dispatchRoom1ImageUrl([...imageShowLists]))
+                    dispatch(dispatchRoom2ImageUrl([...imageShowLists]))
                 }
                 reader.readAsDataURL(file)
             }
         }
 
-        dispatch(dispatchRoom1Image(imageUrlLists))
+        dispatch(dispatchRoom2Image(imageUrlLists))
     };
     
     let url:any = [];
 
-    if (state.room1ImageUrl.length) {
-        for (let i = 0; i < state.room1ImageUrl.length; i++) {
-            url.push(state.room1ImageUrl[i]);
+    if (state.room2ImageUrl.length) {
+        for (let i = 0; i < state.room2ImageUrl.length; i++) {
+            url.push(state.room2ImageUrl[i]);
         }
     }
 
     // console.log(url);
-    // console.log(state.room1Image)
+    // console.log(state.room2Image)
     
     const map_result = url.map(function(image: any,index: any) {
         return (
@@ -69,7 +68,7 @@ export default function UploadImageSmall() {
     return (
         <>
             <div>
-                {state.room1ImageUrl.length ? (
+                {state.room2ImageUrl.length ? (
                     <div className="flex">
                         <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
                             <label
@@ -89,7 +88,7 @@ export default function UploadImageSmall() {
                                 onChange={handleAddImages}
                                 type="file"
                                 className="hidden"
-                                id="image-upload-room"
+                                id="image-upload-etc"
                                 accept="image/*"
                                 multiple
                             />
@@ -103,7 +102,7 @@ export default function UploadImageSmall() {
                     <div className="bg-component_white h-[80px] w-full rounded-standard_rounded flex items-center justify-center relative">
                         <label
                             className="Pretendard-Regular text-[12px] text-center text-font_gray w-24 h-28  items-center justify-center"
-                            htmlFor="image-upload-room"
+                            htmlFor="image-upload-etc"
                         >
                             <Image 
                                 width={50}
@@ -117,7 +116,7 @@ export default function UploadImageSmall() {
                             onChange={handleAddImages}
                             type="file"
                             className="hidden"
-                            id="image-upload-room"
+                            id="image-upload-etc"
                             accept="image/*"
                             multiple
                         />
