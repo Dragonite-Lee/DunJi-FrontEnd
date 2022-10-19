@@ -10,10 +10,10 @@ export default function ContractContent() {
     const [openModal4,setopenModal4] = useState(false);
     
     return (
-        <div className="h-room_register_btn_height1 px-standard_pd">
+        <div className="h-full px-[18px]">
             {/* 양도승낙서 확인 */}
             <div
-                className="Pretendard-SemiBold py-12 px-standard_pd mt-10 bg-white rounded-standard_rounded rounded-b-none border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center" 
+                className="Pretendard-SemiBold py-12 px-[18px] mt-10 bg-white rounded-standard_rounded rounded-b-none border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center" 
             >
                 <div>1. 양도승낙서 확인하기</div>
                 { openModal1 === true ? (
@@ -27,7 +27,7 @@ export default function ContractContent() {
                 )}
             </div>
             { openModal1 === true  && (
-                <div className="Pretendard-Regular py-4 px-standard_pd bg-white text-xl">
+                <div className="Pretendard-Regular py-4 px-[18px] bg-white text-xl">
                     <div className="my-2">
                         1) 전대인(매물을 올린 사람)이 집주인에게 매물 올리는 것을
                          허락 받았는지 확인해야합니다 <span className="underline">양도승낙서</span>를 받으세요!
@@ -50,7 +50,7 @@ export default function ContractContent() {
             )}
             {/* 신상정보 일치여부 확인 */}
             <div
-                className="Pretendard-SemiBold py-12 px-standard_pd mt-2 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center" 
+                className="Pretendard-SemiBold py-12 px-[18px] mt-2 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center" 
             >
                 <div>2. 신상정보 일치여부 확인하기</div>
                 { openModal2 === true ? (
@@ -64,7 +64,7 @@ export default function ContractContent() {
                 )}
             </div>
             { openModal2 === true  && (
-                <div className="Pretendard-Regular py-4 px-standard_pd bg-white text-xl">
+                <div className="Pretendard-Regular py-4 px-[18px] bg-white text-xl">
                     <div className="my-2">
                     1) 임대차 계약서에 작성되어 있는 전차인(집주인), 임차인 (매물 올린 사람)의 주민등록번호를 포함한 신상을 신분증과 대조해보고 해당 건물이 집주인 명의가 맞는지 등기부등본을 확인하세요!
                     </div>
@@ -72,7 +72,7 @@ export default function ContractContent() {
             )}
             {/* 양도양수계약서 작성 */}
             <div
-                className="Pretendard-SemiBold py-12 px-standard_pd mt-2 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center" 
+                className="Pretendard-SemiBold py-12 px-[18px] mt-2 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center" 
             >
                 <div>3. 양도양수계약서 작성하기</div>
                 { openModal3 === true ? (
@@ -86,7 +86,7 @@ export default function ContractContent() {
                 )}
             </div>
             { openModal3 === true  && (
-                <div className="Pretendard-Regular py-4 px-standard_pd bg-white text-xl">
+                <div className="Pretendard-Regular py-4 px-[18px] bg-white text-xl">
                     <div className="my-2">
                         1) 가능하다면 모든 과정을 대면으로, 최대한 꼼꼼히 확인해 보고 진행하세요!
                     </div>
@@ -95,7 +95,7 @@ export default function ContractContent() {
             )}
             {/* 임차권 등기명령 신청 */}
             <div
-                className={`Pretendard-SemiBold py-12 px-standard_pd mt-2 bg-white rounded-standard_rounded  
+                className={`Pretendard-SemiBold py-12 px-[18px] mt-2 bg-white rounded-standard_rounded  
                 rounded-t-none border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center
                 ${ openModal4 === true ? "rounded-b-none" : "" }`} 
             >
@@ -111,7 +111,7 @@ export default function ContractContent() {
                 )}
             </div>
             { openModal4 === true  && (
-                <div className="Pretendard-Regular pt-4 pb-12 px-standard_pd bg-white text-xl rounded-standard_rounded rounded-t-none">
+                <div className="Pretendard-Regular pt-4 pb-12 px-[18px] bg-white text-xl rounded-standard_rounded rounded-t-none">
                     <div className="my-2">
                         1) 양수인의 계약기간이 다 되어 이사나갈 때 보증금을 되돌 려주겠다는 집주인의 말만 믿고 이사를 가면, 스스로 보증금 을 포기한 것이 되어 보증금을 돌려받을 수 없습니다. 
                     </div>

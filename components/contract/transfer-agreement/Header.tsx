@@ -8,8 +8,8 @@ export default function Header() {
     return (
         <>
             <header
-                className="flex w-screen justify-between px-standard_pd 
-                    py-4  h-24 items-center text-xl  border-b mb-10"
+                className="flex w-screen justify-between px-[18px] 
+                    py-4  h-24 items-center text-[17px]  border-b mb-10 Pretendard-SemiBold"
             >
                 <div className="flex text-2xl items-center">
                     <div>

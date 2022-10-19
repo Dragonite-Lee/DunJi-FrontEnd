@@ -20,7 +20,7 @@ export default function OpenLayout({
                 onClick={openHandler}
                 className={`${
                     open && `border-b border-border_color`
-                } h-20 ml-4 text-[1.5rem] font-[600]  flex items-center px-standard_pd`}
+                } h-20 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}
             >
                 {title}
                 <div
@@ -33,10 +33,11 @@ export default function OpenLayout({
                         alt="arrow"
                         objectFit="contain"
                         layout="fill"
+                        className="rotate-180"
                     />
                 </div>
             </div>
-            <div className="px-standard_pd">{open && children}</div>
+            <div className="px-[18px] ">{open && children}</div>
         </div>
     );
 }

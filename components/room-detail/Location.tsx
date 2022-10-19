@@ -16,7 +16,7 @@ export default function Location({ latitude, longitude }: propsType) {
                 onClick={openHandler}
                 className={`${
                     open && `border-b border-border_color`
-                } h-20 ml-4 text-[1.5rem] font-[600]  flex items-center px-standard_pd`}
+                } h-20 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}
             >
                 위치 / 주변
                 <div
@@ -29,6 +29,7 @@ export default function Location({ latitude, longitude }: propsType) {
                         alt="arrow"
                         objectFit="contain"
                         layout="fill"
+                        className="rotate-180"
                     />
                 </div>
             </div>

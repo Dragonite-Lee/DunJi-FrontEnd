@@ -9,8 +9,11 @@ export default function Home() {
     const [state,dispatch] = useTabRedux();
     
     // console.log(state.TABBAR_OPEN_HOME)
-    
-    
+    // if (typeof window !== 'undefined') {
+    //     window.onload(()=>{
+    //         sessionStorage.clear()
+    //     })
+    // }
     
     function close() {
         if( typeof window !== 'undefined') {
@@ -18,46 +21,45 @@ export default function Home() {
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                localStorage.setItem("home",'true')
+                sessionStorage.setItem("home",'true')
                 dispatch(
                     dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
                 )
-                localStorage.removeItem("search")
+                sessionStorage.removeItem("search")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == true && state.TABBAR_OPEN_MYPAGE == false) {
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                localStorage.setItem("home",'true')
+                sessionStorage.setItem("home",'true')
                 dispatch(
                     dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
                 )
-                localStorage.removeItem("chat")
+                sessionStorage.removeItem("chat")
             } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
                 dispatch(
                     dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
                 )
-                localStorage.setItem("home",'true')
+                sessionStorage.setItem("home",'true')
                 dispatch(
                     dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
                 )
-                localStorage.removeItem("mypage")
+                sessionStorage.removeItem("mypage")
             } 
         }  
     }
-    const home = typeof window !== 'undefined' ? localStorage.getItem("home") : null;
+    const home = typeof window !== 'undefined' ? sessionStorage.getItem("home") : null;
     return (
         <div className="pl-[36px]">
             {home ? (
                 <Image 
-                    onClick={() => {
-                        dispatch(
-                            dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
-                        )
-                    }}
                     width={30}
                     height={30}
                     alt="홈로고"
                     src={require("../../../assets/icon/main/tabBar/메뉴바_홈_활성화.svg")} 
+                    onLoad={() => {
+                        sessionStorage.clear();
+                        sessionStorage.setItem("home",'true')
+                    }}
                 />
             ) : (
                 <Link href="/">
