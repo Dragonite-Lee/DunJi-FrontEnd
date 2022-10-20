@@ -34,7 +34,7 @@ export default function agreePage() {
                     2. 방을 내놓기 위해서는 <span className="Pretendard-SemiBold">'전대동의서'</span>(전대차 계약의 경우) 혹은 <span className="Pretendard-SemiBold">'양도승낙서'</span>(양도·양수 계약의 경우)를 받아주세요! 
                     </div>
                     <div className="mt-10">
-                    3. 해당 내용은 <Link href="/room/contract"><span className="Pretendard-SemiBold underline">계약서 가이드</span></Link>에서 자세히 확인하실 수 있으며 계약서 파일을 다운받아보실 수 있습니다. 
+                    3. 해당 내용은 <Link href="/room/contract"><a><span className="Pretendard-SemiBold underline">계약서 가이드</span></a></Link>에서 자세히 확인하실 수 있으며 계약서 파일을 다운받아보실 수 있습니다. 
                     </div>
                     <div className="mt-10">
                     4. 방 등록에 대한 모든 책임은 당사자에게 있으니 집주인의 사전 동의를 얻은 후 허위 사실 없이 정확하게 입력해주시기 바랍니다.
@@ -58,12 +58,14 @@ export default function agreePage() {
             </div>
             {isCheck1 && isCheck2 ? (
                 <Link href="/room/register">
-                    <div
-                    className="min-w-[375px] sm:w-[375px] sm:m-auto bg-main fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
-                    >
-                        <div className="text-[17px] Pretendard-SemiBold text-white">방 내놓기</div>
-                        <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
-                    </div>
+                    <a>
+                        <div
+                        className="min-w-[375px] sm:w-[375px] sm:m-auto bg-main fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+                        >
+                            <div className="text-[17px] Pretendard-SemiBold text-white">방 내놓기</div>
+                            <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
+                        </div>
+                    </a>
                 </Link>
             ) : (
                 <div

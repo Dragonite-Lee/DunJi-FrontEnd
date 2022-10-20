@@ -12,32 +12,14 @@ export default function Chat() {
     
     function close() {
         if( typeof window !== 'undefined') {
-            if(state.TABBAR_OPEN_HOME == true && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
-                dispatch(
-                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
-                )
+            if(sessionStorage.getItem('home')) {
                 sessionStorage.setItem("chat",'true')
-                dispatch(
-                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
-                )
                 sessionStorage.removeItem("home")
-            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == true && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
-                dispatch(
-                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
-                )
+            } else if(sessionStorage.getItem('search')) {
                 sessionStorage.setItem("chat",'true')
-                dispatch(
-                    dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
-                )
                 sessionStorage.removeItem("search")
-            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
-                dispatch(
-                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
-                )
+            } else if(sessionStorage.getItem('mypage')) {
                 sessionStorage.setItem("chat",'true')
-                dispatch(
-                    dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
-                )
                 sessionStorage.removeItem("mypage")
             }
         }
@@ -61,13 +43,15 @@ export default function Chat() {
                 />
             ) : (
                 <Link href="/chat">
-                    <Image 
-                        onClick={close}
-                        width={30}
-                        height={30}
-                        alt="채팅로고"
-                        src={require("../../../assets/icon/main/tabBar/메뉴바_채팅_비활성화.svg")} 
-                    />
+                    <a>
+                        <Image 
+                            onClick={close}
+                            width={30}
+                            height={30}
+                            alt="채팅로고"
+                            src={require("../../../assets/icon/main/tabBar/메뉴바_채팅_비활성화.svg")} 
+                        />
+                    </a>
                 </Link>
             )}
         </div>

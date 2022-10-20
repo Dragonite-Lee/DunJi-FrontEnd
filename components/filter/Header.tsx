@@ -4,18 +4,22 @@ import Link from "next/link";
 export default function Header() {
     return (
         <header
-            className="flex w-screen justify-between px-standard_pd 
-                py-4  h-24 items-center text-xl  border-b"
+            className="flex w-screen justify-between px-[18px] 
+                py-4  h-24 items-center  border-b sm:w-[375px] sm:m-auto"
         >
-            <div className="flex text-2xl items-center">
+            <div className="flex text-[17px] items-center Pretendard-SemiBold">
                 <Link href="/map">
                     <a>
                         <FontAwesomeIcon icon="chevron-left" />
                     </a>
                 </Link>
-                <div className="ml-4">필터 설정</div>
+                <div className="ml-[6px]">필터</div>
             </div>
-            <div className="text-main">초기화</div>
+            <Link href="/map">
+                    <a>
+                        <div className="text-[12px] Pretendard-Regular text-hover_orange">취소</div>
+                    </a>
+            </Link>
         </header>
     );
 }

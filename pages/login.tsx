@@ -29,17 +29,19 @@ export default function Login({}) {
                 </div>
             </div>
             <Link href={KAKAO_AUTH_URL}>
-                <div className="flex mt-96 items-center justify-center bg-kakao mx-12 py-3.5 rounded-standard_rounded">
-                    <Image 
-                        width={26}
-                        height={26}
-                        alt="카카오톡로고"
-                        src={require("../assets/icon/logo/kakao_logo.png")}
-                    />
-                    <div className="ml-4 text-[16px] Pretendard-Regular">
-                        카카오톡으로 시작하기
+                <a>
+                    <div className="flex mt-96 items-center justify-center bg-kakao mx-12 py-3.5 rounded-standard_rounded">
+                        <Image 
+                            width={26}
+                            height={26}
+                            alt="카카오톡로고"
+                            src={require("../assets/icon/logo/kakao_logo.png")}
+                        />
+                        <div className="ml-4 text-[16px] Pretendard-Regular">
+                            카카오톡으로 시작하기
+                        </div>
                     </div>
-                </div>
+                </a>
             </Link>
             <div className="flex mt-4 items-center justify-center bg-white mx-12 py-3.5 rounded-standard_rounded">
                 <Image 

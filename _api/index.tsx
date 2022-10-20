@@ -18,7 +18,7 @@ export const roomApi = {
 
 export const mapApi = {
     getRoom: (coordinate: Array<number>) =>
-        api.get("/room/map", {
+        api.get("/room/filterAction", {
             params: {
                 startLongitude: coordinate[0],
                 startLatitude: coordinate[1],

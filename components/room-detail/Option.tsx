@@ -26,7 +26,7 @@ type propsType = {
 export default function Option({elevator, car, pet, women, loan, aircon, bed, closet, desk, gas, induc, micro, sink, shelf, shoe, refri, washer}:propsType) {
     const [open, setOpen] = useState(false);
     
-    let a = [];
+    const a:any = [];
     const op = [aircon, bed, closet, desk, gas, induc, micro, sink, shelf, shoe, refri, washer];
     for(let i = 0; op.length; i++) {
         if( op[i] == true) {
