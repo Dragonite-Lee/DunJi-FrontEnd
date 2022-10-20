@@ -45,7 +45,9 @@ export default function Home() {
                     </div>
                     <div className="flex Pretendard-Regular items-center justify-between">
                         <Link href="/login">
-                            <div className="text-xl">간편로그인</div>
+                            <a>
+                                <div className="text-xl">간편로그인</div>
+                            </a>
                         </Link>
                         <div className="text-xl px-1"
                             onClick={loggedOut}
@@ -85,11 +87,17 @@ export default function Home() {
                         />
                     </div>
                     <Link href="/map">
-                        <input
-                            type="text"
-                            className="bg-white rounded-[8rem] h-full text-xl pl-20 placeholder-font_border_color outline-0 w-full"
-                            placeholder="지역, 지하철, 대학교 검색"
-                        ></input>
+                        <a>
+                            <input
+                                type="text"
+                                className="bg-white rounded-[8rem] h-full text-xl pl-20 placeholder-font_border_color outline-0 w-full"
+                                placeholder="지역, 지하철, 대학교 검색"
+                                onClick={() => {
+                                    sessionStorage.clear();
+                                    sessionStorage.setItem("search",'true')
+                                }}
+                            ></input>
+                        </a>
                     </Link>
                 </div>
                 {/* *메인이벤트 슬라이더박스 */}
@@ -118,14 +126,16 @@ export default function Home() {
                             <div>공지사항</div>
                         </div>
                         <Link href="/room/contract">
-                            <div className="pl-[15px] pr-[15px] h-[80px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
-                                <Image 
-                                
-                                    alt="트럭"
-                                    src={require("../assets/icon/main/service/계약서가이드.svg")}
-                                />
-                                <div>계약서 가이드</div>
-                            </div>
+                            <a>
+                                <div className="pl-[15px] pr-[15px] h-[80px] py-[27px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
+                                    <Image 
+                                    
+                                        alt="트럭"
+                                        src={require("../assets/icon/main/service/계약서가이드.svg")}
+                                    />
+                                    <div>계약서 가이드</div>
+                                </div>
+                            </a>
                         </Link>
                         <div className="px-[28px] py-[27px] h-[80px] flex items-center sm:justify-between justify-center Pretendard-SemiBold text-[17px] rounded-standard_rounded bg-white">
                             <Image 

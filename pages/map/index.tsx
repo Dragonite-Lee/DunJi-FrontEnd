@@ -54,7 +54,7 @@ export default function Map() {
         {
             onSuccess: (data) => {
                 dispatch(dispatchMapRoomList(data)); // 지도 상에 보이는 매물 리덕스로 관리
-
+                console.log(data)
                 window.kakao && window.kakao.maps.load(() => {
 
                     addOverlay(mapVar.current, data);
@@ -69,7 +69,7 @@ export default function Map() {
         },
         []
     );
-
+    
     const addOverlay = useCallback(
         (map: any, response: any) => {
             const data = response.data;
@@ -98,6 +98,7 @@ export default function Map() {
                     newData.push(item);
                 }
             }
+            
             dispatch(dispatchRoomList(newData));
             for (let item of newData) {
                 const content = document.createElement("div");
@@ -130,15 +131,16 @@ export default function Map() {
         [dispatch, openPopup, state.ROOM_LIST]
     );
 
+    
     const onLoadKakaoMap = useCallback(() => {
         window.kakao.maps.load(() => {
             setLoad(true);
-            const container = document.getElementById("map");
+            const container = document.getElementById("map"); //지도생성 표시할 div만듬
             const options = {
-                center: new window.kakao.maps.LatLng(latitude, longitude),
-                level: 6,
+                center: new window.kakao.maps.LatLng(latitude, longitude), //지도 중심좌표(학교에리카)
+                level: 6, //지도 확대레벨
             };
-            const map = new window.kakao.maps.Map(container, options);
+            const map = new window.kakao.maps.Map(container, options); //지도를 표시할 div와 지도옵션으로 지도생성
             mapVar.current = map;
 
             window.kakao.maps.event.addListener(map, "dragend", () => {
@@ -163,16 +165,16 @@ export default function Map() {
         // header에서 주소 주소 검색한 경우 현재 지도 중심 위치 변경 훅
         if (load) {
             // kakao map api 로드 이후에 동작하게 함
-            var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);
+            var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);//이동할 위도 경도 위치 생성
 
-            const container = document.getElementById("map");
+            const container = document.getElementById("map"); //지도를 표시할 div 검색에서 주소를 검색하면 위치가 바뀌니까
             const options = {
-                center: new window.kakao.maps.LatLng(latitude, longitude),
-                level: 6,
+                center: new window.kakao.maps.LatLng(latitude, longitude), //주소에서 검색해서 나온 지도의 중심좌표
+                level: 6, //확대수준
             };
-            const map = new window.kakao.maps.Map(container, options);
+            const map = new window.kakao.maps.Map(container, options); //지도 생성하기
             mapVar.current = map;
-            map.panTo(moveLatLon);
+            map.panTo(moveLatLon); //맵을 부드럽게 이동시키는데 
 
         }
     }, [latitude, load, longitude]);

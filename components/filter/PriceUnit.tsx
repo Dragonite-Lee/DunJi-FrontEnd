@@ -43,7 +43,7 @@ export default function TransactionType() {
     ];
 
     return (
-        <>
+        <div className="mt-[30px]">
             <CategoryHeader2 title="가격 단위" />
             <div className="w-full grid grid-cols-3 gap-room_register_gap">
                 {btnArr.map((item, index) => (
@@ -55,6 +55,6 @@ export default function TransactionType() {
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 }

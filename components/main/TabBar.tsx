@@ -1,6 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 import useTabRedux from "hooks/useTabRedux";
 import { dispatchTabBarOpenHome, dispatchTabBarOpenSearch, dispatchTabBarOpenPlus, dispatchTabBarOpenChat, dispatchTabBarOpenMypage } from "store/modules/tab";
 import Home from "./tabBar/Home";

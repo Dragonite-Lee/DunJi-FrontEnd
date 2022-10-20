@@ -92,6 +92,10 @@ export default function Header({ setLatitude, setLongitude }: any) {
                                 height={22}
                                 alt="arrow"
                                 src={require("assets/icon/화살표.svg")}
+                                onClick={() => {
+                                    sessionStorage.clear();
+                                    sessionStorage.setItem("home",'true')
+                                }}
                             />
                         </a>
                     </Link>

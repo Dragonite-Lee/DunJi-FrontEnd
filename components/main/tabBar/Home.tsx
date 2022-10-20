@@ -8,41 +8,16 @@ export default function Home() {
 
     const [state,dispatch] = useTabRedux();
     
-    // console.log(state.TABBAR_OPEN_HOME)
-    // if (typeof window !== 'undefined') {
-    //     window.onload(()=>{
-    //         sessionStorage.clear()
-    //     })
-    // }
-    
     function close() {
         if( typeof window !== 'undefined') {
-            if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == true && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == false) {
-                dispatch(
-                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
-                )
+            if(sessionStorage.getItem('search')) {
                 sessionStorage.setItem("home",'true')
-                dispatch(
-                    dispatchTabBarOpenSearch(!state.TABBAR_OPEN_SEARCH)
-                )
                 sessionStorage.removeItem("search")
-            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == true && state.TABBAR_OPEN_MYPAGE == false) {
-                dispatch(
-                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
-                )
+            } else if(sessionStorage.getItem('chat')) {
                 sessionStorage.setItem("home",'true')
-                dispatch(
-                    dispatchTabBarOpenChat(!state.TABBAR_OPEN_CHAT)
-                )
                 sessionStorage.removeItem("chat")
-            } else if(state.TABBAR_OPEN_HOME == false && state.TABBAR_OPEN_SEARCH == false && state.TABBAR_OPEN_CHAT == false && state.TABBAR_OPEN_MYPAGE == true) {
-                dispatch(
-                    dispatchTabBarOpenHome(!state.TABBAR_OPEN_HOME)
-                )
+            } else if(sessionStorage.getItem('mypage')) {
                 sessionStorage.setItem("home",'true')
-                dispatch(
-                    dispatchTabBarOpenMypage(!state.TABBAR_OPEN_MYPAGE)
-                )
                 sessionStorage.removeItem("mypage")
             } 
         }  
@@ -63,13 +38,15 @@ export default function Home() {
                 />
             ) : (
                 <Link href="/">
-                    <Image 
-                        onClick={close}
-                        width={30}
-                        height={30}
-                        alt="홈로고"
-                        src={require("../../../assets/icon/main/tabBar/메뉴바_홈_비활성화.svg")} 
-                    />
+                    <a>
+                        <Image 
+                            onClick={close}
+                            width={30}
+                            height={30}
+                            alt="홈로고"
+                            src={require("../../../assets/icon/main/tabBar/메뉴바_홈_비활성화.svg")} 
+                        />
+                    </a>
                 </Link>
             )}
         </div>

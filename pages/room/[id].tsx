@@ -38,7 +38,7 @@ export default function RoomDetail() {
         setTimeout(() => {
             setPopUp(false)
         },3000)
-    },[id])
+    },[])
 
     
     return (

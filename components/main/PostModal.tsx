@@ -39,23 +39,25 @@ export default function PostModal() {
         >
             <div className="gap-4 flex items-center justify-between bg-white top-[350px] w-[250px] h-[120px] absolute z-30 rounded-standard_rounded translate-x-2/4 right-[50%] ">
                 <Link href="/room/register/agreePage">
-                    <div className="ml-[36px] hover:text-hover_orange" onMouseOver={mouseOver1} onMouseLeave={mouseLeave1}>
-                        <div className="ml-[6px]" >
-                            {imageHover1 ? (
-                                <Image
-                                    alt="채팅로고"
-                                    src={require("../../assets/icon/채팅메뉴_작성_활성화.svg")}
-                                />
-                            ) : (
-                                <Image
-                                    
-                                    alt="채팅로고"
-                                    src={require("../../assets/icon/채팅메뉴_작성.svg")}
-                                />
-                            )}
+                    <a>
+                        <div className="ml-[36px] hover:text-hover_orange" onMouseOver={mouseOver1} onMouseLeave={mouseLeave1}>
+                            <div className="ml-[6px]" >
+                                {imageHover1 ? (
+                                    <Image
+                                        alt="채팅로고"
+                                        src={require("../../assets/icon/채팅메뉴_작성_활성화.svg")}
+                                    />
+                                ) : (
+                                    <Image
+                                        
+                                        alt="채팅로고"
+                                        src={require("../../assets/icon/채팅메뉴_작성.svg")}
+                                    />
+                                )}
+                            </div>
+                            <div className=" Pretendard-SemiBold text-[15px]">방 내놓기</div>
                         </div>
-                        <div className=" Pretendard-SemiBold text-[15px]">방 내놓기</div>
-                    </div>
+                    </a>
                 </Link>
                 <div className="h-full border-r"></div>
                 <div className="mr-[36px] hover:text-hover_orange" onMouseOver={mouseOver2} onMouseLeave={mouseLeave2}>

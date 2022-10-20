@@ -40,7 +40,7 @@ export default function Header() {
                     </div>
                     <div className="text-main text-[12px] Pretendard-Regular"
                         onClick={() => {
-                            Router.push('/');
+                            Router.back();
                         }}
                     >취소</div>
                 </header>
