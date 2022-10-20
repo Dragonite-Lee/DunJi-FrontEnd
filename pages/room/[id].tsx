@@ -23,7 +23,6 @@ export default function RoomDetail() {
     const router = useRouter();
     const { id } = router.query;
     const [popUp, setPopUp] = useState(false);
-    const [opacity, setOpacity] = useState(70);
     
     useEffect(() => {
         // *방상세정보 id별로 받아옴

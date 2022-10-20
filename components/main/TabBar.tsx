@@ -14,10 +14,10 @@ export default function TabBar() {
 
     const [state,dispatch] = useTabRedux();
     
-    console.log(state.TABBAR_OPEN_HOME)
-    console.log(state.TABBAR_OPEN_SEARCH)
-    console.log(state.TABBAR_OPEN_CHAT)
-    console.log(state.TABBAR_OPEN_MYPAGE)
+    // console.log(state.TABBAR_OPEN_HOME)
+    // console.log(state.TABBAR_OPEN_SEARCH)
+    // console.log(state.TABBAR_OPEN_CHAT)
+    // console.log(state.TABBAR_OPEN_MYPAGE)
     
 
     return (

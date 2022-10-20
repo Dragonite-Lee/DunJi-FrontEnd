@@ -26,7 +26,7 @@ type propsType = {
 export default function Option({elevator, car, pet, women, loan, aircon, bed, closet, desk, gas, induc, micro, sink, shelf, shoe, refri, washer}:propsType) {
     const [open, setOpen] = useState(false);
     
-    const a = [];
+    let a = [];
     const op = [aircon, bed, closet, desk, gas, induc, micro, sink, shelf, shoe, refri, washer];
     for(let i = 0; op.length; i++) {
         if( op[i] == true) {
@@ -149,12 +149,13 @@ export default function Option({elevator, car, pet, women, loan, aircon, bed, cl
                     </div>
                     <div className="px-[18px] ">
                         {arr.map((item, index) => (
-                            <InfoField
-                                key={index}
-                                title={item.title}
-                                content={item.data}
-                                last={index !== arr.length - 1}
-                            />
+                            <div key={index}>
+                                <InfoField
+                                    title={item.title}
+                                    content={item.data}
+                                    last={index !== arr.length - 1}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>
