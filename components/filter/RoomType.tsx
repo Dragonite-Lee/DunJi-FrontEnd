@@ -5,8 +5,6 @@ export default function TransactionType() {
     const [btn1Check, setBtn1Check] = useState(false);
     const [btn2Check, setBtn2Check] = useState(false);
     const [btn3Check, setBtn3Check] = useState(false);
-    const [btn4Check, setBtn4Check] = useState(false);
-    const [btn5Check, setBtn5Check] = useState(false);
 
     const btnArr = [
         {
@@ -17,30 +15,20 @@ export default function TransactionType() {
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
-            type: "투. 쓰리룸",
+            type: "투룸",
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
-            type: "오피스텔",
-        },
-        {
-            check: btn4Check,
-            checkHandler: setBtn4Check,
-            type: "아파트",
-        },
-        {
-            check: btn5Check,
-            checkHandler: setBtn5Check,
-            type: "공공주택",
+            type: "쓰리룸",
         },
     ];
 
     return (
-        <>
-            <div className="py-6 text-2xl flex items-center">
+        <div className="mt-[30px] pb-[30px] border-b border-border_color">
+            <div className="pb-6 text-[17px] Pretendard-SemiBold flex items-center">
                 방 종류
-                <span className="text-lg text-font_gray">
+                <span className="ml-2 text-[12px] Pretendard-Regular text-font_gray">
                     &nbsp;중복 선택 가능
                 </span>
             </div>
@@ -54,6 +42,6 @@ export default function TransactionType() {
                     />
                 ))}
             </div>
-        </>
+        </div >
     );
 }

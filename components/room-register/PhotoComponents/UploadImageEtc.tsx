@@ -53,14 +53,24 @@ export default function UploadImageEtc() {
     const map_result = url.map(function(image: any,index: any) {
         return (
             <div className="w-[100px] h-[80px] mr-[8px]" key={index}>
-                <Image
-                    className="rounded-standard_rounded"
-                    layout="fixed"
-                    objectFit="fill"
-                    width={100}
-                    height={80}
-                    src={image}
-                />
+                {image 
+                    ? <Image
+                        className="rounded-standard_rounded"
+                        layout="fixed"
+                        objectFit="fill"
+                        width={100}
+                        height={80}
+                        src={image}
+                        />
+                    : <Image
+                        className="rounded-standard_rounded"
+                        layout="fixed"
+                        objectFit="fill"
+                        width={100}
+                        height={80}
+                        src={require("../../../assets/icon/채팅메뉴_앨범.svg")}
+                    />
+                } 
             </div>
         )
     })

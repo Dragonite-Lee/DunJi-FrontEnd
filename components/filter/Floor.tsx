@@ -18,17 +18,17 @@ export default function Floor() {
         {
             check: btn1Check,
             checkHandler: setBtn1Check,
-            type: "전체",
+            type: "5층 이하",
         },
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
-            type: "5층 이하",
+            type: "6층~10층",
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
-            type: "5층 초과",
+            type: "10층 이상",
         },
         {
             check: btn4Check,
@@ -43,7 +43,7 @@ export default function Floor() {
     ];
 
     return (
-        <>
+        <div className="border-t border-border_color">
             <CategoryHeader2 title="층 수" />
             <div className="w-full grid grid-cols-3 gap-room_register_gap">
                 {btnArr.map((item, index) => (
@@ -55,6 +55,6 @@ export default function Floor() {
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 }

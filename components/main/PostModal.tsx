@@ -61,20 +61,24 @@ export default function PostModal() {
                 </Link>
                 <div className="h-full border-r"></div>
                 <div className="mr-[36px] hover:text-hover_orange" onMouseOver={mouseOver2} onMouseLeave={mouseLeave2}>
-                    <div className="ml-[8px]">
-                        {imageHover2 ? (
-                            <Image
-                                alt="채팅로고"
-                                src={require("../../assets/icon/채팅메뉴_작성_활성화.svg")}
-                            />
-                        ) : (
-                            <Image
-                                
-                                alt="채팅로고"
-                                src={require("../../assets/icon/채팅메뉴_작성.svg")}
-                            />
-                        )}
-                    </div>
+                    <Link href="/review/">
+                        <a>
+                            <div className="ml-[8px]">
+                                {imageHover2 ? (
+                                    <Image
+                                        alt="채팅로고"
+                                        src={require("../../assets/icon/채팅메뉴_작성_활성화.svg")}
+                                    />
+                                ) : (
+                                    <Image
+                                        
+                                        alt="채팅로고"
+                                        src={require("../../assets/icon/채팅메뉴_작성.svg")}
+                                    />
+                                )}
+                            </div>
+                        </a>
+                    </Link>
                     <div className=" Pretendard-SemiBold text-[15px]">후기 작성</div>
                 </div>
             </div>

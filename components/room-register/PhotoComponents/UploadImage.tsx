@@ -61,12 +61,20 @@ export default function UploadImage() {
                         className="Pretendard-Regular text-[12px] text-center text-font_gray w-[350px] h-[150px] rounded-standard_rounded  items-center justify-center"
                         htmlFor="image-upload-main"
                     >
-                        <Image 
-                            width={340}
-                            height={150}
-                            alt="사진로고"
-                            src={url[0]} 
-                        />
+                        {url[0]
+                            ? <Image 
+                                width={340}
+                                height={150}
+                                alt="사진로고"
+                                src={url[0]} 
+                            />
+                            : <Image 
+                                width={340}
+                                height={150}
+                                alt="사진로고"
+                                src={require("../../../assets/icon/채팅메뉴_앨범.svg")} 
+                            />
+                        }
                     </label>
                     <input
                         onChange={handleAddImages}
