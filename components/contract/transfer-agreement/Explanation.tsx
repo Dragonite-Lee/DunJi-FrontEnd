@@ -3,7 +3,7 @@ export default function Explanation() {
 
     
     return (
-        <div className=" px-standard_pd items-center">
+        <div className=" px-[18px] items-center">
             <div className="Pretendard-SemiBold text-[17px]">
                 양도양수 계약일 경우
             </div>

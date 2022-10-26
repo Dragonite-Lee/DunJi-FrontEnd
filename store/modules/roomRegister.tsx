@@ -107,7 +107,7 @@ const initialState: initialStateTypes = {
     room2ImageUrl: [],
     postRoomSuccess: null,
     postRoomFailure: null,
-    registrant: ""
+    registrant: "",
 };
 
 const roomRegister = createSlice({

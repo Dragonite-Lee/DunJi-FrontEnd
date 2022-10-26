@@ -11,7 +11,7 @@ export default function PriceUnit() {
         []
     );
     const [state] = useRoomRegisterRedux();
-
+    
     const [selectArr, checkHandler] = useNoDuplicateSelect(
         typeArr,
         dispatchPriceUnit,

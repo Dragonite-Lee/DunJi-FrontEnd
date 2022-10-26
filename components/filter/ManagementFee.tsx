@@ -1,72 +1,43 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import CategoryHeader2 from "components/common/CategoryHeader2";
-import CommonBtn from "components/common/Btn";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import CommonBtn from "../common/Btn";
+import { RootState } from "../../store/modules/index";
+import CategoryHeader from "components/common/CategoryHeader";
+import Slider from "rc-slider";
 
 export default function Price() {
-    const [fee, setFee] = useState("");
-    const [noFeeCheck, setNoFeeCheck] = useState(false);
-    const [btn1Check, setBtn1Check] = useState(false);
-    const [btn2Check, setBtn2Check] = useState(false);
-    const [btn3Check, setBtn3Check] = useState(false);
+   
 
-    const feeOptionHandler = () => {
-        if (noFeeCheck === false) {
-            setBtn1Check(false);
-            setBtn2Check(false);
-            setBtn3Check(false);
-        }
-        setNoFeeCheck(!noFeeCheck);
-    };
+    const [min, setMin] = useState(0);
+    const [max, setMax] = useState(20);
 
-    const checkHandler = (
-        check: boolean,
-        handler: Dispatch<SetStateAction<boolean>>
-    ) => {
-        if (noFeeCheck !== true) {
-            handler(!check);
-        }
-    };
-
-    const btnArr = [
-        { value: "1/n 분납", check: btn1Check, checkHandler: setBtn1Check },
-        { value: "5만원 이하", check: btn2Check, checkHandler: setBtn2Check },
-        { value: "5만원 초과", check: btn3Check, checkHandler: setBtn3Check },
-    ];
 
     return (
-        <>
-            <div className="flex items-center justify-between py-4 text-2xl border-t border-border_color mt-8">
-                <div>
-                    관리비
-                    <span className="text-font_gray text-lg">
-                        &nbsp;중복 선택 가능
-                    </span>
-                </div>
-                <div className="flex justify-end gap-2 items-center text-xl text-font_gray">
-                    <label
-                        htmlFor="noFee"
-                        className={`inline-block before:content-[''] w-[1.6rem] h-[1.6rem] border  border-font_gray mr-2  rounded-[0.3rem] text-center  ${
-                            noFeeCheck &&
-                            "before:content-['✔️']  bg-font_gray border-0"
-                        }`}
-                        onClick={() => feeOptionHandler()}
-                    ></label>
-                    <input type="checkbox" id="noFee" className="hidden" />
-                    <span>관리비 없음</span>
-                </div>
+        <div className="pb-[30px]">
+            {/* 카테고리헤더 옆 별 처리 필요 */}
+            <div className="mt-[20px] border-t border-border_color flex justify-between items-center">
+                <CategoryHeader title="관리비" />
+                <div className=" text-[17px] Pretendard-SemiBold">{min}만원 ~ {max}만원</div>
             </div>
-            <div className="w-full grid grid-cols-3  gap-room_register_gap">
-                {btnArr.map((item, index) => (
-                    <CommonBtn
-                        key={index}
-                        value={item.value}
-                        check={item.check}
-                        checkHandler={() =>
-                            checkHandler(item.check, item.checkHandler)
-                        }
-                    ></CommonBtn>
-                ))}
+            <div className="px-4 py-2">
+                <Slider
+                    range
+                    allowCross={false}
+                    defaultValue={[min, max]}
+                    max={20}
+                    onChange={(e: any) => {
+                        setMin(e[0]);
+                        setMax(e[1]);
+                    }}
+                />
             </div>
-        </>
+            <div className="text-[12px] Pretendard-Regular grid grid-cols-5 text-font_gray">
+                <span>0원</span>
+                <span className="ml-[8px]">5만원</span>
+                <span className="text-center">10만원</span>
+                <span className="ml-[30px]">15만원</span>
+                <span className="text-right">20만원 이상</span>
+            </div>
+        </div>
     );
 }

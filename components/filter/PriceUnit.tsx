@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import CommonBtn from "../common/Btn";
 import { RootState } from "../../store/modules/index";
-import CategoryHeader2 from "components/common/CategoryHeader2";
+import CategoryHeader from "components/common/CategoryHeader";
 
 export default function TransactionType() {
     const dispatch = useDispatch();
@@ -12,7 +12,6 @@ export default function TransactionType() {
     const [btn2Check, setBtn2Check] = useState(false);
     const [btn3Check, setBtn3Check] = useState(false);
     const [btn4Check, setBtn4Check] = useState(false);
-    const [btn5Check, setBtn5Check] = useState(false);
 
     const btnArr = [
         {
@@ -23,29 +22,53 @@ export default function TransactionType() {
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
-            type: "일",
+            type: "월세",
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
-            type: "월세",
+            type: "전세",
         },
         {
             check: btn4Check,
             checkHandler: setBtn4Check,
-            type: "전세",
-        },
-        {
-            check: btn5Check,
-            checkHandler: setBtn5Check,
             type: "반전세",
         },
     ];
 
+    useEffect(() => {
+        if (btn1Check) {
+            setBtn2Check(false);
+            setBtn3Check(false);
+            setBtn4Check(false);
+        }
+    }, [btn1Check]);
+    useEffect(() => {
+        if (btn2Check) {
+            setBtn1Check(false);
+            setBtn3Check(false);
+            setBtn4Check(false);
+        }
+    }, [btn2Check]);
+    useEffect(() => {
+        if (btn3Check) {
+            setBtn1Check(false);
+            setBtn2Check(false);
+            setBtn4Check(false);
+        }
+    }, [btn3Check]);
+    useEffect(() => {
+        if (btn4Check) {
+            setBtn2Check(false);
+            setBtn3Check(false);
+            setBtn1Check(false);
+        }
+    }, [btn4Check]);
+
     return (
-        <div className="mt-[30px]">
-            <CategoryHeader2 title="가격 단위" />
-            <div className="w-full grid grid-cols-3 gap-room_register_gap">
+        <div>
+            <CategoryHeader title="가격 단위" />
+            <div className="w-full grid grid-cols-2 gap-room_register_gap">
                 {btnArr.map((item, index) => (
                     <CommonBtn
                         key={index}

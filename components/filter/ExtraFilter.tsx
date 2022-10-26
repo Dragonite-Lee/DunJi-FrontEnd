@@ -24,51 +24,32 @@ export default function TransactionType() {
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
-            type: "보안/안전시설",
+            type: "엘리베이터",
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
-            type: "풀옵션",
+            type: "반려동물",
         },
         {
             check: btn4Check,
             checkHandler: setBtn4Check,
-            type: "빌트인",
+            type: "풀옵션",
         },
         {
             check: btn5Check,
             checkHandler: setBtn5Check,
-            type: "엘리베이터",
+            type: "여성전용",
         },
         {
             check: btn6Check,
             checkHandler: setBtn6Check,
-            type: "360° VR",
+            type: "전세대출",
         },
     ];
 
-    useEffect(() => {
-        if (btn1Check) {
-            setBtn2Check(false);
-            setBtn3Check(false);
-        }
-    }, [btn1Check]);
-    useEffect(() => {
-        if (btn2Check) {
-            setBtn1Check(false);
-            setBtn3Check(false);
-        }
-    }, [btn2Check]);
-    useEffect(() => {
-        if (btn3Check) {
-            setBtn1Check(false);
-            setBtn2Check(false);
-        }
-    }, [btn3Check]);
-
     return (
-        <>
+        <div className="border-border_color border-t">
             <CategoryHeader2 title="추가필터" />
             <div className="w-full grid grid-cols-3 gap-room_register_gap">
                 {btnArr.map((item, index) => (
@@ -80,10 +61,9 @@ export default function TransactionType() {
                     />
                 ))}
             </div>
-            <div className="text-lg text-font_gray my-6">
-                * 풀옵션 항목은 세탁기, 냉장고, 에어컨, 가스레인지 또는
-                인덕션입니다.
+            <div className="text-[12px] Pretendard-Regular text-font_gray my-6">
+                * 풀옵션 항목은 세탁기, 냉장고, 에어컨, 가스레인지입니다.
             </div>
-        </>
+        </div>
     );
 }

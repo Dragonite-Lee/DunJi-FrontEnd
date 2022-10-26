@@ -1,14 +1,11 @@
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dispatch, SetStateAction, useState, useEffect  } from "react";
-import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
-import { dispatchRoom1Image, dispatchRoom1ImageUrl } from "store/modules/roomRegister";
+import useReviewRegisterReudx from "hooks/useReviewRegisterRedux";
+import { dispatchFile, dispatchFileUrl } from "store/modules/reviewRegister";
 
 
-export default function UploadImageSmall() {
+export default function ReviewImg() {
     
-    const [state, dispatch] = useRoomRegisterRedux();
-    
+    const [state, dispatch] = useReviewRegisterReudx();
     
     //이미지 상대경로로 저장
     let file:any;
@@ -20,7 +17,7 @@ export default function UploadImageSmall() {
         const imageLists = e.target.files;
 
         if (imageLists instanceof FileList) {
-            let filesLength = imageLists.length > 6 ? 6 : imageLists.length;    
+            let filesLength = imageLists.length > 3 ? 3 : imageLists.length;    
             for (let i = 0; i < filesLength; i++) {
                 
                 // *서버에보낼 용도
@@ -31,25 +28,22 @@ export default function UploadImageSmall() {
                 let reader = new FileReader();
                 reader.onload = () => {
                     imageShowLists[i] = reader.result;
-                    dispatch(dispatchRoom1ImageUrl([...imageShowLists]))
+                    dispatch(dispatchFileUrl([...imageShowLists]))
                 }
                 reader.readAsDataURL(file)
             }
         }
 
-        dispatch(dispatchRoom1Image(imageUrlLists))
+        dispatch(dispatchFile(imageUrlLists))
     };
     
     let url:any = [];
 
-    if (state.room1ImageUrl.length) {
-        for (let i = 0; i < state.room1ImageUrl.length; i++) {
-            url.push(state.room1ImageUrl[i]);
+    if (state.ReviewfileUrl.length) {
+        for (let i = 0; i < state.ReviewfileUrl.length; i++) {
+            url.push(state.ReviewfileUrl[i]);
         }
     }
-
-    // console.log(url);
-    // console.log(state.room1Image)
     
     const map_result = url.map(function(image: any,index: any) {
         return (
@@ -79,7 +73,7 @@ export default function UploadImageSmall() {
     return (
         <>
             <div>
-                {state.room1ImageUrl.length ? (
+                {state.ReviewfileUrl.length ? (
                     <div className="flex">
                         <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
                             <label
@@ -99,7 +93,7 @@ export default function UploadImageSmall() {
                                 onChange={handleAddImages}
                                 type="file"
                                 className="hidden"
-                                id="image-upload-room"
+                                id="image-upload-etc"
                                 accept="image/*"
                                 multiple
                             />
@@ -113,7 +107,7 @@ export default function UploadImageSmall() {
                     <div className="bg-component_white h-[80px] w-full rounded-standard_rounded flex items-center justify-center relative">
                         <label
                             className="Pretendard-Regular text-[12px] text-center text-font_gray w-24 h-28  items-center justify-center"
-                            htmlFor="image-upload-room"
+                            htmlFor="image-upload-etc"
                         >
                             <Image 
                                 width={50}
@@ -127,7 +121,7 @@ export default function UploadImageSmall() {
                             onChange={handleAddImages}
                             type="file"
                             className="hidden"
-                            id="image-upload-room"
+                            id="image-upload-etc"
                             accept="image/*"
                             multiple
                         />

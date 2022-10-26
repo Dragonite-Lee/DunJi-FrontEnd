@@ -1,30 +1,30 @@
 import Header from "components/filter/Header";
 import RoomType from "components/filter/RoomType";
 import TransactionType from "components/filter/TransactionType";
-import InputRange from "components/common/InputRange";
+import InputRange from "components/common/Price";
 import ManagementFee from "components/filter/ManagementFee";
 import Floor from "components/filter/Floor";
 import Structure from "components/filter/Structure";
 import ExtraFilter from "components/filter/ExtraFilter";
-import TransactionType2 from "components/filter/TransactionType2";
 import PriceUnit from "components/filter/PriceUnit";
-import ApprovalDate from "components/filter/ApprovalDate";
+import RoomSize from "components/filter/RoomSize";
+import PageSort from "components/filter/PageSort";
 
 export default function Filter() {
     return (
-        <div className="mb-12 bg-background_beige sm:w-[375px] sm:m-auto">
+        <div className="bg-background_beige sm:w-[375px] sm:m-auto">
             <Header />
-            <div className="px-[18px] w-screen mb-4 sm:w-[375px] sm:m-auto">
+            <div className="px-[18px] w-screen pb-[120px] sm:w-[375px] sm:m-auto">
                 <TransactionType />
-                <PriceUnit />
                 <RoomType />
+                <PriceUnit />
                 <InputRange />
                 <ManagementFee />
                 <Floor />
                 <Structure />
-                <ApprovalDate />
+                <RoomSize />
                 <ExtraFilter />
-                <TransactionType2 />
+                <PageSort />
             </div>
         </div>
     );

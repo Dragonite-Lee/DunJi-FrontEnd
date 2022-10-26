@@ -11,27 +11,21 @@ export default function TransactionType() {
     const [btn1Check, setBtn1Check] = useState(false);
     const [btn2Check, setBtn2Check] = useState(false);
     const [btn3Check, setBtn3Check] = useState(false);
-    const [btn4Check, setBtn4Check] = useState(false);
-
+    
     const btnArr = [
         {
             check: btn1Check,
             checkHandler: setBtn1Check,
-            type: "전체",
+            type: "오픈형",
         },
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
-            type: "오픈형(방1)",
+            type: "분리형",
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
-            type: "분리형(방1,거실1)",
-        },
-        {
-            check: btn4Check,
-            checkHandler: setBtn4Check,
             type: "복층형",
         },
     ];
@@ -39,7 +33,7 @@ export default function TransactionType() {
     return (
         <>
             <CategoryHeader2 title="방 구조" />
-            <div className="w-full grid grid-cols-2 gap-room_register_gap">
+            <div className="w-full grid grid-cols-3 gap-room_register_gap">
                 {btnArr.map((item, index) => (
                     <CommonBtn
                         key={index}

@@ -8,6 +8,7 @@ import { roomRegisterSaga } from "saga/roomRegisterSaga";
 import loading from "./loading";
 import login from "./login";
 import tab from "./tab";
+import reviewRegister from "./reviewRegister";
 // import storage from 'redux-persist/lib/storage'
 
 
@@ -32,6 +33,7 @@ const reducer = (state: any, action: any) => {
         main,
         login,
         tab,
+        reviewRegister,
     })(state, action);
 };
 
