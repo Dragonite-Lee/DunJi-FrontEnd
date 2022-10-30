@@ -16,6 +16,18 @@ export const roomApi = {
     )
 };
 
+export const reviewApi = {
+
+    postReview: (data: any) => 
+        api.post("/room/reviewAction",
+        data, {
+            headers: {
+                "Content-Type": `multipart/form-data`,
+            },
+        }
+    )
+}
+
 export const mapApi = {
     getRoom: (coordinate: Array<number>) =>
         api.get("/room/filterAction", {

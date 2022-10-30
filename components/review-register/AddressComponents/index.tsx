@@ -1,4 +1,4 @@
-import PostCode from "components/daum-postcode";
+import PostCode from "components/daum-postcode/review";
 import Map from "./Map";
 import { useState } from "react";
 import {
@@ -8,6 +8,7 @@ import {
 import SubHeader from "../SubHeader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useReviewRegisterRedux from "hooks/useReviewRegisterRedux";
+import Period from "../ReviewComponents/Period";
 
 export default function AddressRegister() {
     const [state, dispatch] = useReviewRegisterRedux();
@@ -18,6 +19,7 @@ export default function AddressRegister() {
         setDetailAddress(e.currentTarget.value);
         dispatch(dispatchDetailAddress(e.currentTarget.value));
     };
+    // console.log(state.POSTCODE_OPEN)
     return (
         <>
             {state.COMPONENT_HANDLER === 0 && (
@@ -48,11 +50,11 @@ export default function AddressRegister() {
                             )}
                             {state.POSTCODE_OPEN && <PostCode />}
                             {state.address && !state.POSTCODE_OPEN && (
-                                <div className="sm:w-[375px] sm:m-auto">
-                                    <div className="px-[18px] ">
+                                <div className="sm:w-[375px] sm:m-auto px-[18px]">
+                                    <div className="">
                                         <Map />
                                     </div>
-                                    <div className="justify-between px-[18px]  items-center text-xl">
+                                    <div className="justify-between items-center text-xl">
                                         <div className="mt-12 mb-4 text-[17px] Pretendard-SemiBold">
                                             주소 등록
                                             <span className="text-main">*</span>
@@ -74,6 +76,13 @@ export default function AddressRegister() {
                                                 placeholder="상세 주소를 입력해주세요"
                                             />
                                         </div>
+                                    </div>
+                                    <div>
+                                        <div className="mt-[30px] mb-4 text-[17px] Pretendard-SemiBold">
+                                            거주 기간
+                                            <span className="text-main">*</span>
+                                        </div>
+                                        <Period />
                                     </div>
                                 </div>
                             )}

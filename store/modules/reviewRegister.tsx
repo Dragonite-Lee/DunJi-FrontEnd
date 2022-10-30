@@ -8,7 +8,7 @@ type initialStateTypes = {
     content: string;
     address: string;
     detailAddress: string;
-    total: number;
+    total: string[]
     clean: 0 | 1 | 2 | 3;
     sound: 0 | 1 | 2 | 3;
     accessible: 0 | 1 | 2 | 3;
@@ -28,7 +28,7 @@ const initialState: initialStateTypes = {
     content: "",
     address: "",
     detailAddress: "",
-    total: 0,
+    total: [],
     clean: 3,
     sound: 3,
     accessible: 3,

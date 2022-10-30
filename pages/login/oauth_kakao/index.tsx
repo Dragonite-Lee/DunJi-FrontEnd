@@ -45,9 +45,12 @@ export default function Auth() {
             
         };     
     }, [])
+    
 
         
     
     
-    return <div>로그인 중입니다. </div>;
+    return <div className="bg-background_beige sm:w-[375px] sm:m-auto min-h-screen">
+        로그인 중입니다. 
+        </div>;
 }

@@ -1,4 +1,4 @@
-import PostCode from "components/daum-postcode";
+import PostCode from "components/daum-postcode/index";
 import Map from "./Map";
 import { useState } from "react";
 import {
@@ -18,6 +18,7 @@ export default function AddressRegister() {
         setDetailAddress(e.currentTarget.value);
         dispatch(dispatchDetailAddress(e.currentTarget.value));
     };
+    console.log(state.POSTCODE_OPEN)
     return (
         <>
             {state.COMPONENT_HANDLER === 0 && (
