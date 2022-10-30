@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "store/modules";
 import SubHeader from "../SubHeader";
 import Total from "./Total";
 import Clean from "./Clean";
@@ -11,14 +12,14 @@ import ReviewImg from "./ReviewImg";
 
 
 export default function ReviewRegister() {
-    const reviewRegister = useSelector((state: any) => state.reviewRegister);
+    const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
 
     return (
         <>
             {reviewRegister.COMPONENT_HANDLER === 1 && (
                 <div className="h-full ">
                     <SubHeader />
-                    <div className="px-[18px] w-screen mb-4 sm:w-[375px] sm:m-auto">
+                    <div className="px-[18px] static w-screen mb-4 sm:w-[375px] sm:m-auto">
                         <Total />
                         <Clean />
                         <Sound />

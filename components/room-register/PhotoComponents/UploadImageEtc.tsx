@@ -83,7 +83,7 @@ export default function UploadImageEtc() {
                         <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
                             <label
                                 className="Pretendard-Regular text-[12px] text-center text-font_gray w-[80px] h-[80px] items-center justify-center"
-                                htmlFor="image-upload-room"
+                                htmlFor="image-upload-etc"
                             >
                                 {/* <FontAwesomeIcon icon="plus" /> */}
                                 <Image 
