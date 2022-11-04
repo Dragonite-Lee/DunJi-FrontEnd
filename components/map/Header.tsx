@@ -27,7 +27,10 @@ export default function Header({ setLatitude, setLongitude }: any) {
             checkHandler: setFilterSelect1,
             value: "원룸, 오피스텔",
         },
-        { check: filterSelect2, checkHandler: setFilterSelect2, value: "월세" },
+        {   check: filterSelect2, 
+            checkHandler: setFilterSelect2, 
+            value: "월세" ,
+        },
         {
             check: filterSelect3,
             checkHandler: setFilterSelect3,

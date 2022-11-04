@@ -1,26 +1,33 @@
 import { useState } from "react";
-import CommonBtn from "../common/Btn";
+import CommonBtn from "./CommonBtn"
+import {dispatchOneRoom,dispatchTwoRoom,dispatchThreeRoom} from "store/modules/filter";
+import useMapFilterRedux from "hooks/useMapFilterRedux";
 
 export default function TransactionType() {
     const [btn1Check, setBtn1Check] = useState(false);
     const [btn2Check, setBtn2Check] = useState(false);
     const [btn3Check, setBtn3Check] = useState(false);
 
+    const [state, dispatch] = useMapFilterRedux();
+
     const btnArr = [
         {
             check: btn1Check,
             checkHandler: setBtn1Check,
             type: "원룸",
+            dispatch: dispatchOneRoom,
         },
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
             type: "투룸",
+            dispatch: dispatchTwoRoom
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
             type: "쓰리룸",
+            dispatch: dispatchThreeRoom
         },
     ];
 
@@ -39,6 +46,8 @@ export default function TransactionType() {
                         value={item.type}
                         check={item.check}
                         checkHandler={item.checkHandler}
+                        dispatchType={item.dispatch}
+                        dispatchValue={item.check}
                     />
                 ))}
             </div>

@@ -1,12 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import CommonBtn from "../common/Btn";
-import { RootState } from "../../store/modules/index";
+import CommonBtn from "./CommonBtn";
 import CategoryHeader2 from "components/common/CategoryHeader2";
+import useMapFilterRedux from "hooks/useMapFilterRedux";
+import { dispatchCar, dispatchElevator, dispatchPet, dispatchFullOption, dispatchWomen ,dispatchLoan } from "store/modules/filter";
 
 export default function TransactionType() {
-    const dispatch = useDispatch();
-    const roomRegister = useSelector((state: RootState) => state.roomRegister);
+    
+    const [state, dispatch] = useMapFilterRedux();
 
     const [btn1Check, setBtn1Check] = useState(false);
     const [btn2Check, setBtn2Check] = useState(false);
@@ -20,34 +20,40 @@ export default function TransactionType() {
             check: btn1Check,
             checkHandler: setBtn1Check,
             type: "주차가능",
+            dispatch: dispatchCar,
         },
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
             type: "엘리베이터",
+            dispatch: dispatchElevator,
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
             type: "반려동물",
+            dispatch: dispatchPet,
         },
         {
             check: btn4Check,
             checkHandler: setBtn4Check,
             type: "풀옵션",
+            dispatch: dispatchFullOption,
         },
         {
             check: btn5Check,
             checkHandler: setBtn5Check,
             type: "여성전용",
+            dispatch: dispatchWomen,
         },
         {
             check: btn6Check,
             checkHandler: setBtn6Check,
             type: "전세대출",
+            dispatch: dispatchLoan,
         },
     ];
-
+    
     return (
         <div className="border-border_color border-t">
             <CategoryHeader2 title="추가필터" />
@@ -58,6 +64,8 @@ export default function TransactionType() {
                         value={item.type}
                         check={item.check}
                         checkHandler={item.checkHandler}
+                        dispatchType={item.dispatch}
+                        dispatchValue={item.check}
                     />
                 ))}
             </div>

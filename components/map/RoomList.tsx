@@ -20,15 +20,15 @@ export default function RoomList({ openPopup, focusRoomId }: propsType) {
     const [innerHeight, setInnerHeight] = useState(0);
     const [windowHeight, setWindowHeight] = useState(0); // 화면 전체 y값
     const [state, dispatch] = useRoomRedux();
-
-    const { status, data, error } = useQuery(
-        ["getRoomDetailData", focusRoomId],
-        () => mapApi.getRoomDetail(focusRoomId),
+    
+    const { status, data, error } = useQuery(//useQuery를 사용함으로 다양한 값(로딩,에러,데이터)들이 포함되어 있기에 간편함
+        ["getRoomDetailData", focusRoomId],//queryKey로 두개가 바뀌면 위의 useQuery function을 실행한다.
+        () => mapApi.getRoomDetail(focusRoomId),//query function 부분임
         {
-            enabled: focusRoomId !== "",
+            enabled: focusRoomId !== "",//query option부분임 focusRoomId가 존재할때만 실행하는 옵션
         }
     );
-    useEffect(() => {
+    useEffect(() => {//innerHeight가 달라질 때
         const handleResize = () => {
             setInnerHeight(window.innerHeight);
         };
@@ -41,7 +41,7 @@ export default function RoomList({ openPopup, focusRoomId }: propsType) {
 
     return (
         <div className="w-full sm:w-[375px] z-10" style={margin}>
-            {upDown === 0 && openPopup && touchY === windowHeight && (
+            {upDown === 0 && openPopup && touchY === windowHeight && (//하단에서 올라오는 슬라이드 바가 0이고 openPopUp이 true이며, 
                 <Popup data={data} />
             )}
             <RoomListHeader

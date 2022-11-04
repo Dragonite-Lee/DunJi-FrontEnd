@@ -29,13 +29,13 @@ export const reviewApi = {
 }
 
 export const mapApi = {
-    getRoom: (coordinate: Array<number>) =>
+    getRoom: (data: any) =>
         api.get("/room/filterAction", {
             params: {
-                startLongitude: coordinate[0],
-                startLatitude: coordinate[1],
-                endLongitude: coordinate[2],
-                endLatitude: coordinate[3],
+                startLongitude: data[0],
+                startLatitude: data[1],
+                endLongitude: data[2],
+                endLatitude: data[3],
             },
         }),
 

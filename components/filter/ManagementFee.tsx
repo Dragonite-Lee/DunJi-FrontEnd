@@ -4,13 +4,15 @@ import CommonBtn from "../common/Btn";
 import { RootState } from "../../store/modules/index";
 import CategoryHeader from "components/common/CategoryHeader";
 import Slider from "rc-slider";
+import useMapFilterRedux from "hooks/useMapFilterRedux";
+import { dispatchManageFrom, dispatchManageTo } from "store/modules/filter";
 
 export default function Price() {
    
+    const [state, dispatch] = useMapFilterRedux();
 
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(20);
-
 
     return (
         <div className="pb-[30px]">
@@ -28,6 +30,8 @@ export default function Price() {
                     onChange={(e: any) => {
                         setMin(e[0]);
                         setMax(e[1]);
+                        dispatch(dispatchManageFrom(e[0]));
+                        dispatch(dispatchManageTo(e[1]));
                     }}
                 />
             </div>
@@ -35,7 +39,7 @@ export default function Price() {
                 <span>0원</span>
                 <span className="ml-[8px]">5만원</span>
                 <span className="text-center">10만원</span>
-                <span className="ml-[30px]">15만원</span>
+                <span className="sm:ml-[34px] ml-[40px]">15만원</span>
                 <span className="text-right">20만원 이상</span>
             </div>
         </div>
