@@ -1,10 +1,7 @@
-import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
+import useReviewRegisterRedux from "hooks/useReviewRegisterRedux";
 import Script from "next/script";
 import { useEffect } from "react";
-import {
-    dispatchLatitude,
-    dispatchLongitude,
-} from "store/modules/roomRegister";
+
 
 declare global {
     interface Window {
@@ -12,7 +9,7 @@ declare global {
     }
 }
 export default function Map() {
-    const [state, dispatch] = useRoomRegisterRedux();
+    const [state, dispatch] = useReviewRegisterRedux();
     const address = state.address;
 
     const onLoadKakaoMap = () => {
@@ -26,9 +23,6 @@ export default function Map() {
                     if (status === window.kakao.maps.services.Status.OK) {
                         const longitude = result[0].x; // 경도
                         const latitude = result[0].y; //위도
-
-                        dispatch(dispatchLongitude(longitude));
-                        dispatch(dispatchLatitude(latitude));
 
                         const options = {
                             center: new window.kakao.maps.LatLng(

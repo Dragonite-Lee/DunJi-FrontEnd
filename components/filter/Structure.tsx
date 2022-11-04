@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import CommonBtn from "../common/Btn";
-import { RootState } from "../../store/modules/index";
+import CommonBtn from "./CommonBtn";
+import useMapFilterRedux from "hooks/useMapFilterRedux";
 import CategoryHeader2 from "components/common/CategoryHeader2";
+import { dispatchOpenType, dispatchSeparateType, dispatchTwoFloorType } from "store/modules/filter";
 
 export default function TransactionType() {
-    const dispatch = useDispatch();
-    const roomRegister = useSelector((state: RootState) => state.roomRegister);
+    
+    const [state, dispatch] = useMapFilterRedux();
 
     const [btn1Check, setBtn1Check] = useState(false);
     const [btn2Check, setBtn2Check] = useState(false);
@@ -17,16 +18,19 @@ export default function TransactionType() {
             check: btn1Check,
             checkHandler: setBtn1Check,
             type: "오픈형",
+            dispatch: dispatchOpenType,
         },
         {
             check: btn2Check,
             checkHandler: setBtn2Check,
             type: "분리형",
+            dispatch: dispatchSeparateType,
         },
         {
             check: btn3Check,
             checkHandler: setBtn3Check,
             type: "복층형",
+            dispatch: dispatchTwoFloorType,
         },
     ];
 
@@ -40,6 +44,8 @@ export default function TransactionType() {
                         value={item.type}
                         check={item.check}
                         checkHandler={item.checkHandler}
+                        dispatchType={item.dispatch}
+                        dispatchValue={item.check}
                     />
                 ))}
             </div>

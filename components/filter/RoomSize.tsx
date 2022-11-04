@@ -1,14 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import CommonBtn from "../common/Btn";
-import { RootState } from "../../store/modules/index";
 import CategoryHeader from "components/common/CategoryHeader";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import useMapFilterRedux from "hooks/useMapFilterRedux";
+import { dispatchSizeFrom, dispatchSizeTo } from "store/modules/filter";
 
 export default function RoomSize() {
-    const dispatch = useDispatch();
-    const roomRegister = useSelector((state: RootState) => state.roomRegister);
+    
+    const [state, dispatch] = useMapFilterRedux();
 
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(40);
@@ -30,6 +29,8 @@ export default function RoomSize() {
                     onChange={(e: any) => {
                         setMin(e[0]);
                         setMax(e[1]);
+                        dispatch(dispatchSizeFrom(e[0]));
+                        dispatch(dispatchSizeTo(e[1]))
                     }}
                 />
             </div>
@@ -37,7 +38,7 @@ export default function RoomSize() {
                 <span>0평</span>
                 <span className="ml-[14px]">10평</span>
                 <span className="text-center">20평</span>
-                <span className="ml-[36px]">30평</span>
+                <span className="sm:ml-[36px] ml-[46px] ">30평</span>
                 <span className="text-right">40평 이상</span>
             </div>
         </>

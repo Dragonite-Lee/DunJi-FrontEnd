@@ -9,6 +9,7 @@ import loading from "./loading";
 import login from "./login";
 import tab from "./tab";
 import reviewRegister from "./reviewRegister";
+import mapFilter from "./filter";
 // import storage from 'redux-persist/lib/storage'
 
 
@@ -34,6 +35,7 @@ const reducer = (state: any, action: any) => {
         login,
         tab,
         reviewRegister,
+        mapFilter,
     })(state, action);
 };
 
