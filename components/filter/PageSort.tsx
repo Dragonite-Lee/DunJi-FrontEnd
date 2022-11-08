@@ -25,6 +25,18 @@ export default function PageSort() {
             dispatch: dispatchRecommendSort
         },
     ];
+    useEffect(()=>{
+        if(btn1Check==true) {
+            setBtn2Check(false)
+            dispatch(dispatchRecommendSort(false))
+        }
+    },[btn1Check])
+    useEffect(()=>{
+        if(btn2Check==true) {
+            setBtn1Check(false)
+            dispatch(dispatchPriceSort(false))
+        }
+    },[btn2Check])
 
 
     return (

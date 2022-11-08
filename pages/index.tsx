@@ -19,14 +19,7 @@ export default function Home() {
         userNickname = localStorage.getItem('userNickname');
     };
 
-    function loggedOut() {
-        if (typeof window !== 'undefined') {
-            localStorage.removeItem('userId');
-            localStorage.removeItem('userNickname')
-        }
-        location.reload()
-        
-    }
+    
 
     return (
         <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">
@@ -49,11 +42,6 @@ export default function Home() {
                                 <div className="text-xl">간편로그인</div>
                             </a>
                         </Link>
-                        <div className="text-xl px-1"
-                            onClick={loggedOut}
-                        >
-                            로그아웃
-                        </div>
                         <Image src={require("../assets/icon/더보기.svg")} />
                     </div>
                 </div>
@@ -72,7 +60,6 @@ export default function Home() {
                                 어떤 방을<br/>
                                 찾고 계신가요?
                             </div>
-
                         </div>
                     </div>
                 </header>

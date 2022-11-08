@@ -10,6 +10,7 @@ import {dispatchRoomList, dispatchMapRoomList } from "store/modules/room";
 import TabBar from "components/main/TabBar";
 import useMapFilterRedux from "hooks/useMapFilterRedux";
 import { dispatchStartLongitude, dispatchStartLatitude, dispatchEndLongitude, dispatchEndLatitude } from "store/modules/filter";
+import Filter from "./filter";
 
 export default function Map() {
     const [state, dispatch] = useRoomRedux();
@@ -32,7 +33,7 @@ export default function Map() {
         dispatch(dispatchStartLatitude(coordinate[1]));
         dispatch(dispatchEndLongitude(coordinate[2]));
         dispatch(dispatchEndLatitude(coordinate[3]));
-    },[])
+    },[Map,Filter])
     // useEffect(() => { // 현재 위도, 경도 얻는 훅
     //     const getLocation = () => {
     //         if (navigator.geolocation) {
@@ -58,7 +59,7 @@ export default function Map() {
 
     //     getLocation();
     // }, []);
-
+    
     const { status, data, error } = useQuery(
         ["getRoomData", coordinate],
         () => mapApi.getRoom(state2),
@@ -144,7 +145,7 @@ export default function Map() {
     );
 
     // useEffect(() => {
-    //     setLoad(true)
+        // setLoad(true)
     // },[]);
 
     console.log(load)
@@ -179,21 +180,23 @@ export default function Map() {
 
     useEffect(() => {
         // header에서 주소 주소 검색한 경우 현재 지도 중심 위치 변경 훅
+        setLoad(true);
         if (load) {
-            // kakao map api 로드 이후에 동작하게 함
-            var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);//이동할 위도 경도 위치 생성
-            
-            const container = document.getElementById("map"); //지도를 표시할 div 검색에서 주소를 검색하면 위치가 바뀌니까
-            const options = {
-                center: new window.kakao.maps.LatLng(latitude, longitude), //주소에서 검색해서 나온 지도의 중심좌표
-                level: 6, //확대수준
-            }; //지도를 표시하는 옵션
-            const map = new window.kakao.maps.Map(container, options); //지도 생성하기
-            mapVar.current = map;
-            map.panTo(moveLatLon); //맵을 부드럽게 이동시키는데 사용
-
+            window.kakao.maps.load(()=>{
+                // kakao map api 로드 이후에 동작하게 함
+                var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);//이동할 위도 경도 위치 생성
+                
+                const container = document.getElementById("map"); //지도를 표시할 div 검색에서 주소를 검색하면 위치가 바뀌니까
+                const options = {
+                    center: new window.kakao.maps.LatLng(latitude, longitude), //주소에서 검색해서 나온 지도의 중심좌표
+                    level: 6, //확대수준
+                }; //지도를 표시하는 옵션
+                const map = new window.kakao.maps.Map(container, options); //지도 생성하기
+                mapVar.current = map;
+                map.panTo(moveLatLon); //맵을 부드럽게 이동시키는데 사용
+            })
         }
-    }, [latitude, load, longitude]); //*위도, 경도바뀌거나 load되면 해당 위도경도에 맞게끔 부드럽게 이동 근데, load는 기본값이 에리카니까 에리카로 나올듯
+    }, [latitude, load, longitude,Map]); //*위도, 경도바뀌거나 load되면 해당 위도경도에 맞게끔 부드럽게 이동 근데, load는 기본값이 에리카니까 에리카로 나올듯
     return (
         <div>
             <Script

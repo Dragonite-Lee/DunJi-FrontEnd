@@ -1,7 +1,7 @@
-
 import { useCallback, useState } from "react";
 import useMapFilterRedux from "hooks/useMapFilterRedux";
 import { mapApi } from "_api";
+import { dispatchfilterDataTypes } from "store/modules/filter";
 
 
 
@@ -197,48 +197,48 @@ export default function BottomNextBtn() {
             formData.append(price_arr[i],price_value_arr[i])
         }
 
-        const all_items_arr = [
-            { dealType: "거래유형을" },
-            { oneRoom: "방종류를" },
-            { twoRoom: "방종류를" },
-            { threeRoom: "방종류를" },
-            { priceUnit: "가격단위를" },
-            { priceFrom: "가격을" },
-            { priceTo: "가격을" },
-            { depositFrom: "가격을" },
-            { depositTo: "가격을" },
-            { manageFrom: "관리비를" },
-            { manageTo: "관리비를" },
-            // { floorfive: "층수를" },
-            // { floorsixup: "층수를" },
-            // { floortenup: "층수를" },
-            // { basement: "층수를" },
-            // { rooftop: "층수를" },
-            { openType: "방구조를" },
-            { separateType: "방구조를" },
-            { twoFloorType: "방구조를" },
-            { sizeFrom: "방크기를" },
-            { sizeTo: "방크기를" },
-            { car: "추가필터를" },
-            { elevator: "추가필터를" },
-            { pet: "추가필터를" },
-            { fullOption: "추가필터를" },
-            { women: "추가필터를" },
-            { loan: "추가필터를" },
-            { priceSort: "나열순서를" },
-            { recommendSort: "나열순서를" },
-        ];
+        // const all_items_arr = [
+        //     { dealType: "거래유형을" },
+        //     { oneRoom: "방종류를" },
+        //     { twoRoom: "방종류를" },
+        //     { threeRoom: "방종류를" },
+        //     { priceUnit: "가격단위를" },
+        //     { priceFrom: "가격을" },
+        //     { priceTo: "가격을" },
+        //     { depositFrom: "가격을" },
+        //     { depositTo: "가격을" },
+        //     { manageFrom: "관리비를" },
+        //     { manageTo: "관리비를" },
+        //     // { floorfive: "층수를" },
+        //     // { floorsixup: "층수를" },
+        //     // { floortenup: "층수를" },
+        //     // { basement: "층수를" },
+        //     // { rooftop: "층수를" },
+        //     { openType: "방구조를" },
+        //     { separateType: "방구조를" },
+        //     { twoFloorType: "방구조를" },
+        //     { sizeFrom: "방크기를" },
+        //     { sizeTo: "방크기를" },
+        //     { car: "추가필터를" },
+        //     { elevator: "추가필터를" },
+        //     { pet: "추가필터를" },
+        //     { fullOption: "추가필터를" },
+        //     { women: "추가필터를" },
+        //     { loan: "추가필터를" },
+        //     { priceSort: "나열순서를" },
+        //     { recommendSort: "나열순서를" },
+        // ];
 
         try {
-            for (let item of all_items_arr) {
+            // for (let item of all_items_arr) {
                 
-                const key = Object.keys(item)[0];
-                const message = Object.values(item)[0];
-                if (!formData.has(key)) {
-                    throw message;
-                }
+            //     const key = Object.keys(item)[0];
+            //     const message = Object.values(item)[0];
+            //     if (!formData.has(key)) {
+            //         throw message;
+            //     }
                 
-            }
+            // }
             for (let i of formData.entries()) {
                 console.log(i);
             }
@@ -247,7 +247,7 @@ export default function BottomNextBtn() {
             await mapApi.getRoom(formData)
             .then((res)=>{
                 console.log(res)
-                
+                dispatch(dispatchfilterDataTypes(res))
             });
             
         } catch (e) {
