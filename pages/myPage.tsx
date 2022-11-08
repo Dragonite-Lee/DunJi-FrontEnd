@@ -8,8 +8,6 @@ import Content from "components/mypage/Content";
 
 export default function Mypage() {
     
-    
-    
     return (
         <div className="bg-background_beige min-h-full sm:w-[375px] sm:m-auto pb-[120px]">
             <TabBar />
