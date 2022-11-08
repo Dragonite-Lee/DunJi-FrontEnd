@@ -34,7 +34,25 @@ type initialStateTypes = {
 	loan: boolean;
 	priceSort: boolean;
 	recommendSort: boolean;
+    filterDataTypes: {
+        address: string;
+        latitude: number;
+        longitude: number;
+        roomID: any;
+        priceUnit: string;
+        roomType: string;
+        deposit: number;
+        dealType: string;
+        price: number;
+        struct: string;
+        floor: number;
+        roomSize: any;
+        recommend: number;
+    }
 };
+
+
+
 //선택안함이 0 default
 const initialState: initialStateTypes = {
     startLongitude: 0,
@@ -70,6 +88,21 @@ const initialState: initialStateTypes = {
 	loan: false,
 	priceSort: false,
 	recommendSort: false,
+    filterDataTypes: {
+        address: "",
+        latitude: 0,
+        longitude: 0,
+        roomID: "",
+        priceUnit: "",
+        roomType: "",
+        deposit: 0,
+        dealType: "",
+        price: 0,
+        struct: "",
+        floor: 0,
+        roomSize: "",
+        recommend: 0,
+    },
 };
 
 const mapFilter = createSlice({
@@ -175,6 +208,9 @@ const mapFilter = createSlice({
         dispatchRecommendSort: (state, action) => {
             state.recommendSort = action.payload;
         },
+        dispatchfilterDataTypes: (state, action) => {
+            state.filterDataTypes = action.payload;
+        },
     },
 });
 
@@ -214,4 +250,5 @@ export const {
     dispatchLoan,
     dispatchPriceSort,
     dispatchRecommendSort,
+    dispatchfilterDataTypes,
 } = mapFilter.actions;
