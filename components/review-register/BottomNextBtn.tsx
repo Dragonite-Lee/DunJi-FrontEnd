@@ -50,6 +50,7 @@ export default function BottomNextBtn() {
             "periodFrom",
             "periodTo",
             "total",
+            "totalNum",
         ];
         for (let i = 0; i < delete_arr.length; i++)
             formData.delete(delete_arr[i]);
@@ -105,14 +106,8 @@ export default function BottomNextBtn() {
         const period = state.periodFrom + " ~ " + state.periodTo;
         formData.append("period", period);
 
-        //별점 업로드
-        let num = 0;
-        for (let i = 0; i < 5; i++) {
-            if (state.total[i].src == "/_next/static/media/별점_활성화.309ba3fa.svg") {
-                num += 1;
-            }
-        }
-        formData.append("total", String(num))
+       //별점
+       formData.append("total", state.totalNum);
 
         const all_items_arr = [
             { address: "주소를" },
@@ -160,7 +155,7 @@ export default function BottomNextBtn() {
             className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
             onClick={checkHandler}
         >
-            <div className="text-[17px] text-white">방 내놓기</div>
+            <div className="text-[17px] text-white">후기 작성</div>
             <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
         </div>
     );

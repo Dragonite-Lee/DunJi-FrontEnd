@@ -9,6 +9,7 @@ type initialStateTypes = {
     address: string;
     detailAddress: string;
     total: string[]
+    totalNum: number;
     clean: 0 | 1 | 2 | 3;
     sound: 0 | 1 | 2 | 3;
     accessible: 0 | 1 | 2 | 3;
@@ -29,6 +30,7 @@ const initialState: initialStateTypes = {
     address: "",
     detailAddress: "",
     total: [],
+    totalNum: 0,
     clean: 3,
     sound: 3,
     accessible: 3,
@@ -67,6 +69,9 @@ const reviewRegister = createSlice({
         },
         dispatchTotal: (state, action) => {
             state.total = action.payload;
+        },
+        dispatchTotalNum: (state, action) => {
+            state.totalNum = action.payload;
         },
         dispatchClean: (state, action) => {
             state.clean = action.payload;
@@ -109,6 +114,7 @@ export const {
     dispatchMainAddress,
     dispatchDetailAddress,
     dispatchTotal,
+    dispatchTotalNum,
     dispatchClean,
     dispatchSound,
     dispatchAccessible,

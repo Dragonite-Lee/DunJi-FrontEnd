@@ -14,8 +14,9 @@ export default function RoomListYSlider() {
             setSideData(Object.values(state.MAP_ROOM_LIST));
         }
     }, [state.MAP_ROOM_LIST]);
+    // console.log(state.MAP_ROOM_LIST)
     return (
-        <div className="w-screen bg-white  px-standard_pd h-[42vh] overflow-scroll">
+        <div className="w-full  bg-white  px-[18px] h-[76vh] overflow-scroll overflow-x-hidden">
             {slideData.map((item: listTypes, index) => (
                 <Link key={index} href={`/room/${item.roomID}`} passHref>
                     <a>

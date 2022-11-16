@@ -1,9 +1,10 @@
 import useReviewRegisterReudx from "hooks/useReviewRegisterRedux";
-import { dispatchTotal } from "store/modules/reviewRegister";
+import { dispatchTotal, dispatchTotalNum } from "store/modules/reviewRegister";
 import {useState,useEffect} from "react";
 import Image from "next/image";
 import active from "../../../assets/icon/별점_활성화.svg";
-import noActive from "../../../assets/icon/별점_비활성화.svg"
+import noActive from "../../../assets/icon/별점_비활성화.svg";
+import harfActive from "../../../assets/icon/별점_반.svg";
 
 export default function Total() {
     const [state,dispatch] = useReviewRegisterReudx();
@@ -14,27 +15,78 @@ export default function Total() {
     // const active = "../../../assets/icon/별점_활성화.svg";
     // const noActive = "../../../assets/icon/별점_비활성화.svg";
 
-    function clickRatingHandler(index: number) {
+    function clickRatingHandler(index: number, src: any) {
         let StarRating: Array<string> = [];
-
-        for (let i = 0; i < 5; i++) {
-            if(i<=index) {
-                StarRating.push(active);
-            } else {
-                StarRating.push(noActive);
-            }
-        }
-        dispatch(dispatchTotal(StarRating));
-    }
-    function overRatingHandler(index: number) {
-        let StarRating: Array<string> = [];
-
-        for (let i = 0; i < 5; i++) {
-            if(i<=index) {
-                StarRating.push(active);
-            } else {
-                StarRating.push(noActive);
-            }
+        if(src*2 == 1) {
+            StarRating.push(harfActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(0.5));
+        } else if(src*2 == 2) {
+            StarRating.push(active);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(1));
+        } else if(src*2 == 3) {
+            StarRating.push(active);
+            StarRating.push(harfActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(1.5));
+        } else if(src*2 == 4) {
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(2));
+        } else if(src*2 == 5) {
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(harfActive);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(2.5));
+        } else if(src*2 == 6) {
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(noActive);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(3));
+        } else if(src*2 == 7) {
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(harfActive);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(3.5));
+        } else if(src*2 == 8) {
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(noActive);
+            dispatch(dispatchTotalNum(4));
+        } else if(src*2 == 9) {
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(harfActive);
+            dispatch(dispatchTotalNum(4.5));
+        } else if(src*2 == 10) {
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            StarRating.push(active);
+            dispatch(dispatchTotalNum(5));
         }
         dispatch(dispatchTotal(StarRating));
     }
@@ -53,16 +105,26 @@ export default function Total() {
             url.push(state.total[i]);
         }
     }
+
+    function location(num: number,index: number) {
+        if (num > 29) {
+            return index
+        } else if (num <= 29) {
+            return index-0.5
+        }
+    }
     // console.log(url)
-    const map_result = url.map(function(star: any, index: any) {
+    const map_result = url.map(function(star: any, index: number) {
         return (
             <div key={index} className="">
                 {star
                     ? <Image 
                         alt="별점"
                         src={star}
-                        // onMouseOver={() => overRatingHandler(index)}
-                        onClick={() => clickRatingHandler(index)}
+                        onClick={(e) => 
+                            clickRatingHandler((index+1)*2,location(e.nativeEvent.offsetX,(index+1)))
+                            // console.log(location(e.nativeEvent.offsetX,(index+1)))
+                        }
                         width={80}
                         height={80}
                     />
