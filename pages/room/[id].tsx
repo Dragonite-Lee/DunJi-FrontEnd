@@ -15,6 +15,7 @@ import useRoomRedux from "hooks/useRoomRedux";
 import { useEffect,useState } from "react";
 import useRoomRegisterRedux from "hooks/useRoomRegisterRedux";
 import CompleteModal from "components/room-detail/CompleteModal";
+import Header2 from "components/room-detail/Header2";
 // import LifeInfo from "components/room-detail/LifeInfo";
 
 export default function RoomDetail() {
@@ -44,7 +45,7 @@ export default function RoomDetail() {
     return (
         
         <div className="pb-[12rem] min-h-screen sm:w-[375px] sm:m-auto w-screen bg-background_beige">
-            {state &&
+            {state ? (
                 <>
                 {popUp && <CompleteModal />}
                     <Header title={state.ROOM_POST.address} />
@@ -116,7 +117,14 @@ export default function RoomDetail() {
                         />
                     </div>
                 </>
-            }
+            ): (
+                <div>
+                    <Header2 />
+                    <div className="text-[17px] p-[30px]">
+                        존재하지 않는 방입니다.
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
