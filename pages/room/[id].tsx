@@ -27,12 +27,14 @@ export default function RoomDetail() {
     
     useEffect(() => {
         // *방상세정보 id별로 받아옴
-        mapApi.getRoomDetail(id)
-        .then((res) => {
-            console.log(res);
-            dispatch(dispatchRoomPostList(res.data.Room_Post));
-            dispatch(dispatchRoomInfoList(res.data.Room_Info));
-        })
+        if(router.isReady) {
+            mapApi.getRoomDetail(id)
+            .then((res) => {
+                console.log(res);
+                dispatch(dispatchRoomPostList(res.data.Room_Post));
+                dispatch(dispatchRoomInfoList(res.data.Room_Info));
+            })
+        }
         
         // *모달창 3초 뒤 사라짐
         setPopUp(true);
@@ -45,7 +47,7 @@ export default function RoomDetail() {
     return (
         
         <div className="pb-[12rem] min-h-screen sm:w-[375px] sm:m-auto w-screen bg-background_beige">
-            {state ? (
+            {id ? (
                 <>
                 {popUp && <CompleteModal />}
                     <Header title={state.ROOM_POST.address} />
