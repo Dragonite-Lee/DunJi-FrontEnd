@@ -3,12 +3,10 @@ import Link from "next/link";
 import Header from "components/room-register/Header";
 import { useState } from "react";
 
-export default function agreePage() {
+export default function AgreePage() {
     
     const [isCheck1, SetIsCheck1] = useState<boolean>(false);
     const [isCheck2, SetIsCheck2] = useState<boolean>(false);
-    const [allCheck, SetAllCheck] = useState<boolean>(false);
-
    
     const ChangeHandler = (
         setState: React.Dispatch<React.SetStateAction<boolean>>
@@ -60,7 +58,7 @@ export default function agreePage() {
                 <Link href="/room/register">
                     <a>
                         <div
-                        className="min-w-[375px] sm:w-[375px] sm:m-auto bg-main fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+                            className="min-w-[375px] sm:w-[375px] sm:m-auto bg-main fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
                         >
                             <div className="text-[17px] Pretendard-SemiBold text-white">방 내놓기</div>
                             <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />

@@ -45,12 +45,13 @@ export default function Review({
     return (
         <OpenLayout open={open} setOpen={setOpen} title="방 정보">
             {arr.map((item, index) => (
-                <InfoField
-                    key={index}
-                    title={item.title}
-                    content={item.data}
-                    last={index !== arr.length - 1}
-                />
+                <div key={index}>
+                    <InfoField
+                        title={item.title}
+                        content={item.data}
+                        last={index !== arr.length - 1}
+                    />
+                </div>
             ))}
         </OpenLayout>
     );
