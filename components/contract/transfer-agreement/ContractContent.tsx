@@ -38,7 +38,7 @@ export default function ContractContent() {
                         임대인과 임차인의 인적사항과 양도 대상에 대한 정보를 기재합니다. 
                         동의자의 서명, 날인 필수입니다!
                     </div>
-                    <Image src={require("../../../assets/icon/contract/임차권_양도_승낙서.png")} />
+                    <Image src={require("../../../assets/icon/contract/임차권_양도_승낙서.png")} alt="임차권양도승낙서"/>
                     <div className="mt-6">
                         <span className="font-bold">2) 서식 구성항목:</span> 전대부동산의 표시, 양도 승낙 내용, 임대 조건, 작성일자, 작성자, 서명
                     </div>
@@ -90,7 +90,7 @@ export default function ContractContent() {
                     <div className="my-2">
                         1) 가능하다면 모든 과정을 대면으로, 최대한 꼼꼼히 확인해 보고 진행하세요!
                     </div>
-                    <Image src={require("../../../assets/icon/contract/부동산_권리_양도_계약서.gif")} />
+                    <Image src={require("../../../assets/icon/contract/부동산_권리_양도_계약서.gif")} alt="부동산권리양도계약서"/>
                 </div>
             )}
             {/* 임차권 등기명령 신청 */}
@@ -121,7 +121,7 @@ export default function ContractContent() {
                     <div className="my-6">
                         3) 임차권 등기명령이 받아들여지면 다른 집으로 이사 가서 그 집에 전입신고를 하고 확정일자를 받더라도 전에 살던 집 에 대한 전입신고와 확정일자가 효력을 잃지않아 나중에라도 집주인에게서 보증금을 되돌려 받을 수 있습니다.
                     </div>
-                    <Image src={require("../../../assets/icon/contract/임차권_등기명령_신청방법.png")} />
+                    <Image src={require("../../../assets/icon/contract/임차권_등기명령_신청방법.png")} alt="임차권등기명령신청방법"/>
                 </div>
             )}
             <div className="Pretendard-Regular text-font_gray mt-24 pb-44 text-xl text-center">

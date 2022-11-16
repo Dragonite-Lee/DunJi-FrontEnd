@@ -12,6 +12,7 @@ export default function Profile() {
                         src={require("assets/icon/logo/logo_main.png")} 
                         width={60}
                         height={60}
+                        alt="메인로고"
                         className="rounded-[50px]"
                     />
                 </div>

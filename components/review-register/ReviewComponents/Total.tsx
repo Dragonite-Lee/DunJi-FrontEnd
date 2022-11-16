@@ -96,7 +96,7 @@ export default function Total() {
             starRatingState.push(noActive);
         }
         dispatch(dispatchTotal(starRatingState))
-    },[]);
+    },[dispatch,starRatingState]);
 
     let url:any = [];
 

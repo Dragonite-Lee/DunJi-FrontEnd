@@ -56,6 +56,7 @@ export default function ReviewImg() {
                         width={100}
                         height={80}
                         src={image}
+                        alt="방사진"
                         />
                     : <Image
                         className="rounded-standard_rounded"
@@ -63,6 +64,7 @@ export default function ReviewImg() {
                         objectFit="fill"
                         width={100}
                         height={80}
+                        alt="채팅메뉴앨범"
                         src={require("../../../assets/icon/채팅메뉴_앨범.svg")}
                     />
                 } 

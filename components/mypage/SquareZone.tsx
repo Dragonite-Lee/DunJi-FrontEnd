@@ -11,6 +11,7 @@ export default function SquareZone() {
                         src={require("assets/icon/myPage/찜한매물.svg")}
                         width={33}
                         height={33}
+                        alt="찜한매물"
                     />
                     <div className="ml-[4px]">
                         {/* *각 페이지로 이동해야함 */}
@@ -22,6 +23,7 @@ export default function SquareZone() {
                         src={require("assets/icon/myPage/최근매물.svg")}
                         width={35}
                         height={35}
+                        alt="최근매물"
                     />
                     <div className="ml-[4px]">
                         {/* *각 페이지로 이동해야함 */}
@@ -33,6 +35,7 @@ export default function SquareZone() {
                         src={require("assets/icon/myPage/매물.svg")}
                         width={35}
                         height={35}
+                        alt="매물"
                     />
                     <div className="ml-[4px]">
                         {/* *각 페이지로 이동해야함 */}
@@ -44,6 +47,7 @@ export default function SquareZone() {
                         src={require("assets/icon/myPage/커뮤니티.svg")}
                         width={35}
                         height={35}
+                        alt="커뮤니티"
                     />
                     <div className="ml-[7px]">
                         {/* *각 페이지로 이동해야함 */}

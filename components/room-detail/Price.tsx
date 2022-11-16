@@ -35,8 +35,8 @@ export default function Price({
         { value: manageTV, type: "티비" },
     ];
     const manageContent = manageCost + "만원" + "\n관리비에 포함" + manageInclude;
-    const manageContentEnter = manageContent.split('\n').map( line => {
-        return (<span>{line}<br/></span>)
+    const manageContentEnter = manageContent.split('\n').map( (line,index) => {
+        return (<span key={index}>{line}<br/></span>)
     });
     const arr = [
         {
@@ -51,14 +51,13 @@ export default function Price({
     ];
     return (
         <OpenLayout open={open} setOpen={setOpen} title="가격 정보">
-            {arr.map((item, index) => (
-                <div key={index}> 
-                    <InfoField
-                        title={item.title}
-                        content={item.data}
-                        last={index !== arr.length - 1}
-                    />
-                </div>
+            {arr.map((item, index) => ( 
+                <InfoField
+                    key={index}
+                    title={item.title}
+                    content={item.data}
+                    last={index !== arr.length - 1}
+                />
             ))}
         </OpenLayout>
     );

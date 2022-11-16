@@ -42,7 +42,7 @@ export default function Home() {
                                 <div className="text-xl">간편로그인</div>
                             </a>
                         </Link>
-                        <Image src={require("../assets/icon/더보기.svg")} />
+                        <Image src={require("../assets/icon/더보기.svg")} alt="더보기"/>
                     </div>
                 </div>
                 {/* *로고와 메인글 */}
@@ -53,6 +53,7 @@ export default function Home() {
                                 <Image
                                     width={215}
                                     height={157}
+                                    alt="메인캐릭터"
                                     src={require("../assets/icon/main/main_char.png")}
                                 />
                             </div>
