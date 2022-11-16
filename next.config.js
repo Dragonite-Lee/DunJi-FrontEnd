@@ -6,6 +6,7 @@ const nextConfig = {
         loader: 'akamai',
         path: '/',
     },
+    // staticPageGenerationTimeout: 1000,
     
 };
 module.exports = nextConfig;

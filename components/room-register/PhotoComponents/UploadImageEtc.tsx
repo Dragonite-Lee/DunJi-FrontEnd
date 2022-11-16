@@ -47,8 +47,7 @@ export default function UploadImageEtc() {
         }
     }
 
-    // console.log(url);
-    // console.log(state.room2Image)
+    
     
     const map_result = url.map(function(image: any,index: any) {
         return (
@@ -61,6 +60,7 @@ export default function UploadImageEtc() {
                         width={100}
                         height={80}
                         src={image}
+                        alt="방사진"
                         />
                     : <Image
                         className="rounded-standard_rounded"
@@ -68,6 +68,7 @@ export default function UploadImageEtc() {
                         objectFit="fill"
                         width={100}
                         height={80}
+                        alt="채팅메뉴앨범"
                         src={require("../../../assets/icon/채팅메뉴_앨범.svg")}
                     />
                 } 

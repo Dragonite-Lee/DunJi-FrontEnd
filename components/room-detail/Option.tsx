@@ -33,7 +33,7 @@ export default function Option({elevator, car, pet, women, loan, aircon, bed, cl
             a.push(op[i])
         }
     }
-    console.log(a);
+    
 
     const imgArr = [
         {

@@ -10,7 +10,7 @@ export default function Register() {
     const [state,dispatch] = useReviewRegisterRedux();
     useEffect(() => {
         dispatch(dispatchRegistrant(localStorage.getItem('userId')));
-    },[])
+    },[dispatch])
     
     return (
         <div className="bg-background_beige sm:w-[375px] sm:m-auto pb-[12rem] relative min-h-screen">

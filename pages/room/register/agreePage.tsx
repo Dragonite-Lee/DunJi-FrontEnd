@@ -3,12 +3,10 @@ import Link from "next/link";
 import Header from "components/room-register/Header";
 import { useState } from "react";
 
-export default function agreePage() {
+export default function AgreePage() {
     
     const [isCheck1, SetIsCheck1] = useState<boolean>(false);
     const [isCheck2, SetIsCheck2] = useState<boolean>(false);
-    const [allCheck, SetAllCheck] = useState<boolean>(false);
-
    
     const ChangeHandler = (
         setState: React.Dispatch<React.SetStateAction<boolean>>
@@ -31,7 +29,7 @@ export default function agreePage() {
                         1. 방을 내놓을 때는 <span className="Pretendard-SemiBold">집주인(임대인)의 동의</span>가 반드시 필요합니다. 
                     </div>
                     <div className="mt-10">
-                    2. 방을 내놓기 위해서는 <span className="Pretendard-SemiBold">'전대동의서'</span>(전대차 계약의 경우) 혹은 <span className="Pretendard-SemiBold">'양도승낙서'</span>(양도·양수 계약의 경우)를 받아주세요! 
+                    2. 방을 내놓기 위해서는 <span className="Pretendard-SemiBold">&apos;전대동의서&apos;</span>(전대차 계약의 경우) 혹은 <span className="Pretendard-SemiBold">&apos;양도승낙서&apos;</span>(양도·양수 계약의 경우)를 받아주세요! 
                     </div>
                     <div className="mt-10">
                     3. 해당 내용은 <Link href="/room/contract"><a><span className="Pretendard-SemiBold underline">계약서 가이드</span></a></Link>에서 자세히 확인하실 수 있으며 계약서 파일을 다운받아보실 수 있습니다. 
@@ -60,7 +58,7 @@ export default function agreePage() {
                 <Link href="/room/register">
                     <a>
                         <div
-                        className="min-w-[375px] sm:w-[375px] sm:m-auto bg-main fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+                            className="min-w-[375px] sm:w-[375px] sm:m-auto bg-main fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
                         >
                             <div className="text-[17px] Pretendard-SemiBold text-white">방 내놓기</div>
                             <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />

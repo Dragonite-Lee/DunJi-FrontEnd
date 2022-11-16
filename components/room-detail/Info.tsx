@@ -26,8 +26,8 @@ export default function Review({
     const [open, setOpen] = useState(false);
 
     const availContent = availFrom + " 부터 \n" + availTo +" " + (availConsul ? "(협의가능)" : "(협의불가)");
-    const availContentEnter = availContent.split('\n').map( line => {
-        return (<span>{line}<br/></span>)
+    const availContentEnter = availContent.split('\n').map( (line,index) => {
+        return (<span key={index}>{line}<br/></span>)
     });
 
     // const elevatorContent = elevator ?

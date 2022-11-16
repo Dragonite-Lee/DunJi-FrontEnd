@@ -37,7 +37,7 @@ export default function ContractContent() {
                         임대인과 임차인의 인적사항과 전대 대상에 대한 정보를
                         기재합니다. 동의자의 서명, 날인 필수입니다!
                     </div>
-                    <Image src={require("../../../assets/icon/contract/전대동의서.jpg")} />
+                    <Image src={require("../../../assets/icon/contract/전대동의서.jpg")} alt="전대동의서"/>
                     <div className="mt-6">
                         <span className="font-bold">2) 서식 구성항목:</span> 임대인 인적사항, 임차인 인적사항, 전대
                         동의 내용, 전대부동산의 표시, 전대인 인적사항, 전차인 인적
@@ -125,7 +125,7 @@ export default function ContractContent() {
                     <div className="my-2">
                         1) 가능하다면 모든 과정을 대면으로, 최대한 꼼꼼히 확인해 보고 진행하세요!
                     </div>
-                    <Image src={require("../../../assets/icon/contract/전대차_계약서.gif")} />
+                    <Image src={require("../../../assets/icon/contract/전대차_계약서.gif")} alt="전대차계약서"/>
                 </div>
             )}
             <div className="Pretendard-Regular px-[18px] bg-background_beige text-font_gray pt-24 pb-44 text-xl text-center">

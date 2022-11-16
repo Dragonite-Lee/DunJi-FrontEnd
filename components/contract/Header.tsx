@@ -22,7 +22,7 @@ export default function Header() {
                     </div>
                     <div className="text-[17px] ml-4 Pretendard-SemiBold">계약서 가이드</div>
                 </div>
-                <Image  src={require("../../assets/icon/더보기.svg")} />
+                <Image  src={require("../../assets/icon/더보기.svg")}  alt="더보기"/>
             </header>
         </>
     );

@@ -37,7 +37,7 @@ export default function Map() {
         dispatch(dispatchStartLatitude(coordinate[1]));
         dispatch(dispatchEndLongitude(coordinate[2]));
         dispatch(dispatchEndLatitude(coordinate[3]));
-    },[Map,Filter])
+    },[coordinate,dispatch])
     // useEffect(() => { // 현재 위도, 경도 얻는 훅
     //     const getLocation = () => {
     //         if (navigator.geolocation) {
@@ -148,10 +148,6 @@ export default function Map() {
         [dispatch, openPopup, state.ROOM_LIST]
     );
 
-    // console.log(load)
-    // useEffect(()=>{
-    //     setLoad(true);
-    // },[Map])
     const onLoadKakaoMap = useCallback(() => { //*카카오맵 로드되면 할 동작
         
         window.kakao.maps.load(() => {
@@ -180,7 +176,7 @@ export default function Map() {
             var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);//moveLatLon이라는 변수에 center값을 저장함
             map.panTo(moveLatLon); //센터가 저위도경도로 부드럽게 이동
         });
-    }, [latitude, longitude, updateCoordinate, Map]);//위도,경도,또는 위도경도 업데이트함수에 반응
+    }, [latitude, longitude, updateCoordinate]);//위도,경도,또는 위도경도 업데이트함수에 반응
 
     useEffect(() => {
         // header에서 주소 주소 검색한 경우 현재 지도 중심 위치 변경 훅
@@ -199,7 +195,7 @@ export default function Map() {
                 map.panTo(moveLatLon); //맵을 부드럽게 이동시키는데 사용
             })
         }
-    }, [latitude, longitude]); //*위도, 경도바뀌거나 load되면 해당 위도경도에 맞게끔 부드럽게 이동 근데, load는 기본값이 에리카니까 에리카로 나올듯
+    }, [latitude, longitude, load]); //*위도, 경도바뀌거나 load되면 해당 위도경도에 맞게끔 부드럽게 이동 근데, load는 기본값이 에리카니까 에리카로 나올듯
     return (
         <div>
             <Script

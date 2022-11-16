@@ -1,6 +1,6 @@
 import useReviewRegisterReudx from "hooks/useReviewRegisterRedux";
 import { dispatchTotal, dispatchTotalNum } from "store/modules/reviewRegister";
-import {useState,useEffect} from "react";
+import {useState,useEffect,useMemo} from "react";
 import Image from "next/image";
 import active from "../../../assets/icon/별점_활성화.svg";
 import noActive from "../../../assets/icon/별점_비활성화.svg";
@@ -9,8 +9,7 @@ import harfActive from "../../../assets/icon/별점_반.svg";
 export default function Total() {
     const [state,dispatch] = useReviewRegisterReudx();
 
-    let starRatingState: Array<string> = [];
-    
+    let starRatingState:Array<string> = useMemo( () => [],[] )
 
     // const active = "../../../assets/icon/별점_활성화.svg";
     // const noActive = "../../../assets/icon/별점_비활성화.svg";
@@ -96,7 +95,7 @@ export default function Total() {
             starRatingState.push(noActive);
         }
         dispatch(dispatchTotal(starRatingState))
-    },[]);
+    },[dispatch,starRatingState]);
 
     let url:any = [];
 
@@ -113,7 +112,7 @@ export default function Total() {
             return index-0.5
         }
     }
-    // console.log(url)
+    
     const map_result = url.map(function(star: any, index: number) {
         return (
             <div key={index} className="">
@@ -123,7 +122,7 @@ export default function Total() {
                         src={star}
                         onClick={(e) => 
                             clickRatingHandler((index+1)*2,location(e.nativeEvent.offsetX,(index+1)))
-                            // console.log(location(e.nativeEvent.offsetX,(index+1)))
+                            
                         }
                         width={80}
                         height={80}

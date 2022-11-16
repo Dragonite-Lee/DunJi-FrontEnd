@@ -64,7 +64,7 @@ export default function RoomList({ openPopup, focusRoomId }: propsType) {
         
     // }
 
-    // console.log(position)
+    
     const [btHeight,setBtHeight] = useState(typeof window!=='undefined' ? window.innerHeight-228 : 0)
     const [Cwidth, setCwidth] = useState(typeof window!=='undefined' ? window.innerWidth : 0)
     const [bounds, setBounds] = useState({ left: 0, right: 0, top: 0, bottom: btHeight })
@@ -77,7 +77,7 @@ export default function RoomList({ openPopup, focusRoomId }: propsType) {
             setWidthHandler(false)
         }
     },[Cwidth])
-    console.log(widthHandler)
+    
     return (
         <div className="w-full sm:w-[375px] z-10 relative" > 
             {upDown === 0 && openPopup && (//하단에서 올라오는 슬라이드 바가 0이고 openPopUp이 true이며, 
@@ -103,8 +103,8 @@ export default function RoomList({ openPopup, focusRoomId }: propsType) {
                     axis="y"
                     bounds={bounds} 
                     defaultPosition={depo}
-                    onStart={()=>console.log('start')}
-                    onStop={()=>console.log('end')}
+                    // onStart={()=>console.log('start')}
+                    // onStop={()=>console.log('end')}
                 >
                     <div ref={nodeRef} className="absolute ">
                         <RoomListHeader /**헤더를 잡고 끌어올려야 하니까 여기가 중요 */

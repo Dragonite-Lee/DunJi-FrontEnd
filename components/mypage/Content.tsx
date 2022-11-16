@@ -72,7 +72,7 @@ export default function Content() {
                 </div>
                 <div className="flex items-center justify-between text-[15px] Pretendard-Regular pt-[16px] pb-[32px]">
                     <div>로그아웃</div>
-                    <Link href="/">
+                    <Link href="/" passHref>
                         <div onClick={loggedOut}>
                             <a>
                                 <FontAwesomeIcon icon="chevron-right" />

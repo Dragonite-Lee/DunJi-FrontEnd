@@ -12,7 +12,7 @@ export default function Register() {
     const [state,dispatch] = useRoomRegisterRedux();
     useEffect(() => {
         dispatch(dispatchRegistrant(localStorage.getItem('userId')));
-    },[])
+    },[dispatch])
     return (
         <div className="bg-background_beige sm:w-[375px] sm:m-auto pb-[12rem] min-h-screen relative">
             <Header />
