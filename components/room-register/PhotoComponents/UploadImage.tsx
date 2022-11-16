@@ -48,9 +48,6 @@ export default function UploadImage() {
             url.push(state.mainImageUrl[i]);
         }
     }
-
-    // console.log(url);
-    // console.log(state.mainImage)
     
 
     return (

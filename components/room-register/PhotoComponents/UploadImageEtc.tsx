@@ -47,8 +47,7 @@ export default function UploadImageEtc() {
         }
     }
 
-    // console.log(url);
-    // console.log(state.room2Image)
+    
     
     const map_result = url.map(function(image: any,index: any) {
         return (

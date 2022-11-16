@@ -14,7 +14,7 @@ import BottomNextBtn from "components/filter/BottomNextBtn";
 
 export default function Filter() {
     const [state,dispatch] = useMapFilterRedux();
-    console.log(state)
+    
     return (
         <div className="bg-background_beige sm:w-[375px] sm:m-auto">
             <Header />

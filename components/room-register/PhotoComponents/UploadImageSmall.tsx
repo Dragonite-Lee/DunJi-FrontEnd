@@ -47,9 +47,6 @@ export default function UploadImageSmall() {
             url.push(state.room1ImageUrl[i]);
         }
     }
-
-    // console.log(url);
-    // console.log(state.room1Image)
     
     const map_result = url.map(function(image: any,index: any) {
         return (

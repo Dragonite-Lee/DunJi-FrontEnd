@@ -37,7 +37,7 @@ export default function Map() {
         dispatch(dispatchStartLatitude(coordinate[1]));
         dispatch(dispatchEndLongitude(coordinate[2]));
         dispatch(dispatchEndLatitude(coordinate[3]));
-    },[Map,Filter,coordinate,dispatch])
+    },[coordinate,dispatch])
     // useEffect(() => { // 현재 위도, 경도 얻는 훅
     //     const getLocation = () => {
     //         if (navigator.geolocation) {
@@ -148,10 +148,6 @@ export default function Map() {
         [dispatch, openPopup, state.ROOM_LIST]
     );
 
-    // console.log(load)
-    // useEffect(()=>{
-    //     setLoad(true);
-    // },[Map])
     const onLoadKakaoMap = useCallback(() => { //*카카오맵 로드되면 할 동작
         
         window.kakao.maps.load(() => {

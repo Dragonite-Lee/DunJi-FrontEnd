@@ -9,7 +9,7 @@ export default function MainImage() {
 
     const [state, dispatch] = useRoomRegisterRedux();
     
-    // console.log(file)
+    
     return (
         <div className="py-4 ">
             <PhotoHeader

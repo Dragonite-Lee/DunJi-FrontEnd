@@ -21,8 +21,6 @@ export default function Auth() {
             href = window.location.href;
             code = new URL(href).searchParams.get("code");
             
-
-        // console.log(code)
             logInApi
                 .postPermissionCode(code)
                 .then((res) => {
