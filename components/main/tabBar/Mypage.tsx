@@ -11,20 +11,20 @@ export default function Mypage() {
     
     function close() {
         if( typeof window !== 'undefined') {
-            if(sessionStorage.getItem('home')) {
-                sessionStorage.setItem("mypage",'true')
-                sessionStorage.removeItem("home")
-            } else if(sessionStorage.getItem('search')) {
-                sessionStorage.setItem("mypage",'true')
-                sessionStorage.removeItem("search")
-            } else if(sessionStorage.getItem('chat')) {
-                sessionStorage.setItem("mypage",'true')
-                sessionStorage.removeItem("chat")
+            if(localStorage.getItem('home')) {
+                localStorage.setItem("mypage",'true')
+                localStorage.removeItem("home")
+            } else if(localStorage.getItem('search')) {
+                localStorage.setItem("mypage",'true')
+                localStorage.removeItem("search")
+            } else if(localStorage.getItem('chat')) {
+                localStorage.setItem("mypage",'true')
+                localStorage.removeItem("chat")
             }
         }
         
     }
-    const mypage = typeof window !== 'undefined' ? sessionStorage.getItem("mypage") : null;
+    const mypage = typeof window !== 'undefined' ? localStorage.getItem("mypage") : null;
 
     return (
         <div className="pr-[36px]">
@@ -35,8 +35,8 @@ export default function Mypage() {
                     alt="마이로고"
                     src={require("../../../assets/icon/main/tabBar/메뉴바_마이_활성화.svg")} 
                     onLoad={() => {
-                        sessionStorage.clear();
-                        sessionStorage.setItem("mypage",'true')
+                        localStorage.clear();
+                        localStorage.setItem("mypage",'true')
                     }}
                 />
             ) : (

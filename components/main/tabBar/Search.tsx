@@ -12,20 +12,20 @@ export default function Search() {
 
     function close() {
         if( typeof window !== 'undefined') {
-            if(sessionStorage.getItem('home')) {
-                sessionStorage.removeItem("home")
-                sessionStorage.setItem("search",'true')
-            } else if(sessionStorage.getItem('chat')) {
-                sessionStorage.setItem("search",'true')
-                sessionStorage.removeItem("chat")
-            } else if(sessionStorage.getItem('mypage')) {
-                sessionStorage.setItem("search",'true')
-                sessionStorage.removeItem("mypage")
+            if(localStorage.getItem('home')) {
+                localStorage.removeItem("home")
+                localStorage.setItem("search",'true')
+            } else if(localStorage.getItem('chat')) {
+                localStorage.setItem("search",'true')
+                localStorage.removeItem("chat")
+            } else if(localStorage.getItem('mypage')) {
+                localStorage.setItem("search",'true')
+                localStorage.removeItem("mypage")
             }
         }
         
     }
-    const search = typeof window !== 'undefined' ? sessionStorage.getItem("search") : null;
+    const search = typeof window !== 'undefined' ? localStorage.getItem("search") : null;
 
     return (
         <div>
@@ -36,8 +36,8 @@ export default function Search() {
                     alt="검색로고"
                     src={require("../../../assets/icon/main/tabBar/메뉴바_검색_활성화.svg")} 
                     onLoad={() => {
-                        sessionStorage.clear();
-                        sessionStorage.setItem("search",'true')
+                        localStorage.clear();
+                        localStorage.setItem("search",'true')
                     }}
                 />
             ) : (

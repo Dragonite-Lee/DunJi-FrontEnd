@@ -61,11 +61,6 @@ export default function BottomNextBtn() {
             "room2ImageUrl",
             "optionAll",
             "postRoomFailure",
-            // "manageElec",
-            // "manageGas",
-            // "manageWater",
-            // "manageInternet",
-            // "manageTV",
         ];
         for (let i = 0; i < delete_arr.length; i++)
             formData.delete(delete_arr[i]);
@@ -83,7 +78,7 @@ export default function BottomNextBtn() {
             "manageGas",
             "manageWater",
             "manageInternet",
-            "manageTV",
+            "manageTv",
         ];
         for (let i = 0; i < manage_arr.length; i++)
             formData.append(manage_arr[i], state["manageSelect"][i]);
@@ -157,7 +152,7 @@ export default function BottomNextBtn() {
             { manageGas: "관리비 옵션을" },
             { manageWater: "관리비 옵션을" },
             { manageInternet: "관리비 옵션을" },
-            { manageTV: "관리비 옵션을" },
+            { manageTv: "관리비 옵션을" },
             { wholeFloor: "전체 층을" },
             { floor: "현재 층을" },
             { struct: "층/구조 -> 구조를" },
@@ -226,8 +221,8 @@ export default function BottomNextBtn() {
                 Router.push(`/room/${res.data.Room_ID}`)
             });
             
-        } catch (e) {
-            alert(e + " 입력해 주세요");
+        } catch (err) {
+            alert(err + " 입력해 주세요");
         }
     };
 

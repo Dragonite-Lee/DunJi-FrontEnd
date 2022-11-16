@@ -15,7 +15,7 @@ export default function Header() {
                 </Link>
                 <div className="ml-[6px]">마이페이지</div>
             </div>
-            <Link href="/index">
+            <Link href="/">
                     <a>
                         <div className="text-[12px] Pretendard-Regular text-hover_orange">취소</div>
                     </a>

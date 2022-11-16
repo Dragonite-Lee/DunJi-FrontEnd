@@ -12,21 +12,21 @@ export default function Chat() {
     
     function close() {
         if( typeof window !== 'undefined') {
-            if(sessionStorage.getItem('home')) {
-                sessionStorage.setItem("chat",'true')
-                sessionStorage.removeItem("home")
-            } else if(sessionStorage.getItem('search')) {
-                sessionStorage.setItem("chat",'true')
-                sessionStorage.removeItem("search")
-            } else if(sessionStorage.getItem('mypage')) {
-                sessionStorage.setItem("chat",'true')
-                sessionStorage.removeItem("mypage")
+            if(localStorage.getItem('home')) {
+                localStorage.setItem("chat",'true')
+                localStorage.removeItem("home")
+            } else if(localStorage.getItem('search')) {
+                localStorage.setItem("chat",'true')
+                localStorage.removeItem("search")
+            } else if(localStorage.getItem('mypage')) {
+                localStorage.setItem("chat",'true')
+                localStorage.removeItem("mypage")
             }
         }
         
         
     }
-    const chat = typeof window !== 'undefined' ? sessionStorage.getItem("chat") : null;
+    const chat = typeof window !== 'undefined' ? localStorage.getItem("chat") : null;
 
     return (
         <div>
@@ -37,8 +37,8 @@ export default function Chat() {
                     alt="채팅로고"
                     src={require("../../../assets/icon/main/tabBar/메뉴바_채팅_활성화.svg")} 
                     onLoad={() => {
-                        sessionStorage.clear();
-                        sessionStorage.setItem("chat",'true');
+                        localStorage.clear();
+                        localStorage.setItem("chat",'true');
                     }}
                 />
             ) : (

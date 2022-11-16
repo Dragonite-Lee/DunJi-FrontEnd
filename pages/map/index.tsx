@@ -23,6 +23,10 @@ export default function Map() {
         126.81869842862838, 37.27339683024221, 126.8524293384371,
         37.321522977544404,
     ]);
+    // if( typeof window !== 'undefined') {
+    //     sessionStorage.setItem("load", "false");
+    // }
+    
 
     const [state2, dispatch2] = useMapFilterRedux();
 
@@ -86,10 +90,10 @@ export default function Map() {
     const addOverlay = useCallback(
         (map: any, response: any) => {
             const data = response.data;
-            const clusterer = new window.kakao.maps.MarkerClusterer({
-                map: map,
-                averageCenter: true,
-                minLevel: 7,
+            const clusterer = new window.kakao.maps.MarkerClusterer({//마커클러스터러를 생성한다.
+                map: map,//마커클러스터를 관리하고 표시할 지도 객체가 됨
+                averageCenter: true,//마커드르이 평균의치를 클러스터 마커 위치로 설정
+                minLevel: 7,//클러스터 할 최소 지도 레벨
                 minClusterSize: 1,
                 styles: [
                     {
@@ -137,21 +141,21 @@ export default function Map() {
                 });
                 customOverlay.setMap(map);//커스텀 오버레이를 지도에 표시해준다.
 
-                clusterer.setMap(map);
-                clusterer.addMarkers([customOverlay]);
+                clusterer.setMap(map);//클러스터러를 지도에 올린다.
+                clusterer.addMarkers([customOverlay]);//클러스터러에 마커들을 추가
             }
         },
         [dispatch, openPopup, state.ROOM_LIST]
     );
 
-    // useEffect(() => {
-        // setLoad(true)
-    // },[]);
-
-    console.log(load)
+    // console.log(load)
+    // useEffect(()=>{
+    //     setLoad(true);
+    // },[Map])
     const onLoadKakaoMap = useCallback(() => { //*카카오맵 로드되면 할 동작
+        
         window.kakao.maps.load(() => {
-            setLoad(true); //setLoad라는 useState를 바꾸는데 그 이후에false로 되며, 다시 true로 안바뀌기때문에 에러발생
+             //setLoad라는 useState를 바꾸는데 그 이후에false로 되며, 다시 true로 안바뀌기때문에 에러발생
             const container = document.getElementById("map"); //지도생성 표시할 div만듬
             const options = {
                 center: new window.kakao.maps.LatLng(latitude, longitude), //지도 중심좌표(학교에리카)
@@ -159,7 +163,7 @@ export default function Map() {
             };
             const map = new window.kakao.maps.Map(container, options); //지도를 표시할 div와 지도옵션으로 지도생성
             mapVar.current = map;//돔의 current라는 프로퍼티
-
+            // map.relayout();
             window.kakao.maps.event.addListener(map, "dragend", () => {//드래그가 끝나면
                 const { ha, qa, oa, pa } = map.getBounds(); //map.getBounds로 현재영역을 얻어옴
                 setOpenPopup(false); //그리고 popup을 false로해서 감추고
@@ -176,13 +180,12 @@ export default function Map() {
             var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);//moveLatLon이라는 변수에 center값을 저장함
             map.panTo(moveLatLon); //센터가 저위도경도로 부드럽게 이동
         });
-    }, [latitude, longitude, updateCoordinate]);//위도,경도,또는 위도경도 업데이트함수에 반응
+    }, [latitude, longitude, updateCoordinate, Map]);//위도,경도,또는 위도경도 업데이트함수에 반응
 
     useEffect(() => {
         // header에서 주소 주소 검색한 경우 현재 지도 중심 위치 변경 훅
-        setLoad(true);
         if (load) {
-            window.kakao.maps.load(()=>{
+            window.kakao.maps.load(function() {
                 // kakao map api 로드 이후에 동작하게 함
                 var moveLatLon = new window.kakao.maps.LatLng(latitude, longitude);//이동할 위도 경도 위치 생성
                 
@@ -196,18 +199,19 @@ export default function Map() {
                 map.panTo(moveLatLon); //맵을 부드럽게 이동시키는데 사용
             })
         }
-    }, [latitude, load, longitude,Map]); //*위도, 경도바뀌거나 load되면 해당 위도경도에 맞게끔 부드럽게 이동 근데, load는 기본값이 에리카니까 에리카로 나올듯
+    }, [latitude, longitude]); //*위도, 경도바뀌거나 load되면 해당 위도경도에 맞게끔 부드럽게 이동 근데, load는 기본값이 에리카니까 에리카로 나올듯
     return (
         <div>
             <Script
-                onLoad={onLoadKakaoMap}
+                // onLoad={onLoadKakaoMap}
+                onReady={onLoadKakaoMap}
                 src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY}&libraries=services,clusterer&autoload=false`}
             />
             <div className="flex flex-col w-full sm:m-auto h-screen relative overflow-hidden">
                 <TabBar />
                 <Header setLatitude={setLatitude} setLongitude={setLongitude} />
                 <RoomList openPopup={openPopup} focusRoomId={focusRoomId} />
-                <div className="absolute top-[95px] w-full h-[712px]" id="map" />
+                <div className="absolute top-[95px] w-full h-[77rem] sm:top-[0] sm:left-[375px] sm:h-full" id="map" />
             </div>
         </div>
     );

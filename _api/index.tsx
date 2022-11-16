@@ -10,7 +10,7 @@ export const roomApi = {
         api.post("/room/registerAction",  
         data, {
             headers: {
-                "Content-Type": `multipart/form-data`,
+                "Content-Type":`multipart/form-data`,
             },
         }
     )

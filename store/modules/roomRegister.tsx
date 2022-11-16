@@ -1,17 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type Image = [
-    {
-        main: string
-    },
-    {
-        room1: string[]
-    },
-    {
-        room2: string[]
-    }
-]
-
 type initialStateTypes = {
     COMPONENT_HANDLER: number;
     POSTCODE_OPEN: boolean;
