@@ -46,7 +46,7 @@ export default function Home() {
                     </div>
                 </div>
                 {/* *로고와 메인글 */}
-                <header className="flex items-center text-4xl justify-between pt-8 pb-3 mx-[18px]">
+                <header className="flex items-center text-4xl justify-between pt-8 pb-3 mx-[18px] relative">
                     <div>
                         <div className="sm:relative flex items-end justify-between">
                             <div className="w-[215px]">
@@ -57,7 +57,7 @@ export default function Home() {
                                     src={require("../assets/icon/main/main_char.png")}
                                 />
                             </div>
-                            <div className="absolute sm:left-[190px] sm:top-[85px] right-[35px] top-[180px] text-[23px] w-[140px] mb-5 Pretendard-SemiBold">
+                            <div className="absolute sm:left-[190px] sm:top-[85px] right-[35px] top-[110px] text-[23px] w-[140px] mb-5 Pretendard-SemiBold">
                                 어떤 방을<br/>
                                 찾고 계신가요?
                             </div>
@@ -140,20 +140,20 @@ export default function Home() {
 
             </div>
             {/* *로고와 사업자명 등등 푸터 */}
-            <footer className="bg-component_white flex items-center justify-between py-36 px-[18px] w-full">
-                <div className="sm:w-[9rem] w-1/4">
+            <footer className="min-w-[456px] bg-component_white flex items-center justify-between py-36 px-[18px] w-full">
+                <div className="sm:w-[10rem] w-2/5">
                 <Image 
-                    width={77}
-                    height={33}
+                    width={90}
+                    height={40}
                     alt="둥지로고"
                     src={require("../assets/icon/main/logo_gray.png")} 
                 />
                 </div>
-                <div className="sm:w-[25rem] w-full text-font_gray text-[9px] leading-4 Pretendard-Regular">
-                    상호 : 네스트소프트 | 대표 : 정재현 |
-                    사업자등록번호 : 317-06-02039<br />
-                    서비스 이용문의 : 010-9210-2745 |
-                    이메일 jjangjjh2222@diver.com
+                <div className="sm:w-[260px] w-full text-font_gray  sm:text-[9px] leading-4 Pretendard-Regular">
+                    상호 : 네스트소프트 | 대표 : 정재현  <br className="hidden sm:block" />
+                    <span className="inline sm:hidden">|</span> 사업자등록번호 : 317-06-02039<br />
+                    서비스 이용문의 : 010-9210-2745 <br className="hidden sm:block" />
+                    <span className="inline sm:hidden">|</span> 이메일 jjangjjh2222@naver.com<br />
                     주소 : 한양대학교 ERICA 제5공학관 SW창업1실<br />
                     통신 판매업 신고번호 : 제2022-대전중구-0621호<br />
                 </div>
