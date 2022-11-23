@@ -8,6 +8,8 @@ import Carousel from "components/main/Carousel";
 import TabBar from "components/main/TabBar";
 import { useEffect } from "react";
 import PostModal from "components/main/PostModal";
+import NewRoom from "components/main/NewRoom";
+import NewReview from "components/main/NewReview";
 
 export default function Home() {
     
@@ -134,13 +136,14 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                
-                    
-                    
 
+                {/* *새로 들어온 둥지 */}
+                <NewRoom />
+                {/* *둥지를 떠나며 */}
+                <NewReview />
             </div>
             {/* *로고와 사업자명 등등 푸터 */}
-            <footer className="min-w-[456px] bg-component_white flex items-center justify-between py-36 px-[18px] w-full">
+            <footer className="min-w-[375px] bg-component_white flex items-center justify-between pt-36 pb-40 px-[18px] w-full">
                 <div className="sm:w-[10rem] w-2/5">
                 <Image 
                     width={90}
@@ -149,7 +152,7 @@ export default function Home() {
                     src={require("../assets/icon/main/logo_gray.png")} 
                 />
                 </div>
-                <div className="sm:w-[260px] w-full text-font_gray  sm:text-[9px] leading-4 Pretendard-Regular">
+                <div className="sm:w-[260px] pl-[36px] w-full text-font_gray  sm:text-[9px] leading-4 Pretendard-Regular">
                     상호 : 네스트소프트 | 대표 : 정재현  <br className="hidden sm:block" />
                     <span className="inline sm:hidden">|</span> 사업자등록번호 : 317-06-02039<br />
                     서비스 이용문의 : 010-9210-2745 <br className="hidden sm:block" />

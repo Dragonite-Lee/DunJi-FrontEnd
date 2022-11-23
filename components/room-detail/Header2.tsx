@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import Router from "next/router";
 
 export default function Header2() {
     return (
@@ -9,7 +10,9 @@ export default function Header2() {
         >
             <div className="flex text-[17px] items-center Pretendard-SemiBold">
                 <Link href="/" passHref>
-                    <a>
+                    <a onClick={() => {
+                            Router.back();
+                        }}>
                         <FontAwesomeIcon icon="chevron-left" />
                     </a>
                 </Link>
