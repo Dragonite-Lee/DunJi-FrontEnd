@@ -1,4 +1,4 @@
-export default function Policy({}) {
+export default function PolicyForm({}) {
   return (
     <section className="w-main_width min-w-20 flex items-center flex-col my-40 mx-auto font-sans">
       <h1 className="w-full border-b border-yellow pb-4 text-3xl font-bold">
