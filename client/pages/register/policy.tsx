@@ -1,47 +1,15 @@
 import Link from 'next/link';
-import { useState } from 'react';
 import PolicyItem from 'client/pages/register/policy-item';
+import useChecks from 'hooks/useChecks';
 
-export default function Policy({}) {
-  const [checkAll, setCheckAll] = useState(false);
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(false);
-
-  const checkAllHandler = () => {
-    setCheckAll(!checkAll);
-    setCheck1(!checkAll);
-    setCheck2(!checkAll);
-    setCheck3(!checkAll);
-    setCheck4(!checkAll);
-  };
+function Policy({}) {
+  const { checks, checkAll, handleCheck, handleAllCheck } = useChecks(4);
 
   const POLICY_LIST = [
-    {
-      id: 1,
-      content: '[필수] 만 14세 이상입니다.',
-      isCheck: check1,
-      handleCheck: setCheck1,
-    },
-    {
-      id: 2,
-      content: '[필수] 둥지 서비스 이용약관 동의',
-      isCheck: check2,
-      handleCheck: setCheck2,
-    },
-    {
-      id: 3,
-      content: '[필수] 개인정보 수집 및 이용 동의',
-      isCheck: check3,
-      handleCheck: setCheck3,
-    },
-    {
-      id: 4,
-      content: '[선택] 마케팅 정보 수신에 대한 동의',
-      isCheck: check4,
-      handleCheck: setCheck4,
-    },
+    '[필수] 만 14세 이상입니다.',
+    '[필수] 둥지 서비스 이용약관 동의',
+    '[필수] 개인정보 수집 및 이용 동의',
+    '[선택] 마케팅 정보 수신에 대한 동의',
   ];
 
   return (
@@ -60,19 +28,19 @@ export default function Policy({}) {
             className={`inline-block before:content-[''] w-7 h-7 border border-blur mr-2  algin-middle font-NotoSansKR font-  rounded-md text-center ${
               checkAll ? "before:content-['✔️'] text-white " : ''
             }`}
-            onClick={checkAllHandler}
+            onClick={handleAllCheck}
           ></label>
           <span className="ml-2  text-blur text-xl font-normal mb-4">
             모두 동의
           </span>
         </div>
 
-        {POLICY_LIST.map(({ id, content, isCheck, handleCheck }) => (
+        {POLICY_LIST.map((content, idx) => (
           <PolicyItem
-            id={id}
+            id={idx}
             content={content}
-            isCheck={isCheck}
-            handleCheck={() => handleCheck(!isCheck)}
+            isCheck={checks[idx]}
+            handleCheck={() => handleCheck(idx)}
           />
         ))}
 
@@ -94,35 +62,4 @@ export default function Policy({}) {
   );
 }
 
-interface PolicyCheckBoxProps {
-  index: number;
-  isCheck: boolean;
-  handleCheck: () => void;
-  checkBoxHandler: (
-    check: boolean,
-    setCheck: (active: boolean) => void,
-  ) => void;
-}
-
-function PolicyCheckBox({
-  isCheck,
-  handleCheck,
-  checkBoxHandler,
-  index,
-}: PolicyCheckBoxProps) {
-  return (
-    <div className="flex items-center w-full text-xl mb-10 ">
-      <input type="checkbox" id={`check${index}`} className="hidden" />
-      <label
-        htmlFor={`check${index}`}
-        className={`font-SegoeUI   inline-block before:content-[''] w-7 h-7 border border-blur mr-2  algin-middle font-NotoSansKR  rounded-md text-center ${
-          isCheck ? "before:content-['✔️'] text-white " : ''
-        }`}
-        onClick={() => checkBoxHandler(isCheck, handleCheck)}
-      ></label>
-      <span className="  ml-2 text-xl font-normal">
-        [필수] 만 14세 이상입니다.
-      </span>
-    </div>
-  );
-}
+export default Policy;
