@@ -20,7 +20,7 @@ function PolicyItem({
           isCheck ? "before:content-['✔️'] text-white " : ''
         }`}
         onClick={handleCheck}
-      ></label>
+      />
       <span className="  ml-2 text-xl font-normal">{content}</span>
     </div>
   );

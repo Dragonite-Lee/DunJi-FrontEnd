@@ -1,15 +1,15 @@
+import { useCallback, useEffect } from 'react';
+import { dispatchHandleLogin } from 'store/modules/login';
+import { logInApi } from '_api';
 import useLoginRedux from 'hooks/useLoginRedux';
 import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import Router from 'next/router';
-import { useEffect } from 'react';
-import { dispatchHandleLogin } from 'store/modules/login';
-import { logInApi } from '_api';
 
 function OauthKakao() {
   const [state, dispatch] = useLoginRedux();
   const [state2, dispatch2] = useRoomRegisterRedux();
 
-  const login = () => {
+  const login = useCallback(() => {
     if (typeof window === 'undefined') {
       return;
     }
@@ -37,7 +37,7 @@ function OauthKakao() {
         window.alert('로그인실패');
         Router.push('/login');
       });
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     login();
