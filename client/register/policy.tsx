@@ -1,16 +1,16 @@
 import Link from 'next/link';
-import PolicyItem from 'client/pages/register/policy-item';
+import PolicyItem from 'client/register/policy-item';
 import useChecks from 'hooks/useChecks';
 
-function Policy({}) {
-  const { checks, checkAll, handleCheck, handleAllCheck } = useChecks(4);
+const POLICY_LIST = [
+  '[필수] 만 14세 이상입니다.',
+  '[필수] 둥지 서비스 이용약관 동의',
+  '[필수] 개인정보 수집 및 이용 동의',
+  '[선택] 마케팅 정보 수신에 대한 동의',
+];
 
-  const POLICY_LIST = [
-    '[필수] 만 14세 이상입니다.',
-    '[필수] 둥지 서비스 이용약관 동의',
-    '[필수] 개인정보 수집 및 이용 동의',
-    '[선택] 마케팅 정보 수신에 대한 동의',
-  ];
+function Policy() {
+  const { checks, checkAll, handleCheck, handleAllCheck } = useChecks(4);
 
   return (
     <div className="flex min-w-20  items-center flex-col my-40 mx-auto w-main_width font-sans">
@@ -29,7 +29,7 @@ function Policy({}) {
               checkAll ? "before:content-['✔️'] text-white " : ''
             }`}
             onClick={handleAllCheck}
-          ></label>
+          />
           <span className="ml-2  text-blur text-xl font-normal mb-4">
             모두 동의
           </span>
@@ -37,6 +37,7 @@ function Policy({}) {
 
         {POLICY_LIST.map((content, idx) => (
           <PolicyItem
+            key={idx}
             id={idx}
             content={content}
             isCheck={checks[idx]}
@@ -48,7 +49,7 @@ function Policy({}) {
           <p>만 14세 이상 회원 가입이 가능합니다.</p>
           <p>
             해당 내용은
-            <span className="">이용약관 및 정책</span>
+            <span>이용약관 및 정책</span>
             에서도 확인 가능합니다.
           </p>
         </div>
