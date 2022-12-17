@@ -3,29 +3,31 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { mainApi } from '_api';
 import useMainRedux from 'hooks/useMainRedux';
-import useRoomSizeConvert from 'hooks/useRoomSizeConvert';
 import { dispatchNewRoom } from 'store/modules/main';
+import NewRoomItem from 'client/main/NewRoom';
 
-export default function NewRoom() {
+function NewRoom() {
   const [state, dispatch] = useMainRedux();
+  const id = localStorage.getItem('userId');
 
-  useEffect(() => {
-    const id = localStorage.getItem('userId');
-
+  const newRoomListData = useCallback(()=> {
     mainApi
       .newRoom(id)
       .then((res) => {
         // console.log(res.data)
         dispatch(dispatchNewRoom(res.data));
-        console.log(state.newRoom);
       })
       .catch((error) => {
         console.log(error);
       });
+  },[id]);
+
+  useEffect(() => {
+    newRoomListData()
   }, [dispatch]);
 
   return (
-    <div className="pt-[55px] ">
+    <div className="pt-[55px]">
       <div className="flex justify-between items-center">
         <div className="text-[17px] Pretendard-SemiBold">
           새로 들어온 둥지에요!
@@ -37,7 +39,7 @@ export default function NewRoom() {
         </Link>
       </div>
       <div className="pt-[14px] h-full flex overflow-x-auto overflow-y-hidden">
-        {state.newRoom.map((data: any, index: number) => (
+        {state.newRoom.map((a: any, index: number) => (
           <div key={index} className="w-[140px] mr-[16px]">
             <div>
               {/* *이미지칸 */}
@@ -50,24 +52,12 @@ export default function NewRoom() {
                 alt="대표방이미지"
               />
             </div>
-            <div>
-              <div className="pt-[8px] text-[15px] Pretendard-SemiBold">
-                {data.priceUnit}세 {data.deposit} / {data.price}
-              </div>
-              <div className="pt-[4px] text-[12px] Pretendard-Regular">
-                {data.address}
-              </div>
-              <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-                {data.struct} {data.roomType}, {data.floor}층
-              </div>
-              <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-                {data.roomSize}m<sup>2</sup> /{' '}
-                {useRoomSizeConvert(data.roomSize)}평
-              </div>
-            </div>
+            <NewRoomItem data={a} />
           </div>
         ))}
       </div>
     </div>
   );
 }
+
+export default NewRoom;
