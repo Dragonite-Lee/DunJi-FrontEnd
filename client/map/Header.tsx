@@ -1,12 +1,11 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useMainRedux from 'hooks/useMainRedux';
-import { dispatchSearchResult } from 'store/modules/main';
+
 import CommonBtn from './CommonBtn';
 import { map_header_height } from './Variable';
 
-export default function Header({ setLatitude, setLongitude }: any) {
+function Header({ setLatitude, setLongitude }: any) {
   const [searchVal, setSearchVal] = useState('');
   const [filterSelect1, setFilterSelect1] = useState(false);
   const [filterSelect2, setFilterSelect2] = useState(false);
@@ -39,7 +38,7 @@ export default function Header({ setLatitude, setLongitude }: any) {
     },
   ];
 
-  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const inputHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
 
     const ps = new window.kakao.maps.services.Places();
@@ -59,18 +58,21 @@ export default function Header({ setLatitude, setLongitude }: any) {
         return;
       }
     }
-  };
+  }, []);
 
-  const clickHander = (item: any) => {
-    setLatitude(item.y);
-    setLongitude(item.x);
-    setSearchResult([]);
-  };
+  const clickHander = useCallback(
+    (item: any) => () => {
+      setLatitude(item.y);
+      setLongitude(item.x);
+      setSearchResult([]);
+    },
+    [],
+  );
 
-  const searchValClickHandler = () => {
+  const searchValClickHandler = useCallback(() => {
     setSearchVal('');
     setSearchResult([]);
-  };
+  }, []);
 
   return (
     <>
@@ -98,7 +100,7 @@ export default function Header({ setLatitude, setLongitude }: any) {
               className="bg-white rounded-[8rem] h-full text-xl pl-8 placeholder-font_gray outline-0 w-full"
               placeholder="지역 검색"
               value={searchVal}
-              onChange={(e) => inputHandler(e)}
+              onChange={inputHandler}
             ></input>
             {searchVal && (
               <div
@@ -144,7 +146,7 @@ export default function Header({ setLatitude, setLongitude }: any) {
             <div
               className="flex flex-col justify-evenly h-24 border-b-2 pl-8"
               key={Number(item.id)}
-              onClick={() => clickHander(item)}
+              onClick={clickHander(item)}
             >
               <div className="text-2xl">
                 {/* {item.place_name.split(searchVal)[0]} */}
@@ -159,3 +161,5 @@ export default function Header({ setLatitude, setLongitude }: any) {
     </>
   );
 }
+
+export default Header;

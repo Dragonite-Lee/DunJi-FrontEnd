@@ -1,14 +1,6 @@
-import React, {
-  Dispatch,
-  MouseEvent,
-  SetStateAction,
-  TouchEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
-import { map_room_list_header_height, map_header_height } from './Variable';
 
 type propsType = {
   setUpDown: Dispatch<SetStateAction<number>>;
@@ -24,7 +16,7 @@ type propsType = {
   setWindowHeight: Dispatch<SetStateAction<number>>;
 };
 
-export default function RoomListHeader({
+function RoomListHeader({
   setUpDown,
   touchY,
   setTouchY,
@@ -33,16 +25,19 @@ export default function RoomListHeader({
   windowHeight,
   setWindowHeight,
 }: propsType) {
+  const getInnerHeight = useCallback(() => {
+    setWindowHeight(window.innerHeight);
+  }, [setWindowHeight]);
+
   // resize 이벤트 발생 시 화면 y값 변경
   useEffect(() => {
-    setWindowHeight(window.innerHeight);
-    const getInnerHeight = () => {
-      setWindowHeight(window.innerHeight);
-    };
+    getInnerHeight();
     window.addEventListener('resize', getInnerHeight);
     setTouchY(windowHeight);
+
     return () => window.removeEventListener('resize', getInnerHeight);
-  }, [setWindowHeight, setTouchY, windowHeight]);
+  }, [setWindowHeight, setTouchY, windowHeight, getInnerHeight]);
+
   //touchY랑 windowHeight가 똑같이 화면 높이
   //드래그시 margin 설정
   // const touchHandler = (e: TouchEvent<HTMLDivElement>) => {
@@ -59,8 +54,8 @@ export default function RoomListHeader({
 
   return (
     <div
-      className={`w-screen sm:w-[375px]  bg-white flex flex-col items-center
-                border-b border-1 h-[6rem] relative`}
+      className="w-screen sm:w-[375px]  bg-white flex flex-col items-center
+                border-b border-1 h-[6rem] relative"
     >
       <div className=" w-16 h-2 bg-border_color rounded-[2rem] my-2" />
       <div className="text-[1.5rem] flex items-center mt-2">
@@ -75,3 +70,5 @@ export default function RoomListHeader({
     </div>
   );
 }
+
+export default RoomListHeader;

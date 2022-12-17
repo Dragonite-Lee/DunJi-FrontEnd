@@ -4,9 +4,9 @@ import { useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { mapApi } from '_api';
+import Header from 'client/map/Header';
+import RoomList from 'client/map/RoomList';
 import TabBar from 'components/main/TabBar';
-import Header from 'components/map/Header';
-import RoomList from 'components/map/RoomList';
 import {
   dispatchStartLongitude,
   dispatchStartLatitude,

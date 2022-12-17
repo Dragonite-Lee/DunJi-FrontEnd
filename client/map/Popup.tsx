@@ -1,14 +1,18 @@
 import Image from 'next/image';
+
+import roomImg from 'assets/images/room.png';
 import round from 'hooks/useRoomSizeConvert';
+
 type propsType = {
   data: any;
 };
-export default function Popup({ data }: propsType) {
+
+function Popup({ data }: propsType) {
   const roomDetail = data && data.data.Room_Data;
 
   return (
     <div className="absolute bottom-[10vh] w-[94vw] ml-[3vw] rounded-standard_rounded border border-font_gray bg-white grid grid-cols-[3fr_4fr] mb-6  ">
-      <Image src={require('./room.png')} alt="room"></Image>
+      <Image src={roomImg} alt="room"></Image>
       <div className="flex flex-col justify-between p-2">
         {roomDetail && (
           <>
@@ -31,3 +35,5 @@ export default function Popup({ data }: propsType) {
     </div>
   );
 }
+
+export default Popup;

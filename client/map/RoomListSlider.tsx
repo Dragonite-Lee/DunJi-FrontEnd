@@ -1,11 +1,13 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import roomImg from 'assets/images/room.png';
 import { map_room_list_height } from './Variable';
 import 'swiper/css';
-import Link from 'next/link';
 
-export default function RoomListSlider() {
-  const slides = ['./room.png', './room.png', './room.png', './room.png'];
+function RoomListSlider() {
+  const slides = [roomImg, roomImg, roomImg, roomImg];
 
   return (
     <Link href="/room/1" passHref>
@@ -39,13 +41,9 @@ export default function RoomListSlider() {
                 },
               }}
             >
-              {slides.map((item, index) => (
+              {slides.map((imgSrc, index) => (
                 <SwiperSlide key={index}>
-                  <Image
-                    src={require('./room.png')}
-                    alt="room"
-                    className="rounded-[1.5rem]"
-                  />
+                  <Image src={imgSrc} alt="room" className="rounded-[1.5rem]" />
                   <div className="font-[700] text-[1.2rem] ">월세 300 / 30</div>
                   <div>흥부하우스 B동 / 상록구 사동</div>
                   <div className="text-font_gray">분리형 원룸, 2층</div>
@@ -59,3 +57,5 @@ export default function RoomListSlider() {
     </Link>
   );
 }
+
+export default RoomListSlider;
