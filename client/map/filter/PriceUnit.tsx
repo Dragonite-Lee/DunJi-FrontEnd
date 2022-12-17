@@ -1,23 +1,22 @@
-import { useEffect, useState } from 'react';
-import { useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
-import useMapFilterRedux from 'hooks/useMapFilterRedux';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
 import { dispatchPriceUnit } from 'store/modules/filter';
-import { RootState } from '../../store/modules/index';
-import CommonBtn from '../common/Btn';
 
-export default function TransactionType() {
-  const [state, dispatch] = useMapFilterRedux();
+import type { RootState } from 'store/modules';
 
-  const btnArr = useMemo(() => ['주', '월세', '전세', '반전세'], []);
+function TransactionType() {
+  const mapFilter = useSelector((state: RootState) => state.mapFilter);
+
+  const [btnArr] = useState(['주', '월세', '전세', '반전세']);
 
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     btnArr,
     dispatchPriceUnit,
-    state.priceUnit,
+    mapFilter.priceUnit,
   );
 
   return (
@@ -37,3 +36,5 @@ export default function TransactionType() {
     </div>
   );
 }
+
+export default TransactionType;

@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
 import { useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
-import useMapFilterRedux from 'hooks/useMapFilterRedux';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
 import { dispatchDealType } from 'store/modules/filter';
-import { RootState } from '../../store/modules/index';
 
-export default function TransactionType() {
-  const [state, dispatch] = useMapFilterRedux();
+import type { RootState } from 'store/modules';
+
+function TransactionType() {
+  const mapFilter = useSelector((state: RootState) => state.mapFilter);
 
   const btnArr = useMemo(() => ['단기임대', '양도'], []);
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     btnArr,
     dispatchDealType,
-    state.dealType,
+    mapFilter.dealType,
   );
 
   return (
@@ -35,3 +35,5 @@ export default function TransactionType() {
     </>
   );
 }
+
+export default TransactionType;

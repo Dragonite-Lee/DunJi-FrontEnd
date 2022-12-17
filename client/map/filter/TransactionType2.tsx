@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+
+import CommonBtn from 'components/common/Btn';
 import CategoryHeader2 from 'components/common/CategoryHeader2';
-import { RootState } from '../../store/modules/index';
-import CommonBtn from '../common/Btn';
 
-export default function TransactionType() {
-  const dispatch = useDispatch();
-  const roomRegister = useSelector((state: RootState) => state.roomRegister);
-
+function TransactionType() {
   const [btn1Check, setBtn1Check] = useState(false);
   const [btn2Check, setBtn2Check] = useState(false);
   const [btn3Check, setBtn3Check] = useState(false);
@@ -46,3 +42,5 @@ export default function TransactionType() {
     </>
   );
 }
+
+export default TransactionType;

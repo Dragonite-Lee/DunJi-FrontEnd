@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
-import useMapFilterRedux from 'hooks/useMapFilterRedux';
 import { dispatchPriceSort, dispatchRecommendSort } from 'store/modules/filter';
 import CommonBtn from './CommonBtn';
 
-export default function PageSort() {
-  const [state, dispatch] = useMapFilterRedux();
+function PageSort() {
+  const dispatch = useDispatch();
 
   const [btn1Check, setBtn1Check] = useState(false);
   const [btn2Check, setBtn2Check] = useState(false);
@@ -24,12 +25,14 @@ export default function PageSort() {
       dispatch: dispatchRecommendSort,
     },
   ];
+
   useEffect(() => {
     if (btn1Check == true) {
       setBtn2Check(false);
       dispatch(dispatchRecommendSort(false));
     }
   }, [btn1Check, dispatch]);
+
   useEffect(() => {
     if (btn2Check == true) {
       setBtn1Check(false);
@@ -55,3 +58,5 @@ export default function PageSort() {
     </div>
   );
 }
+
+export default PageSort;

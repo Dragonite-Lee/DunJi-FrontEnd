@@ -1,7 +1,8 @@
 import Link from 'next/link';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Header() {
+function Header() {
   return (
     <header
       className="flex w-screen justify-between px-[18px] mb-[25px]
@@ -25,3 +26,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;
