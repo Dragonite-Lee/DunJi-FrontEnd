@@ -1,4 +1,4 @@
-import FormItem from 'client/register/form-item';
+import FormItem from 'client/register/formItem';
 
 function PolicyForm() {
   return (
