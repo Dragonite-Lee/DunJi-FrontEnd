@@ -5,7 +5,7 @@ function MapPage() {
   return <Map />;
 }
 
-export const getStaticProps = wrapper.getStaticProps(() => async () => {
+export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
   return {
     props: {},
   };
