@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import PolicyItem from 'client/register/policy-item';
+import PolicyItem from 'client/register/policyItem';
 import useChecks from 'hooks/useChecks';
 
 const POLICY_LIST = [

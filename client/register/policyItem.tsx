@@ -1,14 +1,15 @@
 interface PolicyCheckBoxProps {
-  id: number;
   content: string;
+  id: number;
   isCheck: boolean;
+
   handleCheck: () => void;
 }
 
 function PolicyItem({
-  isCheck,
-  id,
   content,
+  id,
+  isCheck,
   handleCheck,
 }: PolicyCheckBoxProps) {
   return (

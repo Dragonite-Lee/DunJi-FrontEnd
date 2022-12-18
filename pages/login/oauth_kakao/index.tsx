@@ -1,11 +1,11 @@
-import OauthKakao from 'client/pages/login/oauth_kakao';
+import OauthKakao from 'client/login/oauth_kakao';
 
-export default function Auth({}) {
+function Auth() {
   return <OauthKakao />;
 }
 
 export async function getServerSideProps() {
-  const data = 'login server side empty data';
-
-  return { props: { data } };
+  return { props: {} };
 }
+
+export default Auth;
