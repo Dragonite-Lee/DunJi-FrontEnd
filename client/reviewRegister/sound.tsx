@@ -1,22 +1,21 @@
 import { useMemo } from 'react';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
 import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
-import { dispatchClean } from 'store/modules/reviewRegister';
-import NoDuplicateSelectBtn from '../NoDuplicateSelectBtn';
+import { dispatchSound } from 'store/modules/reviewRegister';
+import NoDuplicateSelectBtn from 'hooks/reviewRegisterNoDuplicateSelectBtn';
 
-export default function Clean() {
+function Sound() {
   const typeArr = useMemo(() => ['만족', '보통', '불만족'], []);
   const [state, dispatch] = useReviewRegisterReudx();
-
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     typeArr,
-    dispatchClean,
-    state.clean,
+    dispatchSound,
+    state.sound,
   );
 
   return (
-    <div className="mt-[45px] flex text-[15px] Pretendard-Regular items-center justify-between">
-      <div className="w-1/4">청결도</div>
+    <div className="mt-[8px] flex text-[15px] Pretendard-Regular items-center justify-between">
+      <div className="w-1/4">방음</div>
       <div className="grid grid-cols-3 w-3/4">
         {typeArr.map((item, index) => (
           <NoDuplicateSelectBtn
@@ -31,3 +30,5 @@ export default function Clean() {
     </div>
   );
 }
+
+export default Sound;

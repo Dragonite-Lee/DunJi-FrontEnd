@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Script from 'next/script';
 import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 
@@ -7,7 +6,7 @@ declare global {
     kakao: any;
   }
 }
-export default function Map() {
+function Map() {
   const [state, dispatch] = useReviewRegisterRedux();
   const address = state.address;
 
@@ -50,3 +49,5 @@ export default function Map() {
     </>
   );
 }
+
+export default Map;

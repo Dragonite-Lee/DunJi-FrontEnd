@@ -17,7 +17,7 @@ interface NewRoomItemProps {
     address: string;
 }
 
-function NewRoomItem({data}: {data: NewRoomItemProps}): JSX.Element {
+function NewRoomItem(data: Object<NewRoomItemProps>) {
   return (
     <div>
         <div className="pt-[8px] text-[15px] Pretendard-SemiBold">

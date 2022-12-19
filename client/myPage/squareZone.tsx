@@ -3,10 +3,11 @@ import SquareZoneItem from 'client/myPage';
 import 찜한매물 from 'assets/icon/myPage/찜한매물.svg';
 
 function SquareZone() {
+  //props에 intrinsicAttributes에러 아시나요
   return (
     <div className="px-[18px] py-[20px]">
       <div className="grid grid-cols-2 gap-[9px]">
-        <SquareZoneItem image={"찜한매물"} alt="찜한매물" content="찜한매물" />
+        <SquareZoneItem image={찜한매물} alt="찜한매물" content="찜한매물" />
         <div className="h-[83px] flex items-center justify-center text-[17px] Pretendard-SemiBold bg-white py-[30px] rounded-standard_rounded">
           <Image
             src={require('assets/icon/myPage/최근매물.svg')}

@@ -1,4 +1,4 @@
-import PolicyForm from 'client/pages/register/form';
+import PolicyForm from 'client/register/form';
 
 function PolicyFormPage() {
   return <PolicyForm />;

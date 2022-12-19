@@ -1,16 +1,16 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 interface SquareZoneItemProps {
-    image: string;
+    image: string | HTMLImageElement;
     alt: string;
     content: string;
 }
 
-function SquareZoneItem({ image, alt, content }: SquareZoneItemProps) {
+function SquareZoneItem({image, alt, content} :SquareZoneItemProps) {
     return (
         <div className="h-[83px] flex items-center justify-center text-[17px] Pretendard-SemiBold bg-white py-[30px] rounded-standard_rounded">
           <Image
-            src={"assets/icon/myPage/" + image + ".svg"}
+            src={image}
             width={34}
             height={34}
             alt={alt}

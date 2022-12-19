@@ -3,8 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
 
-export default function Header() {
+function Header() {
   const [state, dispatch] = useReviewRegisterRedux();
+  const postCodeOpen = () => {
+    dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));
+  }
+  const historyBack = () => {
+    Router.back();
+  }
 
   return (
     <>
@@ -14,11 +20,7 @@ export default function Header() {
         py-4  h-24 items-center text-xl  border-b sm:w-[375px] sm:m-auto "
         >
           <div className="flex text-2xl items-center">
-            <div
-              onClick={() => {
-                dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));
-              }}
-            >
+            <div onClick={postCodeOpen} >
               <FontAwesomeIcon icon="chevron-left" />
             </div>
             <div className="ml-4 Pretendard-SemiBold text-[17px]">
@@ -41,9 +43,7 @@ export default function Header() {
           </div>
           <div
             className="text-main text-[12px] Pretendard-Regular"
-            onClick={() => {
-              Router.back();
-            }}
+            onClick={historyBack}
           >
             취소
           </div>
@@ -52,3 +52,5 @@ export default function Header() {
     </>
   );
 }
+
+export default Header;

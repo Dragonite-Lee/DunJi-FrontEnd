@@ -1,16 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/modules';
-import SubHeader from '../SubHeader';
-import Accessible from './Accessible';
-import Clean from './Clean';
-import Content from './Content';
-import Facility from './Facility';
-import Landlord from './Landlord';
-import ReviewImg from './ReviewImg';
-import Sound from './Sound';
-import Total from './Total';
+import SubHeader from 'client/reviewRegister/subHeader';
+import Accessible from 'client/reviewRegister/accessible';
+import Clean from 'client/reviewRegister/clean';
+import Content from 'client/reviewRegister/content';
+import Facility from 'client/reviewRegister/facility';
+import Landlord from 'client/reviewRegister/landlord';
+import ReviewImg from 'client/reviewRegister/reviewImg';
+import Sound from 'client/reviewRegister/sound';
+import Total from 'client/reviewRegister/total';
 
-export default function ReviewRegister() {
+function ReviewRegister() {
   const reviewRegister = useSelector(
     (state: RootState) => state.reviewRegister,
   );
@@ -41,3 +41,5 @@ export default function ReviewRegister() {
     </>
   );
 }
+
+export default ReviewRegister;

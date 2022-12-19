@@ -1,4 +1,4 @@
-import Policy from 'client/pages/register/policy';
+import Policy from 'client/register/policy';
 
 function PolicyPage() {
   return <Policy />;

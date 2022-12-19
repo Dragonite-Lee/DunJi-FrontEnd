@@ -5,22 +5,23 @@ import { mainApi } from '_api';
 import useMainRedux from 'hooks/useMainRedux';
 import { dispatchNewReview } from 'store/modules/main';
 
-export default function NewReview() {
+function NewReview() {
   const [state, dispatch] = useMainRedux();
+  const id = localStorage.getItem('userId');
 
-  useEffect(() => {
-    const id = localStorage.getItem('userId');
-
+  const newReviewListData = useCallback(()=>{
     mainApi
       .newReview(id)
       .then((res) => {
-        console.log(res);
         dispatch(dispatchNewReview(res.data));
-        // console.log(state.newReview)
       })
       .catch((error) => {
         console.log(error);
       });
+  },[id])
+  
+  useEffect(() => {
+    newReviewListData()
   }, [dispatch]);
 
   return (
@@ -81,3 +82,5 @@ export default function NewReview() {
     </div>
   );
 }
+
+export default NewReview;

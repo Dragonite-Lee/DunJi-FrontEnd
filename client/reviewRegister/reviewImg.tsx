@@ -2,7 +2,7 @@ import Image from 'next/image';
 import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
 import { dispatchFile, dispatchFileUrl } from 'store/modules/reviewRegister';
 
-export default function ReviewImg() {
+function ReviewImg() {
   const [state, dispatch] = useReviewRegisterReudx();
 
   //이미지 상대경로로 저장
@@ -130,3 +130,5 @@ export default function ReviewImg() {
     </>
   );
 }
+
+export default ReviewImg;

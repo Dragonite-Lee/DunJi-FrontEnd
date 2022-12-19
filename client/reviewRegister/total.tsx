@@ -1,21 +1,18 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
 import { dispatchTotal, dispatchTotalNum } from 'store/modules/reviewRegister';
-import harfActive from '../../../assets/icon/별점_반.svg';
-import noActive from '../../../assets/icon/별점_비활성화.svg';
-import active from '../../../assets/icon/별점_활성화.svg';
+import harfActive from 'assets/icon/별점_반.svg';
+import noActive from 'assets/icon/별점_비활성화.svg';
+import active from 'assets/icon/별점_활성화.svg';
 
-export default function Total() {
+function Total() {
   const [state, dispatch] = useReviewRegisterReudx();
 
   const starRatingState: Array<string> = useMemo(() => [], []);
-
-  // const active = "../../../assets/icon/별점_활성화.svg";
-  // const noActive = "../../../assets/icon/별점_비활성화.svg";
-
-  function clickRatingHandler(index: number, src: any) {
-    const StarRating: Array<string> = [];
+  const StarRating: Array<string> = [];
+  //이 부분 함수 리펙토링 고민중
+  const clickRatingHandler = (index: number, src: any) => {
     if (src * 2 == 1) {
       StarRating.push(harfActive);
       StarRating.push(noActive);
@@ -89,12 +86,15 @@ export default function Total() {
     }
     dispatch(dispatchTotal(StarRating));
   }
-
-  useEffect(() => {
+  const starRatingFill = () => {
     for (let i = 0; i < 5; i++) {
       starRatingState.push(noActive);
     }
     dispatch(dispatchTotal(starRatingState));
+  }
+
+  useEffect(() => {
+    starRatingFill()
   }, [dispatch, starRatingState]);
 
   const url: any = [];
@@ -105,7 +105,7 @@ export default function Total() {
     }
   }
 
-  function location(num: number, index: number) {
+  const location = (num: number, index: number) => {
     if (num > 29) {
       return index;
     } else if (num <= 29) {
@@ -115,17 +115,12 @@ export default function Total() {
 
   const map_result = url.map(function (star: any, index: number) {
     return (
-      <div key={index} className="">
+      <div key={index}>
         {star ? (
           <Image
             alt="별점"
             src={star}
-            onClick={(e) =>
-              clickRatingHandler(
-                (index + 1) * 2,
-                location(e.nativeEvent.offsetX, index + 1),
-              )
-            }
+            onClick={(e) => clickRatingHandler((index + 1) * 2,location(e.nativeEvent.offsetX, index + 1))}
             width={80}
             height={80}
           />
@@ -151,3 +146,5 @@ export default function Total() {
     </div>
   );
 }
+
+export default Total;
