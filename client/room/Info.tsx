@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import useRoomSizeConvert from 'hooks/useRoomSizeConvert';
-import InfoField from './InfoField';
-import OpenLayout from './OpenLayout';
+import InfoField from 'client/room/InfoField';
+import OpenLayout from 'client/room/OpenLayout';
+import useRoomSizeConvert from 'utils/convertRoomSize';
 
-type propsType = {
+interface infoProps {
   availFrom: string;
   availTo: string;
   availConsul: boolean;
@@ -12,8 +12,9 @@ type propsType = {
   wholeFloor: number;
   struct: string;
   Address: string;
-};
-export default function Review({
+}
+
+function Info({
   availFrom,
   availTo,
   availConsul,
@@ -22,49 +23,48 @@ export default function Review({
   wholeFloor,
   struct,
   Address,
-}: propsType) {
+}: infoProps) {
+  const convertedRoomSize = useRoomSizeConvert(Number(roomSize));
+
   const [open, setOpen] = useState(false);
 
-  const availContent =
-    availFrom +
-    ' 부터 \n' +
-    availTo +
-    ' ' +
-    (availConsul ? '(협의가능)' : '(협의불가)');
-  const availContentEnter = availContent.split('\n').map((line, index) => {
-    return (
-      <span key={index}>
-        {line}
-        <br />
-      </span>
-    );
-  });
+  const moveInDate = `${availFrom} 부터 \n ${availTo}${
+    availConsul ? '(협의가능)' : '(협의불가)'
+  }`;
 
-  // const elevatorContent = elevator ?
+  const moveInDateEnter = moveInDate.split('\n').map((line, index) => (
+    <span key={index}>
+      {line}
+      <br />
+    </span>
+  ));
 
-  const arr = [
+  const infoArr = [
     {
       title: '입주가능일',
-      data: availContentEnter,
+      data: moveInDateEnter,
     },
     {
       title: '면적',
-      data: roomSize + 'm2 / ' + useRoomSizeConvert(Number(roomSize)) + '평',
+      data: roomSize + 'm2 / ' + convertedRoomSize + '평',
     },
     { title: '층수', data: floor + '층 / ' + wholeFloor + '층' },
     { title: '구조', data: struct },
     { title: '상세주소', data: Address },
   ];
+
   return (
     <OpenLayout open={open} setOpen={setOpen} title="방 정보">
-      {arr.map((item, index) => (
+      {infoArr.map((item, index) => (
         <InfoField
           key={index}
           title={item.title}
           content={item.data}
-          last={index !== arr.length - 1}
+          last={index !== infoArr.length - 1}
         />
       ))}
     </OpenLayout>
   );
 }
+
+export default Info;

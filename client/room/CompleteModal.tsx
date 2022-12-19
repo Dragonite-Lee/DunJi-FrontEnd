@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function CompleteModal() {
+function CompleteModal() {
   return (
     <div className="bg-blur w-full sm:w-[375px] h-screen fixed z-30">
       <div className="bg-white top-[350px] w-[250px] h-[130px] absolute z-30 rounded-standard_rounded translate-x-2/4 right-[50%]">
@@ -19,3 +19,5 @@ export default function CompleteModal() {
     </div>
   );
 }
+
+export default CompleteModal;

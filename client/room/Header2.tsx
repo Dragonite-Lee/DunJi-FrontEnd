@@ -1,20 +1,15 @@
 import Link from 'next/link';
-import Router from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useGoBack from 'hooks/useGoback';
 
-export default function Header2() {
+function Header2() {
+  const goBack = useGoBack();
+
   return (
-    <header
-      className="flex w-screen justify-between px-[18px] mb-[25px]
-                py-4  h-24 items-center  border-b sm:w-[375px] sm:m-auto"
-    >
+    <header className="flex w-screen justify-between px-[18px] mb-[25px] py-4  h-24 items-center  border-b sm:w-[375px] sm:m-auto">
       <div className="flex text-[17px] items-center Pretendard-SemiBold">
         <Link href="/" passHref>
-          <a
-            onClick={() => {
-              Router.back();
-            }}
-          >
+          <a onClick={goBack}>
             <FontAwesomeIcon icon="chevron-left" />
           </a>
         </Link>
@@ -30,3 +25,5 @@ export default function Header2() {
     </header>
   );
 }
+
+export default Header2;

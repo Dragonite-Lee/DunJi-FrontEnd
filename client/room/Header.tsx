@@ -1,23 +1,21 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import Router from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useGoBack from 'hooks/useGoback';
 
-type propsType = {
+interface HeaderProps {
   title: string;
-};
-export default function Header({ title }: propsType) {
+}
+
+function Header({ title }: HeaderProps) {
+  const goBack = useGoBack();
+
   return (
     <header
       className="flex w-full justify-between px-[18px] 
         py-4  Pretendard-SemiBold h-24 items-center text-[17px]  border-b"
     >
       <div className="flex items-center">
-        <a
-          onClick={() => {
-            Router.back();
-          }}
-        >
+        <a onClick={goBack}>
           <FontAwesomeIcon icon="chevron-left" />
         </a>
         <div className="ml-4">{title}</div>
@@ -45,3 +43,5 @@ export default function Header({ title }: propsType) {
     </header>
   );
 }
+
+export default Header;

@@ -1,13 +1,11 @@
-import { useState } from 'react';
-
-type propsType = {
+interface scoreInfoFieldProps {
   title: string;
   score: number;
   last: boolean;
-};
+}
 
-export default function ScoreInfoField({ title, score, last }: propsType) {
-  const [percentage] = useState('w-[' + Math.round((score / 5.0) * 100) + '%]');
+function ScoreInfoField({ title, score, last }: scoreInfoFieldProps) {
+  const percentage = 'w-[' + Math.round((score / 5.0) * 100) + '%]';
 
   return (
     <div
@@ -27,3 +25,5 @@ export default function ScoreInfoField({ title, score, last }: propsType) {
     </div>
   );
 }
+
+export default ScoreInfoField;

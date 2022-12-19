@@ -1,17 +1,18 @@
-type propsType = {
-  price: number;
-  deposit: number;
-  priceUnit: string;
-  buildingID: any;
+interface titleProps {
+  buildingID: string;
   dealType: string;
-};
-export default function Title({
-  price,
-  deposit,
-  priceUnit,
+  deposit: number;
+  price: number;
+  priceUnit: string;
+}
+
+function Title({
   buildingID,
   dealType,
-}: propsType) {
+  deposit,
+  price,
+  priceUnit,
+}: titleProps) {
   return (
     <div className="mt-[16px] mb-[8px]">
       <div className="flex justify-between items-center mb-[3px] Pretendard-Regular">
@@ -30,3 +31,5 @@ export default function Title({
     </div>
   );
 }
+
+export default Title;

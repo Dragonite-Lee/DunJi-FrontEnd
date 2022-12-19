@@ -1,71 +1,49 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import InfoField from './InfoField';
-import OpenLayout from './OpenLayout';
+import InfoField from 'client/room/InfoField';
 
-type propsType = {
-  elevator: boolean;
-  car: number;
-  pet: boolean;
-  women: boolean;
-  loan: boolean;
+interface OptionProps {
   aircon: boolean;
   bed: boolean;
+  car: number;
   closet: boolean;
   desk: boolean;
+  elevator: boolean;
   gas: boolean;
   induc: boolean;
+  loan: boolean;
   micro: boolean;
-  sink: boolean;
-  shoe: boolean;
-  shelf: boolean;
+  pet: boolean;
   refri: boolean;
+  shelf: boolean;
+  shoe: boolean;
+  sink: boolean;
   washer: boolean;
-};
+  women: boolean;
+}
 
-export default function Option({
-  elevator,
-  car,
-  pet,
-  women,
-  loan,
+function Option({
   aircon,
   bed,
+  car,
   closet,
   desk,
+  elevator,
   gas,
   induc,
+  loan,
   micro,
-  sink,
+  pet,
+  refri,
   shelf,
   shoe,
-  refri,
+  sink,
   washer,
-}: propsType) {
+  women,
+}: OptionProps) {
   const [open, setOpen] = useState(false);
 
-  const a: any = [];
-  const op = [
-    aircon,
-    bed,
-    closet,
-    desk,
-    gas,
-    induc,
-    micro,
-    sink,
-    shelf,
-    shoe,
-    refri,
-    washer,
-  ];
-  for (let i = 0; op.length; i++) {
-    if (op[i] == true) {
-      a.push(op[i]);
-    }
-  }
-
-  const imgArr = [
+  const optionList = [
     {
       title: '에어컨',
       data: aircon,
@@ -116,7 +94,7 @@ export default function Option({
     },
   ];
 
-  const arr = [
+  const detailOptionList = [
     {
       title: '앨레베이터',
       data: elevator ? 'O' : 'X',
@@ -138,7 +116,9 @@ export default function Option({
       data: loan ? 'O' : 'X',
     },
   ];
+
   const openHandler = () => setOpen(!open);
+
   return (
     <div className="w-full rounded-standard_rounded bg-component_white my-4">
       <div
@@ -161,10 +141,10 @@ export default function Option({
       {open && (
         <div>
           <div className="grid grid-cols-4 gap-2 px-[14px] py-[20px] text-[12px] Pretendard-Regular border-b border-border_color">
-            {imgArr.map((item, index) => (
+            {optionList.map((item, index) => (
               <div className="text-center" key={index}>
                 <Image
-                  src={require(`../../assets/icon/option/옵션_${item.title}.svg`)}
+                  src={require(`assets/icon/option/옵션_${item.title}.svg`)}
                   alt="로고"
                 />
                 <div>{item.title}</div>
@@ -172,12 +152,12 @@ export default function Option({
             ))}
           </div>
           <div className="px-[18px] ">
-            {arr.map((item, index) => (
+            {detailOptionList.map((item, index) => (
               <div key={index}>
                 <InfoField
                   title={item.title}
                   content={item.data}
-                  last={index !== arr.length - 1}
+                  last={index !== detailOptionList.length - 1}
                 />
               </div>
             ))}
@@ -187,3 +167,5 @@ export default function Option({
     </div>
   );
 }
+
+export default Option;

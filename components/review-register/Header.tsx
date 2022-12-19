@@ -1,10 +1,11 @@
-import Router from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useGoBack from 'hooks/useGoback';
 import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
 
 export default function Header() {
   const [state, dispatch] = useReviewRegisterRedux();
+  const goBack = useGoBack();
 
   return (
     <>
@@ -41,9 +42,7 @@ export default function Header() {
           </div>
           <div
             className="text-main text-[12px] Pretendard-Regular"
-            onClick={() => {
-              Router.back();
-            }}
+            onClick={goBack}
           >
             취소
           </div>

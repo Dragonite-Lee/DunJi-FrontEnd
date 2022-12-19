@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-type propsType = {
-  regDate: string;
+interface reviewProps {
   explain: string;
-};
-export default function Review({ regDate, explain }: propsType) {
+  regDate: string;
+}
+
+function Review({ explain, regDate }: reviewProps) {
   const [open, setOpen] = useState(false);
+
   const openHandler = () => setOpen(!open);
 
   return (
@@ -43,3 +45,5 @@ export default function Review({ regDate, explain }: propsType) {
     </div>
   );
 }
+
+export default Review;

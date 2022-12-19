@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useRoomRedux from 'hooks/useRoomRedux';
-import round from 'hooks/useRoomSizeConvert';
+import round from 'utils/convertRoomSize';
 import { listTypes } from 'store/modules/room';
 
 export default function RoomListYSlider() {

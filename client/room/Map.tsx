@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
 import Script from 'next/script';
-type propsType = {
+
+interface MapProps {
   latitude: number;
   longitude: number;
-};
+}
 
-export default function Map({ latitude, longitude }: propsType) {
+export default function Map({ latitude, longitude }: MapProps) {
   // useEffect(() => {
   //     const mapScript = document.createElement("script");
   //     mapScript.async = true;
@@ -32,6 +32,7 @@ export default function Map({ latitude, longitude }: propsType) {
   //     mapScript.addEventListener("load", onLoadKakaoMap);
   //     return () => mapScript.removeEventListener("load", onLoadKakaoMap);
   // }, [latitude, longitude]);
+
   const onLoadKakaoMap = () => {
     window.kakao.maps.load(() => {
       const container = document.getElementById('map');

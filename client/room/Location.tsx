@@ -1,19 +1,17 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
+import Map from 'client/room/Map';
 
-type propsType = {
-  children: any;
-  open: boolean;
-  title: string;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-};
-export default function OpenLayout({
-  children,
-  open,
-  setOpen,
-  title,
-}: propsType) {
+interface LocationProps {
+  latitude: number;
+  longitude: number;
+}
+
+function Location({ latitude, longitude }: LocationProps) {
+  const [open, setOpen] = useState(false);
+
   const openHandler = () => setOpen(!open);
+
   return (
     <div className="w-full rounded-standard_rounded bg-component_white my-4">
       <div
@@ -22,7 +20,7 @@ export default function OpenLayout({
           open && `border-b border-border_color`
         } h-20 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}
       >
-        {title}
+        위치 / 주변
         <div className={`ml-auto w-10 h-12 relative ${open && 'rotate-180'}`}>
           <Image
             src={require('assets/icon/화살표_펼치기.svg')}
@@ -33,7 +31,9 @@ export default function OpenLayout({
           />
         </div>
       </div>
-      <div className="px-[18px] ">{open && children}</div>
+      {open && <Map latitude={latitude} longitude={longitude} />}
     </div>
   );
 }
+
+export default Location;

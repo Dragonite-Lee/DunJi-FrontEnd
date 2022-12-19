@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import InfoField from './InfoField';
-import OpenLayout from './OpenLayout';
+import InfoField from 'client/room/InfoField';
+import OpenLayout from 'client/room/OpenLayout';
 
-type propsType = {
+interface PriceProps {
   price: number;
   deposit: number;
   manageElec: number;
@@ -12,9 +12,9 @@ type propsType = {
   manageTV: number;
   manageCost: number;
   manageInclude: string;
-};
+}
 
-export default function Price({
+function Price({
   price,
   deposit,
   manageCost,
@@ -24,9 +24,16 @@ export default function Price({
   manageInternet,
   manageTV,
   manageInclude,
-}: propsType) {
+}: PriceProps) {
   const [open, setOpen] = useState(false);
 
+  const manageContent = `${manageCost} 만원\n 관리비에 포함 ${manageInclude}`;
+  const manageContentEnter = manageContent.split('\n').map((line, index) => (
+    <span key={index}>
+      {line}
+      <br />
+    </span>
+  ));
   const optionArr = [
     { value: manageElec, type: '전기' },
     { value: manageGas, type: '가스' },
@@ -34,16 +41,8 @@ export default function Price({
     { value: manageInternet, type: '인터넷' },
     { value: manageTV, type: '티비' },
   ];
-  const manageContent = manageCost + '만원' + '\n관리비에 포함' + manageInclude;
-  const manageContentEnter = manageContent.split('\n').map((line, index) => {
-    return (
-      <span key={index}>
-        {line}
-        <br />
-      </span>
-    );
-  });
-  const arr = [
+
+  const priceTypeArr = [
     {
       title: '월세',
       data: price + '만원',
@@ -54,16 +53,19 @@ export default function Price({
       data: manageContentEnter,
     },
   ];
+
   return (
     <OpenLayout open={open} setOpen={setOpen} title="가격 정보">
-      {arr.map((item, index) => (
+      {priceTypeArr.map((priceType, index) => (
         <InfoField
           key={index}
-          title={item.title}
-          content={item.data}
-          last={index !== arr.length - 1}
+          title={priceType.title}
+          content={priceType.data}
+          last={index !== priceTypeArr.length - 1}
         />
       ))}
     </OpenLayout>
   );
 }
+
+export default Price;

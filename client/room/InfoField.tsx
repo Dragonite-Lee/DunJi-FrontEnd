@@ -1,10 +1,10 @@
-type propsType = {
-  title: string;
+interface InfoFieldProps {
   content: string | JSX.Element[] | number;
   last: boolean;
-};
+  title: string;
+}
 
-export default function InfoField({ title, content, last }: propsType) {
+function InfoField({ content, last, title }: InfoFieldProps) {
   return (
     <div
       className={`${
@@ -16,3 +16,5 @@ export default function InfoField({ title, content, last }: propsType) {
     </div>
   );
 }
+
+export default InfoField;
