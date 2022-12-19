@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import NewReview from 'client/main/newReview';
+import NewRoom from 'client/main/newRoom';
 import Carousel from 'components/main/Carousel';
-import NewReview from 'client/main/NewReview';
-import NewRoom from 'client/main/NewRoom';
 import TabBar from 'components/main/TabBar';
 
 function Home() {
@@ -16,7 +16,7 @@ function Home() {
   const searchClickHandler = () => {
     sessionStorage.clear();
     sessionStorage.setItem('search', 'true');
-  }
+  };
 
   return (
     <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">
@@ -83,7 +83,7 @@ function Home() {
             </a>
           </Link>
         </div>
-        
+
         {/* *메인이벤트 슬라이더박스 */}
         <div>
           <Carousel />

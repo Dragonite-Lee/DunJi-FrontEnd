@@ -1,38 +1,39 @@
+import Image from 'next/image';
 import useRoomSizeConvert from 'hooks/useRoomSizeConvert';
+import { newRoomType } from 'store/modules/main';
 
 interface NewRoomItemProps {
-    latitude: number;
-    longitude: number;
-    roomID: string;
-    roomType: string;
-    dealType: string;
-    priceUnit: string;
-    deposit: number;
-    price: number;
-    floor: string;
-    struct: string;
-    roomSize: number;
-    image: number;
-    recommend: number;
-    address: string;
+  data: newRoomType;
 }
 
-function NewRoomItem(data: Object<NewRoomItemProps>) {
+function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
   return (
-    <div>
+    <div className="w-[140px] mr-[16px]">
+      <div>
+        {/* *이미지칸 */}
+        <Image
+          src={require('../../assets/icon/main/main_char.png')}
+          layout="fixed"
+          objectFit="fill"
+          width={140}
+          height={105}
+          alt="대표방이미지"
+        />
+      </div>
+      <div>
         <div className="pt-[8px] text-[15px] Pretendard-SemiBold">
-        {data.priceUnit}세 {data.deposit} / {data.price}
+          {data.priceUnit}세 {data.deposit} / {data.price}
         </div>
         <div className="pt-[4px] text-[12px] Pretendard-Regular">
-        {data.address}
+          {data.address}
         </div>
         <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-        {data.struct} {data.roomType}, {data.floor}층
+          {data.struct} {data.roomType}, {data.floor}층
         </div>
         <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-        {data.roomSize}m<sup>2</sup> /{' '}
-        {useRoomSizeConvert(data.roomSize)}평
+          {data.roomSize}m<sup>2</sup> / {useRoomSizeConvert(data.roomSize)}평
         </div>
+      </div>
     </div>
   );
 }

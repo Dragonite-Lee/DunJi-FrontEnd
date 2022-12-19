@@ -1,18 +1,17 @@
-import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
+import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { mainApi } from '_api';
+import NewRoomItem from 'client/main/newRoom-item';
 import useMainRedux from 'hooks/useMainRedux';
-import { dispatchNewRoom } from 'store/modules/main';
-import NewRoomItem from 'client/main/NewRoom';
+import { dispatchNewRoom, newRoomType } from 'store/modules/main';
 
 function NewRoom() {
   const [state, dispatch] = useMainRedux();
-  const id = localStorage.getItem('userId');
+  const userId = localStorage.getItem('userId');
 
-  const newRoomListData = useCallback(()=> {
+  const newRoomListData = useCallback(() => {
     mainApi
-      .newRoom(id)
+      .newRoom(userId)
       .then((res) => {
         // console.log(res.data)
         dispatch(dispatchNewRoom(res.data));
@@ -20,10 +19,10 @@ function NewRoom() {
       .catch((error) => {
         console.log(error);
       });
-  },[id]);
+  }, [dispatch, userId]);
 
   useEffect(() => {
-    newRoomListData()
+    newRoomListData();
   }, [dispatch]);
 
   return (
@@ -39,21 +38,8 @@ function NewRoom() {
         </Link>
       </div>
       <div className="pt-[14px] h-full flex overflow-x-auto overflow-y-hidden">
-        {state.newRoom.map((a: any, index: number) => (
-          <div key={index} className="w-[140px] mr-[16px]">
-            <div>
-              {/* *이미지칸 */}
-              <Image
-                src={require('../../assets/icon/main/main_char.png')}
-                layout="fixed"
-                objectFit="fill"
-                width={140}
-                height={105}
-                alt="대표방이미지"
-              />
-            </div>
-            <NewRoomItem data={a} />
-          </div>
+        {state.newRoom.map((newRoomData: newRoomType, index: number) => (
+          <NewRoomItem key={index} data={newRoomData} />
         ))}
       </div>
     </div>

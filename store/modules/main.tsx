@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type newRoomType = {
+export interface newRoomType {
+  address: any;
+  dealType: string;
+  deposit: number;
+  floor: string;
+  image: any;
   latitude: number;
   longitude: number;
-  roomID: any;
-  roomType: string;
-  dealType: string;
-  priceUnit: string;
-  deposit: number;
   price: number;
-  floor: string;
-  struct: string;
-  roomSize: number;
-  image: any;
+  priceUnit: string;
   recommend: number;
-  address: any;
-};
+  roomID: any;
+  roomSize: number;
+  roomType: string;
+  struct: string;
+}
 
 type newReviewType = {
   address: string;
