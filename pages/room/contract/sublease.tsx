@@ -1,6 +1,6 @@
-import ContractContent from '../../../components/contract/sublease/ContractContent';
-import Explanation from '../../../components/contract/sublease/Explanation';
-import Header from '../../../components/contract/sublease/Header';
+import ContractContent from 'components/contract/sublease/ContractContent';
+import Explanation from 'components/contract/sublease/Explanation';
+import Header from 'components/contract/sublease/Header';
 
 export default function Sublease() {
   return (

@@ -1,5 +1,5 @@
-import DownloadType from '../../../components/contract/download/DownloadType';
-import Header from '../../../components/contract/download/Header';
+import DownloadType from 'components/contract/download/DownloadType';
+import Header from 'components/contract/download/Header';
 
 export default function Download() {
   return (

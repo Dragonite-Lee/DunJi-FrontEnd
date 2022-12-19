@@ -17,7 +17,7 @@ export interface newRoomType {
   struct: string;
 }
 
-type newReviewType = {
+export interface newReviewType {
   address: string;
   regDate: number;
   registrant: number;
@@ -33,7 +33,7 @@ type newReviewType = {
   facility: number;
   period: string;
   content: string;
-};
+}
 
 type initialStateTypes = {
   SEARCHMODAL_OPEN: boolean;

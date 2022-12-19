@@ -1,6 +1,6 @@
-import ContractContent from '../../../components/contract/transfer-agreement/ContractContent';
-import Explanation from '../../../components/contract/transfer-agreement/Explanation';
-import Header from '../../../components/contract/transfer-agreement/Header';
+import ContractContent from 'components/contract/transfer-agreement/ContractContent';
+import Explanation from 'components/contract/transfer-agreement/Explanation';
+import Header from 'components/contract/transfer-agreement/Header';
 
 export default function TransferAgreement() {
   return (
