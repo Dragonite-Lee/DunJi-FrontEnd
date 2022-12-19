@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NewReview from 'client/main/newReview';
@@ -8,15 +9,21 @@ import TabBar from 'components/main/TabBar';
 function Home() {
   let userID;
   let userNickname;
-  if (typeof window !== 'undefined') {
-    userID = localStorage.getItem('userId');
-    userNickname = localStorage.getItem('userNickname');
-  }
 
+  const getUserProfile = () => {
+    if (typeof window !== 'undefined') {
+      userID = localStorage.getItem('userId');
+      userNickname = localStorage.getItem('userNickname');
+    }
+  }
   const searchClickHandler = () => {
     sessionStorage.clear();
     sessionStorage.setItem('search', 'true');
   };
+
+  useEffect(()=>{
+    getUserProfile()
+  },[])
 
   return (
     <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">
@@ -79,7 +86,7 @@ function Home() {
                 className="bg-white rounded-[8rem] h-full text-xl pl-20 placeholder-font_border_color outline-0 w-full"
                 placeholder="지역, 지하철, 대학교 검색"
                 onClick={searchClickHandler}
-              ></input>
+              />
             </a>
           </Link>
         </div>

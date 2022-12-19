@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { mainApi } from '_api';
 import NewReviewItem from 'client/main/newReviewItem';
