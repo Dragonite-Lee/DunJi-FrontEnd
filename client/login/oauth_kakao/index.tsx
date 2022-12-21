@@ -1,9 +1,10 @@
 import { useCallback, useEffect } from 'react';
-import { dispatchHandleLogin } from 'store/modules/login';
+import Router from 'next/router';
 import { logInApi } from '_api';
 import useLoginRedux from 'hooks/useLoginRedux';
 import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
-import Router from 'next/router';
+import { dispatchHandleLogin } from 'store/modules/login';
+
 
 function OauthKakao() {
   const [state, dispatch] = useLoginRedux();

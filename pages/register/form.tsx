@@ -1,3 +1,4 @@
+ 
 import PolicyForm from 'client/register/form';
 
 function PolicyFormPage() {
