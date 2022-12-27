@@ -1,21 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import TabBar from "components/main/TabBar";
-import Header from "components/mypage/Header";
-import Profile from "components/mypage/Profile";
-import SquareZone from "components/mypage/SquareZone";
-import Content from "components/mypage/Content";
+import Mypage from "client/myPage";
 
-export default function Mypage() {
-    
-    return (
-        <div className="bg-background_beige min-h-full sm:w-[375px] sm:m-auto pb-[120px]">
-            <TabBar />
-            <Header />
-            <Profile />
-            <SquareZone />
-            <Content />
-        </div>
-    );
+function MyPageAuth({}) {
+  return <Mypage />;
 }
 
+export async function getServerSideProps() {
+  //TODO: 이메일등 개인정보에 예상
+  return { props: {} }
+}
+
+export default MyPageAuth

@@ -1,14 +1,14 @@
-import Header from "../../../components/contract/download/Header"
-import DownloadType from "../../../components/contract/download/DownloadType";
+import Download from 'client/pages/room/contract/download';
 
 
-export default function Download() {
-    
+function DownloadPage() {
+  return <Download />;
+}
 
-    return (
-        <div className="bg-background_beige sm:w-[375px] sm:m-auto">
-            <Header />
-            <DownloadType />
-        </div>
-    )
+export default DownloadPage;
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
 }
