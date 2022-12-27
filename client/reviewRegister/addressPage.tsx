@@ -2,18 +2,15 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PostCode from 'components/daum-postcode/review';
 import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
-import {
-  dispatchDetailAddress,
-  dispatchPostCodeOpen,
-} from 'store/modules/reviewRegister';
-import Period from '../ReviewComponents/Period';
-import SubHeader from '../SubHeader';
-import Map from './Map';
+import {dispatchDetailAddress,dispatchPostCodeOpen} from 'store/modules/reviewRegister';
+import Period from 'client/reviewRegister/period';
+import SubHeader from 'client/reviewRegister/subHeader';
+import Map from 'client/reviewRegister/map';
 
-export default function AddressRegister() {
+function AddressRegister() {
   const [state, dispatch] = useReviewRegisterRedux();
-
   const [detailAddress, setDetailAddress] = useState(state.detailAddress);
+  
   const btnHandler = (val: boolean) => dispatch(dispatchPostCodeOpen(val));
   const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
     setDetailAddress(e.currentTarget.value);
@@ -56,17 +53,12 @@ export default function AddressRegister() {
                       주소 등록
                       <span className="text-main">*</span>
                     </div>
-                    <div
-                      className="
-                                                flex flex-col contents-center
-                                                bg-component_white   rounded-2xl overflow-hidden"
-                    >
+                    <div className="flex flex-col contents-center bg-component_white   rounded-2xl overflow-hidden">
                       <div className="p-4 border-b border-border_color text-[15px] Pretendard-Regular">
                         {state.address}
                       </div>
                       <input
-                        className="p-4 h-full w-full bg-transparent outline-0
-                                                        placeholder:text-font_gray text-[15px] Pretendard-Regular"
+                        className="p-4 h-full w-full bg-transparent outline-0 placeholder:text-font_gray text-[15px] Pretendard-Regular"
                         type="text"
                         value={detailAddress}
                         onChange={inputHandler}
@@ -90,3 +82,5 @@ export default function AddressRegister() {
     </>
   );
 }
+
+export default AddressRegister;

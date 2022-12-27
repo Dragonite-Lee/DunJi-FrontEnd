@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Content() {
+function Content() {
   function loggedOut() {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('userId');
@@ -82,3 +81,5 @@ export default function Content() {
     </div>
   );
 }
+
+export default Content;

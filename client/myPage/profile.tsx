@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Profile() {
+function Profile() {
   return (
     <div className="mx-[28px] py-[16px] flex items-center justify-between border-b">
       <div className="flex items-center">
@@ -42,3 +42,5 @@ export default function Profile() {
     </div>
   );
 }
+
+export default Profile;

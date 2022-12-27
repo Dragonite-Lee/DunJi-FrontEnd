@@ -1,23 +1,13 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 찜한매물 from 'assets/icon/myPage/찜한매물.svg';
+import SquareZoneItem from 'client/myPage';
 
-export default function SquareZone() {
+function SquareZone() {
+  //props에 intrinsicAttributes에러 아시나요
   return (
     <div className="px-[18px] py-[20px]">
       <div className="grid grid-cols-2 gap-[9px]">
-        <div className="h-[83px] flex items-center justify-center text-[17px] Pretendard-SemiBold bg-white py-[30px] rounded-standard_rounded">
-          <Image
-            src={require('assets/icon/myPage/찜한매물.svg')}
-            width={33}
-            height={33}
-            alt="찜한매물"
-          />
-          <div className="ml-[4px]">
-            {/* *각 페이지로 이동해야함 */}
-            찜한 매물
-          </div>
-        </div>
+        <SquareZoneItem image={'찜한매물'} alt="찜한매물" content="찜한매물" />
         <div className="h-[83px] flex items-center justify-center text-[17px] Pretendard-SemiBold bg-white py-[30px] rounded-standard_rounded">
           <Image
             src={require('assets/icon/myPage/최근매물.svg')}
@@ -58,3 +48,5 @@ export default function SquareZone() {
     </div>
   );
 }
+
+export default SquareZone;
