@@ -7,8 +7,10 @@ import { dispatchNewRoom, newRoomType } from 'store/modules/main';
 
 function NewRoom() {
   const [state, dispatch] = useMainRedux();
-  const userId = localStorage.getItem('userId');
-
+  let userId: any;
+  if (typeof window !== 'undefined') {
+    userId = localStorage.getItem('userId');
+  }
   const newRoomListData = useCallback(() => {
     mainApi
       .newRoom(userId)
