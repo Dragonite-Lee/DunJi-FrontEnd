@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { mainApi } from '_api';
 import useMainRedux from 'hooks/useMainRedux';
-import useRoomSizeConvert from 'hooks/useRoomSizeConvert';
+import convertRoomSize from 'utils/convertRoomSize';
 import { dispatchNewRoom } from 'store/modules/main';
 
 export default function NewRoom() {
@@ -61,8 +61,8 @@ export default function NewRoom() {
                 {data.struct} {data.roomType}, {data.floor}층
               </div>
               <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-                {data.roomSize}m<sup>2</sup> /{' '}
-                {useRoomSizeConvert(data.roomSize)}평
+                {data.roomSize}m<sup>2</sup> / {convertRoomSize(data.roomSize)}
+                평
               </div>
             </div>
           </div>

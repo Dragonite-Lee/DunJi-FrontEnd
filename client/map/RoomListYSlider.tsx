@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { useSelector } from 'react-redux';
 
 import roomImg from 'assets/images/room.png';
-import round from 'hooks/useRoomSizeConvert';
 import { listTypes } from 'store/modules/room';
+import round from 'utils/convertRoomSize';
 
 import type { RootState } from 'store/modules';
 
