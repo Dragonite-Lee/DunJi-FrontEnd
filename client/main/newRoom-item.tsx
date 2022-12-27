@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import useRoomSizeConvert from 'hooks/useRoomSizeConvert';
+import convertRoomSize from 'utils/convertRoomSize'
 import { newRoomType } from 'store/modules/main';
 
 interface NewRoomItemProps {
@@ -31,7 +31,7 @@ function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
           {data.struct} {data.roomType}, {data.floor}층
         </div>
         <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-          {data.roomSize}m<sup>2</sup> / {useRoomSizeConvert(data.roomSize)}평
+          {data.roomSize}m<sup>2</sup> / {convertRoomSize(data.roomSize)}평
         </div>
       </div>
     </div>
