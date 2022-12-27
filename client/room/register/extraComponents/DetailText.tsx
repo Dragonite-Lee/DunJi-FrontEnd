@@ -1,0 +1,23 @@
+import CategoryHeader from 'components/common/CategoryHeader';
+import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+import { dispatchExplain } from 'store/modules/roomRegister';
+
+function Parking() {
+  const [state, dispatch] = useRoomRegisterRedux();
+  const explain = state.explain;
+  return (
+    <>
+      <CategoryHeader title="상세설명" />
+      <textarea
+        value={explain}
+        onChange={(e) => dispatch(dispatchExplain(e.target.value))}
+        className="border border-border_color
+                rounded-standard_rounded w-full h-[220px] p-4 text-xl
+                outline-0
+                "
+      ></textarea>
+    </>
+  );
+}
+
+export default Parking;

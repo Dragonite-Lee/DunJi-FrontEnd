@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useGoBack from 'hooks/useGoback';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
-import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
+import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+import { dispatchPostCodeOpen } from 'store/modules/roomRegister';
 
-export default function Header() {
-  const [state, dispatch] = useReviewRegisterRedux();
+function Header() {
+  const [state, dispatch] = useRoomRegisterRedux();
   const goBack = useGoBack();
 
   return (
@@ -37,7 +37,7 @@ export default function Header() {
               <FontAwesomeIcon icon="chevron-left" />
             </div>
             <div className="ml-4 Pretendard-SemiBold text-[17px]">
-              후기 작성하기
+              방 내놓기
             </div>
           </div>
           <div
@@ -51,3 +51,5 @@ export default function Header() {
     </>
   );
 }
+
+export default Header;

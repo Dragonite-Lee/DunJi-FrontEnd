@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import round from 'hooks/useRoomSizeConvert';
+import round from 'utils/convertRoomSize';
 type propsType = {
   data: any;
 };
