@@ -7,18 +7,20 @@ import { dispatchNewReview, newReviewType } from 'store/modules/main';
 
 function NewReview() {
   const [state, dispatch] = useMainRedux();
-  const id = localStorage.getItem('userId');
-
+  let userId: any;
+  if (typeof window !== 'undefined') {
+    userId = localStorage.getItem('userId');
+  }
   const newReviewListData = useCallback(()=>{
     mainApi
-      .newReview(id)
+      .newReview(userId)
       .then((res) => {
         dispatch(dispatchNewReview(res.data));
       })
       .catch((error) => {
         console.log(error);
       });
-  },[id])
+  },[userId])
   
   useEffect(() => {
     newReviewListData()
