@@ -1,10 +1,14 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { mapApi } from '_api';
-import useMapFilterRedux from 'hooks/useMapFilterRedux';
 import { dispatchfilterDataTypes } from 'store/modules/filter';
 
-export default function BottomNextBtn() {
-  const [state, dispatch] = useMapFilterRedux();
+import type { RootState } from 'store/modules';
+
+function BottomNextBtn() {
+  const dispatch = useDispatch();
+  const mapFilter = useSelector((state: RootState) => state.mapFilter);
 
   const isEmpty = useCallback(function (value: any) {
     if (
@@ -19,13 +23,11 @@ export default function BottomNextBtn() {
     }
   }, []);
 
-  console.log(state);
-  const checkHandler = async () => {
+  const checkHandler = useCallback(async () => {
     const formData = new FormData();
 
-    console.log(state);
-    for (const item in state) {
-      if (!isEmpty(state[item])) formData.append(item, state[item]); //formdata에 값 입력
+    for (const item in mapFilter) {
+      if (!isEmpty(mapFilter[item])) formData.append(item, mapFilter[item]); //formdata에 값 입력
     }
 
     // isEmpty에서 적절하게 처리 안되는 항목 제거 후 따로 formData에 입력
@@ -61,103 +63,103 @@ export default function BottomNextBtn() {
     for (let i = 0; i < delete_arr.length; i++) formData.delete(delete_arr[i]);
 
     //각각 true면 1 false면 0
-    if (state.oneRoom == false) {
+    if (mapFilter.oneRoom == false) {
       formData.append('oneRoom', '0');
-    } else if (state.oneRoom == true) {
+    } else if (mapFilter.oneRoom == true) {
       formData.append('oneRoom', '1');
     }
-    if (state.twoRoom == false) {
+    if (mapFilter.twoRoom == false) {
       formData.append('twoRoom', '0');
-    } else if (state.twoRoom == true) {
+    } else if (mapFilter.twoRoom == true) {
       formData.append('twoRoom', '1');
     }
-    if (state.threeRoom == false) {
+    if (mapFilter.threeRoom == false) {
       formData.append('threeRoom', '0');
-    } else if (state.threeRoom == true) {
+    } else if (mapFilter.threeRoom == true) {
       formData.append('threeRoom', '1');
     }
 
-    if (state.floorFive == false) {
+    if (mapFilter.floorFive == false) {
       formData.append('floorFive', '0');
-    } else if (state.floorFive == true) {
+    } else if (mapFilter.floorFive == true) {
       formData.append('floorFive', '1');
     }
-    if (state.floorsixup == false) {
+    if (mapFilter.floorsixup == false) {
       formData.append('floorsixup', '0');
-    } else if (state.floorsixup == true) {
+    } else if (mapFilter.floorsixup == true) {
       formData.append('floorsixup', '1');
     }
-    if (state.floortenup == false) {
+    if (mapFilter.floortenup == false) {
       formData.append('floortenup', '0');
-    } else if (state.floortenup == true) {
+    } else if (mapFilter.floortenup == true) {
       formData.append('floortenup', '1');
     }
-    if (state.basement == false) {
+    if (mapFilter.basement == false) {
       formData.append('basement', '0');
-    } else if (state.basement == true) {
+    } else if (mapFilter.basement == true) {
       formData.append('basement', '1');
     }
-    if (state.rooftop == false) {
+    if (mapFilter.rooftop == false) {
       formData.append('rooftop', '0');
-    } else if (state.rooftop == true) {
+    } else if (mapFilter.rooftop == true) {
       formData.append('rooftop', '1');
     }
 
-    if (state.openType == false) {
+    if (mapFilter.openType == false) {
       formData.append('openType', '0');
-    } else if (state.openType == true) {
+    } else if (mapFilter.openType == true) {
       formData.append('openType', '1');
     }
-    if (state.separateType == false) {
+    if (mapFilter.separateType == false) {
       formData.append('separateType', '0');
-    } else if (state.separateType == true) {
+    } else if (mapFilter.separateType == true) {
       formData.append('separateType', '1');
     }
-    if (state.twoFloorType == false) {
+    if (mapFilter.twoFloorType == false) {
       formData.append('twoFloorType', '0');
-    } else if (state.twoFloorType == true) {
+    } else if (mapFilter.twoFloorType == true) {
       formData.append('twoFloorType', '1');
     }
 
-    if (state.car == false) {
+    if (mapFilter.car == false) {
       formData.append('car', '0');
-    } else if (state.car == true) {
+    } else if (mapFilter.car == true) {
       formData.append('car', '1');
     }
-    if (state.elevator == false) {
+    if (mapFilter.elevator == false) {
       formData.append('elevator', '0');
-    } else if (state.elevator == true) {
+    } else if (mapFilter.elevator == true) {
       formData.append('elevator', '1');
     }
-    if (state.pet == false) {
+    if (mapFilter.pet == false) {
       formData.append('pet', '0');
-    } else if (state.pet == true) {
+    } else if (mapFilter.pet == true) {
       formData.append('pet', '1');
     }
-    if (state.fullOption == false) {
+    if (mapFilter.fullOption == false) {
       formData.append('fullOption', '0');
-    } else if (state.fullOption == true) {
+    } else if (mapFilter.fullOption == true) {
       formData.append('fullOption', '1');
     }
-    if (state.women == false) {
+    if (mapFilter.women == false) {
       formData.append('women', '0');
-    } else if (state.women == true) {
+    } else if (mapFilter.women == true) {
       formData.append('women', '1');
     }
-    if (state.loan == false) {
+    if (mapFilter.loan == false) {
       formData.append('loan', '0');
-    } else if (state.loan == true) {
+    } else if (mapFilter.loan == true) {
       formData.append('loan', '1');
     }
 
-    if (state.priceSort == false) {
+    if (mapFilter.priceSort == false) {
       formData.append('priceSort', '0');
-    } else if (state.priceSort == true) {
+    } else if (mapFilter.priceSort == true) {
       formData.append('priceSort', '1');
     }
-    if (state.recommendSort == false) {
+    if (mapFilter.recommendSort == false) {
       formData.append('recommendSort', '0');
-    } else if (state.recommendSort == true) {
+    } else if (mapFilter.recommendSort == true) {
       formData.append('recommendSort', '1');
     }
 
@@ -171,16 +173,18 @@ export default function BottomNextBtn() {
       'sizeFrom',
       'sizeTo',
     ];
+
     const price_value_arr = [
-      state.priceFrom,
-      state.priceTo,
-      state.depositFrom,
-      state.depositTo,
-      state.manageFrom,
-      state.manageTo,
-      state.sizeFrom,
-      state.sizeTo,
+      mapFilter.priceFrom,
+      mapFilter.priceTo,
+      mapFilter.depositFrom,
+      mapFilter.depositTo,
+      mapFilter.manageFrom,
+      mapFilter.manageTo,
+      mapFilter.sizeFrom,
+      mapFilter.sizeTo,
     ];
+
     for (let i = 0; i < price_arr.length; i++) {
       formData.append(price_arr[i], price_value_arr[i]);
     }
@@ -219,13 +223,11 @@ export default function BottomNextBtn() {
 
     try {
       // for (let item of all_items_arr) {
-
       //     const key = Object.keys(item)[0];
       //     const message = Object.values(item)[0];
       //     if (!formData.has(key)) {
       //         throw message;
       //     }
-
       // }
       for (const i of formData.entries()) {
         console.log(i);
@@ -238,7 +240,7 @@ export default function BottomNextBtn() {
     } catch (e) {
       alert(e + ' 입력해 주세요');
     }
-  };
+  }, [dispatch, isEmpty, mapFilter]);
 
   return (
     <div
@@ -250,3 +252,5 @@ export default function BottomNextBtn() {
     </div>
   );
 }
+
+export default BottomNextBtn;

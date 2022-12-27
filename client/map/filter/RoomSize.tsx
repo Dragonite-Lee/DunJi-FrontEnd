@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Slider from 'rc-slider';
+import { useDispatch } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
 import 'rc-slider/assets/index.css';
-import useMapFilterRedux from 'hooks/useMapFilterRedux';
 import { dispatchSizeFrom, dispatchSizeTo } from 'store/modules/filter';
 
-export default function RoomSize() {
-  const [state, dispatch] = useMapFilterRedux();
+function RoomSize() {
+  const dispatch = useDispatch();
 
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(40);
@@ -44,3 +45,5 @@ export default function RoomSize() {
     </>
   );
 }
+
+export default RoomSize;

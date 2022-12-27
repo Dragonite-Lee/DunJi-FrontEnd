@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Slider from 'rc-slider';
-import { useSelector, useDispatch } from 'react-redux';
-import CategoryHeader from 'components/common/CategoryHeader';
-import useMapFilterRedux from 'hooks/useMapFilterRedux';
-import { dispatchManageFrom, dispatchManageTo } from 'store/modules/filter';
-import { RootState } from '../../store/modules/index';
-import CommonBtn from '../common/Btn';
+import { useDispatch } from 'react-redux';
 
-export default function Price() {
-  const [state, dispatch] = useMapFilterRedux();
+import CategoryHeader from 'components/common/CategoryHeader';
+import { dispatchManageFrom, dispatchManageTo } from 'store/modules/filter';
+
+function Price() {
+  const dispatch = useDispatch();
 
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(20);
@@ -46,3 +44,5 @@ export default function Price() {
     </div>
   );
 }
+
+export default Price;

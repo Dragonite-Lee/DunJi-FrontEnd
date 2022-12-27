@@ -1,20 +1,26 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useRoomRedux from 'hooks/useRoomRedux';
-import round from 'utils/convertRoomSize';
-import { listTypes } from 'store/modules/room';
 
-export default function RoomListYSlider() {
+import { useSelector } from 'react-redux';
+
+import roomImg from 'assets/images/room.png';
+import { listTypes } from 'store/modules/room';
+import round from 'utils/convertRoomSize';
+
+import type { RootState } from 'store/modules';
+
+function RoomListYSlider() {
+  const { MAP_ROOM_LIST } = useSelector((state: RootState) => state.room);
+
   const [slideData, setSideData] = useState([]);
 
-  const [state] = useRoomRedux();
   useEffect(() => {
-    if (Object.keys(state.MAP_ROOM_LIST).length !== 0) {
-      setSideData(Object.values(state.MAP_ROOM_LIST));
+    if (Object.keys(MAP_ROOM_LIST).length !== 0) {
+      setSideData(Object.values(MAP_ROOM_LIST));
     }
-  }, [state.MAP_ROOM_LIST]);
-  // console.log(state.MAP_ROOM_LIST)
+  }, [MAP_ROOM_LIST]);
+
   return (
     <div className="w-full  bg-white  px-[18px] h-[76vh] overflow-scroll overflow-x-hidden">
       {slideData.map((item: listTypes, index) => (
@@ -22,7 +28,7 @@ export default function RoomListYSlider() {
           <a>
             <div className="border-b pt-6">
               <Image
-                src={require('./room.png')}
+                src={roomImg}
                 alt="room"
                 className="rounded-[1.5rem]"
                 width={400}
@@ -51,3 +57,5 @@ export default function RoomListYSlider() {
     </div>
   );
 }
+
+export default RoomListYSlider;
