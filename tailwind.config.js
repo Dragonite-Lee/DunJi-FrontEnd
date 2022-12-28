@@ -2,8 +2,8 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './client/**/*.{js,ts,jsx,tsx}',
   ],
-
   theme: {
     height: (theme) => ({
       auto: 'auto',
@@ -19,7 +19,6 @@ module.exports = {
       screen: 'calc(var(--vh) * 100)',
       '100vh': 'calc(var(--vh) * 100)',
     }),
-
     extend: {
       colors: {
         background_beige: '#F1EEE8',
@@ -81,7 +80,6 @@ module.exports = {
         nav_height: '5rem',
         map_header_height: '11rem',
       },
-
       translate: {
         map_room_list_height: '25rem',
       },
