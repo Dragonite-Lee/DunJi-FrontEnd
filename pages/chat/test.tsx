@@ -1,85 +1,34 @@
-import { ChangeEvent, KeyboardEvent, useCallback, useState } from 'react';
-import SockJS from 'sockjs-client';
-
-const SERVER_URL = 'http://127.0.0.1:9999/echo';
-
-interface ChatMessageType {
-  name: string;
-  message: string;
-}
+import { useCallback, ChangeEvent, KeyboardEvent, useState } from 'react';
+import useChat from 'client/chat/useChat';
+import ChatMessage from 'pages/chat/ChatMessage';
 
 const Chatting = () => {
-  const [live, setLive] = useState<boolean>(false);
+  const { chat, sendMessage, live } = useChat();
   const [message, setMessage] = useState<string>('');
-  const [serverUrl, setServerUrl] = useState<string>(SERVER_URL);
-  const [chat, setChat] = useState<ChatMessageType[]>([]);
-  const [sockjs, setSockjs] = useState<WebSocket | null>();
 
-  const handleReceiveMessage = (e: MessageEvent) => {
-    const newReceiveData = e.data;
-    if (newReceiveData === '') return;
-    setChat((chat) => [...chat, { name: 'Server', message: newReceiveData }]);
-  };
-
-  const handleSocketConnect = () => {
-    const sock: WebSocket = new SockJS(serverUrl);
-
-    sock.onmessage = handleReceiveMessage;
-
-    setSockjs(sock);
-    setChat([...chat, { name: 'testUser', message: '님이 입장하셨습니다.' }]);
-    setLive(true);
-  };
-
-  const handleSocketDisConnect = () => {
-    setLive(false);
-  };
-
-  const inputMessage = (e: ChangeEvent<HTMLInputElement>) => {
+  const onSendMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
+  };
+
+  const handleSendMessage = () => {
+    sendMessage(message);
+    setMessage('');
   };
 
   const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
-      sendMessage();
+      handleSendMessage();
     }
   };
 
-  const sendMessage = () => {
-    if (message === '') return;
-    if (!sockjs) return;
-
-    setChat([...chat, { name: 'testUser', message: message }]);
-    // console.log(sockjs);
-    sockjs.send(message);
-    setMessage('');
-  };
-
-  const handleChatServerURLChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setServerUrl(e.target.value);
-  };
-
   const renderChat = useCallback(() => {
-    return chat.map(({ name, message }, index) => (
-      <ChatMessage key={index} name={name} message={message} />
+    return chat.map(({ sender, message }, index) => (
+      <ChatMessage key={index} name={sender} message={message} />
     ));
   }, [chat]);
 
   if (!live) {
-    return (
-      <div className="chatting_container">
-        <input
-          className="chatting_urlInput"
-          type="text"
-          placeholder="URL을 입력해주세요"
-          onChange={handleChatServerURLChange}
-          value={serverUrl}
-        />
-        <button className="chatting_connectBtn" onClick={handleSocketConnect}>
-          연결
-        </button>
-      </div>
-    );
+    return <div>연결 필요</div>;
   }
 
   return (
@@ -89,34 +38,16 @@ const Chatting = () => {
         className="chatting_messageInput"
         type="text"
         placeholder="메세지를 입력해주세요"
-        onChange={inputMessage}
+        onChange={onSendMessageChange}
         onKeyDown={onEnter}
         value={message}
       />
-      <button className="chatting_sendMessage" onClick={sendMessage}>
+      <button className="chatting_sendMessage" onClick={handleSendMessage}>
         전송
       </button>
       <br />
-      <button
-        className="chatting_disConnectBtn"
-        onClick={handleSocketDisConnect}
-      >
-        연결 끊기
-      </button>
     </div>
   );
 };
 
-interface ChatMessageProps {
-  name: string;
-  message: string;
-}
-
-function ChatMessage({ name, message }: ChatMessageProps) {
-  return (
-    <div>
-      {name}: <>{message}</>
-    </div>
-  );
-}
 export default Chatting;
