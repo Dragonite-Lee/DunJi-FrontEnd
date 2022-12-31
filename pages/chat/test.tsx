@@ -1,6 +1,6 @@
 import { useCallback, ChangeEvent, KeyboardEvent, useState } from 'react';
+import ChatMessage from 'client/chat/ChatMessage';
 import useChat from 'client/chat/useChat';
-import ChatMessage from 'pages/chat/ChatMessage';
 
 const Chatting = () => {
   const { chat, sendMessage, live } = useChat();
