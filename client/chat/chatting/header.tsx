@@ -1,13 +1,15 @@
 import { useCallback } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import chevronLeftThickIcon from 'assets/icon/chat/chevron-left-thick.svg';
 import threeDotsVerticalIcon from 'assets/icon/chat/three-dots-vertical.svg';
 
 const Header = () => {
+  const router = useRouter();
+
   /** 뒤로가기 버튼 */
   const backBtnHandler = useCallback(() => {
-    // TODO: 뒤로가기 버튼 기능 구현
-    alert('현재 지원하지 않는 기능입니다.');
+    router.push('/chat');
   }, []);
 
   /** 더보기 버튼 */

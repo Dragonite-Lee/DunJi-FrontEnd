@@ -1,8 +1,26 @@
+import { useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { nanoid } from '@reduxjs/toolkit';
 import personCircleIcon from 'assets/icon/chat/person-circle.svg';
 
 const dummyMessageHistory = [
+  {
+    userName: 'user1',
+    message: '잠시만요 집주인 분께 알아보고 연락 드릴게요 :)',
+    date: '오후 10:44',
+  },
+  { userName: 'user2', message: '넵 감사합니다!', date: '오후 10:45' },
+  {
+    userName: 'user1',
+    message: '잠시만요 집주인 분께 알아보고 연락 드릴게요 :)',
+    date: '오후 10:46',
+  },
+  { userName: 'user2', message: '넵 감사합니다!', date: '오후 10:47' },
+  {
+    userName: 'user2',
+    message: '저기요...?',
+    date: '오후 10:48',
+  },
   {
     userName: 'user1',
     message: '잠시만요 집주인 분께 알아보고 연락 드릴게요 :)',
@@ -27,8 +45,24 @@ const MyInfo = {
 };
 
 const History = () => {
+  const chattingRef = useRef<HTMLDivElement>(null);
+
+  /** 스크롤바 위치를 가장 아래로 이동 */
+  const moveScrolBottom = useCallback(() => {
+    if (chattingRef.current) {
+      chattingRef.current.scrollTop = chattingRef.current.scrollHeight;
+    }
+  }, []);
+
+  useEffect(() => {
+    moveScrolBottom();
+  }, []);
+
   return (
-    <div className="flex flex-col h-[calc(100vh-160px)] px-[18px]">
+    <div
+      ref={chattingRef}
+      className="grow flex flex-col px-[18px] overflow-y-auto"
+    >
       {dummyMessageHistory.map((msg) => {
         return msg.userName !== MyInfo.userName ? (
           <div
