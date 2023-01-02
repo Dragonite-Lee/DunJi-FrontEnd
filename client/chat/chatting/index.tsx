@@ -7,7 +7,7 @@ const Chatting = () => {
   return (
     <div className="bg-background_beige sm:w-[375px] sm:m-auto h-screen">
       <Header />
-      <main>
+      <main className="flex flex-col h-[calc(100vh-60px)]">
         <Notice />
         <History />
         <Handler />

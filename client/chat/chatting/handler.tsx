@@ -15,6 +15,7 @@ const Handler = () => {
     e.preventDefault();
 
     // TODO: 채팅 전송 기능 구현
+    console.log(e.currentTarget.message.value);
     alert('현재 지원하지 않는 기능입니다.');
   }, []);
 
@@ -37,6 +38,7 @@ const Handler = () => {
         <input
           className="grow h-[40px] bg-[#F9F9F9] border border-[#E3E2E0] rounded-[10px] outline-none Pretendard-Regular text-[12px] mx-[14px] px-[16px] py-[12px]"
           placeholder="메시지 보내기"
+          name="message"
         />
         <button className="flex w-[20px] h-[20px] justify-center items-center">
           <Image
