@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { nanoid } from '@reduxjs/toolkit';
+
 import personCircleIcon from 'assets/icon/chat/person-circle.svg';
 
 const dummyMessageHistory = [
@@ -40,11 +41,12 @@ const dummyMessageHistory = [
   },
 ];
 
-const MyInfo = {
+const dummyMyInfo = {
   userName: 'user2',
 };
 
 const History = () => {
+  // 채팅 내용 영역 선택자
   const chattingRef = useRef<HTMLDivElement>(null);
 
   /** 스크롤바 위치를 가장 아래로 이동 */
@@ -64,7 +66,7 @@ const History = () => {
       className="grow flex flex-col px-[18px] overflow-y-auto"
     >
       {dummyMessageHistory.map((msg) => {
-        return msg.userName !== MyInfo.userName ? (
+        return msg.userName !== dummyMyInfo.userName ? (
           <div
             key={nanoid()}
             className="flex Pretendard-Regular justify-start my-[12px]"

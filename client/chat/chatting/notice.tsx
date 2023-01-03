@@ -1,11 +1,13 @@
 import { useCallback, useState } from 'react';
 import Image from 'next/image';
+
 import chevronDownIcon from 'assets/icon/chat/chevron-down.svg';
 import chevronUpIcon from 'assets/icon/chat/chevron-up.svg';
 
 const dummyNoticeMessage = `전자계약 꼭 요청하세요!\n숨겨진 공지사항 내용 숨겨진 공지사항 내용 숨겨진 공지사항 내용 숨겨진 공지사항 내용 숨겨진 공지사항 내용`;
 
 const Notice = () => {
+  // 공지사항 열림 상태
   const [noticeOpen, setNoticeOpen] = useState(false);
 
   /** 공지사항 토글 버튼 */
