@@ -97,4 +97,15 @@ export const mainApi = {
         api.get("/main/newReview", {
             params: {UserID: id}
         })
+};
+
+export const studentAuthApi = {
+    postEmail: (email: string) =>
+        api.post("/members/univ-certify", 
+        email, {
+            headers: {
+                "Content-Type": `application/json`,
+            },
+        }
+    )
 }

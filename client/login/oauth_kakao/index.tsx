@@ -31,7 +31,7 @@ function OauthKakao() {
             status: true,
           }),
         );
-        Router.push('/');
+        Router.push('/studentAuth');
       })
       .catch((error) => {
         console.log(error);

@@ -7,6 +7,10 @@ type initialStateTypes = {
     USER_NICKNAME: string;
     IS_LOGIN: boolean;
   };
+  school: string;
+  email: string;
+  authNumber: number;
+  AUTHNUMBER_OPEN: boolean;
 };
 
 const initialState: initialStateTypes = {
@@ -15,6 +19,10 @@ const initialState: initialStateTypes = {
     USER_NICKNAME: '',
     IS_LOGIN: false,
   },
+  school: '',
+  email: '',
+  authNumber: 0,
+  AUTHNUMBER_OPEN: false,
 };
 
 const login = createSlice({
@@ -33,8 +41,20 @@ const login = createSlice({
       state.value.USER_NICKNAME = action.payload.USER_NICKNAME;
       state.value.IS_LOGIN = action.payload.status;
     },
+    dispatchSchool: (state, action) => {
+      state.school = action.payload;
+    },
+    dispatchEmail: (state, action) => {
+      state.email = action.payload;
+    },
+    dispatchAuthNumber: (state, action) => {
+      state.authNumber = action.payload;
+    },
+    dispatchAuthNumberOpen: (state, action) => {
+      state.AUTHNUMBER_OPEN = action.payload;
+    }
   },
 });
 
 export default login.reducer;
-export const { dispatchHandleLogin } = login.actions;
+export const { dispatchHandleLogin, dispatchSchool, dispatchEmail, dispatchAuthNumber, dispatchAuthNumberOpen} = login.actions;
