@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { mainApi } from '_api';
+import { mainApi } from '_api/main';
 import NewRoomItem from 'client/main/newRoom-item';
 import useMainRedux from 'hooks/useMainRedux';
 import { dispatchNewRoom, newRoomType } from 'store/modules/main';

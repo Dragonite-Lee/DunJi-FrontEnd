@@ -3,8 +3,9 @@ import Image from 'next/image';
 import Router from 'next/router';
 import useLoginRedux from 'hooks/useLoginRedux';
 import { dispatchEmail, dispatchSchool, dispatchAuthNumber, dispatchAuthNumberOpen } from 'store/modules/login';
-import { studentAuthApi } from '_api';
+import { studentAuthApi } from '_api/auth';
 import useInterval from 'hooks/useInterval';
+import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 
 function StudentAuth() {
   const [state, dispatch] = useLoginRedux();
@@ -123,15 +124,9 @@ function StudentAuth() {
         }
       </div>
       {state.AUTHNUMBER_OPEN ? (
-        <div className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around" onClick={studentAuthIsSuccess}>
-          <div className="text-[17px] text-white">확인</div>
-          <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
-        </div>
+        <BottomNextBtnLayout content="확인" onClick={studentAuthIsSuccess} />
       ) : (
-        <div className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around" onClick={studentAuth}>
-          <div className="text-[17px] text-white">학교 인증하기</div>
-          <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
-        </div>
+        <BottomNextBtnLayout content="학교 인증하기" onClick={studentAuth} />
       )}
     </div>
   );
