@@ -8,17 +8,17 @@ import useInterval from 'hooks/useInterval';
 
 function StudentAuth() {
   const [state, dispatch] = useLoginRedux();
-  const [school, setSchool] = useState('');
-  const [email1, setEmail1] = useState('');
-  const [email2, setEmail2] = useState('');
+  const [school, setSchool] = useState<string>('');
+  const [email1, setEmail1] = useState<string>('');
+  const [email2, setEmail2] = useState<string>('');
   const [inputAuthNumber, setInputAuthNumber] = useState('');
-  const [authTime, setAuthTime] = useState(180);
-  const [timePlay, setTimePlay] = useState(false);
+  const [authTime, setAuthTime] = useState<number>(180);
+  const [timePlay, setTimePlay] = useState<boolean>(false);
 
   useInterval(()=>{
     if(timePlay) {
       setAuthTime((authTime)=>authTime-1)
-      if(authTime == 1) {
+      if(authTime === 1) {
         setTimePlay(false)
         dispatch(dispatchAuthNumber(0))
         alert('인증시간이 종료되었습니다. 재전송 후 인증바랍니다.')
@@ -74,7 +74,7 @@ function StudentAuth() {
     // };
   };
   const authTimeMin = parseInt(String(authTime / 60));
-  const authTimeSec = String(authTime%60).length==1 ? "0"+authTime%60 : authTime%60
+  const authTimeSec = String(authTime%60).length===1 ? "0"+authTime%60 : authTime%60
   
   return (
     <div className="bg-background_beige sm:w-[375px] sm:m-auto min-h-screen">
@@ -92,7 +92,7 @@ function StudentAuth() {
             간편하게 로그인하고 <br />
             <span className="Pretendard-SemiBold">
               둥지의 다양한 서비스를
-            </span>{' '}
+            </span>
             이용하세요
           </div>
         </div>

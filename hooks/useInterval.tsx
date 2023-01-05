@@ -9,7 +9,7 @@ const useInterval: UseInterval = (callback, interval) => {
 
     useEffect(() => {
         savedCallback.current = callback;
-    });
+    },[callback]);
 
     useEffect(() => {
         function tick() {
