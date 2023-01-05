@@ -41,8 +41,15 @@ function StudentAuth() {
   const studentAuth = async () => {
     dispatch(dispatchSchool(school))
     dispatch(dispatchEmail(email1 + email2))
-    dispatch(dispatchAuthNumberOpen(true))
-    setTimePlay(true)
+    if(school !== '' && email1 !== '' ) {
+      dispatch(dispatchAuthNumberOpen(true))
+      setTimePlay(true)
+    } else if(school === '') {
+      alert('학교를 입력해주세요.')
+    } else if(email1 === '') {
+      alert('메일을 입력해주세요.')
+    }
+    
     // try {
     //   await studentAuthApi.postEmail(state.email).then((res) => {
     //     dispatch(dispatchAuthNumber(res.content.authNumber))
@@ -115,10 +122,16 @@ function StudentAuth() {
           </select>
         </div>
         {state.AUTHNUMBER_OPEN &&
-          <div className='flex items-center mt-12'>
-            <input type="text" placeholder='인증번호 6자리를 입력하세요' className='Pretendard-Regular text-xl pl-4 w-3/5 h-[50px] rounded-standard_rounded' onChange={(e) => authNumberOnchangeHanlder(e)} />
-            <div className='Pretendard-SemiBold text-xl pl-3'>{authTimeMin}:{authTimeSec}</div>
-            <div className='w-2/5 Pretendard-SemiBold text-2xl text-center underline' onClick={studentAuthAgain}>재전송</div>
+          <div>
+            <div className='flex items-center mt-12'>
+              <input type="text" placeholder='인증번호 6자리를 입력하세요' className='Pretendard-Regular text-xl pl-4 w-3/5 h-[50px] rounded-standard_rounded' onChange={(e) => authNumberOnchangeHanlder(e)} />
+              <div className='Pretendard-SemiBold text-xl pl-3'>{authTimeMin}:{authTimeSec}</div>
+              <div className='w-2/5 Pretendard-SemiBold text-2xl text-center underline' onClick={studentAuthAgain}>재전송</div>
+            </div>
+            <ul className='Pretendard-Regular list-disc px-[18px] mt-4'>
+              <li>3분 이내로 인증번호(6자리)를 입력해주세요.</li>
+              <li>인증번호가 전송되지 않을경우 "재전송" 버튼을 눌러주세요.</li>
+            </ul>
           </div>
         }
       </div>
