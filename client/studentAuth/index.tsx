@@ -41,12 +41,12 @@ function StudentAuth() {
   const studentAuth = async () => {
     dispatch(dispatchSchool(school))
     dispatch(dispatchEmail(email1 + email2))
-    if(school !== '' && email1 !== '' ) {
+    if(school !== '' && email1 !== '' && email2 !== '') {
       dispatch(dispatchAuthNumberOpen(true))
       setTimePlay(true)
     } else if(school === '') {
       alert('학교를 입력해주세요.')
-    } else if(email1 === '') {
+    } else if(email1 === '' || email2 === '') {
       alert('메일을 입력해주세요.')
     }
     
