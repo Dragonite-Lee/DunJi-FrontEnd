@@ -10,7 +10,7 @@ import xLgIcon from 'assets/icon/chat/x-lg.svg';
 
 const Handler = () => {
   // 추가 기능 파트 열림 상태
-  const [addOnPartOpen, setAddOnPartOpen] = useState(false);
+  const [addOnPartOpen, setAddOnPartOpen] = useState<boolean>(false);
 
   /** 추가 기능 파트 토글 버튼 */
   const addOnPartToggleBtnHandler = useCallback(() => {
