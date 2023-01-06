@@ -38,10 +38,7 @@ const Modal = ({
     <>
       {moreModalOpen || reportModalOpen ? (
         <div
-          className={
-            moreModalOpen
-              ? 'flex w-[100%] h-[100%] fixed top-0 left-0 z-10 bg-[rgba(0,0,0,0.3)] justify-end items-start'
-              : 'flex w-[100%] h-[100%] fixed top-0 left-0 z-10 bg-[rgba(0,0,0,0.3)] justify-center items-center'
+          className={`flex w-[100%] h-[100%] fixed top-0 left-0 z-10 bg-[rgba(0,0,0,0.3)] ${moreModalOpen ? 'justify-end items-start' : 'justify-center items-center'}`}
           }
           ref={modalMarginRef}
           onClick={closeModal}
