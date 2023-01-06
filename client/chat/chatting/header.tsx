@@ -54,12 +54,12 @@ const Header = () => {
         reportModalOpen={reportModalOpen}
         setReportModalOpen={setReportModalOpen}
       >
-        {moreModalOpen ? (
+        {moreModalOpen && (
           <MoreWindow
             setMoreModalOpen={setMoreModalOpen}
             setReportModalOpen={setReportModalOpen}
           />
-        ) : null}
+        )}
         {reportModalOpen ? <ReportWindow /> : null}
       </Modal>
     </header>
