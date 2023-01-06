@@ -1,13 +1,11 @@
 import { useCallback } from 'react';
 
-import type { Dispatch, SetStateAction } from 'react';
-
-interface AppProps {
-  setMoreModalOpen: Dispatch<SetStateAction<boolean>>;
-  setReportModalOpen: Dispatch<SetStateAction<boolean>>;
+interface Props {
+  setMoreModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setReportModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MoreWindow = ({ setMoreModalOpen, setReportModalOpen }: AppProps) => {
+function MoreWindow({ setMoreModalOpen, setReportModalOpen }: Props) {
   /** 채팅방 나가기 버튼 */
   const exitBtnHandler = useCallback(() => {
     // TODO: 채팅방 나가기 기능 구현
@@ -36,6 +34,6 @@ const MoreWindow = ({ setMoreModalOpen, setReportModalOpen }: AppProps) => {
       </button>
     </div>
   );
-};
+}
 
 export default MoreWindow;

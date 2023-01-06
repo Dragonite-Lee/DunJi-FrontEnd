@@ -8,7 +8,7 @@ import Modal from './modal';
 import MoreWindow from './modal/more';
 import ReportWindow from './modal/report';
 
-const Header = () => {
+function Header() {
   const router = useRouter();
 
   // 모달창 열림 상태 (더보기창, 신고사유 선택창)
@@ -64,6 +64,6 @@ const Header = () => {
       </Modal>
     </header>
   );
-};
+}
 
 export default Header;

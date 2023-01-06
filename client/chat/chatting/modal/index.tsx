@@ -1,22 +1,20 @@
 import { useCallback, useRef } from 'react';
 
-import type { ReactNode, Dispatch, SetStateAction } from 'react';
-
-interface AppProps {
+interface Props {
   moreModalOpen: boolean;
-  setMoreModalOpen: Dispatch<SetStateAction<boolean>>;
+  setMoreModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   reportModalOpen: boolean;
-  setReportModalOpen: Dispatch<SetStateAction<boolean>>;
-  children: ReactNode;
+  setReportModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  children: React.ReactNode;
 }
 
-const Modal = ({
+function Modal({
   moreModalOpen,
   setMoreModalOpen,
   reportModalOpen,
   setReportModalOpen,
   children,
-}: AppProps) => {
+}: Props) {
   // 모달창 바깥 부분 참조
   const modalMarginRef = useRef(null);
 
@@ -38,8 +36,8 @@ const Modal = ({
     <>
       {moreModalOpen || reportModalOpen ? (
         <div
+          // eslint-disable-next-line prettier/prettier
           className={`flex w-[100%] h-[100%] fixed top-0 left-0 z-10 bg-[rgba(0,0,0,0.3)] ${moreModalOpen ? 'justify-end items-start' : 'justify-center items-center'}`}
-          }
           ref={modalMarginRef}
           onClick={closeModal}
         >
@@ -52,6 +50,6 @@ const Modal = ({
       )}
     </>
   );
-};
+}
 
 export default Modal;

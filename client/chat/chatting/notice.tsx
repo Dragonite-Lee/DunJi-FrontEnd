@@ -6,7 +6,7 @@ import chevronUpIcon from 'assets/icon/chat/chevron-up.svg';
 
 const dummyNoticeMessage = `전자계약 꼭 요청하세요!\n숨겨진 공지사항 내용 숨겨진 공지사항 내용 숨겨진 공지사항 내용 숨겨진 공지사항 내용 숨겨진 공지사항 내용`;
 
-const Notice = () => {
+function Notice() {
   // 공지사항 열림 상태
   const [noticeOpen, setNoticeOpen] = useState(false);
 
@@ -58,6 +58,6 @@ const Notice = () => {
       )}
     </nav>
   );
-};
+}
 
 export default Notice;
