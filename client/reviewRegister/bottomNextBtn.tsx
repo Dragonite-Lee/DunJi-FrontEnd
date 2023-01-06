@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { reviewApi } from '_api';
+import { reviewApi } from '_api/room';
 import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
+import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 
 const delete_arr = [
   'ADDRESS_OPEN',
@@ -108,13 +109,7 @@ function BottomNextBtn() {
   };
 
   return (
-    <div
-      className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
-      onClick={checkHandler}
-    >
-      <div className="text-[17px] text-white">후기 작성</div>
-      <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
-    </div>
+    <BottomNextBtnLayout content="후기 작성" onClick={checkHandler} />
   );
 }
 

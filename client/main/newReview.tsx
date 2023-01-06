@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { mainApi } from '_api';
+import { mainApi } from '_api/main';
 import NewReviewItem from 'client/main/newReviewItem';
 import useMainRedux from 'hooks/useMainRedux';
 import { dispatchNewReview, newReviewType } from 'store/modules/main';

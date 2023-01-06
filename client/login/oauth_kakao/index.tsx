@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import Router from 'next/router';
-import { logInApi } from '_api';
+import { logInApi } from '_api/auth'; 
 import useLoginRedux from 'hooks/useLoginRedux';
 import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchHandleLogin } from 'store/modules/login';
@@ -31,7 +31,7 @@ function OauthKakao() {
             status: true,
           }),
         );
-        Router.push('/');
+        Router.push('/studentAuth');
       })
       .catch((error) => {
         console.log(error);
