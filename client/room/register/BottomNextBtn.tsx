@@ -1,10 +1,11 @@
 import { useCallback } from 'react';
 import Router from 'next/router';
-import { roomApi } from '_api';
+import { roomApi } from '_api/room';
 import useRoomRedux from 'hooks/useRoomRedux';
 import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchRoomId } from 'store/modules/room';
 import { postRoom } from 'store/modules/roomRegister';
+import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 
 function BottomNextBtn() {
   const [state, dispatch] = useRoomRegisterRedux();
@@ -208,13 +209,7 @@ function BottomNextBtn() {
   };
 
   return (
-    <div
-      className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
-      onClick={checkHandler}
-    >
-      <div className="text-[17px] text-white">방 내놓기</div>
-      <div className="bg-white rounded-standard_rounded w-[15rem] h-3" />
-    </div>
+    <BottomNextBtnLayout content="방 내놓기" onClick={checkHandler} />
   );
 }
 
