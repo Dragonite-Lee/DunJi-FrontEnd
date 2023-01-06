@@ -39,7 +39,7 @@ function StudentAuth() {
   const authNumberOnchangeHanlder = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setInputAuthNumber(e.target.value)
   },[]);
-  const studentAuth = async () => {
+  const studentAuth = useCallback(async () => {
     dispatch(dispatchSchool(school))
     dispatch(dispatchEmail(email1 + email2))
     if(school !== '' && email1 !== '' && email2 !== '') {
@@ -58,16 +58,16 @@ function StudentAuth() {
     // } catch (e) {
     //   alert(e)
     // };
-  };
-  const studentAuthIsSuccess = () => {
+  },[school,email1,email2]);
+  const studentAuthIsSuccess = useCallback(() => {
     if(inputAuthNumber.length > 5 && inputAuthNumber === state.authNumber) {
       Router.push('/')
       //유저의 학교정보나 데이터등 저장할 것 같음
     } else {
       alert('인증번호가 틀렸습니다.')
     }
-  };
-  const studentAuthAgain = async () => {
+  },[state,inputAuthNumber]);
+  const studentAuthAgain =  useCallback(async() => {
     dispatch(dispatchSchool(school))
     dispatch(dispatchEmail(email1 + email2))
     dispatch(dispatchAuthNumberOpen(true))
@@ -80,7 +80,7 @@ function StudentAuth() {
     // } catch (e) {
     //   alert(e)
     // };
-  };
+  },[school,email1,email2]);
   const authTimeMin = parseInt(String(authTime / 60));
   const authTimeSec = String(authTime%60).length===1 ? "0"+authTime%60 : authTime%60
   
