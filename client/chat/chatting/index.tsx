@@ -3,7 +3,7 @@ import Header from './header';
 import History from './history';
 import Notice from './notice';
 
-const Chatting = () => {
+function Chatting() {
   return (
     <div className="bg-background_beige sm:w-[375px] sm:m-auto h-screen">
       <Header />
@@ -14,6 +14,6 @@ const Chatting = () => {
       </main>
     </div>
   );
-};
+}
 
 export default Chatting;

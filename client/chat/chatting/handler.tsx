@@ -8,7 +8,7 @@ import plusCircleIcon from 'assets/icon/chat/plus-circle.svg';
 import sendFillIcon from 'assets/icon/chat/send-fill.svg';
 import xLgIcon from 'assets/icon/chat/x-lg.svg';
 
-const Handler = () => {
+function Handler() {
   // 추가 기능 파트 열림 상태
   const [addOnPartOpen, setAddOnPartOpen] = useState<boolean>(false);
 
@@ -132,6 +132,6 @@ const Handler = () => {
       ) : null}
     </section>
   );
-};
+}
 
 export default Handler;

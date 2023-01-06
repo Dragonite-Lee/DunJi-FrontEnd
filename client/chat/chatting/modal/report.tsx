@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-const ReportWindow = () => {
+function ReportWindow() {
   /** 신고 버튼 */
   const btnHandler = useCallback(() => {
     // TODO: 신고 기능 구현
@@ -46,6 +46,6 @@ const ReportWindow = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ReportWindow;

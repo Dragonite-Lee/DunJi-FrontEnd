@@ -45,7 +45,7 @@ const dummyMyInfo = {
   userName: 'user2',
 };
 
-const History = () => {
+function History() {
   // 채팅 내용 영역 선택자
   const chattingRef = useRef<HTMLDivElement>(null);
 
@@ -102,6 +102,6 @@ const History = () => {
       })}
     </div>
   );
-};
+}
 
 export default History;
