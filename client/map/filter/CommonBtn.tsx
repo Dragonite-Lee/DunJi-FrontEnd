@@ -26,8 +26,9 @@ function CommonBtn({
 
   return (
     <button
-      // eslint-disable-next-line prettier/prettier
-      className={`focus-bg-black rounded-standard_rounded h-room_register_btn_height1 w-full Pretendard-Regular text-[15px] ${check ? 'bg-font_gray border-0 text-white' : 'border border-font_gray'} `}
+      className={`focus-bg-black rounded-standard_rounded h-room_register_btn_height1 w-full Pretendard-Regular text-[15px] ${
+        check ? 'bg-font_gray border-0 text-white' : 'border border-font_gray'
+      } `}
       onClick={clickHandler}
     >
       {value}
