@@ -1,6 +1,6 @@
 import { ReactNode, useMemo, useRef } from 'react';
 
-interface ModalProps {
+interface ModalContainerProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
@@ -8,7 +8,12 @@ interface ModalProps {
   position?: 'center' | 'right'; //default : center
 }
 
-function Modal({ isOpen, onClose, children, position }: ModalProps) {
+function ModalContainer({
+  isOpen,
+  onClose,
+  children,
+  position,
+}: ModalContainerProps) {
   // 모달창 바깥 부분 참조
   const modalMarginRef = useRef(null);
 
@@ -47,4 +52,4 @@ ${positionStyle}`}
   );
 }
 
-export default Modal;
+export default ModalContainer;
