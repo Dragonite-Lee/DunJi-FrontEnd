@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import chevronLeftThickIcon from 'assets/icon/chat/chevron-left-thick.svg';
 import threeDotsVerticalIcon from 'assets/icon/chat/three-dots-vertical.svg';
-import Modal from 'components/common/Modal';
+import ModalContainer from 'components/common/ModalContainer';
 import MoreWindow from './modal/more';
 import ReportWindow from './modal/report';
 
@@ -32,6 +32,12 @@ function Header() {
   const handleReportModalClose = () => {
     setReportModalOpen(false);
   };
+
+  const handleReportBtnClick = () => {
+    /** 신고하기 버튼 - 더보기창 닫은 후 신고사유 선택창 열기 */
+    setMoreModalOpen(false);
+    setReportModalOpen(true);
+  };
   return (
     <header>
       <div className="flex justify-between px-[18px] py-4 h-24 items-center text-xl border-b min-w-[375px] sm:w-[375px]">
@@ -55,19 +61,17 @@ function Header() {
           </button>
         </div>
       </div>
-      <Modal
+
+      <ModalContainer
         isOpen={moreModalOpen}
         onClose={handleMoreModalClose}
         position="right"
       >
-        <MoreWindow
-          setMoreModalOpen={setMoreModalOpen}
-          setReportModalOpen={setReportModalOpen}
-        />
-      </Modal>
-      <Modal isOpen={reportModalOpen} onClose={handleReportModalClose}>
+        <MoreWindow reportBtnHandler={handleReportBtnClick} />
+      </ModalContainer>
+      <ModalContainer isOpen={reportModalOpen} onClose={handleReportModalClose}>
         <ReportWindow />
-      </Modal>
+      </ModalContainer>
     </header>
   );
 }
