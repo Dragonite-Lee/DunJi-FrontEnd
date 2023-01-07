@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import chevronLeftThickIcon from 'assets/icon/chat/chevron-left-thick.svg';
 import threeDotsVerticalIcon from 'assets/icon/chat/three-dots-vertical.svg';
-import Modal from './modal';
+import Modal from 'components/common/Modal';
 import MoreWindow from './modal/more';
 import ReportWindow from './modal/report';
 
@@ -18,13 +18,20 @@ function Header() {
   /** 뒤로가기 버튼 */
   const backBtnHandler = useCallback(() => {
     router.push('/chat');
-  }, []);
+  }, [router]);
 
   /** 더보기 버튼 - 더보기 모달창 열기 */
   const moreBtnHandler = useCallback(() => {
     setMoreModalOpen(true);
   }, []);
 
+  const handleMoreModalClose = () => {
+    setMoreModalOpen(false);
+  };
+
+  const handleReportModalClose = () => {
+    setReportModalOpen(false);
+  };
   return (
     <header>
       <div className="flex justify-between px-[18px] py-4 h-24 items-center text-xl border-b min-w-[375px] sm:w-[375px]">
@@ -49,18 +56,17 @@ function Header() {
         </div>
       </div>
       <Modal
-        moreModalOpen={moreModalOpen}
-        setMoreModalOpen={setMoreModalOpen}
-        reportModalOpen={reportModalOpen}
-        setReportModalOpen={setReportModalOpen}
+        isOpen={moreModalOpen}
+        onClose={handleMoreModalClose}
+        position="right"
       >
-        {moreModalOpen && (
-          <MoreWindow
-            setMoreModalOpen={setMoreModalOpen}
-            setReportModalOpen={setReportModalOpen}
-          />
-        )}
-        {reportModalOpen ? <ReportWindow /> : null}
+        <MoreWindow
+          setMoreModalOpen={setMoreModalOpen}
+          setReportModalOpen={setReportModalOpen}
+        />
+      </Modal>
+      <Modal isOpen={reportModalOpen} onClose={handleReportModalClose}>
+        <ReportWindow />
       </Modal>
     </header>
   );

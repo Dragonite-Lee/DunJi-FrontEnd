@@ -16,7 +16,7 @@ function MoreWindow({ setMoreModalOpen, setReportModalOpen }: Props) {
   const reportBtnHandler = useCallback(() => {
     setMoreModalOpen(false);
     setReportModalOpen(true);
-  }, []);
+  }, [setMoreModalOpen, setReportModalOpen]);
 
   return (
     <div className="flex flex-col justify-between bg-white w-[144px] relative top-[60px] right-[20px] rounded-[7px] p-[6px]">
