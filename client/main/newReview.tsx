@@ -1,9 +1,11 @@
 import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
+
 import { mainApi } from '_api/main';
 import NewReviewItem from 'client/main/newReviewItem';
 import useMainRedux from 'hooks/useMainRedux';
-import { dispatchNewReview, newReviewType } from 'store/modules/main';
+import { dispatchNewReview } from 'store/modules/main';
+import { NewReviewType } from 'types';
 
 function NewReview() {
   const [state, dispatch] = useMainRedux();
@@ -11,7 +13,7 @@ function NewReview() {
   if (typeof window !== 'undefined') {
     userId = localStorage.getItem('userId');
   }
-  const newReviewListData = useCallback(()=>{
+  const newReviewListData = useCallback(() => {
     mainApi
       .newReview(userId)
       .then((res) => {
@@ -20,11 +22,11 @@ function NewReview() {
       .catch((error) => {
         console.log(error);
       });
-  },[userId])
-  
+  }, [dispatch, userId]);
+
   useEffect(() => {
-    newReviewListData()
-  }, [dispatch]);
+    newReviewListData();
+  }, [dispatch, newReviewListData]);
 
   return (
     <div className="pt-[55px] ">
@@ -37,7 +39,7 @@ function NewReview() {
         </Link>
       </div>
       <div className="pt-[14px] h-full flex overflow-x-hidden overflow-y-auto">
-        {state.newReview.map((data: newReviewType, index: number) => (
+        {state.newReview.map((data: NewReviewType, index: number) => (
           <NewReviewItem key={index} data={data} />
         ))}
       </div>

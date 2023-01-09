@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+
 import { ReviewRegisterState } from 'types';
 
 const initialState: ReviewRegisterState = {
@@ -83,8 +84,6 @@ const reviewRegister = createSlice({
   },
 });
 
-export default reviewRegister.reducer;
-
 export const {
   componentHandle,
   dispatchPostCodeOpen,
@@ -105,3 +104,5 @@ export const {
   dispatchFile,
   dispatchFileUrl,
 } = reviewRegister.actions;
+
+export default reviewRegister.reducer;

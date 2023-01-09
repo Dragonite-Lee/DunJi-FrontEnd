@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { MainState } from 'types';
 
-// if (typeof window !== 'undefined') {
-//     localStorage.setItem('home', 'true')
-// }
+import { MainState } from 'types';
 
 const initialState: MainState = {
   SEARCHMODAL_OPEN: false,
@@ -39,7 +36,6 @@ const main = createSlice({
   },
 });
 
-export default main.reducer;
 export const {
   dispatchSearchModalOpen,
   dispatchSearchResult,
@@ -47,3 +43,5 @@ export const {
   dispatchNewRoom,
   dispatchNewReview,
 } = main.actions;
+
+export default main.reducer;

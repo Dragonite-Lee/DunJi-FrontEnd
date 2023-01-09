@@ -1,13 +1,13 @@
 export type RoomState = {
-  ROOM_INFO: { [id: string]: RoomInfolistTypes };
-  ROOM_REVIEW: { [id: string]: RoomReviewlistTypes };
-  ROOM_POST: { [id: string]: RoomPostlistTypes };
-  ROOM_LIST: { [id: string]: listTypes };
-  MAP_ROOM_LIST: { [id: string]: listTypes }; // 지도 상에 보이는 매물 정보
+  ROOM_INFO: { [id: string]: RoomInfoListTypes };
+  ROOM_REVIEW: { [id: string]: RoomReviewListTypes };
+  ROOM_POST: { [id: string]: RoomPostListTypes };
+  ROOM_LIST: { [id: string]: RoomListTypes };
+  MAP_ROOM_LIST: { [id: string]: RoomListTypes }; // 지도 상에 보이는 매물 정보
   ROOM_ID: string;
 };
 
-export type RoomReviewlistTypes = {
+export type RoomReviewListTypes = {
   accessible: number;
   address: string;
   count: number;
@@ -19,7 +19,7 @@ export type RoomReviewlistTypes = {
   facility: number;
 };
 
-export type RoomPostlistTypes = {
+export type RoomPostListTypes = {
   title: any;
   registrant: number;
   roomID: string;
@@ -32,7 +32,7 @@ export type RoomPostlistTypes = {
   address: any;
 };
 
-export type RoomInfolistTypes = {
+export type RoomInfoListTypes = {
   aircon: boolean;
   availConsul: boolean;
   availFrom: string;
@@ -66,7 +66,7 @@ export type RoomInfolistTypes = {
   women: boolean;
 };
 
-export type listTypes = {
+export type RoomListTypes = {
   address: string;
   aircon: boolean;
   availPeriodConsul: boolean;

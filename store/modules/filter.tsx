@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+
 import { MapFilterState } from 'types';
 
 //선택안함이 0 default
@@ -162,8 +163,6 @@ const mapFilter = createSlice({
   },
 });
 
-export default mapFilter.reducer;
-
 export const {
   dispatchStartLongitude,
   dispatchStartLatitude,
@@ -200,3 +199,5 @@ export const {
   dispatchRecommendSort,
   dispatchfilterDataTypes,
 } = mapFilter.actions;
+
+export default mapFilter.reducer;

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { logInApi } from '_api';
+
 import { LoginState } from 'types';
 
 const initialState: LoginState = {
@@ -45,7 +45,6 @@ const login = createSlice({
   },
 });
 
-export default login.reducer;
 export const {
   dispatchHandleLogin,
   dispatchSchool,
@@ -53,3 +52,5 @@ export const {
   dispatchAuthNumber,
   dispatchAuthNumberOpen,
 } = login.actions;
+
+export default login.reducer;

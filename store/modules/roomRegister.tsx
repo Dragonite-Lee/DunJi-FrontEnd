@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+
 import { RoomRegisterState } from 'types';
 
 const initialState: RoomRegisterState = {
@@ -198,8 +199,6 @@ const roomRegister = createSlice({
   },
 });
 
-export default roomRegister.reducer;
-
 export const {
   componentHandle,
   dispatchRoomType,
@@ -247,3 +246,5 @@ export const {
   postRoom,
   dispatchRegistrant,
 } = roomRegister.actions;
+
+export default roomRegister.reducer;

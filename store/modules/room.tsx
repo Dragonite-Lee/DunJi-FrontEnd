@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
-  listTypes,
-  RoomInfolistTypes,
-  RoomPostlistTypes,
-  RoomReviewlistTypes,
+  RoomListTypes,
+  RoomInfoListTypes,
+  RoomPostListTypes,
+  RoomReviewListTypes,
   RoomState,
 } from 'types';
 
@@ -16,10 +17,10 @@ const initialState: RoomState = {
   ROOM_ID: '',
 };
 
-type ReviewitemTypes = { [id: string]: RoomReviewlistTypes }; //list[id].뭐시기하면 나옴
-type PostitemTypes = { [id: string]: RoomPostlistTypes };
-type InfoitemTypes = { [id: string]: RoomInfolistTypes };
-type itemTypes = { [id: string]: listTypes };
+type ReviewitemTypes = { [id: string]: RoomReviewListTypes }; //list[id].뭐시기하면 나옴
+type PostitemTypes = { [id: string]: RoomPostListTypes };
+type InfoitemTypes = { [id: string]: RoomInfoListTypes };
+type itemTypes = { [id: string]: RoomListTypes };
 
 const room = createSlice({
   name: 'room',
@@ -69,9 +70,7 @@ const room = createSlice({
   },
 });
 
-export default room.reducer;
-
-const {
+export const {
   dispatchRoomReviewList,
   dispatchRoomPostList,
   dispatchRoomInfoList,
@@ -80,12 +79,4 @@ const {
   dispatchRoomId,
 } = room.actions;
 
-export {
-  dispatchRoomReviewList,
-  dispatchRoomPostList,
-  dispatchRoomInfoList,
-  dispatchRoomList,
-  dispatchMapRoomList,
-  dispatchRoomId,
-};
-export type { listTypes };
+export default room.reducer;

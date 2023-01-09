@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { TabState } from 'types';
 
 const initialState: TabState = {
@@ -35,7 +36,6 @@ const tab = createSlice({
   },
 });
 
-export default tab.reducer;
 export const {
   dispatchTabBarOpenHome,
   dispatchTabBarOpenSearch,
@@ -44,3 +44,5 @@ export const {
   dispatchTabBarOpenMypage,
   dispatchTabBarOpenPostModal,
 } = tab.actions;
+
+export default tab.reducer;

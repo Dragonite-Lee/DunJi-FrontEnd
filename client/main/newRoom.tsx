@@ -1,9 +1,11 @@
 import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
+
 import { mainApi } from '_api/main';
 import NewRoomItem from 'client/main/newRoom-item';
 import useMainRedux from 'hooks/useMainRedux';
-import { dispatchNewRoom, newRoomType } from 'store/modules/main';
+import { dispatchNewRoom } from 'store/modules/main';
+import { NewRoomType } from 'types';
 
 function NewRoom() {
   const [state, dispatch] = useMainRedux();
@@ -25,7 +27,7 @@ function NewRoom() {
 
   useEffect(() => {
     newRoomListData();
-  }, [dispatch]);
+  }, [dispatch, newRoomListData]);
 
   return (
     <div className="pt-[55px]">
@@ -40,7 +42,7 @@ function NewRoom() {
         </Link>
       </div>
       <div className="pt-[14px] h-full flex overflow-x-auto overflow-y-hidden">
-        {state.newRoom.map((newRoomData: newRoomType, index: number) => (
+        {state.newRoom.map((newRoomData: NewRoomType, index: number) => (
           <NewRoomItem key={index} data={newRoomData} />
         ))}
       </div>

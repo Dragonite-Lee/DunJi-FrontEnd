@@ -2,11 +2,11 @@ export type MainState = {
   SEARCHMODAL_OPEN: boolean;
   SEARCHRESULT: any[];
   SLIDEBOX: any[];
-  newRoom: newRoomType[];
-  newReview: newReviewType[];
+  newRoom: NewRoomType[];
+  newReview: NewReviewType[];
 };
 
-export interface newRoomType {
+export type NewRoomType = {
   address: any;
   dealType: string;
   deposit: number;
@@ -21,9 +21,9 @@ export interface newRoomType {
   roomSize: number;
   roomType: string;
   struct: string;
-}
+};
 
-export interface newReviewType {
+export type NewReviewType = {
   address: string;
   regDate: number;
   registrant: number;
@@ -39,4 +39,4 @@ export interface newReviewType {
   facility: number;
   period: string;
   content: string;
-}
+};
