@@ -1,19 +1,16 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { useSelector } from 'react-redux';
 
 import roomImg from 'assets/images/room.png';
-import { listTypes } from 'store/modules/room';
+import { RoomListTypes, RootState } from 'types';
 import round from 'utils/convertRoomSize';
-
-import type { RootState } from 'store/modules';
 
 function RoomListYSlider() {
   const { MAP_ROOM_LIST } = useSelector((state: RootState) => state.room);
 
-  const [slideData, setSideData] = useState([]);
+  const [slideData, setSideData] = useState<RoomListTypes[]>([]);
 
   useEffect(() => {
     if (Object.keys(MAP_ROOM_LIST).length !== 0) {
@@ -23,7 +20,7 @@ function RoomListYSlider() {
 
   return (
     <div className="w-full  bg-white  px-[18px] h-[76vh] overflow-scroll overflow-x-hidden">
-      {slideData.map((item: listTypes, index) => (
+      {slideData.map((item: RoomListTypes, index) => (
         <Link key={index} href={`/room/${item.roomID}`} passHref>
           <a>
             <div className="border-b pt-6">

@@ -1,9 +1,10 @@
 import Image from 'next/image';
+
 import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
 import { dispatchFile, dispatchFileUrl } from 'store/modules/reviewRegister';
 
 function ReviewImg() {
-  const [state, dispatch] = useReviewRegisterReudx();
+  const [{ ReviewfileUrl }, dispatch] = useReviewRegisterReudx();
 
   //이미지 상대경로로 저장
   let file: any;
@@ -35,9 +36,9 @@ function ReviewImg() {
 
   const url: any = [];
 
-  if (state.ReviewfileUrl.length) {
-    for (let i = 0; i < state.ReviewfileUrl.length; i++) {
-      url.push(state.ReviewfileUrl[i]);
+  if (ReviewfileUrl.length) {
+    for (let i = 0; i < ReviewfileUrl.length; i++) {
+      url.push(ReviewfileUrl[i]);
     }
   }
 
@@ -72,7 +73,7 @@ function ReviewImg() {
   return (
     <>
       <div>
-        {state.ReviewfileUrl.length ? (
+        {ReviewfileUrl.length ? (
           <div className="flex">
             <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
               <label

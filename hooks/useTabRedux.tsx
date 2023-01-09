@@ -1,9 +1,10 @@
-import { Dispatch } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/modules';
+import { Dispatch } from 'redux';
+
+import { RootState, TabState } from 'types';
 
 // main-redux state,dispatch 반환 훅
-export default function useTabRedux(): [any, Dispatch<any>] {
+export default function useTabRedux(): [TabState, Dispatch] {
   const state = useSelector((state: RootState) => state.tab);
   const dispatch = useDispatch();
 

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
-import useMapFilterRedux from 'hooks/useMapFilterRedux';
 import {
   dispatchPriceFrom,
   dispatchPriceTo,
@@ -8,8 +8,8 @@ import {
   dispatchDepositTo,
 } from 'store/modules/filter';
 
-export default function Price() {
-  const [state, dispatch] = useMapFilterRedux();
+function Price() {
+  const dispatch = useDispatch();
 
   return (
     <div className="pb-[8px] pt-[14px]">
@@ -72,3 +72,5 @@ export default function Price() {
     </div>
   );
 }
+
+export default Price;

@@ -1,15 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import useGoBack from 'hooks/useGoback';
 import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
 
 function Header() {
   const [state, dispatch] = useReviewRegisterRedux();
+
   const postCodeOpen = () => {
     dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));
-  }
-  const goBack = useGoBack();
+  };
 
+  const goBack = useGoBack();
 
   return (
     <>
@@ -19,7 +21,7 @@ function Header() {
         py-4  h-24 items-center text-xl  border-b sm:w-[375px] sm:m-auto "
         >
           <div className="flex text-2xl items-center">
-            <div onClick={postCodeOpen} >
+            <div onClick={postCodeOpen}>
               <FontAwesomeIcon icon="chevron-left" />
             </div>
             <div className="ml-4 Pretendard-SemiBold text-[17px]">

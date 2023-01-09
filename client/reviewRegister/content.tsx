@@ -1,13 +1,16 @@
 import { ChangeEvent } from 'react';
+
 import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
 import { dispatchContent } from 'store/modules/reviewRegister';
 
 function Content() {
   const [state, dispatch] = useReviewRegisterReudx();
+
   const content = state.content;
   const getContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(dispatchContent(e.target.value))
+    dispatch(dispatchContent(e.target.value));
   };
+
   return (
     <>
       <div className="text-[17px] Pretendard-SemiBold mt-[16px]">상세설명</div>

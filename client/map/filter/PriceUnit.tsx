@@ -5,18 +5,17 @@ import CategoryHeader from 'components/common/CategoryHeader';
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
 import { dispatchPriceUnit } from 'store/modules/filter';
-
-import type { RootState } from 'store/modules';
+import { RootState } from 'types';
 
 function TransactionType() {
-  const mapFilter = useSelector((state: RootState) => state.mapFilter);
+  const { priceUnit } = useSelector((state: RootState) => state.mapFilter);
 
   const [btnArr] = useState(['주', '월세', '전세', '반전세']);
 
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     btnArr,
     dispatchPriceUnit,
-    mapFilter.priceUnit,
+    priceUnit,
   );
 
   return (

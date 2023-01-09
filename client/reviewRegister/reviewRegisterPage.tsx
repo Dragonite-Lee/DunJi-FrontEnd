@@ -1,6 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from 'store/modules';
-import SubHeader from 'client/reviewRegister/subHeader';
+import { useSelector } from 'react-redux';
+
 import Accessible from 'client/reviewRegister/accessible';
 import Clean from 'client/reviewRegister/clean';
 import Content from 'client/reviewRegister/content';
@@ -8,7 +7,9 @@ import Facility from 'client/reviewRegister/facility';
 import Landlord from 'client/reviewRegister/landlord';
 import ReviewImg from 'client/reviewRegister/reviewImg';
 import Sound from 'client/reviewRegister/sound';
+import SubHeader from 'client/reviewRegister/subHeader';
 import Total from 'client/reviewRegister/total';
+import { RootState } from 'types';
 
 function ReviewRegister() {
   const reviewRegister = useSelector(

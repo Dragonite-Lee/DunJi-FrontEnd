@@ -1,9 +1,10 @@
-import { Dispatch } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/modules';
+import { Dispatch } from 'redux';
+
+import { LoginState, RootState } from 'types';
 
 // login-redux state,dispatch 반환 훅
-export default function useLoginRedux(): [any, Dispatch<any>] {
+export default function useLoginRedux(): [LoginState, Dispatch] {
   const state = useSelector((state: RootState) => state.login);
   const dispatch = useDispatch();
 

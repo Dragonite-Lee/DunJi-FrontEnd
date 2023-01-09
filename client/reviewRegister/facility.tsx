@@ -1,16 +1,19 @@
 import { useMemo } from 'react';
-import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
-import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
-import { dispatchFacility } from 'store/modules/reviewRegister';
+import { useSelector } from 'react-redux';
 import NoDuplicateSelectBtn from 'hooks/reviewRegisterNoDuplicateSelectBtn';
+import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
+import { dispatchFacility } from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 function Facility() {
+  const { facility } = useSelector((state: RootState) => state.reviewRegister);
+
   const useTypeArr = useMemo(() => ['만족', '보통', '불만족'], []);
-  const [state, dispatch] = useReviewRegisterReudx();
+
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     useTypeArr,
     dispatchFacility,
-    state.facility,
+    facility,
   );
 
   return (

@@ -1,12 +1,13 @@
-import { takeLatest } from 'redux-saga/effects';
-import { roomApi } from '_api';
-import createRequestSaga from 'utils/createRequestSaga';
+// import { takeLatest } from 'redux-saga/effects';
 
-const POST_ROOM = 'roomRegister/postRoom';
-const POST_ROOM_SUCCESS = 'roomRegister/POST_SUCCESS';
+// import { roomApi } from '_api';
+// import createRequestSaga from 'utils/createRequestSaga';
 
-const getPostSaga = createRequestSaga(POST_ROOM, roomApi.postRoom);
+// const POST_ROOM = 'roomRegister/postRoom';
+// const POST_ROOM_SUCCESS = 'roomRegister/POST_SUCCESS';
 
-export function* roomRegisterSaga() {
-  yield takeLatest(POST_ROOM, getPostSaga);
-}
+// const getPostSaga = createRequestSaga(POST_ROOM, roomApi.postRoom);
+
+// export function* roomRegisterSaga() {
+//   yield takeLatest(POST_ROOM, getPostSaga);
+// }

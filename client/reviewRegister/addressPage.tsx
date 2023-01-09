@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PostCode from 'components/daum-postcode/review';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
-import {dispatchDetailAddress,dispatchPostCodeOpen} from 'store/modules/reviewRegister';
+
+import Map from 'client/reviewRegister/map';
 import Period from 'client/reviewRegister/period';
 import SubHeader from 'client/reviewRegister/subHeader';
-import Map from 'client/reviewRegister/map';
+import PostCode from 'components/daum-postcode/review';
+import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
+import {
+  dispatchDetailAddress,
+  dispatchPostCodeOpen,
+} from 'store/modules/reviewRegister';
 
 function AddressRegister() {
   const [state, dispatch] = useReviewRegisterRedux();
+
   const [detailAddress, setDetailAddress] = useState(state.detailAddress);
-  
+
   const btnHandler = (val: boolean) => dispatch(dispatchPostCodeOpen(val));
   const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
     setDetailAddress(e.currentTarget.value);
