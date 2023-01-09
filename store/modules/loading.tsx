@@ -1,11 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { LoadingState } from 'types';
 
-type initialStateTypes = {
-  START_LOADING: boolean;
-  FINISH_LOADING: boolean;
-};
-
-const initialState: initialStateTypes = {
+const initialState: LoadingState = {
   START_LOADING: false,
   FINISH_LOADING: true,
 };

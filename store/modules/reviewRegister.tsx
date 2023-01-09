@@ -1,27 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ReviewRegisterState } from 'types';
 
-type initialStateTypes = {
-  COMPONENT_HANDLER: number;
-  POSTCODE_OPEN: boolean;
-  ADDRESS_OPEN: boolean;
-  registrant: string;
-  content: string;
-  address: string;
-  detailAddress: string;
-  total: string[];
-  totalNum: number;
-  clean: 0 | 1 | 2 | 3;
-  sound: 0 | 1 | 2 | 3;
-  accessible: 0 | 1 | 2 | 3;
-  landlord: 0 | 1 | 2 | 3;
-  facility: 0 | 1 | 2 | 3;
-  periodFrom: string;
-  periodTo: string;
-  Reviewfile: string[];
-  ReviewfileUrl: string[];
-};
-
-const initialState: initialStateTypes = {
+const initialState: ReviewRegisterState = {
   COMPONENT_HANDLER: 0,
   POSTCODE_OPEN: false,
   ADDRESS_OPEN: true,

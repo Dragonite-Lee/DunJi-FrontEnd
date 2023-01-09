@@ -1,58 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type initialStateTypes = {
-  startLongitude: number;
-  startLatitude: number;
-  endLongitude: number;
-  endLatitude: number;
-  dealType: string;
-  oneRoom: boolean;
-  twoRoom: boolean;
-  threeRoom: boolean;
-  priceUnit: string;
-  priceFrom: number;
-  priceTo: number;
-  depositFrom: number;
-  depositTo: number;
-  manageFrom: number;
-  manageTo: number;
-  floorfive: boolean;
-  floorsixup: boolean;
-  floortenup: boolean;
-  basement: boolean;
-  rooftop: boolean;
-  openType: boolean;
-  separateType: boolean;
-  twoFloorType: boolean;
-  sizeFrom: number;
-  sizeTo: number;
-  car: boolean;
-  elevator: boolean;
-  pet: boolean;
-  fullOption: boolean;
-  women: boolean;
-  loan: boolean;
-  priceSort: boolean;
-  recommendSort: boolean;
-  filterDataTypes: {
-    address: string;
-    latitude: number;
-    longitude: number;
-    roomID: any;
-    priceUnit: string;
-    roomType: string;
-    deposit: number;
-    dealType: string;
-    price: number;
-    struct: string;
-    floor: number;
-    roomSize: any;
-    recommend: number;
-  };
-};
+import { MapFilterState } from 'types';
 
 //선택안함이 0 default
-const initialState: initialStateTypes = {
+const initialState: MapFilterState = {
   startLongitude: 0,
   startLatitude: 0,
   endLongitude: 0,

@@ -1,19 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { logInApi } from '_api';
+import { LoginState } from 'types';
 
-type initialStateTypes = {
-  value: {
-    USER_ID: string;
-    USER_NICKNAME: string;
-    IS_LOGIN: boolean;
-  };
-  school: string;
-  email: string;
-  authNumber: number;
-  AUTHNUMBER_OPEN: boolean;
-};
-
-const initialState: initialStateTypes = {
+const initialState: LoginState = {
   value: {
     USER_ID: '',
     USER_NICKNAME: '',
@@ -52,9 +41,15 @@ const login = createSlice({
     },
     dispatchAuthNumberOpen: (state, action) => {
       state.AUTHNUMBER_OPEN = action.payload;
-    }
+    },
   },
 });
 
 export default login.reducer;
-export const { dispatchHandleLogin, dispatchSchool, dispatchEmail, dispatchAuthNumber, dispatchAuthNumberOpen} = login.actions;
+export const {
+  dispatchHandleLogin,
+  dispatchSchool,
+  dispatchEmail,
+  dispatchAuthNumber,
+  dispatchAuthNumberOpen,
+} = login.actions;

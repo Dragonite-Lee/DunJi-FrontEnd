@@ -1,15 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { TabState } from 'types';
 
-type initialStateTypes = {
-  TABBAR_OPEN_HOME: boolean;
-  TABBAR_OPEN_SEARCH: boolean;
-  TABBAR_OPEN_PLUS: boolean;
-  TABBAR_OPEN_CHAT: boolean;
-  TABBAR_OPEN_MYPAGE: boolean;
-  TABBAR_OPEN_POSTMODAL: boolean;
-};
-
-const initialState: initialStateTypes = {
+const initialState: TabState = {
   TABBAR_OPEN_HOME: true,
   TABBAR_OPEN_SEARCH: false,
   TABBAR_OPEN_PLUS: false,
