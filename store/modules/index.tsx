@@ -1,8 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
-import { all } from 'redux-saga/effects';
 
-import { roomRegisterSaga } from 'saga/roomRegisterSaga';
 import {
   LoadingState,
   LoginState,
@@ -51,10 +49,5 @@ export type RootState = {
   roomRegister: RoomRegisterState;
   tab: TabState;
 };
-
-export function* rootSaga() {
-  // all 함수는 여러 사가를 합쳐주는 역할을 합니다.
-  yield all([roomRegisterSaga()]);
-}
 
 export default rootReducer;
