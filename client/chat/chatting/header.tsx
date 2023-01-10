@@ -1,10 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import chevronLeftThickIcon from 'assets/icon/chat/chevron-left-thick.svg';
 import threeDotsVerticalIcon from 'assets/icon/chat/three-dots-vertical.svg';
-import Modal from './modal';
+import ModalContainer from 'components/common/ModalContainer';
+import useToggle from 'hooks/useToggle';
 import MoreWindow from './modal/more';
 import ReportWindow from './modal/report';
 
@@ -12,18 +13,19 @@ function Header() {
   const router = useRouter();
 
   // 모달창 열림 상태 (더보기창, 신고사유 선택창)
-  const [moreModalOpen, setMoreModalOpen] = useState(false);
-  const [reportModalOpen, setReportModalOpen] = useState(false);
+  const [isMoreModalOpen, handleMoreModalOpenToggle] = useToggle();
+  const [isReportModalOpen, handleReportModalOpenToggle] = useToggle();
 
   /** 뒤로가기 버튼 */
   const backBtnHandler = useCallback(() => {
     router.push('/chat');
-  }, []);
+  }, [router]);
 
-  /** 더보기 버튼 - 더보기 모달창 열기 */
-  const moreBtnHandler = useCallback(() => {
-    setMoreModalOpen(true);
-  }, []);
+  /** 신고하기 버튼 - 더보기창 닫은 후 신고사유 선택창 열기 */
+  const handleReportBtnClick = () => {
+    handleMoreModalOpenToggle();
+    handleReportModalOpenToggle();
+  };
 
   return (
     <header>
@@ -42,26 +44,26 @@ function Header() {
         <div>
           <button
             className="flex w-[20px] h-[20px] justify-center items-center"
-            onClick={moreBtnHandler}
+            onClick={handleMoreModalOpenToggle}
           >
             <Image src={threeDotsVerticalIcon} alt="더보기 버튼" />
           </button>
         </div>
       </div>
-      <Modal
-        moreModalOpen={moreModalOpen}
-        setMoreModalOpen={setMoreModalOpen}
-        reportModalOpen={reportModalOpen}
-        setReportModalOpen={setReportModalOpen}
+
+      <ModalContainer
+        isOpen={isMoreModalOpen}
+        onClose={handleMoreModalOpenToggle}
+        position="right"
       >
-        {moreModalOpen && (
-          <MoreWindow
-            setMoreModalOpen={setMoreModalOpen}
-            setReportModalOpen={setReportModalOpen}
-          />
-        )}
-        {reportModalOpen ? <ReportWindow /> : null}
-      </Modal>
+        <MoreWindow reportBtnHandler={handleReportBtnClick} />
+      </ModalContainer>
+      <ModalContainer
+        isOpen={isReportModalOpen}
+        onClose={handleReportModalOpenToggle}
+      >
+        <ReportWindow />
+      </ModalContainer>
     </header>
   );
 }

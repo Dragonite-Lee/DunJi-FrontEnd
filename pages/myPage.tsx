@@ -1,12 +1,12 @@
-import Mypage from "client/myPage";
+import MyPage from 'client/myPage';
 
 function MyPageAuth({}) {
-  return <Mypage />;
+  return <MyPage />;
 }
 
 export async function getServerSideProps() {
   //TODO: 이메일등 개인정보에 예상
-  return { props: {} }
+  return { props: {} };
 }
 
-export default MyPageAuth
+export default MyPageAuth;

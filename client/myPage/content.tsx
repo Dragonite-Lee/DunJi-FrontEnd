@@ -1,5 +1,7 @@
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ContentItemType } from 'client/myPage/ContentItem';
+import ContentList from 'client/myPage/ContentList';
+
+const DUMMY_PATH = '/#';
 
 function Content() {
   function loggedOut() {
@@ -10,73 +12,46 @@ function Content() {
     location.reload();
   }
 
+  const GUIDE_LIST: ContentItemType[] = [
+    {
+      content: '공지사항',
+      path: DUMMY_PATH,
+    },
+    {
+      content: '계약서 가이드',
+      path: '/room/contract',
+    },
+    {
+      content: '둥지 서비스',
+      path: DUMMY_PATH,
+    },
+    {
+      content: '매물번호 조회',
+      path: DUMMY_PATH,
+    },
+  ];
+
+  const ECT_LIST: ContentItemType[] = [
+    {
+      content: '서비스 이용 약관',
+      path: DUMMY_PATH,
+    },
+    {
+      content: '회원 탈퇴',
+      path: DUMMY_PATH,
+    },
+    {
+      content: '로그아웃',
+      path: '/',
+      onAction: loggedOut,
+    },
+  ];
+
   return (
     <div className="mx-[18px] bg-white rounded-standard_rounded">
       <div className="px-[22px]">
-        <div className="pt-[28px] Pretendard-SemiBold text-[17px] pb-[16px]">
-          둥지 안내
-        </div>
-        <div className="flex items-center justify-between text-[15px] Pretendard-Regular py-[16px]">
-          <div>공지사항</div>
-          <Link href="/#">
-            <a>
-              <FontAwesomeIcon icon="chevron-right" />
-            </a>
-          </Link>
-        </div>
-        <div className="flex items-center justify-between text-[15px] Pretendard-Regular py-[16px]">
-          <div>계약서 가이드</div>
-          <Link href="/room/contract">
-            <a>
-              <FontAwesomeIcon icon="chevron-right" />
-            </a>
-          </Link>
-        </div>
-        <div className="flex items-center justify-between text-[15px] Pretendard-Regular py-[16px]">
-          <div>둥지 서비스</div>
-          <Link href="/#">
-            <a>
-              <FontAwesomeIcon icon="chevron-right" />
-            </a>
-          </Link>
-        </div>
-        <div className="flex items-center justify-between text-[15px] Pretendard-Regular border-b pt-[16px] pb-[30px]">
-          <div>매물번호 조회</div>
-          <Link href="/#">
-            <a>
-              <FontAwesomeIcon icon="chevron-right" />
-            </a>
-          </Link>
-        </div>
-        <div className=" Pretendard-SemiBold text-[17px] pb-[16px] pt-[26px]">
-          기타
-        </div>
-        <div className="flex items-center justify-between text-[15px] Pretendard-Regular py-[16px]">
-          <div>서비스 이용약관</div>
-          <Link href="/#">
-            <a>
-              <FontAwesomeIcon icon="chevron-right" />
-            </a>
-          </Link>
-        </div>
-        <div className="flex items-center justify-between text-[15px] Pretendard-Regular py-[16px]">
-          <div>회원 탈퇴</div>
-          <Link href="/#">
-            <a>
-              <FontAwesomeIcon icon="chevron-right" />
-            </a>
-          </Link>
-        </div>
-        <div className="flex items-center justify-between text-[15px] Pretendard-Regular pt-[16px] pb-[32px]">
-          <div>로그아웃</div>
-          <Link href="/" passHref>
-            <div onClick={loggedOut}>
-              <a>
-                <FontAwesomeIcon icon="chevron-right" />
-              </a>
-            </div>
-          </Link>
-        </div>
+        <ContentList title="둥지 안내" itemList={GUIDE_LIST} />
+        <ContentList title="기타" itemList={ECT_LIST} />
       </div>
     </div>
   );
