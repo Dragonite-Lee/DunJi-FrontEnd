@@ -1,32 +1,39 @@
-import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Map from 'client/room/register/AddressComponents/Map';
 import SubHeader from 'client/room/register/SubHeader';
 import PostCode from 'components/daum-postcode/index';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import {
   dispatchDetailAddress,
   dispatchPostCodeOpen,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function AddressRegister() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const [detailAddress, setDetailAddress] = useState(state.detailAddress);
+  const {
+    detailAddress,
+    COMPONENT_HANDLER,
+    POSTCODE_OPEN,
+    ADDRESS_OPEN,
+    address,
+  } = useSelector((state: RootState) => state.roomRegister);
+
   const btnHandler = (val: boolean) => dispatch(dispatchPostCodeOpen(val));
   const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    setDetailAddress(e.currentTarget.value);
     dispatch(dispatchDetailAddress(e.currentTarget.value));
   };
 
   return (
     <>
-      {state.COMPONENT_HANDLER === 0 && (
+      {COMPONENT_HANDLER === 0 && (
         <>
-          {!state.POSTCODE_OPEN && <SubHeader />}
-          {state.ADDRESS_OPEN && (
+          {!POSTCODE_OPEN && <SubHeader />}
+          {ADDRESS_OPEN && (
             <>
-              {!state.POSTCODE_OPEN && (
+              {!POSTCODE_OPEN && (
                 <>
                   <div className="px-[18px]  w-full">
                     <div className="text-[12px] mt-[26px] mb-[16px] text-center Pretendard-Regular">
@@ -34,7 +41,7 @@ function AddressRegister() {
                     </div>
                     <button
                       className="flex items-center justify-center mb-8 bg-component_white w-full h-[5vh] text-[17px] rounded-[20rem]  Pretendard-SemiBold"
-                      onClick={() => btnHandler(!state.POSTCODE_OPEN)}
+                      onClick={() => btnHandler(!POSTCODE_OPEN)}
                     >
                       <FontAwesomeIcon icon="magnifying-glass" />
                       &nbsp; 주소 찾기
@@ -42,8 +49,8 @@ function AddressRegister() {
                   </div>
                 </>
               )}
-              {state.POSTCODE_OPEN && <PostCode />}
-              {state.address && !state.POSTCODE_OPEN && (
+              {POSTCODE_OPEN && <PostCode />}
+              {address && !POSTCODE_OPEN && (
                 <div className="sm:w-[375px] sm:m-auto">
                   <div className="px-[18px] ">
                     <Map />
@@ -55,7 +62,7 @@ function AddressRegister() {
                     </div>
                     <div className="flex flex-col contents-center bg-component_white   rounded-2xl overflow-hidden">
                       <div className="p-4 border-b border-border_color text-[15px] Pretendard-Regular">
-                        {state.address}
+                        {address}
                       </div>
                       <input
                         className="p-4 h-full w-full bg-transparent outline-0 placeholder:text-font_gray text-[15px] Pretendard-Regular"

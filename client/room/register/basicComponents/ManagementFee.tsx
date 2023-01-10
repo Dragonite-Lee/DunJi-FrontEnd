@@ -1,33 +1,35 @@
 import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
 import DuplicateSelectBtn from 'components/common/DuplicateSelectBtn';
 import InputSelectBox from 'components/common/InputSelectBox';
 import useDuplicateSelect from 'hooks/useDuplicateSelect';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import {
   dispatchManage,
   dispatchManageCost,
   dispatchManageSelect,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Price() {
-  const [state, dispatch] = useRoomRegisterRedux();
-  const selectArr = state.manageSelect;
+  const dispatch = useDispatch();
+
+  const { manageSelect, manageCost, manage } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
+
   const typeArr = useMemo(() => ['전기세', '가스', '수도', '인터넷', 'TV'], []);
+
   const [checkHandler, resetHandler] = useDuplicateSelect(
-    selectArr,
+    manageSelect,
     typeArr,
     dispatchManageSelect,
   );
-  // 관리비
-  const fee = state.manageCost;
-  // 관리비 유무(있으면 1, 없으면 0)
-  const noFeeCheck = state.manage;
-  // 관리비 카테고리 배열
 
   const feeHandler = (value: string) => {
     const num = Number(value);
-    if (noFeeCheck === 1) {
+    if (manage === 1) {
       if (num === 0) dispatch(dispatchManageCost(''));
       else {
         dispatch(dispatchManageCost(num));
@@ -36,7 +38,7 @@ function Price() {
   };
 
   const feeOptionHandler = () => {
-    if (noFeeCheck === 0) dispatch(dispatchManage(1));
+    if (manage === 0) dispatch(dispatchManage(1));
     else {
       dispatch(dispatchManage(0));
       dispatch(dispatchManageCost(''));
@@ -53,7 +55,7 @@ function Price() {
             type="number"
             className="bg-white  w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-font_gray outline-0"
             placeholder="관리비"
-            value={fee}
+            value={manageCost}
             onChange={(e) => {
               feeHandler(e.target.value);
             }}
@@ -66,7 +68,7 @@ function Price() {
           </div>
         </div>
         <InputSelectBox
-          check={noFeeCheck}
+          check={manage}
           content="관리비 없음"
           checkHandler={feeOptionHandler}
           converse={true}
@@ -77,10 +79,10 @@ function Price() {
           <DuplicateSelectBtn
             key={index}
             value={item}
-            check={selectArr[index]}
+            check={manageSelect[index]}
             index={index}
             checkHandler={checkHandler}
-            blockCheck={noFeeCheck}
+            blockCheck={manage}
           />
         ))}
       </div>

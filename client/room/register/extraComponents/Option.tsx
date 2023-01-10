@@ -1,18 +1,21 @@
 import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import DuplicateSelectBtn from 'components/common/DuplicateSelectBtn';
 import InputSelectBox from 'components/common/InputSelectBox';
 import useDuplicateSelect from 'hooks/useDuplicateSelect';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import {
   dispatchOption,
   dispatchOptionSelect,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Option() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const optionSelectStateArr = state.option;
-  const optionCheck = state.optionAll; //해당없으면 0 옵션있으면1
+  const { option, optionAll } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
 
   const typeArr = useMemo(
     () => [
@@ -33,7 +36,7 @@ function Option() {
   );
 
   const [checkHandler, resetHandler] = useDuplicateSelect(
-    optionSelectStateArr,
+    option,
     typeArr,
     dispatchOptionSelect,
   );
@@ -41,7 +44,7 @@ function Option() {
   // const state = useSelector((state: RootState) => state.roomRegister);
 
   const OptionHandler = () => {
-    if (optionCheck === 0) dispatch(dispatchOption(1));
+    if (optionAll === 0) dispatch(dispatchOption(1));
     else {
       dispatch(dispatchOption(0));
       resetHandler();
@@ -54,7 +57,7 @@ function Option() {
         <div className="text-[17px]  Pretendard-SemiBold">옵션</div>
         <div className="text-[15px] Pretendard-Regular">
           <InputSelectBox
-            check={optionCheck}
+            check={optionAll}
             content="해당 없음"
             checkHandler={OptionHandler}
             converse={true}
@@ -66,10 +69,10 @@ function Option() {
           <DuplicateSelectBtn
             key={index}
             value={item}
-            check={optionSelectStateArr[index]}
+            check={option[index]}
             index={index}
             checkHandler={checkHandler}
-            blockCheck={optionCheck}
+            blockCheck={optionAll}
           />
         ))}
       </div>

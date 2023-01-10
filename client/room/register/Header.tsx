@@ -1,15 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { useDispatch, useSelector } from 'react-redux';
 import useGoBack from 'hooks/useGoback';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Header() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
+
+  const { POSTCODE_OPEN } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
+
   const goBack = useGoBack();
 
   return (
     <>
-      {state.POSTCODE_OPEN ? (
+      {POSTCODE_OPEN ? (
         <header
           className="flex w-screen justify-between px-[18px]
         py-4  h-24 items-center text-xl  border-b sm:w-[375px] sm:m-auto "
@@ -17,7 +24,7 @@ function Header() {
           <div className="flex text-2xl items-center">
             <div
               onClick={() => {
-                dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));
+                dispatch(dispatchPostCodeOpen(!POSTCODE_OPEN));
               }}
             >
               <FontAwesomeIcon icon="chevron-left" />

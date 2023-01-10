@@ -1,23 +1,24 @@
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Modal from 'client/room/register/basicComponents/Modal';
 import CategoryHeader from 'components/common/CategoryHeader';
 import InputSelectBox from 'components/common/InputSelectBox';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import {
   dispatchCurrentFloor,
   dispatchElevator,
   dispatchWholeFloor,
   dispatchStruct,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Floor() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const totalFloor = state.wholeFloor;
-  const currentFloor = state.floor;
-  const structure = state.struct;
-  const elevatorCheck = state.elevator;
+  const { wholeFloor, floor, struct, elevator } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
 
   const [openModal, setOpenModal] = useState(false); // 모달 오픈 변수
   const [targetArr, setTargetArr] = useState(['']); // 모달 내 컨텐츠 배열
@@ -49,25 +50,25 @@ function Floor() {
     {
       valueArr: AllfloorArr,
       title: '전체층',
-      value: totalFloor,
+      value: wholeFloor,
       dispatchHandler: dispatchWholeFloor,
     },
     {
       valueArr: floorArr,
       title: '해당층',
-      value: currentFloor,
+      value: floor,
       dispatchHandler: dispatchCurrentFloor,
     },
     {
       valueArr: roomStructureArr,
       title: '구조',
-      value: structure,
+      value: struct,
       dispatchHandler: dispatchStruct,
     },
   ];
 
   const checkHandler = () => {
-    dispatch(dispatchElevator(Number(!elevatorCheck)));
+    dispatch(dispatchElevator(Number(!elevator)));
   };
 
   return (
@@ -103,7 +104,7 @@ function Floor() {
           </div>
         ))}
         <InputSelectBox
-          check={elevatorCheck}
+          check={elevator}
           content="엘레베이터 있음"
           checkHandler={checkHandler}
           converse={false}

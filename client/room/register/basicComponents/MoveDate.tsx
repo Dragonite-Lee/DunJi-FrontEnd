@@ -1,20 +1,22 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import InputSelectBox from 'components/common/InputSelectBox';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import {
   dispatchFrom,
   dispatchNegotiable,
   dispatchTo,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function MoveDate() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const periodFrom = state.availFrom;
-  const periodTo = state.availTo;
-  const negotiable = state.availConsul;
+  const { availFrom, availTo, availConsul } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
 
   const checkHandler = () => {
-    negotiable === 0
+    availConsul === 0
       ? dispatch(dispatchNegotiable(1))
       : dispatch(dispatchNegotiable(0));
   };
@@ -25,7 +27,7 @@ function MoveDate() {
         <span>입주가능기간</span>
         <InputSelectBox
           converse={false}
-          check={negotiable}
+          check={availConsul}
           content="협의가능"
           checkHandler={checkHandler}
         />
@@ -37,7 +39,7 @@ function MoveDate() {
           onChange={(e) => {
             dispatch(dispatchFrom(e.target.value));
           }}
-          value={periodFrom}
+          value={availFrom}
         />
         ~
         <input
@@ -46,7 +48,7 @@ function MoveDate() {
           onChange={(e) => {
             dispatch(dispatchTo(e.target.value));
           }}
-          value={periodTo}
+          value={availTo}
         />
       </div>
     </>

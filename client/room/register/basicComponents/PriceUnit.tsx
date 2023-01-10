@@ -1,18 +1,21 @@
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchPriceUnit } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function PriceUnit() {
+  const { priceUnit } = useSelector((state: RootState) => state.roomRegister);
+
   const typeArr = useMemo(() => ['주세', '월세', '전세', '반전세'], []);
-  const [state] = useRoomRegisterRedux();
 
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     typeArr,
     dispatchPriceUnit,
-    state.priceUnit,
+    priceUnit,
   );
 
   return (

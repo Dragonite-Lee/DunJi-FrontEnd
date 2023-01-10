@@ -1,14 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useTabRedux from 'hooks/useTabRedux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   dispatchTabBarOpenPostModal,
   dispatchTabBarOpenPlus,
 } from 'store/modules/tab';
+import { RootState } from 'types';
 
-export default function PostModal() {
-  const [state, dispatch] = useTabRedux();
+function PostModal() {
+  const dispatch = useDispatch();
+
+  const { TABBAR_OPEN_PLUS, TABBAR_OPEN_POSTMODAL } = useSelector(
+    (state: RootState) => state.tab,
+  );
+
   const [imageHover1, setImageHover1] = useState(false);
   const [imageHover2, setImageHover2] = useState(false);
 
@@ -31,8 +38,8 @@ export default function PostModal() {
       className="bg-blur w-full sm:w-[375px] h-screen fixed z-30"
       onClick={(e) => {
         if (e.target == e.currentTarget) {
-          dispatch(dispatchTabBarOpenPlus(!state.TABBAR_OPEN_PLUS));
-          dispatch(dispatchTabBarOpenPostModal(!state.TABBAR_OPEN_POSTMODAL));
+          dispatch(dispatchTabBarOpenPlus(!TABBAR_OPEN_PLUS));
+          dispatch(dispatchTabBarOpenPostModal(!TABBAR_OPEN_POSTMODAL));
         }
       }}
     >
@@ -90,3 +97,5 @@ export default function PostModal() {
     </div>
   );
 }
+
+export default PostModal;

@@ -1,10 +1,15 @@
 import Image from 'next/image';
 
-import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
+import { useDispatch, useSelector } from 'react-redux';
 import { dispatchFile, dispatchFileUrl } from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 function ReviewImg() {
-  const [{ ReviewfileUrl }, dispatch] = useReviewRegisterReudx();
+  const dispatch = useDispatch();
+
+  const { ReviewfileUrl } = useSelector(
+    (state: RootState) => state.reviewRegister,
+  );
 
   //이미지 상대경로로 저장
   let file: any;

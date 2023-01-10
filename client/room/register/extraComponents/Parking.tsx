@@ -1,11 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import ChooseOneBtn from 'components/common/ChooseOneBtn';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchCar } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Parking() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const car = state.car;
+  const { car } = useSelector((state: RootState) => state.roomRegister);
 
   const checkHandler = (index: number) => {
     if (car === index) dispatch(dispatchCar(2));

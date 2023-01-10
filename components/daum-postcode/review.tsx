@@ -1,17 +1,22 @@
 import DaumPostcode from 'react-daum-postcode';
 
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   dispatchMainAddress,
   dispatchPostCodeOpen,
 } from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 const PostCode = () => {
-  const [state, dispatch] = useReviewRegisterRedux();
+  const dispatch = useDispatch();
+
+  const { POSTCODE_OPEN, ADDRESS_OPEN } = useSelector(
+    (state: RootState) => state.reviewRegister,
+  );
 
   const handleComplete = (data: any) => {
     const fullAddress = data.autoJibunAddress || data.jibunAddress;
-    dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));
+    dispatch(dispatchPostCodeOpen(!POSTCODE_OPEN));
     dispatch(dispatchMainAddress(fullAddress));
   };
 
@@ -20,7 +25,7 @@ const PostCode = () => {
   };
   return (
     <>
-      {state.ADDRESS_OPEN && (
+      {ADDRESS_OPEN && (
         <DaumPostcode
           className=""
           style={postCodeStyle}

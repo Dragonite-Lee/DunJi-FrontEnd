@@ -1,18 +1,8 @@
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useTabRedux from 'hooks/useTabRedux';
-import {
-  dispatchTabBarOpenHome,
-  dispatchTabBarOpenSearch,
-  dispatchTabBarOpenChat,
-  dispatchTabBarOpenMypage,
-} from 'store/modules/tab';
 
-export default function Mypage() {
-  const [state, dispatch] = useTabRedux();
-
-  function close() {
+function Mypage() {
+  const close = () => {
     if (typeof window !== 'undefined') {
       if (localStorage.getItem('home')) {
         localStorage.setItem('mypage', 'true');
@@ -25,7 +15,8 @@ export default function Mypage() {
         localStorage.removeItem('chat');
       }
     }
-  }
+  };
+
   const mypage =
     typeof window !== 'undefined' ? localStorage.getItem('mypage') : null;
 
@@ -58,3 +49,5 @@ export default function Mypage() {
     </div>
   );
 }
+
+export default Mypage;

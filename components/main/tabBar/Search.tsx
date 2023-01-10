@@ -1,17 +1,7 @@
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useTabRedux from 'hooks/useTabRedux';
-import {
-  dispatchTabBarOpenHome,
-  dispatchTabBarOpenSearch,
-  dispatchTabBarOpenChat,
-  dispatchTabBarOpenMypage,
-} from 'store/modules/tab';
 
-export default function Search() {
-  const [state, dispatch] = useTabRedux();
-
+function Search() {
   function close() {
     if (typeof window !== 'undefined') {
       if (localStorage.getItem('home')) {
@@ -58,3 +48,5 @@ export default function Search() {
     </div>
   );
 }
+
+export default Search;

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+import { useDispatch } from 'react-redux';
 
 interface ModalProps {
   arr: Array<string>;
@@ -11,7 +11,7 @@ interface ModalProps {
 }
 
 function Modal({ arr, title, openHandler, dispatchHandler }: ModalProps) {
-  const [dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
   const onClick = (index: number) => {
     // 1층...의 경우 분리 후 number로 변환.  분리형...의 구조는 그대로 dispatch

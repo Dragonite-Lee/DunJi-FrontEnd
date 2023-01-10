@@ -1,17 +1,20 @@
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchRoomType } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function RoomType() {
+  const { roomType } = useSelector((state: RootState) => state.roomRegister);
+
   const typeArr = useMemo(() => ['원룸', '투룸', '쓰리룸 이상'], []);
-  const [state] = useRoomRegisterRedux();
 
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     typeArr,
     dispatchRoomType,
-    state.roomType,
+    roomType,
   );
 
   return (

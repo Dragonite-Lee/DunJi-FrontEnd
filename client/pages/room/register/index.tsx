@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import AddressRegister from 'client/room/register/AddressComponents';
 import BasicInfo from 'client/room/register/basicComponents';
 import BottomNextBtn from 'client/room/register/BottomNextBtn';
 import DetailInfo from 'client/room/register/extraComponents';
 import Header from 'client/room/register/Header';
 import PhotoRegister from 'client/room/register/PhotoComponents';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchRegistrant } from 'store/modules/roomRegister';
 
 function Register() {
-  const [, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(dispatchRegistrant(localStorage.getItem('userId')));
