@@ -1,5 +1,5 @@
 import { takeLatest } from 'redux-saga/effects';
-import { roomApi } from '_api';
+import { roomApi } from '_api/room';
 import createRequestSaga from 'utils/createRequestSaga';
 
 const POST_ROOM = 'roomRegister/postRoom';
