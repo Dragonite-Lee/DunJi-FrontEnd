@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import Link from 'next/link';
-import Header from 'client/room/register/Header';
+import RegisterHeader from 'client/room/register/RegisterHeader';
 
 function Agree() {
   const [isCheck1, SetIsCheck1] = useState<boolean>(false);
@@ -12,7 +12,7 @@ function Agree() {
 
   return (
     <div className="bg-background_beige min-h-screen sm:w-[375px] sm:m-auto">
-      <Header />
+      <RegisterHeader />
       <div className="pb-[105px] mx-[17px] mt-[25px]">
         <div className="text-[25px] Pretendard-SemiBold">
           방 내놓기 전 꼭! 확인해주세요

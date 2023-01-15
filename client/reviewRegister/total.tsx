@@ -1,12 +1,10 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import Image from 'next/image';
-
-import { useDispatch, useSelector } from 'react-redux';
 import harfActive from 'assets/icon/별점_반.svg';
 import noActive from 'assets/icon/별점_비활성화.svg';
 import active from 'assets/icon/별점_활성화.svg';
+import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
 import { dispatchTotal, dispatchTotalNum } from 'store/modules/reviewRegister';
-import { RootState } from 'types';
 
 function Total() {
   const dispatch = useDispatch();
@@ -91,17 +89,16 @@ function Total() {
     }
     dispatch(dispatchTotal(StarRating));
   };
-
-  const starRatingFill = useCallback(() => {
+  const starRatingFill = () => {
     for (let i = 0; i < 5; i++) {
       starRatingState.push(noActive);
     }
     dispatch(dispatchTotal(starRatingState));
-  }, [dispatch, starRatingState]);
+  };
 
   useEffect(() => {
     starRatingFill();
-  }, [dispatch, starRatingFill, starRatingState]);
+  }, [dispatch, starRatingState]);
 
   const url: any = [];
 
@@ -138,7 +135,7 @@ function Total() {
         ) : (
           <Image
             alt="별점"
-            src={require('../../../assets/icon/별점_활성화.svg')}
+            src={require('assets/icon/별점_활성화.svg')}
             width={80}
             height={60}
           />

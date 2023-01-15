@@ -1,25 +1,19 @@
 import { ChangeEvent, useState, useCallback } from 'react';
 import Image from 'next/image';
 import Router from 'next/router';
-
-import { useDispatch, useSelector } from 'react-redux';
-import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
-import useInterval from 'hooks/useInterval';
+import useLoginRedux from 'hooks/useLoginRedux';
 import {
   dispatchEmail,
   dispatchSchool,
   dispatchAuthNumber,
   dispatchAuthNumberOpen,
 } from 'store/modules/login';
-import { RootState } from 'types';
+import { studentAuthApi } from '_api/auth';
+import useInterval from 'hooks/useInterval';
+import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 
 function StudentAuth() {
-  const dispatch = useDispatch();
-
-  const { authNumber, AUTHNUMBER_OPEN } = useSelector(
-    (state: RootState) => state.login,
-  );
-
+  const [state, dispatch] = useLoginRedux();
   const [school, setSchool] = useState<string>('');
   const [email1, setEmail1] = useState<string>('');
   const [email2, setEmail2] = useState<string>('');
@@ -44,28 +38,24 @@ function StudentAuth() {
     },
     [],
   );
-
   const emailOnchangeHandler1 = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       setEmail1(e.target.value);
     },
     [],
   );
-
   const emailOnchangeHandler2 = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
       setEmail2(e.target.value);
     },
     [],
   );
-
   const authNumberOnchangeHanlder = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       setInputAuthNumber(e.target.value);
     },
     [],
   );
-
   const studentAuth = useCallback(async () => {
     dispatch(dispatchSchool(school));
     dispatch(dispatchEmail(email1 + email2));
@@ -77,25 +67,37 @@ function StudentAuth() {
     } else if (email1 === '' || email2 === '') {
       alert('메일을 입력해주세요.');
     }
-  }, [dispatch, school, email1, email2]);
 
+    // try {
+    //   await studentAuthApi.postEmail(state.email).then((res) => {
+    //     dispatch(dispatchAuthNumber(res.content.authNumber))
+    //   });
+    // } catch (e) {
+    //   alert(e)
+    // };
+  }, [school, email1, email2]);
   const studentAuthIsSuccess = useCallback(() => {
-    if (inputAuthNumber.length > 5 && inputAuthNumber === authNumber) {
+    if (inputAuthNumber.length > 5 && inputAuthNumber === state.authNumber) {
       Router.push('/');
       //유저의 학교정보나 데이터등 저장할 것 같음
     } else {
       alert('인증번호가 틀렸습니다.');
     }
-  }, [authNumber, inputAuthNumber]);
-
+  }, [state, inputAuthNumber]);
   const studentAuthAgain = useCallback(async () => {
     dispatch(dispatchSchool(school));
     dispatch(dispatchEmail(email1 + email2));
     dispatch(dispatchAuthNumberOpen(true));
     setAuthTime(180);
     setTimePlay(true);
-  }, [dispatch, school, email1, email2]);
-
+    // try {
+    //   await studentAuthApi.postEmail(state.email).then((res) => {
+    //     dispatch(dispatchAuthNumber(res.content.authNumber))
+    //   });
+    // } catch (e) {
+    //   alert(e)
+    // };
+  }, [school, email1, email2]);
   const authTimeMin = parseInt(String(authTime / 60));
   const authTimeSec =
     String(authTime % 60).length === 1 ? '0' + (authTime % 60) : authTime % 60;
@@ -108,7 +110,7 @@ function StudentAuth() {
           <div className="px-52">
             <Image
               alt="둥지로고"
-              src={require('../../assets/icon/logo/logo_main.png')}
+              src={require('assets/icon/logo/logo_main.png')}
             />
           </div>
 
@@ -151,7 +153,7 @@ function StudentAuth() {
             <option value="@hanyang.ac.kr">@hanyang.ac.kr</option>
           </select>
         </div>
-        {AUTHNUMBER_OPEN && (
+        {state.AUTHNUMBER_OPEN && (
           <div>
             <div className="flex items-center mt-12">
               <input
@@ -177,7 +179,7 @@ function StudentAuth() {
           </div>
         )}
       </div>
-      {AUTHNUMBER_OPEN ? (
+      {state.AUTHNUMBER_OPEN ? (
         <BottomNextBtnLayout content="확인" onClick={studentAuthIsSuccess} />
       ) : (
         <BottomNextBtnLayout content="학교 인증하기" onClick={studentAuth} />

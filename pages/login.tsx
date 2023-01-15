@@ -15,7 +15,7 @@ export default function Login({}) {
           <div className="px-52">
             <Image
               alt="둥지로고"
-              src={require('../assets/icon/logo/logo_main.png')}
+              src={require('assets/icon/logo/logo_main.png')}
             />
           </div>
 
@@ -35,7 +35,7 @@ export default function Login({}) {
               width={26}
               height={26}
               alt="카카오톡로고"
-              src={require('../assets/icon/logo/kakao_logo.png')}
+              src={require('assets/icon/logo/kakao_logo.png')}
             />
             <div className="ml-4 text-[16px] Pretendard-Regular">
               카카오톡으로 시작하기
@@ -48,7 +48,7 @@ export default function Login({}) {
           width={26}
           height={26}
           alt="구글로고"
-          src={require('../assets/icon/logo/google_logo.png')}
+          src={require('assets/icon/logo/google_logo.png')}
         />
         <div className="ml-4 text-[16px] Pretendard-Regular">
           Google로 시작하기

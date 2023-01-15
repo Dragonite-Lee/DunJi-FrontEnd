@@ -1,7 +1,6 @@
 import Image from 'next/image';
-
-import { NewRoomType } from 'types';
 import convertRoomSize from 'utils/convertRoomSize';
+import { newRoomType } from 'store/modules/main';
 
 interface NewRoomItemProps {
   data: NewRoomType;
@@ -13,7 +12,7 @@ function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
       <div>
         {/* *이미지칸 */}
         <Image
-          src={require('../../assets/icon/main/main_char.png')}
+          src={require('assets/icon/main/main_char.png')}
           layout="fixed"
           objectFit="fill"
           width={140}

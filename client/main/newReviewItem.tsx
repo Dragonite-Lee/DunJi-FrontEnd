@@ -29,7 +29,7 @@ function NewReviewItem({ data }: NewReviewItemProps) {
         <div>
           {/* *이미지칸 */}
           <Image
-            src={require('../../assets/icon/main/main_char.png')}
+            src={require('assets/icon/main/main_char.png')}
             layout="fixed"
             objectFit="fill"
             width={77}

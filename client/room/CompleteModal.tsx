@@ -9,7 +9,7 @@ function CompleteModal() {
             width={60}
             height={60}
             alt="체크로고"
-            src={require('../../assets/icon/팝업_체크.svg')}
+            src={require('assets/icon/팝업_체크.svg')}
           />
         </div>
         <div className="Pretendard-SemiBold text-[15px] text-center mt-[13px]">

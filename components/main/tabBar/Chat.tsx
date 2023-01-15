@@ -27,7 +27,7 @@ function Chat() {
           width={30}
           height={30}
           alt="채팅로고"
-          src={require('../../../assets/icon/main/tabBar/메뉴바_채팅_활성화.svg')}
+          src={require('assets/icon/main/tabBar/메뉴바_채팅_활성화.svg')}
           onLoad={() => {
             localStorage.clear();
             localStorage.setItem('chat', 'true');
@@ -41,7 +41,7 @@ function Chat() {
               width={30}
               height={30}
               alt="채팅로고"
-              src={require('../../../assets/icon/main/tabBar/메뉴바_채팅_비활성화.svg')}
+              src={require('assets/icon/main/tabBar/메뉴바_채팅_비활성화.svg')}
             />
           </a>
         </Link>

@@ -1,11 +1,9 @@
 import { ChangeEvent } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
 import {
   dispatchPeriodFrom,
   dispatchPeriodTo,
 } from 'store/modules/reviewRegister';
-import { RootState } from 'types';
 
 function MoveDate() {
   const dispatch = useDispatch();

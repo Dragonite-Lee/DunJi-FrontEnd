@@ -26,7 +26,7 @@ function Search() {
           width={30}
           height={30}
           alt="검색로고"
-          src={require('../../../assets/icon/main/tabBar/메뉴바_검색_활성화.svg')}
+          src={require('assets/icon/main/tabBar/메뉴바_검색_활성화.svg')}
           onLoad={() => {
             localStorage.clear();
             localStorage.setItem('search', 'true');
@@ -40,7 +40,7 @@ function Search() {
               width={30}
               height={30}
               alt="검색로고"
-              src={require('../../../assets/icon/main/tabBar/메뉴바_검색_비활성화.svg')}
+              src={require('assets/icon/main/tabBar/메뉴바_검색_비활성화.svg')}
             />
           </a>
         </Link>

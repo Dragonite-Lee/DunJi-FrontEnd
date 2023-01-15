@@ -6,9 +6,9 @@ const initialState: MainState = {
   SEARCHMODAL_OPEN: false,
   SEARCHRESULT: [],
   SLIDEBOX: [
-    '../assets/icon/main/slide/slide1.jpg',
-    '../assets/icon/main/slide/slide2.jpg',
-    '../assets/icon/main/slide/slide3.jpg',
+    'assets/icon/main/slide/slide1.jpg',
+    'assets/icon/main/slide/slide2.jpg',
+    'assets/icon/main/slide/slide3.jpg',
   ],
   newRoom: [],
   newReview: [],

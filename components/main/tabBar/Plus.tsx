@@ -21,7 +21,7 @@ export default function Plus() {
           width={30}
           height={30}
           alt="검색로고"
-          src={require('../../../assets/icon/main/tabBar/메뉴바_글올리기_활성화.svg')}
+          src={require('assets/icon/main/tabBar/메뉴바_글올리기_활성화.svg')}
         />
       ) : (
         <Image
@@ -32,7 +32,7 @@ export default function Plus() {
           width={30}
           height={30}
           alt="플러스로고"
-          src={require('../../../assets/icon/main/tabBar/메뉴바_글올리기_비활성화.svg')}
+          src={require('assets/icon/main/tabBar/메뉴바_글올리기_비활성화.svg')}
         />
       )}
     </div>

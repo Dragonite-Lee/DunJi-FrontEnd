@@ -68,7 +68,7 @@ function ReviewImg() {
             width={100}
             height={80}
             alt="채팅메뉴앨범"
-            src={require('../../../assets/icon/채팅메뉴_앨범.svg')}
+            src={require('assets/icon/채팅메뉴_앨범.svg')}
           />
         )}
       </div>
@@ -86,12 +86,12 @@ function ReviewImg() {
                 htmlFor="image-upload-review"
               >
                 {/* <FontAwesomeIcon icon="plus" /> */}
-                <Image
+                {/* <Image
                   width={50}
                   height={50}
                   alt="사진로고"
-                  src={require('../../../assets/icon/채팅메뉴_앨범.svg')}
-                />
+                  src={require('assets/icon/채팅메뉴_앨범.svg')}
+                /> */}
                 <div>사진 선택</div>
               </label>
               <input
@@ -118,7 +118,7 @@ function ReviewImg() {
                 width={50}
                 height={50}
                 alt="사진로고"
-                src={require('../../../assets/icon/채팅메뉴_앨범.svg')}
+                src={require('assets/icon/채팅메뉴_앨범.svg')}
               />
               <div>사진 선택</div>
             </label>
