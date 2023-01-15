@@ -1,5 +1,5 @@
+import Header from 'client/chat/chatting/header';
 import Handler from './handler';
-import Header from './header';
 import History from './history';
 import Notice from './notice';
 

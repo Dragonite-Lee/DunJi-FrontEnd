@@ -1,5 +1,5 @@
-import Header from 'components/common/Header';
-import CancelHeader from 'components/common/Header/CancelHeader';
+import Header from 'components/layout/Header';
+import CancelHeader from 'components/layout/Header/CancelHeader';
 import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
 import { RootState } from 'types';
@@ -14,7 +14,7 @@ function ReviewRegisterHeader() {
   return (
     <>
       {state.POSTCODE_OPEN ? (
-        <Header onClick={postCodeOpen} title="주소 찾기" />
+        <Header backAction={postCodeOpen} title="주소 찾기" />
       ) : (
         <CancelHeader title="후기 작성하기" />
       )}

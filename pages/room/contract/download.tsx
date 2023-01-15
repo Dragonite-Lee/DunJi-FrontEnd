@@ -1,6 +1,5 @@
 import Download from 'client/pages/room/contract/download';
 
-
 function DownloadPage() {
   return <Download />;
 }

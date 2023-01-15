@@ -1,31 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-
 import { mapApi } from '_api/room';
 import BriefInfo from 'client/room/BriefInfo';
 import CompleteModal from 'client/room/CompleteModal';
 import Header from 'client/room/Header';
-import Header2 from 'client/room/Header2';
 import Info from 'client/room/Info';
 import Location from 'client/room/Location';
 import Option from 'client/room/Option';
 import Price from 'client/room/Price';
 import Review from 'client/room/Review';
 import Title from 'client/room/Title';
+import CancelHeader from 'components/layout/Header/CancelHeader';
+import useRoomRedux from 'hooks/useRoomRedux';
+import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchRoomInfoList, dispatchRoomPostList } from 'store/modules/room';
-import { RootState } from 'types';
 
 function RoomDetail() {
-  const dispatch = useDispatch();
-
-  const { ROOM_POST, ROOM_INFO } = useSelector(
-    (state: RootState) => state.room,
-  );
-  const { latitude, longitude } = useSelector(
-    (state: RootState) => state.roomRegister,
-  );
-
+  const [state, dispatch] = useRoomRedux();
+  const [state2] = useRoomRegisterRedux();
   const router = useRouter();
   const { id } = router.query;
   const [popUp, setPopUp] = useState(false);
@@ -57,69 +49,72 @@ function RoomDetail() {
       {id ? (
         <>
           {popUp && <CompleteModal />}
-          <Header title={ROOM_POST.address} />
+          <Header title={state.ROOM_POST.address} />
           <div className="px-[18px]">
             <Title
-              buildingID={ROOM_POST.buildingID}
-              dealType={ROOM_INFO.dealType}
-              price={ROOM_INFO.price}
-              deposit={ROOM_INFO.deposit}
-              priceUnit={ROOM_INFO.priceUnit}
+              buildingID={state.ROOM_POST.buildingID}
+              dealType={state.ROOM_INFO.dealType}
+              price={state.ROOM_INFO.price}
+              deposit={state.ROOM_INFO.deposit}
+              priceUnit={state.ROOM_INFO.priceUnit}
             />
             <BriefInfo
-              roomSize={ROOM_INFO.roomSize}
-              floor={ROOM_INFO.floor}
-              wholeFloor={ROOM_INFO.wholeFloor}
-              struct={ROOM_INFO.struct}
-              roomType={ROOM_INFO.roomType}
+              roomSize={state.ROOM_INFO.roomSize}
+              floor={state.ROOM_INFO.floor}
+              wholeFloor={state.ROOM_INFO.wholeFloor}
+              struct={state.ROOM_INFO.struct}
+              roomType={state.ROOM_INFO.roomType}
             />
-            <Review regDate={ROOM_POST.regDate} explain={ROOM_POST.explain} />
+            <Review
+              regDate={state.ROOM_POST.regDate}
+              explain={state.ROOM_POST.explain}
+            />
             <Info
-              availFrom={ROOM_INFO.availFrom}
-              availTo={ROOM_INFO.availTo}
-              availConsul={ROOM_INFO.availConsul}
-              roomSize={ROOM_INFO.roomSize}
-              floor={ROOM_INFO.floor}
-              wholeFloor={ROOM_INFO.wholeFloor}
-              struct={ROOM_INFO.struct}
-              Address={ROOM_POST.address}
+              availFrom={state.ROOM_INFO.availFrom}
+              availTo={state.ROOM_INFO.availTo}
+              availConsul={state.ROOM_INFO.availConsul}
+              roomSize={state.ROOM_INFO.roomSize}
+              floor={state.ROOM_INFO.floor}
+              wholeFloor={state.ROOM_INFO.wholeFloor}
+              struct={state.ROOM_INFO.struct}
+              Address={state.ROOM_POST.address}
             />
             <Price
-              price={ROOM_INFO.price}
-              deposit={ROOM_INFO.deposit}
-              manageCost={ROOM_INFO.manage}
-              manageElec={ROOM_INFO.manageElec}
-              manageGas={ROOM_INFO.manageGas}
-              manageWater={ROOM_INFO.manageWater}
-              manageInternet={ROOM_INFO.manageInternet}
-              manageTV={ROOM_INFO.manageTV}
-              manageInclude={ROOM_INFO.manageInclude}
+              price={state.ROOM_INFO.price}
+              deposit={state.ROOM_INFO.deposit}
+              manageCost={state.ROOM_INFO.manage}
+              manageElec={state.ROOM_INFO.manageElec}
+              manageGas={state.ROOM_INFO.manageGas}
+              manageWater={state.ROOM_INFO.manageWater}
+              manageInternet={state.ROOM_INFO.manageInternet}
+              manageTV={state.ROOM_INFO.manageTV}
+              manageInclude={state.ROOM_INFO.manageInclude}
             />
             <Option
-              elevator={ROOM_INFO.elevator}
-              car={ROOM_INFO.car}
-              loan={ROOM_INFO.loan}
-              women={ROOM_INFO.women}
-              pet={ROOM_INFO.pet}
-              aircon={ROOM_INFO.aircon}
-              shoe={ROOM_INFO.shoe}
-              shelf={ROOM_INFO.shelf}
-              induc={ROOM_INFO.induc}
-              micro={ROOM_INFO.micro}
-              refri={ROOM_INFO.refri}
-              desk={ROOM_INFO.desk}
-              sink={ROOM_INFO.sink}
-              washer={ROOM_INFO.washer}
-              closet={ROOM_INFO.closet}
-              gas={ROOM_INFO.gas}
-              bed={ROOM_INFO.bed}
+              elevator={state.ROOM_INFO.elevator}
+              car={state.ROOM_INFO.car}
+              loan={state.ROOM_INFO.loan}
+              women={state.ROOM_INFO.women}
+              pet={state.ROOM_INFO.pet}
+              aircon={state.ROOM_INFO.aircon}
+              shoe={state.ROOM_INFO.shoe}
+              shelf={state.ROOM_INFO.shelf}
+              induc={state.ROOM_INFO.induc}
+              micro={state.ROOM_INFO.micro}
+              refri={state.ROOM_INFO.refri}
+              desk={state.ROOM_INFO.desk}
+              sink={state.ROOM_INFO.sink}
+              washer={state.ROOM_INFO.washer}
+              closet={state.ROOM_INFO.closet}
+              gas={state.ROOM_INFO.gas}
+              bed={state.ROOM_INFO.bed}
             />
-            <Location latitude={latitude} longitude={longitude} />
+            <Location latitude={state2.latitude} longitude={state2.longitude} />
           </div>
         </>
       ) : (
         <div>
-          <Header2 />
+          <CancelHeader title="방 상세페이지" />
           <div className="text-[17px] p-[30px]">존재하지 않는 방입니다.</div>
         </div>
       )}

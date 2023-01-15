@@ -1,6 +1,8 @@
 import { ChangeEvent, useState, useCallback } from 'react';
 import Image from 'next/image';
 import Router from 'next/router';
+import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
+import useInterval from 'hooks/useInterval';
 import useLoginRedux from 'hooks/useLoginRedux';
 import {
   dispatchEmail,
@@ -8,9 +10,6 @@ import {
   dispatchAuthNumber,
   dispatchAuthNumberOpen,
 } from 'store/modules/login';
-import { studentAuthApi } from '_api/auth';
-import useInterval from 'hooks/useInterval';
-import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 
 function StudentAuth() {
   const [state, dispatch] = useLoginRedux();

@@ -60,7 +60,7 @@ function Header({ setLatitude, setLongitude }: any) {
     }
   }, []);
 
-  const clickHander = useCallback(
+  const clickHandler = useCallback(
     (item: any) => () => {
       setLatitude(item.y);
       setLongitude(item.x);
@@ -146,7 +146,7 @@ function Header({ setLatitude, setLongitude }: any) {
             <div
               className="flex flex-col justify-evenly h-24 border-b-2 pl-8"
               key={Number(item.id)}
-              onClick={clickHander(item)}
+              onClick={clickHandler(item)}
             >
               <div className="text-2xl">
                 {/* {item.place_name.split(searchVal)[0]} */}
