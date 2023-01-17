@@ -4,26 +4,26 @@ import logger from 'redux-logger';
 
 import rootReducer from './modules';
 
-const isNotProductionEnv = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV !== 'production';
 
-const store = isNotProductionEnv
-  ? configureStore({
-      reducer: rootReducer,
-      middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(logger),
-      devTools: isNotProductionEnv,
-    })
-  : configureStore({
-      reducer: rootReducer,
-      devTools: isNotProductionEnv,
-    });
-
+/** wrapper에 store를 전달하는 콜백함수 */
 const makeStore = () => {
+  // 환경변수에 따른 store 설정
+  const store = isDev
+    ? configureStore({
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) =>
+          getDefaultMiddleware().concat(logger),
+        devTools: isDev,
+      })
+    : configureStore({
+        reducer: rootReducer,
+        devTools: isDev,
+      });
+
   return store;
 };
 
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = ReturnType<typeof makeStore>['dispatch'];
 
-export const wrapper = createWrapper(makeStore, {
-  debug: isNotProductionEnv,
-});
+export const wrapper = createWrapper(makeStore, { debug: isDev });
