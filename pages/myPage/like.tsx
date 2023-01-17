@@ -1,6 +1,6 @@
-import MyPage from 'client/myPage';
+import MyPage from 'client/myPage/like';
 
-function MyPageAuth({}) {
+function MyPageLike() {
   return <MyPage />;
 }
 
@@ -9,4 +9,4 @@ export async function getServerSideProps() {
   return { props: {} };
 }
 
-export default MyPageAuth;
+export default MyPageLike;
