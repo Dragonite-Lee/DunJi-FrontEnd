@@ -2,6 +2,7 @@ import SquareZoneItem from 'client/myPage/SquareZoneItem';
 
 const DUMMY_PATH = '/myPage/#';
 const LIKE_PATH = '/myPage/like';
+const RECENT_PATH = '/myPage/recent';
 
 function SquareZone() {
   return (
@@ -15,7 +16,7 @@ function SquareZone() {
         <SquareZoneItem
           image={require('assets/icon/myPage/최근매물.svg')}
           content="최근 본 매물"
-          path={DUMMY_PATH}
+          path={RECENT_PATH}
         />
         <SquareZoneItem
           image={require('assets/icon/myPage/매물.svg')}
