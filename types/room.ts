@@ -32,7 +32,26 @@ export type RoomPostListTypes = {
   address: any;
 };
 
-export type RoomInfoListTypes = {
+// NOTE:  매물 조회 참고 short room info
+export interface RoomInfoType {
+  roomId: string;
+  latitude: number;
+  longitude: number;
+  sigungu: string;
+  dong: string;
+  priceUnit: '주세' | '월세' | '전세' | '반전세';
+  price: number;
+  deposit: number;
+  roomType: '원룸' | '투룸' | '쓰리룸 이상';
+  dealType: '단기임대' | '양도';
+  structure: '오픈형' | '분리형' | '복층형';
+  floor: string;
+  roomSize: number;
+  heartNum: number;
+  image: string;
+}
+
+export interface RoomInfoListTypes {
   aircon: boolean;
   availConsul: boolean;
   availFrom: string;
@@ -64,7 +83,7 @@ export type RoomInfoListTypes = {
   struct: string;
   washer: boolean;
   women: boolean;
-};
+}
 
 export type RoomListTypes = {
   address: string;

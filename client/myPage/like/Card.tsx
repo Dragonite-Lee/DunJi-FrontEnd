@@ -1,19 +1,60 @@
-function Card() {
+import Image from 'next/image';
+import { RoomInfoType } from 'types';
+
+interface CardProps extends RoomInfoType {
+  isTransfer?: boolean;
+}
+function Card({
+  price,
+  deposit,
+  sigungu,
+  dong,
+  roomType,
+  floor,
+  structure,
+  roomSize,
+  priceUnit,
+  isTransfer,
+  image,
+}: CardProps) {
   return (
     <div>
-      <div>
-        <span>양도</span>
-        <div>하트</div>
-        img
-      </div>
-      <div>
-        <div>
-          <span>흥부하우스 B동 / 상록구 사동</span>
-          <span>월세 30 / 300</span>
+      <div className="h-72 relative">
+        <div className="overflow-hidden w-full h-full	rounded-lg">
+          <Image
+            src={require('assets/images/room2.png')}
+            alt="추가 기능 파트 닫기 버튼"
+            layout="fill"
+          />
         </div>
-        <div>
-          <span>분리형 원룸, 2층</span>
-          <span>25m² / 7평</span>
+        {isTransfer && (
+          <div className="absolute top-4 left-4 text-white w-[30px] h-[18px] text-center  bg-[#7DE1FF] leading-[18px] rounded-[5px]">
+            양도
+          </div>
+        )}
+        <div className="absolute top-3 right-4">
+          <Image
+            src={require('assets/icon/myPage/찜한매물.svg')}
+            alt="추가 기능 파트 닫기 버튼"
+            width={25}
+            height={25}
+          />
+        </div>
+      </div>
+      <div className="mt-[6px] mb-[32px]">
+        <div className="flex justify-between	">
+          <span className="text-[12px]">
+            흥부하우스 B동 / {sigungu} {dong}
+          </span>
+          <span className="text-[14px] text-[#A9A7A2]">
+            {structure} {roomType}, {floor}층
+          </span>
+        </div>
+        <div className="flex justify-between	">
+          <span className="text-[17px] font-bold">
+            {priceUnit} {price} / {deposit}
+          </span>
+          <span className="text-[14px] text-[#A9A7A2]">{roomSize}m² / 7평</span>
         </div>
       </div>
     </div>
