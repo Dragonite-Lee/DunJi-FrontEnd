@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { useDispatch, useSelector } from 'react-redux';
 import Map from 'client/reviewRegister/map';
+import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Period from 'client/reviewRegister/period';
 import SubHeader from 'client/reviewRegister/subHeader';
 import PostCode from 'components/daum-postcode/review';
@@ -13,29 +12,24 @@ import {
 import { RootState } from 'types';
 
 function AddressRegister() {
+  const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
   const dispatch = useDispatch();
-  const state = useSelector((state: RootState) => state.reviewRegister);
-
-  const btnHandler = useCallback(
-    (val: boolean) => dispatch(dispatchPostCodeOpen(val)),
-    [dispatch],
-  );
-
-  const inputHandler = useCallback(
-    (e: React.FormEvent<HTMLInputElement>) => {
-      dispatch(dispatchDetailAddress(e.currentTarget.value));
-    },
-    [dispatch],
-  );
+  
+  const postCodeOpen = useCallback(() => {
+    dispatch(dispatchPostCodeOpen(!reviewRegister.POSTCODE_OPEN));
+  },[reviewRegister])
+  const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    dispatch(dispatchDetailAddress(e.currentTarget.value));
+  };
 
   return (
     <>
-      {state.COMPONENT_HANDLER === 0 && (
+      {reviewRegister.COMPONENT_HANDLER === 0 && (
         <>
-          {!state.POSTCODE_OPEN && <SubHeader />}
-          {state.ADDRESS_OPEN && (
+          {!reviewRegister.POSTCODE_OPEN && <SubHeader />}
+          {reviewRegister.ADDRESS_OPEN && (
             <>
-              {!state.POSTCODE_OPEN && (
+              {!reviewRegister.POSTCODE_OPEN && (
                 <>
                   <div className="px-[18px]  w-full">
                     <div className="text-[12px] mt-[26px] mb-[16px] text-center Pretendard-Regular">
@@ -45,7 +39,7 @@ function AddressRegister() {
                       className="flex items-center justify-center mb-8 bg-component_white w-full
                                                 h-[5vh]
                                                 text-[17px] rounded-[20rem] Pretendard-SemiBold"
-                      onClick={() => btnHandler(!state.POSTCODE_OPEN)}
+                      onClick={postCodeOpen}
                     >
                       <FontAwesomeIcon icon="magnifying-glass" />
                       &nbsp; 주소 찾기
@@ -53,10 +47,10 @@ function AddressRegister() {
                   </div>
                 </>
               )}
-              {state.POSTCODE_OPEN && <PostCode />}
-              {state.address && !state.POSTCODE_OPEN && (
+              {reviewRegister.POSTCODE_OPEN && <PostCode />}
+              {reviewRegister.address && !reviewRegister.POSTCODE_OPEN && (
                 <div className="sm:w-[375px] sm:m-auto px-[18px]">
-                  <div className="">
+                  <div>
                     <Map />
                   </div>
                   <div className="justify-between items-center text-xl">
@@ -66,12 +60,12 @@ function AddressRegister() {
                     </div>
                     <div className="flex flex-col contents-center bg-component_white   rounded-2xl overflow-hidden">
                       <div className="p-4 border-b border-border_color text-[15px] Pretendard-Regular">
-                        {state.address}
+                        {reviewRegister.address}
                       </div>
                       <input
                         className="p-4 h-full w-full bg-transparent outline-0 placeholder:text-font_gray text-[15px] Pretendard-Regular"
                         type="text"
-                        value={state.detailAddress}
+                        value={reviewRegister.detailAddress}
                         onChange={inputHandler}
                         placeholder="상세 주소를 입력해주세요"
                       />

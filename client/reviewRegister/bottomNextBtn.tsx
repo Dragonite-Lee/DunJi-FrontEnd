@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-
 import { useSelector } from 'react-redux';
 import { reviewApi } from '_api/room';
 import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
@@ -20,6 +19,7 @@ const delete_arr = [
   'periodTo',
   'total',
   'totalNum',
+  'totalUrl',
 ];
 
 const all_items_arr = [
@@ -38,13 +38,13 @@ const all_items_arr = [
 
 function BottomNextBtn() {
   const state = useSelector((state: RootState) => state.reviewRegister);
-
+  
   const isEmpty = useCallback(function (value: any) {
     if (
       value == '' ||
       value == null ||
       value == undefined ||
-      (value != null && typeof value == 'object' && !Object.keys(value).length)
+      (value != null  && !Object.keys(value).length)
     ) {
       return true;
     } else {

@@ -1,22 +1,22 @@
 import Image from 'next/image';
-
 import { useDispatch, useSelector } from 'react-redux';
+import { useCallback } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dispatchFile, dispatchFileUrl } from 'store/modules/reviewRegister';
 import { RootState } from 'types';
 
 function ReviewImg() {
+
   const dispatch = useDispatch();
-
-  const { ReviewfileUrl } = useSelector(
-    (state: RootState) => state.reviewRegister,
-  );
-
+  const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
+  console.log(reviewRegister.ReviewfileUrl)
   //이미지 상대경로로 저장
   let file: any;
   const imageUrlLists: any = [];
   const imageShowLists: (string | ArrayBuffer | null)[] = [];
+  const url: any = [];
 
-  const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddImages = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const imageLists = e.target.files;
 
     if (imageLists instanceof FileList) {
@@ -35,19 +35,17 @@ function ReviewImg() {
         reader.readAsDataURL(file);
       }
     }
-
     dispatch(dispatchFile(imageUrlLists));
+  },[imageUrlLists, imageShowLists]);
+
+  if (reviewRegister.ReviewfileUrl.length) {
+    for (let i = 0; i < reviewRegister.ReviewfileUrl.length; i++) {
+      url.push(reviewRegister.ReviewfileUrl[i]);
+
+    }
   };
 
-  const url: any = [];
-
-  if (ReviewfileUrl.length) {
-    for (let i = 0; i < ReviewfileUrl.length; i++) {
-      url.push(ReviewfileUrl[i]);
-    }
-  }
-
-  const map_result = url.map(function (image: any, index: any) {
+  const map_result = url.map((image: any, index: any) => {
     return (
       <div className="w-[100px] h-[80px] mr-[8px]" key={index}>
         {image ? (
@@ -78,20 +76,20 @@ function ReviewImg() {
   return (
     <>
       <div>
-        {ReviewfileUrl.length ? (
+        {reviewRegister.ReviewfileUrl.length ? (
           <div className="flex">
             <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
               <label
                 className="Pretendard-Regular text-[12px] text-center text-font_gray w-[80px] h-[80px] items-center justify-center"
                 htmlFor="image-upload-review"
               >
-                {/* <FontAwesomeIcon icon="plus" /> */}
-                {/* <Image
+              {/* <FontAwesomeIcon icon="plus" /> */}
+              <Image
                   width={50}
                   height={50}
                   alt="사진로고"
                   src={require('assets/icon/채팅메뉴_앨범.svg')}
-                /> */}
+                />
                 <div>사진 선택</div>
               </label>
               <input

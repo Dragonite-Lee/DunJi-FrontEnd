@@ -1,5 +1,5 @@
 import DownloadType from 'client/room/contract/download/DownloadType';
-import Header from 'client/room/contract/Header';
+import Header from 'components/layout/Header';
 
 function Download() {
   return (

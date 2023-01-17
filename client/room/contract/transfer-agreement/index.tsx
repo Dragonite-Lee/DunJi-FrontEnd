@@ -1,6 +1,7 @@
-import Header from 'client/room/contract/Header';
+import Header from 'components/layout/Header';
 import ContractContent from 'client/room/contract/transfer-agreement/ContractContent';
 import Explanation from 'client/room/contract/transfer-agreement/Explanation';
+
 
 function TransferAgreement() {
   return (

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 export default function useNoDuplicateSelect(
   typeArr: Array<string>,
   dispatchHandler: ActionCreatorWithPayload<any, string>,
-  reduxValue: string,
+  reduxValue: number | string,
 ): [boolean[], (index: number) => void] {
   const dispatch = useDispatch();
   const length = typeArr.length;
@@ -16,7 +16,7 @@ export default function useNoDuplicateSelect(
     const arr = Array.from({ length }, () => false);
     if (reduxValue === '') return arr;
     else {
-      const index = typeArr.indexOf(reduxValue);
+      const index = typeArr.indexOf(String(reduxValue));
       arr[index] = true;
       return arr;
     }

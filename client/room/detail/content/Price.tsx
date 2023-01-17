@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import InfoField from 'client/room/InfoField';
-import OpenLayout from 'client/room/OpenLayout';
+import ContentField from 'client/room/detail/ContentField';
+import OpenLayout from 'client/room/detail/OpenLayout';
+import useToggle from 'hooks/useToggle';
 
 interface PriceProps {
   price: number;
@@ -25,7 +25,7 @@ function Price({
   manageTV,
   manageInclude,
 }: PriceProps) {
-  const [open, setOpen] = useState(false);
+  const [open, handlerOpen] = useToggle();
 
   const manageContent = `${manageCost} 만원\n 관리비에 포함 ${manageInclude}`;
   const manageContentEnter = manageContent.split('\n').map((line, index) => (
@@ -34,13 +34,13 @@ function Price({
       <br />
     </span>
   ));
-  const optionArr = [
-    { value: manageElec, type: '전기' },
-    { value: manageGas, type: '가스' },
-    { value: manageWater, type: '수도' },
-    { value: manageInternet, type: '인터넷' },
-    { value: manageTV, type: '티비' },
-  ];
+  // const optionArr = [
+  //   { value: manageElec, type: '전기' },
+  //   { value: manageGas, type: '가스' },
+  //   { value: manageWater, type: '수도' },
+  //   { value: manageInternet, type: '인터넷' },
+  //   { value: manageTV, type: '티비' },
+  // ]; 데이터 들어오면 사용될 수 있음
 
   const priceTypeArr = [
     {
@@ -55,9 +55,9 @@ function Price({
   ];
 
   return (
-    <OpenLayout open={open} setOpen={setOpen} title="가격 정보">
+    <OpenLayout open={open} handlerOpen={handlerOpen} title="가격 정보">
       {priceTypeArr.map((priceType, index) => (
-        <InfoField
+        <ContentField
           key={index}
           title={priceType.title}
           content={priceType.data}

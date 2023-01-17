@@ -1,4 +1,4 @@
-import Header from 'client/room/contract/Header';
+import Header from 'components/layout/Header';
 import ContractContent from 'client/room/contract/sublease/ContractContent';
 import Explanation from 'client/room/contract/sublease/Explanation';
 

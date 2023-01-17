@@ -1,6 +1,5 @@
 import DaumPostcode from 'react-daum-postcode';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   dispatchMainAddress,
   dispatchPostCodeOpen,
@@ -14,7 +13,6 @@ import { RootState } from 'types';
 
 const PostCode = () => {
   const dispatch = useDispatch();
-
   const { POSTCODE_OPEN, ADDRESS_OPEN } = useSelector(
     (state: RootState) => state.roomRegister,
   );

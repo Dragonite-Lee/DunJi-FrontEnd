@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import Image from 'next/image';
-import Map from 'client/room/Map';
+import Map from 'client/room/detail/content/Map';
+import useToggle from 'hooks/useToggle';
 
 interface LocationProps {
   latitude: number;
@@ -8,14 +8,12 @@ interface LocationProps {
 }
 
 function Location({ latitude, longitude }: LocationProps) {
-  const [open, setOpen] = useState(false);
-
-  const openHandler = () => setOpen(!open);
+  const [open, handlerOpen] = useToggle()
 
   return (
     <div className="w-full rounded-standard_rounded bg-component_white my-4">
       <div
-        onClick={openHandler}
+        onClick={handlerOpen}
         className={`${
           open && `border-b border-border_color`
         } h-20 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { ReviewRegisterState } from 'types';
 
 const initialState: ReviewRegisterState = {
@@ -12,6 +11,7 @@ const initialState: ReviewRegisterState = {
   detailAddress: '',
   total: [],
   totalNum: 0,
+  totalUrl: [],
   clean: 3,
   sound: 3,
   accessible: 3,
@@ -54,6 +54,9 @@ const reviewRegister = createSlice({
     dispatchTotalNum: (state, action) => {
       state.totalNum = action.payload;
     },
+    dispatchTotalUrl: (state, action) => {
+      state.totalUrl = action.payload;
+    },
     dispatchClean: (state, action) => {
       state.clean = action.payload;
     },
@@ -94,6 +97,7 @@ export const {
   dispatchDetailAddress,
   dispatchTotal,
   dispatchTotalNum,
+  dispatchTotalUrl,
   dispatchClean,
   dispatchSound,
   dispatchAccessible,

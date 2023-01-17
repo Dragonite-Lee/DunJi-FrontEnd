@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import Image from 'next/image';
-import InfoField from 'client/room/InfoField';
+import ContentField from 'client/room/detail/ContentField';
+import useToggle from 'hooks/useToggle';
 
 interface OptionProps {
   aircon: boolean;
@@ -41,8 +41,7 @@ function Option({
   washer,
   women,
 }: OptionProps) {
-  const [open, setOpen] = useState(false);
-
+  const [open, handlerOpen] = useToggle()
   const optionList = [
     {
       title: '에어컨',
@@ -93,7 +92,6 @@ function Option({
       data: shoe,
     },
   ];
-
   const detailOptionList = [
     {
       title: '앨레베이터',
@@ -117,17 +115,15 @@ function Option({
     },
   ];
 
-  const openHandler = () => setOpen(!open);
-
   return (
     <div className="w-full rounded-standard_rounded bg-component_white my-4">
       <div
-        onClick={openHandler}
+        onClick={handlerOpen}
         className={`${
           open && `border-b border-border_color`
         } h-20 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}
       >
-        옵션 정보
+        옵션
         <div className={`ml-auto w-10 h-12 relative ${open && 'rotate-180'}`}>
           <Image
             src={require('assets/icon/화살표_펼치기.svg')}
@@ -145,7 +141,7 @@ function Option({
               <div className="text-center" key={index}>
                 <Image
                   src={require(`assets/icon/option/옵션_${item.title}.svg`)}
-                  alt="로고"
+                  alt={`${item.title}`+"사진"}
                 />
                 <div>{item.title}</div>
               </div>
@@ -154,7 +150,7 @@ function Option({
           <div className="px-[18px] ">
             {detailOptionList.map((item, index) => (
               <div key={index}>
-                <InfoField
+                <ContentField
                   title={item.title}
                   content={item.data}
                   last={index !== detailOptionList.length - 1}

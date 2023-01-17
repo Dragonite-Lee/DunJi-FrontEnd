@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import AddressRegister from 'client/reviewRegister/addressPage';
+import { useDispatch } from 'react-redux';
 import BottomNextBtn from 'client/reviewRegister/bottomNextBtn';
 import Header from 'client/reviewRegister/header';
 import ReviewRegister from 'client/reviewRegister/reviewRegisterPage';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
+import AddressRegister from 'client/reviewRegister/addressPage';
 import { dispatchRegistrant } from 'store/modules/reviewRegister';
 
 function Register() {
-  const [state, dispatch] = useReviewRegisterRedux();
-  function localStorageGetUserID() {
+  const dispatch = useDispatch();
+  function localStorageGetUserID()  {
     dispatch(dispatchRegistrant(localStorage.getItem('userId')));
   }
 

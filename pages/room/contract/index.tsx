@@ -1,8 +1,8 @@
-import ContractGuide from 'client/pages/room/contract';
+import ContractGuide from 'client/room/contract';
 
 
 function ContractGuidePage() {
-  return <ContractGuide />;
+  return <ContractGuide />
 }
 
 export default ContractGuidePage;

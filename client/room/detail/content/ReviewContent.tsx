@@ -1,20 +1,18 @@
-import { useState } from 'react';
 import Image from 'next/image';
+import useToggle from 'hooks/useToggle';
 
-interface reviewProps {
+interface ReviewContentProps {
   explain: string;
   regDate: string;
 }
 
-function Review({ explain, regDate }: reviewProps) {
-  const [open, setOpen] = useState(false);
-
-  const openHandler = () => setOpen(!open);
+function ReviewContent({ explain, regDate }: ReviewContentProps) {
+  const [open, handlerOpen] = useToggle();
 
   return (
     <div className="w-full rounded-standard_rounded bg-component_white my-4">
       <div
-        onClick={openHandler}
+        onClick={handlerOpen}
         className={`${open && `border-b border-border_color`}`}
       >
         <div className=" h-28 flex justify-between items-center px-[18px]">
@@ -46,4 +44,4 @@ function Review({ explain, regDate }: reviewProps) {
   );
 }
 
-export default Review;
+export default ReviewContent;

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import InfoField from 'client/room/InfoField';
-import OpenLayout from 'client/room/OpenLayout';
+import ContentField from 'client/room/detail/ContentField';
+import OpenLayout from 'client/room/detail/OpenLayout';
+import useToggle from 'hooks/useToggle';
 import useRoomSizeConvert from 'utils/convertRoomSize';
 
 interface infoProps {
@@ -24,21 +24,18 @@ function Info({
   struct,
   Address,
 }: infoProps) {
+
   const convertedRoomSize = useRoomSizeConvert(Number(roomSize));
-
-  const [open, setOpen] = useState(false);
-
+  const [open, handlerOpen] = useToggle()
   const moveInDate = `${availFrom} 부터 \n ${availTo}${
     availConsul ? '(협의가능)' : '(협의불가)'
   }`;
-
   const moveInDateEnter = moveInDate.split('\n').map((line, index) => (
     <span key={index}>
       {line}
       <br />
     </span>
   ));
-
   const infoArr = [
     {
       title: '입주가능일',
@@ -54,9 +51,9 @@ function Info({
   ];
 
   return (
-    <OpenLayout open={open} setOpen={setOpen} title="방 정보">
+    <OpenLayout open={open} handlerOpen={handlerOpen} title="방 정보">
       {infoArr.map((item, index) => (
-        <InfoField
+        <ContentField
           key={index}
           title={item.title}
           content={item.data}

@@ -1,10 +1,10 @@
-interface InfoFieldProps {
+interface ContentFieldProps {
   content: string | JSX.Element[] | number;
   last: boolean;
   title: string;
 }
 
-function InfoField({ content, last, title }: InfoFieldProps) {
+function ContentField({ content, last, title }: ContentFieldProps) {
   return (
     <div
       className={`${
@@ -17,4 +17,4 @@ function InfoField({ content, last, title }: InfoFieldProps) {
   );
 }
 
-export default InfoField;
+export default ContentField;

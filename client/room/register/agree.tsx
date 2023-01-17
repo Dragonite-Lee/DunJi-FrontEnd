@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState, useCallback } from 'react';
 import Link from 'next/link';
 import RegisterHeader from 'client/room/register/RegisterHeader';
 
@@ -6,9 +6,9 @@ function Agree() {
   const [isCheck1, SetIsCheck1] = useState<boolean>(false);
   const [isCheck2, SetIsCheck2] = useState<boolean>(false);
 
-  const ChangeHandler = (setState: Dispatch<SetStateAction<boolean>>) => {
+  const ChangeHandler = useCallback((setState: Dispatch<SetStateAction<boolean>>) => {
     setState((state) => !state);
-  };
+  },[]);
 
   return (
     <div className="bg-background_beige min-h-screen sm:w-[375px] sm:m-auto">

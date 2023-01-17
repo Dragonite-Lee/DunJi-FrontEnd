@@ -1,20 +1,19 @@
-import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { ReactNode } from 'react';
 import Image from 'next/image';
 
 interface OpenLayoutProps {
   children: ReactNode;
   open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  handlerOpen: () => void;
   title: string;
 }
 
-function OpenLayout({ children, open, setOpen, title }: OpenLayoutProps) {
-  const openHandler = () => setOpen(!open);
-
+function OpenLayout({ children, open, handlerOpen, title }: OpenLayoutProps) {
+  
   return (
     <div className="w-full rounded-standard_rounded bg-component_white my-4">
       <div
-        onClick={openHandler}
+        onClick={handlerOpen}
         className={`${
           open && `border-b border-border_color`
         } h-20 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}

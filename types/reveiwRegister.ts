@@ -8,6 +8,7 @@ export type ReviewRegisterState = {
   detailAddress: string;
   total: string[];
   totalNum: number;
+  totalUrl: string[];
   clean: 0 | 1 | 2 | 3;
   sound: 0 | 1 | 2 | 3;
   accessible: 0 | 1 | 2 | 3;
