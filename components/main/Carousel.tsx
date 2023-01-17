@@ -1,13 +1,13 @@
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
+import { useState } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
 import Image from 'next/image';
-import { useState } from 'react';
-import useMainRedux from 'hooks/useMainRedux';
-import { dispatchSlideBox } from 'store/modules/main';
+import Slider from 'react-slick';
+// import useMainRedux from 'hooks/useMainRedux';
 
 export default function Carousel() {
-  const [state, dispatch] = useMainRedux();
+  // TODO : useMainRedux 가 없어졌네요..?
+  // const [state, dispatch] = useMainRedux();
   const settings = {
     dots: false, //점 안보이게
     infinite: true, //무한으로 재생되게
@@ -18,7 +18,9 @@ export default function Carousel() {
     autoplaySpeed: 5000,
     arrows: false,
   };
-  const [slideImg, setSlideImg] = useState(state.SLIDEBOX);
+  // TODO :  임시로 막아둠
+  const [slideImg, setSlideImg] = useState([]);
+  // const [slideImg, setSlideImg] = useState(state.SLIDEBOX);
 
   return (
     <div className="carousel px-7 pt-12 w-full">
