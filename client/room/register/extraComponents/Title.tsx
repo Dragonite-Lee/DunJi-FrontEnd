@@ -1,11 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchTitle } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Title() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const title = state.title;
+  const { title } = useSelector((state: RootState) => state.roomRegister);
 
   return (
     <>

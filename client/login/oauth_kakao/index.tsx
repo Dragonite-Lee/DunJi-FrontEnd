@@ -1,14 +1,12 @@
 import { useCallback, useEffect } from 'react';
 import Router from 'next/router';
-import { logInApi } from '_api/auth'; 
-import useLoginRedux from 'hooks/useLoginRedux';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+
+import { useDispatch } from 'react-redux';
+import { logInApi } from '_api/auth';
 import { dispatchHandleLogin } from 'store/modules/login';
 
-
 function OauthKakao() {
-  const [state, dispatch] = useLoginRedux();
-  const [state2, dispatch2] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
   const login = useCallback(() => {
     if (typeof window === 'undefined') {
@@ -42,7 +40,7 @@ function OauthKakao() {
 
   useEffect(() => {
     login();
-  }, [dispatch]);
+  }, [dispatch, login]);
 
   return (
     <div className="bg-background_beige sm:w-[375px] sm:m-auto min-h-screen">

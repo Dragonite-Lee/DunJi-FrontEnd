@@ -1,12 +1,18 @@
 import Image from 'next/image';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   dispatchRoom2Image,
   dispatchRoom2ImageUrl,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function UploadImageEtc() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
+
+  const { room2ImageUrl } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
 
   //이미지 상대경로로 저장
   let file: any;
@@ -38,9 +44,9 @@ function UploadImageEtc() {
 
   const url: any = [];
 
-  if (state.room2ImageUrl.length) {
-    for (let i = 0; i < state.room2ImageUrl.length; i++) {
-      url.push(state.room2ImageUrl[i]);
+  if (room2ImageUrl.length) {
+    for (let i = 0; i < room2ImageUrl.length; i++) {
+      url.push(room2ImageUrl[i]);
     }
   }
 
@@ -75,7 +81,7 @@ function UploadImageEtc() {
   return (
     <>
       <div>
-        {state.room2ImageUrl.length ? (
+        {room2ImageUrl.length ? (
           <div className="flex">
             <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
               <label

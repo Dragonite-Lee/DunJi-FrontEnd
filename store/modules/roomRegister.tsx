@@ -1,55 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-type initialStateTypes = {
-  COMPONENT_HANDLER: number;
-  POSTCODE_OPEN: boolean;
-  ADDRESS_OPEN: boolean;
-  longitude: null | number;
-  latitude: null | number;
-  address: string;
-  sido: string;
-  sigungu: string;
-  dong: string;
-  ri: string;
-  jibun: string;
-  detailAddress: string;
-  DETAIL_COMPONENT_OPEN: boolean;
-  roomType: string;
-  dealType: string;
-  priceUnit: string;
-  deposit: number | string;
-  price: number | string;
-  manage: 0 | 1;
-  manageCost: number | string;
-  manageSelect: Array<number>;
-  wholeFloor: number | string;
-  floor: number | string;
-  struct: string;
-  elevator: 0 | 1;
-  roomSize: number | string;
-  availFrom: string;
-  availTo: string;
-  availConsul: 0;
-  optionAll: number;
-  option: Array<number>;
-  car: 0 | 1 | 2;
-  pet: 0 | 1 | 2;
-  women: 0 | 1 | 2;
-  loan: 0 | 1 | 2;
-  title: string;
-  explain: string;
-  mainImage: string[];
-  mainImageUrl: string[];
-  room1Image: string[];
-  room1ImageUrl: string[];
-  room2Image: string[];
-  room2ImageUrl: string[];
-  postRoomSuccess: any;
-  postRoomFailure: any;
-  registrant: string;
-};
+import { RoomRegisterState } from 'types';
 
-const initialState: initialStateTypes = {
+const initialState: RoomRegisterState = {
   longitude: null,
   latitude: null,
   COMPONENT_HANDLER: 0,
@@ -231,7 +184,7 @@ const roomRegister = createSlice({
     dispatchRoom2ImageUrl: (state, action) => {
       state.room2ImageUrl = action.payload;
     },
-    postRoom: (state, action) => {}, // state,action이 인자로 선언되어 있어야 postRoom을 처리하는 postRoomSaga에서 action.payload(즉 여기선 방 등록 정보인 formData)를 자동으로 인자로 받음
+    postRoom: (state, action) => { }, // state,action이 인자로 선언되어 있어야 postRoom을 처리하는 postRoomSaga에서 action.payload(즉 여기선 방 등록 정보인 formData)를 자동으로 인자로 받음
     postRoomSuccess: (state, action) => {
       state.postRoomSuccess = action.payload;
       state.postRoomFailure = null;
@@ -245,8 +198,6 @@ const roomRegister = createSlice({
     },
   },
 });
-
-export default roomRegister.reducer;
 
 export const {
   componentHandle,
@@ -295,3 +246,5 @@ export const {
   postRoom,
   dispatchRegistrant,
 } = roomRegister.actions;
+
+export default roomRegister.reducer;

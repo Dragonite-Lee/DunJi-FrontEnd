@@ -1,16 +1,21 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import Image from 'next/image';
-import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
-import { dispatchTotal, dispatchTotalNum } from 'store/modules/reviewRegister';
+
+import { useDispatch, useSelector } from 'react-redux';
 import harfActive from 'assets/icon/별점_반.svg';
 import noActive from 'assets/icon/별점_비활성화.svg';
 import active from 'assets/icon/별점_활성화.svg';
+import { dispatchTotal, dispatchTotalNum } from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 function Total() {
-  const [state, dispatch] = useReviewRegisterReudx();
+  const dispatch = useDispatch();
+
+  const { total } = useSelector((state: RootState) => state.reviewRegister);
 
   const starRatingState: Array<string> = useMemo(() => [], []);
   const StarRating: Array<string> = [];
+
   //이 부분 함수 리펙토링 고민중
   const clickRatingHandler = (index: number, src: any) => {
     if (src * 2 == 1) {
@@ -85,23 +90,24 @@ function Total() {
       dispatch(dispatchTotalNum(5));
     }
     dispatch(dispatchTotal(StarRating));
-  }
-  const starRatingFill = () => {
+  };
+
+  const starRatingFill = useCallback(() => {
     for (let i = 0; i < 5; i++) {
       starRatingState.push(noActive);
     }
     dispatch(dispatchTotal(starRatingState));
-  }
+  }, [dispatch, starRatingState]);
 
   useEffect(() => {
-    starRatingFill()
-  }, [dispatch, starRatingState]);
+    starRatingFill();
+  }, [dispatch, starRatingFill, starRatingState]);
 
   const url: any = [];
 
-  if (state.total.length) {
-    for (let i = 0; i < state.total.length; i++) {
-      url.push(state.total[i]);
+  if (total.length) {
+    for (let i = 0; i < total.length; i++) {
+      url.push(total[i]);
     }
   }
 
@@ -111,7 +117,7 @@ function Total() {
     } else if (num <= 29) {
       return index - 0.5;
     }
-  }
+  };
 
   const map_result = url.map(function (star: any, index: number) {
     return (
@@ -120,7 +126,12 @@ function Total() {
           <Image
             alt="별점"
             src={star}
-            onClick={(e) => clickRatingHandler((index + 1) * 2,location(e.nativeEvent.offsetX, index + 1))}
+            onClick={(e) =>
+              clickRatingHandler(
+                (index + 1) * 2,
+                location(e.nativeEvent.offsetX, index + 1),
+              )
+            }
             width={80}
             height={80}
           />

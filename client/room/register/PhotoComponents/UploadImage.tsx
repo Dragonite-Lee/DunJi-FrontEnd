@@ -1,12 +1,18 @@
 import Image from 'next/image';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   dispatchMainImage,
   dispatchMainImageUrl,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function UploadImage() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
+
+  const { mainImageUrl } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
 
   //이미지 상대경로로 저장
   let file: any;
@@ -37,15 +43,15 @@ function UploadImage() {
 
   const url: any = [];
 
-  if (state.mainImageUrl.length) {
-    for (let i = 0; i < state.mainImageUrl.length; i++) {
-      url.push(state.mainImageUrl[i]);
+  if (mainImageUrl.length) {
+    for (let i = 0; i < mainImageUrl.length; i++) {
+      url.push(mainImageUrl[i]);
     }
   }
 
   return (
     <div className="bg-component_white h-[150px] w-full rounded-standard_rounded flex items-center justify-center relative">
-      {state.mainImageUrl.length ? (
+      {mainImageUrl.length ? (
         <div className="flex ">
           <label
             className="Pretendard-Regular text-[12px] text-center text-font_gray w-[350px] h-[150px] rounded-standard_rounded  items-center justify-center"

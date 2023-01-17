@@ -1,18 +1,8 @@
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useTabRedux from 'hooks/useTabRedux';
-import {
-  dispatchTabBarOpenHome,
-  dispatchTabBarOpenSearch,
-  dispatchTabBarOpenChat,
-  dispatchTabBarOpenMypage,
-} from 'store/modules/tab';
 
-export default function Home() {
-  const [state, dispatch] = useTabRedux();
-
-  function close() {
+function Home() {
+  const close = () => {
     if (typeof window !== 'undefined') {
       if (localStorage.getItem('search')) {
         localStorage.setItem('home', 'true');
@@ -25,9 +15,11 @@ export default function Home() {
         localStorage.removeItem('mypage');
       }
     }
-  }
+  };
+
   const home =
     typeof window !== 'undefined' ? localStorage.getItem('home') : null;
+
   return (
     <div className="pl-[36px]">
       {home ? (
@@ -57,3 +49,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

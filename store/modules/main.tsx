@@ -1,53 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface newRoomType {
-  address: any;
-  dealType: string;
-  deposit: number;
-  floor: string;
-  image: any;
-  latitude: number;
-  longitude: number;
-  price: number;
-  priceUnit: string;
-  recommend: number;
-  roomID: any;
-  roomSize: number;
-  roomType: string;
-  struct: string;
-}
+import { MainState } from 'types';
 
-export interface newReviewType {
-  address: string;
-  regDate: number;
-  registrant: number;
-  image: any;
-  recomment: number;
-  buildingID: string;
-  landlord: number;
-  clean: number;
-  sound: number;
-  accessible: number;
-  total: number;
-  reviewID: string;
-  facility: number;
-  period: string;
-  content: string;
-}
-
-type initialStateTypes = {
-  SEARCHMODAL_OPEN: boolean;
-  SEARCHRESULT: any[];
-  SLIDEBOX: any[];
-  newRoom: newRoomType[];
-  newReview: newReviewType[];
-};
-
-// if (typeof window !== 'undefined') {
-//     localStorage.setItem('home', 'true')
-// }
-
-const initialState: initialStateTypes = {
+const initialState: MainState = {
   SEARCHMODAL_OPEN: false,
   SEARCHRESULT: [],
   SLIDEBOX: [
@@ -81,7 +36,6 @@ const main = createSlice({
   },
 });
 
-export default main.reducer;
 export const {
   dispatchSearchModalOpen,
   dispatchSearchResult,
@@ -89,3 +43,5 @@ export const {
   dispatchNewRoom,
   dispatchNewReview,
 } = main.actions;
+
+export default main.reducer;

@@ -1,7 +1,9 @@
 import { useCallback } from 'react';
+
+import { useSelector } from 'react-redux';
 import { reviewApi } from '_api/room';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
+import { RootState } from 'types';
 
 const delete_arr = [
   'ADDRESS_OPEN',
@@ -19,6 +21,7 @@ const delete_arr = [
   'total',
   'totalNum',
 ];
+
 const all_items_arr = [
   { address: '주소를' },
   { detailAddress: '상세주소를' },
@@ -34,7 +37,8 @@ const all_items_arr = [
 ];
 
 function BottomNextBtn() {
-  const [state, dispatch] = useReviewRegisterRedux();
+  const state = useSelector((state: RootState) => state.reviewRegister);
+
   const isEmpty = useCallback(function (value: any) {
     if (
       value == '' ||
@@ -47,13 +51,13 @@ function BottomNextBtn() {
       return false;
     }
   }, []);
-  
+
   const checkHandler = async () => {
     const formData = new FormData();
     // const user_id = state.registrant;
     //formdata에 값 입력
     for (const item in state) {
-      if (!isEmpty(state[item])) formData.append(item, state[item]); 
+      if (!isEmpty(state[item])) formData.append(item, state[item]);
     }
 
     // isEmpty에서 적절하게 처리 안되는 항목 제거 후 따로 formData에 입력
@@ -66,8 +70,14 @@ function BottomNextBtn() {
     }
 
     //후기(5가지 사항) 업로드
-    const review_arr=["clean", "sound", "accessible", "landlord", "facility"];
-    const review_stateArr=[state.clean, state.sound, state.accessible, state.landlord, state.facility];
+    const review_arr = ['clean', 'sound', 'accessible', 'landlord', 'facility'];
+    const review_stateArr = [
+      state.clean,
+      state.sound,
+      state.accessible,
+      state.landlord,
+      state.facility,
+    ];
     for (let i = 0; i < review_arr.length; i++) {
       if (review_stateArr[i] == '만족') {
         formData.append(review_arr[i], '0');
@@ -85,7 +95,6 @@ function BottomNextBtn() {
     //별점
     formData.append('total', state.totalNum);
 
-    
     for (const i of formData.entries()) {
       console.log(i);
     }
@@ -108,9 +117,7 @@ function BottomNextBtn() {
     }
   };
 
-  return (
-    <BottomNextBtnLayout content="후기 작성" onClick={checkHandler} />
-  );
+  return <BottomNextBtnLayout content="후기 작성" onClick={checkHandler} />;
 }
 
 export default BottomNextBtn;

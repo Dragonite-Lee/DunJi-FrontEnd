@@ -5,8 +5,7 @@ import CategoryHeader from 'components/common/CategoryHeader';
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
 import { dispatchDealType } from 'store/modules/filter';
-
-import type { RootState } from 'store/modules';
+import { RootState } from 'types';
 
 function TransactionType() {
   const mapFilter = useSelector((state: RootState) => state.mapFilter);

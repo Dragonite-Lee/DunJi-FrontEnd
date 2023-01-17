@@ -1,5 +1,7 @@
 import Script from 'next/script';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
+
+import { useSelector } from 'react-redux';
+import { RootState } from 'types';
 
 declare global {
   interface Window {
@@ -7,8 +9,7 @@ declare global {
   }
 }
 function Map() {
-  const [state, dispatch] = useReviewRegisterRedux();
-  const address = state.address;
+  const { address } = useSelector((state: RootState) => state.reviewRegister);
 
   const onLoadKakaoMap = () => {
     window.kakao.maps.load(() => {

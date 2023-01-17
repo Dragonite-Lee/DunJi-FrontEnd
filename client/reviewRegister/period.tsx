@@ -1,19 +1,26 @@
 import { ChangeEvent } from 'react';
-import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
-import {dispatchPeriodFrom, dispatchPeriodTo} from '../../store/modules/reviewRegister';
+
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  dispatchPeriodFrom,
+  dispatchPeriodTo,
+} from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 function MoveDate() {
-  const [state, dispatch] = useReviewRegisterReudx();
+  const dispatch = useDispatch();
 
-  const periodFrom = state.periodFrom;
-  const periodTo = state.periodTo;
+  const { periodFrom, periodTo } = useSelector(
+    (state: RootState) => state.reviewRegister,
+  );
 
   const getPeriodFrom = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(dispatchPeriodFrom(e.target.value))
+    dispatch(dispatchPeriodFrom(e.target.value));
   };
+
   const getPeriodTo = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(dispatchPeriodTo(e.target.value))
-  }
+    dispatch(dispatchPeriodTo(e.target.value));
+  };
 
   return (
     <>

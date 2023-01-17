@@ -1,17 +1,19 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchDeposit, dispatchPrice } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Price() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
+
+  const { priceUnit, deposit, price } = useSelector(
+    (state: RootState) => state.roomRegister,
+  );
 
   const [unitPlaceHolder, setUnitPlaceHolder] = useState('월세');
-
-  const unit = state.priceUnit;
-  const deposit = state.deposit;
-  const price = state.price;
 
   const priceArr = [
     {
@@ -28,12 +30,12 @@ function Price() {
 
   useEffect(() => {
     const unitHandler = () => {
-      if (unit === '주세') setUnitPlaceHolder(unit);
-      else if (unit === '일세') setUnitPlaceHolder(unit);
+      if (priceUnit === '주세') setUnitPlaceHolder(priceUnit);
+      else if (priceUnit === '일세') setUnitPlaceHolder(priceUnit);
       else setUnitPlaceHolder('월세');
     };
     unitHandler();
-  }, [unit]);
+  }, [priceUnit]);
 
   const onChangeHandler = (
     { target: { value } }: ChangeEvent<HTMLInputElement>,
@@ -48,7 +50,7 @@ function Price() {
   };
 
   const errorHandler = (index: number) => {
-    if (unit === '전세' && index === 1) priceArr[index].value = 0;
+    if (priceUnit === '전세' && index === 1) priceArr[index].value = 0;
   };
 
   return (
@@ -57,7 +59,7 @@ function Price() {
       <div className="mb-4 w-full rounded-standard_rounded overflow-hidden Pretendard-Regular">
         {priceArr.map(
           (item, index) =>
-            (unit !== '전세' || index === 0) && (
+            (priceUnit !== '전세' || index === 0) && (
               <div className="relative" key={index}>
                 <input
                   type="number"

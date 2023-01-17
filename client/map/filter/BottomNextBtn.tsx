@@ -2,10 +2,9 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { mapApi } from '_api/room';
-import { dispatchfilterDataTypes } from 'store/modules/filter';
 import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
-
-import type { RootState } from 'store/modules';
+import { dispatchfilterDataTypes } from 'store/modules/filter';
+import { RootState } from 'types';
 
 function BottomNextBtn() {
   const dispatch = useDispatch();
@@ -243,9 +242,7 @@ function BottomNextBtn() {
     }
   }, [dispatch, isEmpty, mapFilter]);
 
-  return (
-    <BottomNextBtnLayout content="필터 적용" onClick={checkHandler} />
-  );
+  return <BottomNextBtnLayout content="필터 적용" onClick={checkHandler} />;
 }
 
 export default BottomNextBtn;

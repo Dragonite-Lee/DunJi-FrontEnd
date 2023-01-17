@@ -168,7 +168,6 @@ notion : https://spotted-tub-9bb.notion.site/cdb6858907254263886ca183866d811a
 | | |____index.tsx
 | | |____roomRegister.tsx // 방 등록 관련 정보
 |____hooks
-| |____useRoomRegisterRedux.tsx
 | |____useDuplicateSelect.tsx
 | |____useNoDuplicateSelect.tsx
 ```

@@ -1,21 +1,32 @@
-import { useState } from 'react';
+import { useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PostCode from 'components/daum-postcode/review';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
-import {dispatchDetailAddress,dispatchPostCodeOpen} from 'store/modules/reviewRegister';
+
+import { useDispatch, useSelector } from 'react-redux';
+import Map from 'client/reviewRegister/map';
 import Period from 'client/reviewRegister/period';
 import SubHeader from 'client/reviewRegister/subHeader';
-import Map from 'client/reviewRegister/map';
+import PostCode from 'components/daum-postcode/review';
+import {
+  dispatchDetailAddress,
+  dispatchPostCodeOpen,
+} from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 function AddressRegister() {
-  const [state, dispatch] = useReviewRegisterRedux();
-  const [detailAddress, setDetailAddress] = useState(state.detailAddress);
-  
-  const btnHandler = (val: boolean) => dispatch(dispatchPostCodeOpen(val));
-  const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    setDetailAddress(e.currentTarget.value);
-    dispatch(dispatchDetailAddress(e.currentTarget.value));
-  };
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.reviewRegister);
+
+  const btnHandler = useCallback(
+    (val: boolean) => dispatch(dispatchPostCodeOpen(val)),
+    [dispatch],
+  );
+
+  const inputHandler = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => {
+      dispatch(dispatchDetailAddress(e.currentTarget.value));
+    },
+    [dispatch],
+  );
 
   return (
     <>
@@ -60,7 +71,7 @@ function AddressRegister() {
                       <input
                         className="p-4 h-full w-full bg-transparent outline-0 placeholder:text-font_gray text-[15px] Pretendard-Regular"
                         type="text"
-                        value={detailAddress}
+                        value={state.detailAddress}
                         onChange={inputHandler}
                         placeholder="상세 주소를 입력해주세요"
                       />
