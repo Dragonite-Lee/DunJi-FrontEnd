@@ -1,14 +1,16 @@
 import { ChangeEvent, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchRoomSize } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Size() {
+  const dispatch = useDispatch();
+
+  const { roomSize } = useSelector((state: RootState) => state.roomRegister);
+
   const [pyeong, setPyeong] = useState<string | number>('');
-
-  const [state, dispatch] = useRoomRegisterRedux();
-
-  const size = state.roomSize;
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const num = e.target.value;
@@ -56,12 +58,12 @@ function Size() {
             type="number"
             className="w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-text_gray outline-0 focus:border-main"
             placeholder="전용 면적"
-            value={size}
+            value={roomSize}
             onChange={(e) => {
               onChangeHandler(e);
             }}
             onBlur={() => {
-              if (size !== '') setPyeong(round(size, 1 / 3.3));
+              if (roomSize !== '') setPyeong(round(roomSize, 1 / 3.3));
               else setPyeong('');
             }}
           ></input>

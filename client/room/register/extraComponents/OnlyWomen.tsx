@@ -1,11 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import ChooseOneBtn from 'components/common/ChooseOneBtn';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchWomen } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function OnlyWomen() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const women = state.women;
+  const { women } = useSelector((state: RootState) => state.roomRegister);
 
   const checkHandler = (index: number) => {
     if (women === index) dispatch(dispatchWomen(2));

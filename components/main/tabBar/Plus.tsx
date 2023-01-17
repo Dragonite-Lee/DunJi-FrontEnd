@@ -1,18 +1,22 @@
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import useTabRedux from 'hooks/useTabRedux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   dispatchTabBarOpenPlus,
   dispatchTabBarOpenPostModal,
 } from 'store/modules/tab';
+import { RootState } from 'types';
 
 export default function Plus() {
-  const [state, dispatch] = useTabRedux();
+  const dispatch = useDispatch();
+
+  const { TABBAR_OPEN_PLUS, TABBAR_OPEN_POSTMODAL } = useSelector(
+    (state: RootState) => state.tab,
+  );
 
   return (
     <div>
-      {state.TABBAR_OPEN_PLUS ? (
+      {TABBAR_OPEN_PLUS ? (
         <Image
           width={30}
           height={30}
@@ -22,8 +26,8 @@ export default function Plus() {
       ) : (
         <Image
           onClick={() => {
-            dispatch(dispatchTabBarOpenPlus(!state.TABBAR_OPEN_PLUS));
-            dispatch(dispatchTabBarOpenPostModal(!state.TABBAR_OPEN_POSTMODAL));
+            dispatch(dispatchTabBarOpenPlus(!TABBAR_OPEN_PLUS));
+            dispatch(dispatchTabBarOpenPostModal(!TABBAR_OPEN_POSTMODAL));
           }}
           width={30}
           height={30}

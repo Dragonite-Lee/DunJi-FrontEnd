@@ -1,9 +1,11 @@
 import Script from 'next/script';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   dispatchLatitude,
   dispatchLongitude,
 } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 declare global {
   interface Window {
@@ -12,9 +14,9 @@ declare global {
 }
 
 function Map() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const address = state.address;
+  const { address } = useSelector((state: RootState) => state.roomRegister);
 
   const onLoadKakaoMap = () => {
     window.kakao.maps.load(() => {

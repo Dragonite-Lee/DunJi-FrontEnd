@@ -1,25 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { useDispatch, useSelector } from 'react-redux';
 import useGoBack from 'hooks/useGoback';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 function Header() {
-  const [state, dispatch] = useReviewRegisterRedux();
-  const postCodeOpen = () => {
-    dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));
-  }
-  const goBack = useGoBack();
+  const dispatch = useDispatch();
 
+  const { POSTCODE_OPEN } = useSelector(
+    (state: RootState) => state.reviewRegister,
+  );
+
+  const postCodeOpen = () => {
+    dispatch(dispatchPostCodeOpen(!POSTCODE_OPEN));
+  };
+
+  const goBack = useGoBack();
 
   return (
     <>
-      {state.POSTCODE_OPEN ? (
+      {POSTCODE_OPEN ? (
         <header
           className="flex w-screen justify-between px-[18px]
         py-4  h-24 items-center text-xl  border-b sm:w-[375px] sm:m-auto "
         >
           <div className="flex text-2xl items-center">
-            <div onClick={postCodeOpen} >
+            <div onClick={postCodeOpen}>
               <FontAwesomeIcon icon="chevron-left" />
             </div>
             <div className="ml-4 Pretendard-SemiBold text-[17px]">

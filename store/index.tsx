@@ -1,26 +1,29 @@
-import { configureStore, createStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
-import createSagaMiddleware from 'redux-saga';
-import reducer, { rootSaga } from './modules';
-// import { persistStore, persistReducer } from 'redux-persist'
-// import { persistConfig } from "./modules";
+import logger from 'redux-logger';
 
-// const persistedReducer = persistReducer(persistConfig, reducer);
+import rootReducer from './modules';
 
+const isDev = process.env.NODE_ENV !== 'production';
+
+/** wrapper에 store를 전달하는 콜백함수 */
 const makeStore = () => {
-  const sagaMiddleware = createSagaMiddleware();
-  const store = configureStore({
-    reducer,
-    devTools: process.env.NEXTNODE_ENV !== 'production',
-    middleware: [sagaMiddleware],
-  });
+  // 환경변수에 따른 store 설정
+  const store = isDev
+    ? configureStore({
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) =>
+          getDefaultMiddleware().concat(logger),
+        devTools: isDev,
+      })
+    : configureStore({
+        reducer: rootReducer,
+        devTools: isDev,
+      });
 
-  sagaMiddleware.run(rootSaga);
   return store;
 };
 
-// export const persistor = persistStore(makeStore());
+export type AppDispatch = ReturnType<typeof makeStore>['dispatch'];
 
-export const wrapper = createWrapper(makeStore, {
-  debug: process.env.NODE_ENV !== 'production',
-});
+export const wrapper = createWrapper(makeStore, { debug: isDev });

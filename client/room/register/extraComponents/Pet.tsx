@@ -1,11 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import ChooseOneBtn from 'components/common/ChooseOneBtn';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchPet } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function Pet() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
 
-  const pet = state.pet;
+  const { pet } = useSelector((state: RootState) => state.roomRegister);
 
   const checkHandler = (index: number) => {
     if (pet === index) dispatch(dispatchPet(2));

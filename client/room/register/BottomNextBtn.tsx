@@ -1,15 +1,18 @@
 import { useCallback } from 'react';
 import Router from 'next/router';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { roomApi } from '_api/room';
-import useRoomRedux from 'hooks/useRoomRedux';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 import { dispatchRoomId } from 'store/modules/room';
 import { postRoom } from 'store/modules/roomRegister';
-import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
+import { RootState } from 'types';
 
 function BottomNextBtn() {
-  const [state, dispatch] = useRoomRegisterRedux();
-  const [, dispatch2] = useRoomRedux();
+  const dispatch = useDispatch();
+
+  const state = useSelector((state: RootState) => state.roomRegister);
+
   const isEmpty = useCallback(function (value: any) {
     if (
       value == '' ||
@@ -200,7 +203,7 @@ function BottomNextBtn() {
 
       await roomApi.postRoom(formData).then((res) => {
         console.log(res);
-        dispatch2(dispatchRoomId(res.data.Room_ID));
+        dispatch(dispatchRoomId(res.data.Room_ID));
         Router.push(`/room/${res.data.Room_ID}`);
       });
     } catch (err) {
@@ -208,9 +211,7 @@ function BottomNextBtn() {
     }
   };
 
-  return (
-    <BottomNextBtnLayout content="방 내놓기" onClick={checkHandler} />
-  );
+  return <BottomNextBtnLayout content="방 내놓기" onClick={checkHandler} />;
 }
 
 export default BottomNextBtn;

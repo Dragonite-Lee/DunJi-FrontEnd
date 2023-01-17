@@ -1,12 +1,17 @@
 import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { mainApi } from '_api/main';
 import NewRoomItem from 'client/main/newRoom-item';
-import useMainRedux from 'hooks/useMainRedux';
-import { dispatchNewRoom, newRoomType } from 'store/modules/main';
+import { dispatchNewRoom } from 'store/modules/main';
+import { NewRoomType, RootState } from 'types';
 
 function NewRoom() {
-  const [state, dispatch] = useMainRedux();
+  const dispatch = useDispatch();
+
+  const { newRoom } = useSelector((state: RootState) => state.main);
+
   let userId: any;
   if (typeof window !== 'undefined') {
     userId = localStorage.getItem('userId');
@@ -25,7 +30,7 @@ function NewRoom() {
 
   useEffect(() => {
     newRoomListData();
-  }, [dispatch]);
+  }, [dispatch, newRoomListData]);
 
   return (
     <div className="pt-[55px]">
@@ -40,7 +45,7 @@ function NewRoom() {
         </Link>
       </div>
       <div className="pt-[14px] h-full flex overflow-x-auto overflow-y-hidden">
-        {state.newRoom.map((newRoomData: newRoomType, index: number) => (
+        {newRoom.map((newRoomData: NewRoomType, index: number) => (
           <NewRoomItem key={index} data={newRoomData} />
         ))}
       </div>

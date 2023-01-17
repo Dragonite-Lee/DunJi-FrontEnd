@@ -1,18 +1,21 @@
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+
 import CategoryHeader from 'components/common/CategoryHeader';
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchTransactionType } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function TransactionType() {
+  const { dealType } = useSelector((state: RootState) => state.roomRegister);
+
   const typeArr = useMemo(() => ['단기임대', '양도'], []);
-  const [state] = useRoomRegisterRedux();
 
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     typeArr,
     dispatchTransactionType,
-    state.dealType,
+    dealType,
   );
 
   return (

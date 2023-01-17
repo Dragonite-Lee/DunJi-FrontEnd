@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import convertRoomSize from 'utils/convertRoomSize'
-import { newRoomType } from 'store/modules/main';
+
+import { NewRoomType } from 'types';
+import convertRoomSize from 'utils/convertRoomSize';
 
 interface NewRoomItemProps {
-  data: newRoomType;
+  data: NewRoomType;
 }
 
 function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {

@@ -14,14 +14,9 @@ import {
   dispatchEndLatitude,
 } from 'store/modules/filter';
 import { dispatchRoomList, dispatchMapRoomList } from 'store/modules/room';
-
-import type { RootState } from 'store/modules';
+import { RootState } from 'types';
 
 function Map() {
-  /* 아래로 수정
-  const [state, dispatch] = useRoomRedux();
-  const [state2, dispatch2] = useMapFilterRedux();
-  */
   const dispatch = useDispatch();
   const { ROOM_LIST } = useSelector((state: RootState) => state.room);
   const mapFilter = useSelector((state: RootState) => state.mapFilter);
