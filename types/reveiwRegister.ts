@@ -9,11 +9,11 @@ export type ReviewRegisterState = {
   total: string[];
   totalNum: number;
   totalUrl: string[];
-  clean: 0 | 1 | 2 | 3;
-  sound: 0 | 1 | 2 | 3;
-  accessible: 0 | 1 | 2 | 3;
-  landlord: 0 | 1 | 2 | 3;
-  facility: 0 | 1 | 2 | 3;
+  clean: string;
+  sound: string;
+  accessible: string;
+  landlord: string;
+  facility: string;
   periodFrom: string;
   periodTo: string;
   Reviewfile: string[];

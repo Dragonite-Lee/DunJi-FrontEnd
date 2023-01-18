@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 export default function useNoDuplicateSelect(
   typeArr: Array<string>,
   dispatchHandler: ActionCreatorWithPayload<any, string>,
-  reduxValue: number | string,
+  reduxValue: string,
 ): [boolean[], (index: number) => void] {
   const dispatch = useDispatch();
   const length = typeArr.length;

@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { reviewApi } from '_api/room';
 import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
+import { ReviewRegisterState } from 'types';
 import { RootState } from 'types';
 
 const delete_arr = [
@@ -54,22 +55,9 @@ function BottomNextBtn() {
 
   const checkHandler = async () => {
     const formData = new FormData();
-    // const user_id = state.registrant;
-    //formdata에 값 입력
-    for (const item in state) {
-      if (!isEmpty(state[item])) formData.append(item, state[item]);
-    }
 
-    // isEmpty에서 적절하게 처리 안되는 항목 제거 후 따로 formData에 입력
-    for (let i = 0; i < delete_arr.length; i++) formData.delete(delete_arr[i]);
-
-    //파일 업로드
     const image_arr = [...state.Reviewfile];
-    for (let i = 0; i < image_arr.length; i++) {
-      formData.append('file', image_arr[i]);
-    }
-
-    //후기(5가지 사항) 업로드
+    const user_id = state.registrant;
     const review_arr = ['clean', 'sound', 'accessible', 'landlord', 'facility'];
     const review_stateArr = [
       state.clean,
@@ -78,22 +66,28 @@ function BottomNextBtn() {
       state.landlord,
       state.facility,
     ];
+    const period = state.periodFrom + ' ~ ' + state.periodTo;
+
+    //formdata에 값 입력
+    for (const item in state) if (!isEmpty(state[item as keyof ReviewRegisterState])) formData.append(item, String(state[item as keyof ReviewRegisterState]));
+    // isEmpty에서 적절하게 처리 안되는 항목 제거 후 따로 formData에 입력
+    for (let i = 0; i < delete_arr.length; i++) formData.delete(delete_arr[i]);
+    //파일 업로드
+    for (let i = 0; i < image_arr.length; i++) formData.append('file', image_arr[i]);
+    //후기(5가지 사항) 업로드
     for (let i = 0; i < review_arr.length; i++) {
       if (review_stateArr[i] == '만족') {
-        formData.append(review_arr[i], '0');
+        formData.append(review_arr[i], '5');
       } else if (review_stateArr[i] == '보통') {
-        formData.append(review_arr[i], '1');
+        formData.append(review_arr[i], '3');
       } else if (review_stateArr[i] == '불만족') {
-        formData.append(review_arr[i], '2');
+        formData.append(review_arr[i], '0');
       }
     }
-
     //거주 기간 업로드
-    const period = state.periodFrom + ' ~ ' + state.periodTo;
     formData.append('period', period);
-
     //별점
-    formData.append('total', state.totalNum);
+    formData.append('total', String(state.totalNum));
 
     for (const i of formData.entries()) {
       console.log(i);

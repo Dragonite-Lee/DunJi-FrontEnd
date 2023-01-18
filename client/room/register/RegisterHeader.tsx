@@ -1,10 +1,10 @@
 import Header from 'components/layout/Header';
 import CancelHeader from 'components/layout/Header/CancelHeader';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
+// import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/roomRegister';
 
 function RegisterHeader() {
-  const [state, dispatch] = useRoomRegisterRedux();
+  // const [state, dispatch] = useRoomRegisterRedux();
 
   const handleBackBtnClick = () => {
     dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));

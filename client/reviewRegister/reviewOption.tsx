@@ -5,7 +5,7 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 interface reviewOptionProps {
     satisfactionArr: Array<string>;
     dispatchType: ActionCreatorWithPayload<any, string>;
-    stateType: string;
+    stateType: any;
     content: string;
 }
 

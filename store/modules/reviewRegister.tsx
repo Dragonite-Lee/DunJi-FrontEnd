@@ -12,11 +12,11 @@ const initialState: ReviewRegisterState = {
   total: [],
   totalNum: 0,
   totalUrl: [],
-  clean: 3,
-  sound: 3,
-  accessible: 3,
-  landlord: 3,
-  facility: 3,
+  clean: '',
+  sound: '',
+  accessible: '',
+  landlord: '',
+  facility: '',
   periodFrom: '',
   periodTo: '',
   Reviewfile: [],
@@ -82,7 +82,7 @@ const reviewRegister = createSlice({
       state.Reviewfile = action.payload;
     },
     dispatchFileUrl: (state, action) => {
-      state.ReviewfileUrl = action.payload;
+      state.ReviewfileUrl = [...action.payload];
     },
   },
 });
