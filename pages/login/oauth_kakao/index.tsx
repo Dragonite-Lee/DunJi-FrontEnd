@@ -1,7 +1,6 @@
- 
 import OauthKakao from 'client/login/oauth_kakao';
 
-function Auth() {
+function KakaoLoginPage() {
   return <OauthKakao />;
 }
 
@@ -9,4 +8,4 @@ export async function getServerSideProps() {
   return { props: {} };
 }
 
-export default Auth;
+export default KakaoLoginPage;

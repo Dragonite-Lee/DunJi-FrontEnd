@@ -1,11 +1,7 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Dispatch } from 'redux';
 
-export default function Login({}) {
-  const [check, setCheck] = useState(false);
-
+function Login() {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}&response_type=code`;
 
   return (
@@ -57,3 +53,5 @@ export default function Login({}) {
     </div>
   );
 }
+
+export default Login;
