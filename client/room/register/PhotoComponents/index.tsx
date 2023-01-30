@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-
+import BottomNextBtn from 'client/room/register/BottomSubmitBtn';
 import EtcRoomImage from 'client/room/register/PhotoComponents/EtcRoomImage';
 import MainImage from 'client/room/register/PhotoComponents/MainImage';
 import RoomImage from 'client/room/register/PhotoComponents/RoomImage';
@@ -21,6 +21,7 @@ function PhotoRegister() {
             <RoomImage />
             <EtcRoomImage />
           </div>
+        <BottomNextBtn />
         </div>
       )}
     </>

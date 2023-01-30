@@ -9,12 +9,12 @@ import active from 'assets/icon/별점_활성화.svg';
 
 
 function Total() {
-  const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
+  const {totalUrl, totalNum, total} = useSelector((state: RootState) => state.reviewRegister);
   const dispatch = useDispatch();
 
   const starRatingState: Array<string> = useMemo(() => [], []);
   const StarRating: Array<string> = [];
-  let url:any = [...reviewRegister.totalUrl];
+  let url:any = [...totalUrl];
   
   const clickRatingHandler = useCallback((index: number, src: any) => {
     if (src * 2 == 1) {
@@ -106,9 +106,9 @@ function Total() {
     }
   };
 
-  if (reviewRegister.totalNum == 0) {
-    for (let i = 0; i < reviewRegister.total.length; i++) {
-      url.push(reviewRegister.total[i]);
+  if (totalNum == 0) {
+    for (let i = 0; i < total.length; i++) {
+      url.push(total[i]);
     }
   };
   

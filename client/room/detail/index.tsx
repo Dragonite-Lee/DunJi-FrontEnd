@@ -14,7 +14,7 @@ import Title from 'client/room/detail/content/Title';
 import ReviewScore from './content/ReviewScore';
 import { RootState } from 'store/modules';
 import useToggle from 'hooks/useToggle';
-import { dispatchRoomInfoList, dispatchRoomPostList } from 'store/modules/room';
+import { dispatchRoomList } from 'store/modules/room';
 
 interface RoomDetailProps {
   roomId: string | string[] | undefined;
@@ -28,8 +28,8 @@ function RoomDetail({roomId}: RoomDetailProps) {
 
   const fetchRoomDetail = (roomId: string | string[] | undefined) => {
     mapApi.getRoomDetail(roomId).then((res) => {
-      dispatch(dispatchRoomPostList(res.data.Room_Post));
-      dispatch(dispatchRoomInfoList(res.data.Room_Info));
+      dispatch(dispatchRoomList(res.data));
+      
     });
   };
 
@@ -50,69 +50,54 @@ function RoomDetail({roomId}: RoomDetailProps) {
       {roomId ? (
         <>
           {popUp && <CompleteModal />}
-          <Header title={room.ROOM_POST.address} />
+          <Header title={room.RoomInfo.address} />
           <div className="px-[18px]">
             <Title
-              buildingID={room.ROOM_POST.buildingID}
-              dealType={room.ROOM_INFO.dealType}
-              price={room.ROOM_INFO.price}
-              deposit={room.ROOM_INFO.deposit}
-              priceUnit={room.ROOM_INFO.priceUnit}
+              buildingID={room.RoomReview.buildingID}
+              dealType={room.RoomInfo.dealType}
+              price={room.RoomInfo.price}
+              deposit={room.RoomInfo.deposit}
+              priceUnit={room.RoomInfo.priceUnit}
             />
             <BriefInfo
-              roomSize={room.ROOM_INFO.roomSize}
-              floor={room.ROOM_INFO.floor}
-              wholeFloor={room.ROOM_INFO.wholeFloor}
-              struct={room.ROOM_INFO.struct}
-              roomType={room.ROOM_INFO.roomType}
+              roomSize={room.RoomInfo.roomSize}
+              floor={room.RoomInfo.floor}
+              totalFloor={room.RoomInfo.totalFloor}
+              structure={room.RoomInfo.structure}
+              roomType={room.RoomInfo.roomType}
             />
             <ReviewContent
-              regDate={room.ROOM_POST.regDate}
-              explain={room.ROOM_POST.explain}
+              regDate={room.RoomInfo.regDate}
+              explain={room.RoomInfo.content}
             />
             <Info
-              availFrom={room.ROOM_INFO.availFrom}
-              availTo={room.ROOM_INFO.availTo}
-              availConsul={room.ROOM_INFO.availConsul}
-              roomSize={room.ROOM_INFO.roomSize}
-              floor={room.ROOM_INFO.floor}
-              wholeFloor={room.ROOM_INFO.wholeFloor}
-              struct={room.ROOM_INFO.struct}
-              Address={room.ROOM_POST.address}
+              startedAt={room.RoomInfo.startedAt}
+              finishedAt={room.RoomInfo.finishedAt}
+              tenancyAgreement={room.RoomInfo.tenancyAgreement}
+              roomSize={room.RoomInfo.roomSize}
+              floor={room.RoomInfo.floor}
+              totalFloor={room.RoomInfo.totalFloor}
+              structure={room.RoomInfo.structure}
+              address={room.RoomInfo.address}
             />
             <Price
-              price={room.ROOM_INFO.price}
-              deposit={room.ROOM_INFO.deposit}
-              manageCost={room.ROOM_INFO.manage}
-              manageElec={room.ROOM_INFO.manageElec}
-              manageGas={room.ROOM_INFO.manageGas}
-              manageWater={room.ROOM_INFO.manageWater}
-              manageInternet={room.ROOM_INFO.manageInternet}
-              manageTV={room.ROOM_INFO.manageTV}
-              manageInclude={room.ROOM_INFO.manageInclude}
+              price={room.RoomInfo.price}
+              deposit={room.RoomInfo.deposit}
+              managementCost={room.RoomInfo.managementCost}
+              utility={room.RoomInfo.utility}
             />
             <Option
-              elevator={room.ROOM_INFO.elevator}
-              car={room.ROOM_INFO.car}
-              loan={room.ROOM_INFO.loan}
-              women={room.ROOM_INFO.women}
-              pet={room.ROOM_INFO.pet}
-              aircon={room.ROOM_INFO.aircon}
-              shoe={room.ROOM_INFO.shoe}
-              shelf={room.ROOM_INFO.shelf}
-              induc={room.ROOM_INFO.induc}
-              micro={room.ROOM_INFO.micro}
-              refri={room.ROOM_INFO.refri}
-              desk={room.ROOM_INFO.desk}
-              sink={room.ROOM_INFO.sink}
-              washer={room.ROOM_INFO.washer}
-              closet={room.ROOM_INFO.closet}
-              gas={room.ROOM_INFO.gas}
-              bed={room.ROOM_INFO.bed}
+              advantage={room.RoomInfo.advantage}
+              option={room.RoomInfo.option}
             />
-            <Location latitude={roomRegister.latitude} longitude={roomRegister.longitude} />
+            <Location latitude={room.RoomInfo.latitude} longitude={room.RoomInfo.longitude} />
             <ReviewScore 
-            
+              totalRate={room.RoomReview.totalRate}
+              cleanRate={room.RoomReview.cleanRate}
+              noiseRate={room.RoomReview.noiseRate}
+              accessRate={room.RoomReview.accessRate}
+              hostRate={room.RoomReview.hostRate}
+              facilityRate={room.RoomReview.facilityRate}
             />
           </div>
         </>

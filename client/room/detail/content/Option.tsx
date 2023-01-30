@@ -3,115 +3,84 @@ import ContentField from 'client/room/detail/ContentField';
 import useToggle from 'hooks/useToggle';
 
 interface OptionProps {
-  aircon: boolean;
-  bed: boolean;
-  car: number;
-  closet: boolean;
-  desk: boolean;
-  elevator: boolean;
-  gas: boolean;
-  induc: boolean;
-  loan: boolean;
-  micro: boolean;
-  pet: boolean;
-  refri: boolean;
-  shelf: boolean;
-  shoe: boolean;
-  sink: boolean;
-  washer: boolean;
-  women: boolean;
+  advantage: string[];
+  option: string[];
 }
 
 function Option({
-  aircon,
-  bed,
-  car,
-  closet,
-  desk,
-  elevator,
-  gas,
-  induc,
-  loan,
-  micro,
-  pet,
-  refri,
-  shelf,
-  shoe,
-  sink,
-  washer,
-  women,
+  advantage, option
 }: OptionProps) {
   const [open, handlerOpen] = useToggle()
-  const optionList = [
-    {
-      title: '에어컨',
-      data: aircon,
-    },
-    {
-      title: '냉장고',
-      data: refri,
-    },
-    {
-      title: '세탁기',
-      data: washer,
-    },
-    {
-      title: '가스레인지',
-      data: gas,
-    },
-    {
-      title: '인덕션',
-      data: induc,
-    },
-    {
-      title: '전자레인지',
-      data: micro,
-    },
-    {
-      title: '책상',
-      data: desk,
-    },
-    {
-      title: '책장',
-      data: shelf,
-    },
-    {
-      title: '침대',
-      data: bed,
-    },
-    {
-      title: '옷장',
-      data: closet,
-    },
-    {
-      title: '싱크대',
-      data: sink,
-    },
-    {
-      title: '신발장',
-      data: shoe,
-    },
-  ];
+  // const optionList = [
+  //   {
+  //     title: '에어컨',
+  //     data: option[0],
+  //   },
+  //   {
+  //     title: '냉장고',
+  //     data: option[1],
+  //   },
+  //   {
+  //     title: '세탁기',
+  //     data: option[2],
+  //   },
+  //   {
+  //     title: '가스레인지',
+  //     data: option[3],
+  //   },
+  //   {
+  //     title: '인덕션',
+  //     data: option[4],
+  //   },
+  //   {
+  //     title: '전자레인지',
+  //     data: option[5],
+  //   },
+  //   {
+  //     title: '책상',
+  //     data: option[6],
+  //   },
+  //   {
+  //     title: '책장',
+  //     data: option[7],
+  //   },
+  //   {
+  //     title: '침대',
+  //     data: option[8],
+  //   },
+  //   {
+  //     title: '옷장',
+  //     data: option[9],
+  //   },
+  //   {
+  //     title: '싱크대',
+  //     data: option[10],
+  //   },
+  //   {
+  //     title: '신발장',
+  //     data: option[11],
+  //   },
+  // ];
   const detailOptionList = [
     {
       title: '앨레베이터',
-      data: elevator ? 'O' : 'X',
+      data: advantage.indexOf('앨레베이터') == -1 ? 'X' : 'O',
     },
     {
       title: '주차공간',
-      data: car ? 'O' : 'X',
+      data: advantage.indexOf('주차공간') == -1 ? 'X' : 'O',
     },
     {
       title: '반려동물',
-      data: pet ? 'O' : 'X',
+      data: advantage.indexOf('반려동물') == -1 ? 'X' : 'O',
     },
     {
       title: '여성전용',
-      data: women ? 'O' : 'X',
+      data: advantage.indexOf('여성전용') == -1 ? 'X' : 'O',
     },
     {
       title: '전세대출',
-      data: loan ? 'O' : 'X',
+      data: advantage.indexOf('전세대출') == -1 ? 'X' : 'O',
     },
   ];
 
@@ -137,13 +106,13 @@ function Option({
       {open && (
         <div>
           <div className="grid grid-cols-4 gap-2 px-[14px] py-[20px] text-[12px] Pretendard-Regular border-b border-border_color">
-            {optionList.map((item, index) => (
+            {option && option.map((item, index) => (
               <div className="text-center" key={index}>
                 <Image
-                  src={require(`assets/icon/option/옵션_${item.title}.svg`)}
-                  alt={`${item.title}`+"사진"}
+                  src={require(`assets/icon/option/옵션_${item[index]}.svg`)}
+                  alt={`${item[index]}`+"사진"}
                 />
-                <div>{item.title}</div>
+                <div>{item[index]}</div>
               </div>
             ))}
           </div>

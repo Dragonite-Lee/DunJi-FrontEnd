@@ -4,20 +4,19 @@ import { useSelector } from 'react-redux';
 import CategoryHeader from 'components/common/CategoryHeader';
 import NoDuplicateSelectBtn from 'components/common/NoDuplicateSelectBtn';
 import useNoDuplicateSelect from 'hooks/useNoDuplicateSelect';
-import { dispatchTransactionType } from 'store/modules/roomRegister';
+import { dispatchDealType } from 'store/modules/roomRegister';
 import { RootState } from 'types';
 
-function TransactionType() {
+function DealType() {
   const { dealType } = useSelector((state: RootState) => state.roomRegister);
 
   const typeArr = useMemo(() => ['단기임대', '양도'], []);
 
   const [selectArr, checkHandler] = useNoDuplicateSelect(
     typeArr,
-    dispatchTransactionType,
+    dispatchDealType,
     dealType,
   );
-
   return (
     <>
       <CategoryHeader title="거래유형" />
@@ -36,4 +35,4 @@ function TransactionType() {
   );
 }
 
-export default TransactionType;
+export default DealType;

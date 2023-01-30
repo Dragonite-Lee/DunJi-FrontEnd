@@ -8,17 +8,13 @@ import { RootState } from 'types';
 
 
 function ReviewRegisterHeader() {
-  const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
-  const dispatch = useDispatch();
-  
-  const postCodeOpen = useCallback(() => {
-    dispatch(dispatchPostCodeOpen(!reviewRegister.POSTCODE_OPEN));
-  },[reviewRegister])
+  const {POSTCODE_OPEN} = useSelector((state: RootState) => state.reviewRegister);
+ 
   const goBack = useGoBack();
 
   return (
     <>
-      {reviewRegister.POSTCODE_OPEN ? (
+      {POSTCODE_OPEN ? (
         <Header backAction={goBack} title="주소 찾기" />
       ) : (
         <CancelHeader title="후기 작성하기" />

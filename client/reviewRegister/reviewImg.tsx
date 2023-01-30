@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dispatchFile, dispatchFileUrl } from 'store/modules/reviewRegister';
 import { RootState } from 'types';
 
 function ReviewImg() {
-
   const dispatch = useDispatch();
-  const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
-  console.log(reviewRegister.ReviewfileUrl)
+  
+  const {ReviewfileUrl} = useSelector((state: RootState) => state.reviewRegister);
+  
   //이미지 상대경로로 저장
   let file: any;
   const imageUrlLists: any = [];
@@ -38,9 +37,9 @@ function ReviewImg() {
     dispatch(dispatchFile(imageUrlLists));
   },[imageUrlLists, imageShowLists]);
 
-  if (reviewRegister.ReviewfileUrl.length) {
-    for (let i = 0; i < reviewRegister.ReviewfileUrl.length; i++) {
-      url.push(reviewRegister.ReviewfileUrl[i]);
+  if (ReviewfileUrl.length) {
+    for (let i = 0; i < ReviewfileUrl.length; i++) {
+      url.push(ReviewfileUrl[i]);
 
     }
   };
@@ -76,7 +75,7 @@ function ReviewImg() {
   return (
     <>
       <div>
-        {reviewRegister.ReviewfileUrl.length ? (
+        {ReviewfileUrl.length ? (
           <div className="flex">
             <div className="mr-[8px] bg-component_white h-[80px]  flex items-center justify-center relative rounded-standard_rounded">
               <label

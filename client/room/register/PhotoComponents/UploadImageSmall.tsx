@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useCallback } from 'react';
 import {
   dispatchRoom1Image,
   dispatchRoom1ImageUrl,
@@ -18,8 +18,9 @@ function UploadImageSmall() {
   let file: any;
   const imageUrlLists: any = [];
   const imageShowLists: (string | ArrayBuffer | null)[] = [];
+  const url: any = [];
 
-  const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddImages = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const imageLists = e.target.files;
 
     if (imageLists instanceof FileList) {
@@ -38,11 +39,8 @@ function UploadImageSmall() {
         reader.readAsDataURL(file);
       }
     }
-
     dispatch(dispatchRoom1Image(imageUrlLists));
-  };
-
-  const url: any = [];
+  },[imageUrlLists, imageShowLists]);
 
   if (room1ImageUrl.length) {
     for (let i = 0; i < room1ImageUrl.length; i++) {

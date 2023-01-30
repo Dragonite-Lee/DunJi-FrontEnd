@@ -4,31 +4,31 @@ import useToggle from 'hooks/useToggle';
 import useRoomSizeConvert from 'utils/convertRoomSize';
 
 interface infoProps {
-  availFrom: string;
-  availTo: string;
-  availConsul: boolean;
+  startedAt: string;
+  finishedAt: string;
+  tenancyAgreement: boolean;
   roomSize: string;
   floor: number;
-  wholeFloor: number;
-  struct: string;
-  Address: string;
+  totalFloor: number;
+  structure: string;
+  address: string;
 }
 
 function Info({
-  availFrom,
-  availTo,
-  availConsul,
+  startedAt,
+  finishedAt,
+  tenancyAgreement,
   roomSize,
   floor,
-  wholeFloor,
-  struct,
-  Address,
+  totalFloor,
+  structure,
+  address,
 }: infoProps) {
 
   const convertedRoomSize = useRoomSizeConvert(Number(roomSize));
   const [open, handlerOpen] = useToggle()
-  const moveInDate = `${availFrom} 부터 \n ${availTo}${
-    availConsul ? '(협의가능)' : '(협의불가)'
+  const moveInDate = `${startedAt} 부터 \n ${finishedAt}${
+    tenancyAgreement ? '(협의가능)' : '(협의불가)'
   }`;
   const moveInDateEnter = moveInDate.split('\n').map((line, index) => (
     <span key={index}>
@@ -45,9 +45,9 @@ function Info({
       title: '면적',
       data: roomSize + 'm2 / ' + convertedRoomSize + '평',
     },
-    { title: '층수', data: floor + '층 / ' + wholeFloor + '층' },
-    { title: '구조', data: struct },
-    { title: '상세주소', data: Address },
+    { title: '층수', data: floor + '층 / ' + totalFloor + '층' },
+    { title: '구조', data: structure },
+    { title: '상세주소', data: address },
   ];
 
   return (

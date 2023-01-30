@@ -2,10 +2,12 @@ export type ReviewRegisterState = {
   COMPONENT_HANDLER: number;
   POSTCODE_OPEN: boolean;
   ADDRESS_OPEN: boolean;
-  registrant: string;
+  userId: string;
   content: string;
   address: string;
-  detailAddress: string;
+  addressDetail: string;
+  sigungu: string;
+  dong: string;
   total: string[];
   totalNum: number;
   totalUrl: string[];

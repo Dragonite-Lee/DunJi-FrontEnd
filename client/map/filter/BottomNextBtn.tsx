@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { mapApi } from '_api/room';
-import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
+import BottomNextBtnLayout from 'components/common/BottomSubmitBtnLayout';
 import { dispatchfilterDataTypes } from 'store/modules/filter';
 import { RootState } from 'types';
 

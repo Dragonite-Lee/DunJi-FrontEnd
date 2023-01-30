@@ -5,29 +5,19 @@ import useToggle from 'hooks/useToggle';
 interface PriceProps {
   price: number;
   deposit: number;
-  manageElec: number;
-  manageGas: number;
-  manageWater: number;
-  manageInternet: number;
-  manageTV: number;
-  manageCost: number;
-  manageInclude: string;
+  managementCost: number;
+  utility: string;
 }
 
 function Price({
   price,
   deposit,
-  manageCost,
-  manageElec,
-  manageGas,
-  manageWater,
-  manageInternet,
-  manageTV,
-  manageInclude,
+  managementCost,
+  utility,
 }: PriceProps) {
   const [open, handlerOpen] = useToggle();
 
-  const manageContent = `${manageCost} 만원\n 관리비에 포함 ${manageInclude}`;
+  const manageContent = `${managementCost} 만원\n 관리비에 포함 ${utility}`;
   const manageContentEnter = manageContent.split('\n').map((line, index) => (
     <span key={index}>
       {line}

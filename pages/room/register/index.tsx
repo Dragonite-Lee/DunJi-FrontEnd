@@ -1,4 +1,4 @@
-import Register from 'client/pages/room/register';
+import Register from "client/room/register";
 
 function RegisterPage() {
   return <Register />;

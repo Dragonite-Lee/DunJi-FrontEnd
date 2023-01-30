@@ -1,16 +1,18 @@
+import { useDispatch, useSelector } from 'react-redux';
 import Header from 'components/layout/Header';
 import CancelHeader from 'components/layout/Header/CancelHeader';
-// import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/roomRegister';
+import { RootState } from 'types';
 
 function RegisterHeader() {
-  // const [state, dispatch] = useRoomRegisterRedux();
+  const dispatch = useDispatch();
+  const roomRegister = useSelector((state: RootState) => state.roomRegister);
 
   const handleBackBtnClick = () => {
-    dispatch(dispatchPostCodeOpen(!state.POSTCODE_OPEN));
+    dispatch(dispatchPostCodeOpen(!roomRegister.POSTCODE_OPEN));
   };
 
-  return state.POSTCODE_OPEN ? (
+  return roomRegister.POSTCODE_OPEN ? (
     <Header title="주소 찾기" backAction={handleBackBtnClick} />
   ) : (
     <CancelHeader title={'방 내놓기'} />

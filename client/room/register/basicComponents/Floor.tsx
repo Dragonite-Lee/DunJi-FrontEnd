@@ -8,27 +8,31 @@ import InputSelectBox from 'components/common/InputSelectBox';
 import {
   dispatchCurrentFloor,
   dispatchElevator,
-  dispatchWholeFloor,
-  dispatchStruct,
+  dispatchTotalFloor,
+  dispatchStructure,
 } from 'store/modules/roomRegister';
 import { RootState } from 'types';
+
+const AllfloorArr = ['1층', '2층', '3층', '4층', '5층'];
+const floorArr = ['1층', '2층', '3층', '4층', '5층'];
+const roomStructureArr = ['오픈형', '분리형', '복층형', '해당없음'];
 
 function Floor() {
   const dispatch = useDispatch();
 
-  const { wholeFloor, floor, struct, elevator } = useSelector(
+  const { totalFloor, floor, structure, elevator } = useSelector(
     (state: RootState) => state.roomRegister,
   );
 
-  const [openModal, setOpenModal] = useState(false); // 모달 오픈 변수
-  const [targetArr, setTargetArr] = useState(['']); // 모달 내 컨텐츠 배열
-  const [modalTitle, setModalTitle] = useState(''); // 모달 제목
+  const [openModal, setOpenModal] = useState<boolean>(false); // 모달 오픈 변수
+  const [targetArr, setTargetArr] = useState<Array<string>>(['']); // 모달 내 컨텐츠 배열
+  const [modalTitle, setModalTitle] = useState<string>(''); // 모달 제목
   const dispatchIndex = useRef(0);
 
   const dispatchArr = [
-    dispatchWholeFloor,
+    dispatchTotalFloor,
     dispatchCurrentFloor,
-    dispatchStruct,
+    dispatchStructure,
   ];
 
   const modalHandler = (
@@ -43,15 +47,13 @@ function Floor() {
     setModalTitle(title);
     dispatchIndex.current = index;
   };
-  const AllfloorArr = ['1층', '2층', '3층', '4층', '5층'];
-  const floorArr = ['1층', '2층', '3층', '4층', '5층'];
-  const roomStructureArr = ['오픈형', '분리형', '복층형', '해당없음'];
+  
   const modalArr = [
     {
       valueArr: AllfloorArr,
       title: '전체층',
-      value: wholeFloor,
-      dispatchHandler: dispatchWholeFloor,
+      value: totalFloor,
+      dispatchHandler: dispatchTotalFloor,
     },
     {
       valueArr: floorArr,
@@ -62,15 +64,15 @@ function Floor() {
     {
       valueArr: roomStructureArr,
       title: '구조',
-      value: struct,
-      dispatchHandler: dispatchStruct,
+      value: structure,
+      dispatchHandler: dispatchStructure,
     },
   ];
 
   const checkHandler = () => {
     dispatch(dispatchElevator(Number(!elevator)));
   };
-
+  
   return (
     <div>
       <CategoryHeader title="층/구조" />

@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import BottomNextBtn from 'client/reviewRegister/bottomNextBtn';
 import Header from 'client/reviewRegister/header';
 import ReviewRegister from 'client/reviewRegister/reviewRegisterPage';
 import AddressRegister from 'client/reviewRegister/addressPage';
-import { dispatchRegistrant } from 'store/modules/reviewRegister';
+import { dispatchUserId } from 'store/modules/reviewRegister';
 
 function Register() {
   const dispatch = useDispatch();
+
   function localStorageGetUserID()  {
-    dispatch(dispatchRegistrant(localStorage.getItem('userId')));
+    dispatch(dispatchUserId(localStorage.getItem('userId')));
   }
 
   useEffect(() => {
@@ -25,7 +25,6 @@ function Register() {
       <Header />
       <AddressRegister />
       <ReviewRegister />
-      <BottomNextBtn />
     </div>
   );
 }

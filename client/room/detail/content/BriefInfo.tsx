@@ -4,16 +4,16 @@ interface BriefInfoProps {
   floor: number;
   roomSize: number;
   roomType: string;
-  struct: string;
-  wholeFloor: number;
+  structure: string;
+  totalFloor: number;
 }
 
 function BriefInfo({
   floor,
   roomSize,
   roomType,
-  struct,
-  wholeFloor,
+  structure,
+  totalFloor,
 }: BriefInfoProps) {
   const convertedRoomSize = convertRoomSize(roomSize);
 
@@ -24,11 +24,11 @@ function BriefInfo({
       </div>
       <div className="h-full border-r" />
       <div className="flex items-center justify-center">
-        {floor}층 / {wholeFloor}층
+        {floor}층 / {totalFloor}층
       </div>
       <div className="h-full border-r" />
       <div className="flex items-center justify-center">
-        {struct} {roomType}
+        {structure} {roomType}
       </div>
     </div>
   );

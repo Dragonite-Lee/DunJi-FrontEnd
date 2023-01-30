@@ -36,7 +36,7 @@ function ReviewContent({ explain, regDate }: ReviewContentProps) {
       {open && (
         <div className="px-[18px]">
           <div className="text-[14px] Pretendard-Regular py-[16px]">
-            {explain}
+            {explain}가나
           </div>
         </div>
       )}
