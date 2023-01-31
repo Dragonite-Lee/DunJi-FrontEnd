@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Card from 'client/myPage/Card';
-import EmptyLike from 'client/myPage/like/EmptyLike';
+import EmptyLike from 'client/myPage/EmptyLike';
 import Header from 'components/layout/Header';
 import { RoomInfoType } from 'types';
 
@@ -30,7 +30,7 @@ function Like() {
     <div className="bg-background_beige h-full min-h-[100vh] sm:w-[375px] sm:m-auto flex flex-col">
       <Header title="찜한매물" />
       <div className="p-[18px] flex-1 flex flex-col">
-        {list.length === 0 && <EmptyLike />}
+        {list.length === 0 && <EmptyLike title={'찜한 매물'} />}
         {list.map((data) => (
           <Card key={data.roomId} {...data} />
         ))}
