@@ -103,6 +103,17 @@ module.exports = {
       //         "100%": { transform: "translateY(100%)" },
       //     },
       // },
+      animation: {
+        'toast-animation': 'toast-visible 2s forwards',
+      },
+      keyframes: {
+        'toast-visible': {
+          '0%': { transform: 'translateY(150px)' },
+          '5%': { transform: 'translateY(0)' },
+          '95%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(150px)' },
+        },
+      },
       gap: {
         room_register_gap: '0.5rem',
       },

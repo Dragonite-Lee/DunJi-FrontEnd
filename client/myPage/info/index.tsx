@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import InfoItem from 'client/myPage/info/InfoItem';
 import { useRouter } from 'next/router';
+import InfoItem from 'client/myPage/info/InfoItem';
 
 interface InfoProps {
   nickname: string;

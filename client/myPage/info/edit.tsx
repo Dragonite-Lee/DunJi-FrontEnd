@@ -1,4 +1,16 @@
+import { useState } from 'react';
+import Toast from 'components/common/toast';
+
 function NickNameEdit() {
+  const [toastState, setToastState] = useState(false);
+
+  const handleEdit = () => {
+    setToastState(true);
+  };
+
+  const handleToastClose = () => {
+    setToastState(false);
+  };
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="grow">
@@ -17,9 +29,19 @@ function NickNameEdit() {
           <p className="text-[#A9A7A2]">* 최소 2자, 최대 12자</p>
         </div>
       </div>
-      <div className="absolute bottom-0 h-24 bg-[#A9A7A2] w-full left-0 right-0">
-        asd
+      <div
+        onClick={handleEdit}
+        className="absolute bottom-0 h-24 bg-[#A9A7A2] w-full left-0 right-0 text-[#fff] text-[17px] text-center leading-[84px] "
+      >
+        수정하기
       </div>
+
+      {toastState && (
+        <Toast
+          content={`닉네임이 올바르지 않습니다.\n 다시 입력해주세요.`}
+          handleClose={handleToastClose}
+        />
+      )}
     </div>
   );
 }
