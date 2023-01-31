@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Toast from 'components/common/toast';
 
 function NickNameEdit() {
   const [toastState, setToastState] = useState(false);
+  const [input, setInput] = useState('');
+  const isValidNickName = validNickName(input);
 
-  const handleEdit = () => {
-    setToastState(true);
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
   };
 
   const handleToastClose = () => {
     setToastState(false);
+  };
+  const handleEdit = () => {
+    if (!isValidNickName) {
+      setToastState(true);
+      return;
+    }
   };
   return (
     <div className="flex flex-col justify-between h-full">
@@ -18,6 +26,7 @@ function NickNameEdit() {
           type="text"
           placeholder="닉네임 입력"
           className="w-full rounded-[10px] h-[50px] px-3.5 py-4"
+          onChange={handleInputChange}
         />
 
         <div className="mx-4 my-7 text-[15px]">
@@ -31,7 +40,9 @@ function NickNameEdit() {
       </div>
       <div
         onClick={handleEdit}
-        className="absolute bottom-0 h-24 bg-[#A9A7A2] w-full left-0 right-0 text-[#fff] text-[17px] text-center leading-[84px] "
+        className={`${
+          isValidNickName ? 'bg-[#FF9240]' : 'bg-[#A9A7A2]'
+        } absolute bottom-0 h-24  w-full left-0 right-0 text-[#fff] text-[17px] text-center leading-[84px]  `}
       >
         수정하기
       </div>
@@ -45,4 +56,9 @@ function NickNameEdit() {
     </div>
   );
 }
+
+const validNickName = (nickname: string): boolean => {
+  // TODO : valid todo
+  return true;
+};
 export default NickNameEdit;
