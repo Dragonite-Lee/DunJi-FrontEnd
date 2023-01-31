@@ -10,7 +10,10 @@ function InfoItem({ title, content, onEdit }: InfoItemProps) {
       <div className="mt-1.5  flex  justify-between	">
         <div className="text-[15px]  ">{content}</div>
         {onEdit ? (
-          <button className="border-[1px solid black]	rounded-[5px] text-[5px] text-[#A9A7A2]">
+          <button
+            onClick={onEdit}
+            className="border-[1px solid black]	rounded-[5px] text-[5px] text-[#A9A7A2]"
+          >
             수정
           </button>
         ) : null}
