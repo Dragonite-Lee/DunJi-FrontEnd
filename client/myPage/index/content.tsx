@@ -1,5 +1,5 @@
-import { ContentItemType } from 'client/myPage/ContentItem';
-import ContentList from 'client/myPage/ContentList';
+import { ContentItemType } from 'client/myPage/index/ContentItem';
+import ContentList from 'client/myPage/index/ContentList';
 
 const DUMMY_PATH = '/#';
 

@@ -1,4 +1,4 @@
-import SquareZoneItem from 'client/myPage/SquareZoneItem';
+import SquareZoneItem from 'client/myPage/index/SquareZoneItem';
 
 const DUMMY_PATH = '/myPage/#';
 const LIKE_PATH = '/myPage/like';

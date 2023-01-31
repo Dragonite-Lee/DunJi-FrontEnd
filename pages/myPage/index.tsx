@@ -1,4 +1,4 @@
-import MyPage from 'client/myPage';
+import MyPage from 'client/myPage/index';
 
 function MyPageAuth() {
   return <MyPage />;
