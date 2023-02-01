@@ -8,8 +8,11 @@ function ChatList() {
       <ChatListNav />
       <div className="min-w-[375px] sm:w-[375px] h-full sm:h-screen bg-background_beige px-4 divide-y divide-stone-200">
         <ChatItem />
+        <hr className="" />
         <ChatItem />
+        <hr className="" />
         <ChatItem />
+        <hr className="" />
       </div>
     </>
   );
