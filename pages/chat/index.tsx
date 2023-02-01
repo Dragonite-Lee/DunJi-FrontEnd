@@ -1,12 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import TabBar from 'components/main/TabBar';
+import ChatList from 'client/chat/list';
 
-export default function Chat() {
-  return (
-    <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">
-      <TabBar />
-      Chat 개발중
-    </div>
-  );
+function ChatListPage() {
+  return <ChatList />;
 }
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
+export default ChatListPage;

@@ -38,7 +38,7 @@ function Content() {
     },
     {
       content: '회원 탈퇴',
-      path: DUMMY_PATH,
+      path: '/myPage/withdrawal',
     },
     {
       content: '로그아웃',

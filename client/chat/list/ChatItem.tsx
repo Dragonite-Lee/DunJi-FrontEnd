@@ -1,8 +1,11 @@
 import Image from 'next/image';
 
-function ChatItem() {
+interface ChatItemProps {
+  onClick: () => void;
+}
+function ChatItem({ onClick }: ChatItemProps) {
   return (
-    <div className="flex gap-2.5 py-6 ">
+    <div className="flex gap-2.5 py-6 " onClick={onClick}>
       <div className="w-[43px] min-w-[43px]">
         {/* person-circle.svg */}
         <Image
