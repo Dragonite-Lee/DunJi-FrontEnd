@@ -1,8 +1,13 @@
 import { ChangeEvent, useState } from 'react';
+import Image from 'next/image';
+import errorIcon from 'assets/icon/error_basic.png';
+import Alert from 'components/common/Alert';
+import useToggle from 'hooks/useToggle';
 
 function Inquiry() {
   const [input, setInput] = useState('');
   const isValidSaleNumber = validSaleNumber(input);
+  const [isAlertOn, handleAlert] = useToggle();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -11,6 +16,7 @@ function Inquiry() {
   const handleAction = () => {
     // TODO
     console.log(input);
+    handleAlert();
   };
 
   return (
@@ -35,6 +41,17 @@ function Inquiry() {
       >
         조회하기
       </div>
+      {isAlertOn && (
+        <Alert
+          content={
+            <>
+              <Image src={errorIcon} alt="숨기기 버튼" width={60} height={60} />
+              <p>해당 번호의 매물이 존재하지 않습니다</p>
+            </>
+          }
+          onClose={handleAlert}
+        />
+      )}
     </div>
   );
 }
