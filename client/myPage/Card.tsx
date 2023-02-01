@@ -19,8 +19,8 @@ function Card({
 }: CardProps) {
   return (
     <div>
-      <div className="h-72 relative">
-        <div className="overflow-hidden w-full h-full	rounded-lg">
+      <div className="h-[180px] relative overflow-hidden  rounded-[5px]">
+        <div className="overflow-hidden w-full h-full	">
           <Image
             src={require('assets/images/room2.png')}
             alt="추가 기능 파트 닫기 버튼"

@@ -1,14 +1,36 @@
 import { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 import errorIcon from 'assets/icon/error_basic.png';
+import ResultContainer from 'client/myPage/index/Inquiry/ResultContainer';
 import Alert from 'components/common/Alert';
 import useToggle from 'hooks/useToggle';
+import { RoomInfoType } from 'types';
+
+const DUMMY: RoomInfoType[] = [
+  {
+    roomId: '8L72IJCK',
+    latitude: 35.45049592,
+    longitude: 127.571393,
+    sigungu: '안산시 상록구',
+    dong: '사동',
+    priceUnit: '월세',
+    price: 50,
+    deposit: 10,
+    roomType: '원룸',
+    dealType: '단기임대',
+    structure: '오픈형',
+    floor: '2',
+    roomSize: 25,
+    heartNum: 2,
+    image: 'assets/images/room2.png',
+  },
+];
 
 function Inquiry() {
   const [input, setInput] = useState('');
   const isValidSaleNumber = validSaleNumber(input);
   const [isAlertOn, handleAlert] = useToggle();
-
+  const [result, setResult] = useState([]);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
@@ -16,7 +38,8 @@ function Inquiry() {
   const handleAction = () => {
     // TODO
     console.log(input);
-    handleAlert();
+    // handleAlert();
+    setResult(DUMMY);
   };
 
   return (
@@ -24,14 +47,12 @@ function Inquiry() {
       <div className="grow">
         <input
           type="text"
-          placeholder="닉네임 입력"
+          placeholder="매물번호 입력"
           className="w-full rounded-[10px] h-[50px] px-3.5 py-4"
           onChange={handleInputChange}
         />
 
-        <div className="mx-1 my-7 text-[14px] text-[#FF9240]">
-          매물번호를 조회하면 더 쉽게 매물 정보를 얻을 수 있습니다!
-        </div>
+        <ResultContainer result={result} />
       </div>
       <div
         onClick={handleAction}
