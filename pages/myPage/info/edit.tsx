@@ -8,4 +8,5 @@ function NickNameEditPage() {
     </Layout>
   );
 }
+
 export default NickNameEditPage;

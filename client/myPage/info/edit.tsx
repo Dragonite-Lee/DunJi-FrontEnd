@@ -1,8 +1,14 @@
 import { ChangeEvent, useState } from 'react';
 import Toast from 'components/common/toast';
+import useToggle from 'hooks/useToggle';
 
 function NickNameEdit() {
-  const [toastState, setToastState] = useState(false);
+  const [
+    toastState,
+    ,
+    { toggleOn: handleToastOpen, toggleOff: handleToastClose },
+  ] = useToggle();
+
   const [input, setInput] = useState('');
   const isValidNickName = validNickName(input);
 
@@ -10,15 +16,14 @@ function NickNameEdit() {
     setInput(e.target.value);
   };
 
-  const handleToastClose = () => {
-    setToastState(false);
-  };
   const handleEdit = () => {
     if (!isValidNickName) {
-      setToastState(true);
+      handleToastOpen();
       return;
     }
+    // TODO
   };
+
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="grow">
