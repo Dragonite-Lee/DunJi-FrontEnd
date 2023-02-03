@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import Toast from 'components/common/toast';
+import Toast from 'components/common/Toast';
 import useToggle from 'hooks/useToggle';
 
 function NickNameEdit() {
