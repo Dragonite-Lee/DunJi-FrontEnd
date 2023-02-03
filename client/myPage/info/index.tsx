@@ -15,7 +15,7 @@ function Info({ nickname, email, phone, school }: InfoProps) {
     router.push('info/edit');
   };
   return (
-    <div>
+    <div className="p-[18px]">
       <div className="m-auto text-center relative w-fit p-2">
         {/* *카톡으로받은 프로필사진 */}
         <Image

@@ -1,8 +1,19 @@
 import { useState } from 'react';
 import Card from 'client/myPage/Card';
 import EmptyLike from 'client/myPage/EmptyLike';
-import Header from 'components/layout/Header';
+import ToggleNav from 'components/common/ToggleNav';
 import { RoomInfoType } from 'types';
+
+const NAV = [
+  {
+    key: 'put',
+    title: '내놓은 방',
+  },
+  {
+    key: 'complete',
+    title: '거래 완료된 방',
+  },
+];
 
 const DUMMY: RoomInfoType[] = [
   {
@@ -24,23 +35,25 @@ const DUMMY: RoomInfoType[] = [
   },
 ];
 
-function RecentRoom() {
-  const [list, setList] = useState<RoomInfoType[]>(DUMMY);
+function Sale() {
+  const [list, setList] = useState<RoomInfoType[]>([]);
+
   return (
-    <div className="bg-background_beige h-full min-h-[100vh] sm:w-[375px] sm:m-auto flex flex-col">
-      <Header title="최근 본 매물" />
+    <>
+      <ToggleNav list={NAV} />
       <div className="p-[18px] flex-1 flex flex-col">
         {list.length === 0 && (
           <EmptyLike
-            title={'최근 본 매물'}
-            desc="지도에서 마음에 드는 매물을 둘러보세요!"
+            title={'내놓은 방'}
+            desc={'매물이 있다면 방을 등록해보세요!'}
           />
         )}
+
         {list.map((data) => (
           <Card key={data.roomId} {...data} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
-export default RecentRoom;
+export default Sale;

@@ -3,6 +3,7 @@ import SquareZoneItem from 'client/myPage/index/SquareZoneItem';
 const DUMMY_PATH = '/myPage/#';
 const LIKE_PATH = '/myPage/like';
 const RECENT_PATH = '/myPage/recent';
+const SALE_PATH = '/myPage/sale';
 
 function SquareZone() {
   return (
@@ -21,7 +22,7 @@ function SquareZone() {
         <SquareZoneItem
           image={require('assets/icon/myPage/매물.svg')}
           content="매물 활동"
-          path={DUMMY_PATH}
+          path={SALE_PATH}
         />
         <SquareZoneItem
           image={require('assets/icon/myPage/커뮤니티.svg')}

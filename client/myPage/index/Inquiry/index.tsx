@@ -43,7 +43,7 @@ function Inquiry() {
   };
 
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full p-[18px]">
       <div className="grow">
         <input
           type="text"

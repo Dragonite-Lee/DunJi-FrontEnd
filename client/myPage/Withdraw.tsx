@@ -1,10 +1,10 @@
+import { useState, ChangeEvent } from 'react';
 import Toast from 'components/common/toast';
 import useToggle from 'hooks/useToggle';
-import { useState, ChangeEvent } from 'react';
 
 function Withdraw() {
   const [input, setInput] = useState('');
-  const [isValid, setIsValid] = useState('');
+  const [isValid, setIsValid] = useState<boolean>(false);
   const [
     toastState,
     ,
@@ -21,7 +21,7 @@ function Withdraw() {
   };
 
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full p-[18px]">
       <div>
         <h2 className="text-[17px] mb-2 bold">계정 비밀번호</h2>
         <input

@@ -1,7 +1,7 @@
+import { useRouter } from 'next/router';
 import ChatItem from 'client/chat/list/ChatItem';
 import ChatListNav from 'client/chat/list/Nav';
 import Header from 'components/layout/Header';
-import { useRouter } from 'next/router';
 
 function ChatList() {
   const router = useRouter();
