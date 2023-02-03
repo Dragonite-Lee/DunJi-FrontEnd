@@ -1,13 +1,30 @@
+import { chatApi } from '_api/chat';
 import ChatList from 'client/chat/list';
 
-function ChatListPage() {
+interface ChatListPageProps {
+  list: {
+    chatRoomId: string;
+    opponentName: string;
+  }[];
+  error?: boolean;
+}
+function ChatListPage({ list }: ChatListPageProps) {
+  console.log('list: ', list);
   return <ChatList />;
 }
 
 export async function getServerSideProps() {
-  return {
-    props: {},
-  };
+  try {
+    const res = await chatApi.seek();
+
+    return {
+      props: { list: res?.data || [] },
+    };
+  } catch (e) {
+    return {
+      props: { list: [], error: true },
+    };
+  }
 }
 
 export default ChatListPage;
