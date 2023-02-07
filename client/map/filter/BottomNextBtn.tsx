@@ -5,23 +5,11 @@ import { mapApi } from '_api/room';
 import BottomNextBtnLayout from 'components/common/BottomSubmitBtnLayout';
 import { dispatchfilterDataTypes } from 'store/modules/filter';
 import { RootState } from 'types';
+import isEmpty from 'utils/isEmpty';
 
 function BottomNextBtn() {
   const dispatch = useDispatch();
   const mapFilter = useSelector((state: RootState) => state.mapFilter);
-
-  const isEmpty = useCallback(function (value: any) {
-    if (
-      value == '' ||
-      value == null ||
-      value == undefined ||
-      (value != null && typeof value == 'object' && !Object.keys(value).length)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }, []);
 
   const checkHandler = useCallback(async () => {
     const formData = new FormData();

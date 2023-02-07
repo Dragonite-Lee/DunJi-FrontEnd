@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { reviewApi } from '_api/room';
 import BottomSubmitBtnLayout from 'components/common/BottomSubmitBtnLayout';
 import { ReviewRegisterState, RootState } from 'types';
+import isEmpty from 'utils/isEmpty';
 
 const delete_arr = [
   'ADDRESS_OPEN',
@@ -40,18 +41,6 @@ const all_items_arr = [
 function BottomSubmitBtn() {
   const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
   const {Reviewfile, clean, sound, accessible, landlord, facility, periodFrom, periodTo, userId, totalNum} = useSelector((state: RootState) => state.reviewRegister);
-  const isEmpty = useCallback(function (value: any) {
-    if (
-      value == '' ||
-      value == null ||
-      value == undefined ||
-      (value != null  && !Object.keys(value).length)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }, []);
   
   const checkHandler = async () => {
     const formData = new FormData();

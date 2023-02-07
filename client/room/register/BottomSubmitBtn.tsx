@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { roomApi } from '_api/room';
 import BottomSubmitBtnLayout from 'components/common/BottomSubmitBtnLayout';
 import { RoomRegisterState, RootState } from 'types';
+import isEmpty from 'utils/isEmpty';
 
 const deleteArr = [
   'ADDRESS_OPEN',
@@ -63,18 +64,6 @@ function BottomSubmitBtn() {
   const dispatch = useDispatch();
   const roomRegister = useSelector((state: RootState) => state.roomRegister);
   const {userId, elevator, car, pet, women, loan, mainImage, room1Image, room2Image, manage, managementCost, utility, option, tenancyAgreement } = useSelector((state: RootState) => state.roomRegister);
-  const isEmpty = useCallback(function (value: any) {
-    if (
-      value == '' ||
-      value == null ||
-      value == undefined ||
-      (value != null && typeof value == 'object' && !Object.keys(value).length)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }, []);
 
   const checkHandler = async () => {
     const formData = new FormData();
