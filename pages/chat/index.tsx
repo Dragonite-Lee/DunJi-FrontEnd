@@ -16,11 +16,13 @@ function ChatListPage({ list }: ChatListPageProps) {
 export async function getServerSideProps() {
   try {
     const res = await chatApi.seek();
+    console.log('res: ', res);
 
     return {
       props: { list: res?.data || [] },
     };
   } catch (e) {
+    console.log('e: ', e);
     return {
       props: { list: [], error: true },
     };
