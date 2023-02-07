@@ -7,9 +7,10 @@ import active from 'assets/icon/별점_활성화.svg';
 
 interface ReviewStarRateProps {
     rate: number;
+    wh: number;
   }
   
-  function ReviewStarRate({ rate }: ReviewStarRateProps) {
+  function ReviewStarRate({ rate, wh }: ReviewStarRateProps) {
     
     const StarRating: Array<string> = [];
     const [starUrl, setStarUrl] = useState<string[]>([])
@@ -95,8 +96,8 @@ interface ReviewStarRateProps {
                 <Image
                     alt="별점"
                     src={star}
-                    width={100}
-                    height={100}
+                    width={wh}
+                    height={wh}
                 />
             </div>
         );
@@ -104,13 +105,9 @@ interface ReviewStarRateProps {
       
 
     return (
-      <div className='py-[24px]'>
+      <div className='py-[6px]'>
           <div className="flex justify-center mx-12">
             {map_result}
-          </div>
-          <div className="flex justify-center items-center">
-            <div className="text-[20px] Pretendard-ExtraBold text-dealType_Btn mr-[4px]">{rate}</div>
-            <div className="text-[12px] Pretendard-Regular text-font_gray">(5)</div>
           </div>
       </div>
     );

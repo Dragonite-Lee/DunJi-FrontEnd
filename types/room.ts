@@ -1,29 +1,32 @@
 
-export interface RoomReviewTypes { //후기 상세페이지
+export interface ReviewTypes { //후기 상세페이지
   address: string;
-  totalRate: number;
+  totalRate: number; //평균 total
   cleanRate: number;
   noiseRate: number;
   accessRate: number;
   hostRate: number;
   facilityRate: number;
   image: string;
-  list: RoomReviewlistTypes[];
+  list: ReviewlistTypes[];
 };
 
-export interface RoomReviewlistTypes { //후기 상세페이지의 리스트 타입
+export interface ReviewlistTypes { //후기 상세페이지의 리스트 타입
   reviewId: string;
   userNickname: string;
-  image: string;
+  roomType: string;
+  totalRate: number;
+  image: string[];
   period: string;
   content: string;
   addressDetail: string;
   regDate: string
 }
 
-export interface RoomTypes { //매물 상세페이지
+export interface RoomTypes { //매물과 후기 상세페이지
   RoomInfo: RoomInfoListTypes;
   RoomReview: RoomReviewListTypes;
+  ReviewDetail: ReviewTypes;
 }
 
 export interface RoomInfoListTypes { //매물 상세페이지 Info 타입

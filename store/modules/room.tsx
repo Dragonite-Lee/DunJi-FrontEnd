@@ -42,6 +42,17 @@ const initialState: RoomTypes = {
     accessRate: 0,
     hostRate: 0,
     facilityRate: 0,
+  },
+  ReviewDetail:{
+    address: '',
+    totalRate: 0, //평균 total
+    cleanRate: 0,
+    noiseRate: 0,
+    accessRate: 0,
+    hostRate: 0,
+    facilityRate: 0,
+    image: '',
+    list: [],
   }
 };
 
@@ -53,11 +64,15 @@ const room = createSlice({
       state.RoomInfo = action.payload.RoomInfo;
       state.RoomReview = action.payload.RoomReview;
     },
+    dispatchReviewDetail: (state, action) => {
+      state.ReviewDetail = action.payload;
+    }
   },
 });
 
 export const {
   dispatchRoomList,
+  dispatchReviewDetail,
 } = room.actions;
 
 export default room.reducer;

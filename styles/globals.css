@@ -1,8 +1,7 @@
 @tailwind base;
 html {
-    font-size: 62.5%;
     -webkit-tap-highlight-color: transparent;
-    background-color: white;
+    background-color: #f9f9f9;
     /* font-family: NotoSansKR; */
     min-width: 375px;
 }

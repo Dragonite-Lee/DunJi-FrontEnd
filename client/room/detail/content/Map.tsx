@@ -50,7 +50,7 @@ export default function Map({ latitude, longitude }: MapProps) {
         onLoad={onLoadKakaoMap}
         src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY}&libraries=services,clusterer&autoload=false`}
       />
-      <div id="map" className="w-full h-[25vh]" />;
+      <div id="map" className="w-full h-[25vh]" />
     </>
   );
 }

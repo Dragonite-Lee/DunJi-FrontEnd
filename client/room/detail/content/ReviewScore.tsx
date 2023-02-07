@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import useToggle from 'hooks/useToggle';
-import ReviewRateBar from 'client/room/detail/content/ReviewRateBar';
-import ReviewStarRate from './ReviewStarRate';
+import ReviewRateBar from 'components/common/ReviewRateBar';
+import ReviewStarRate from '../../../../components/common/ReviewStarRate';
 
 interface ReviewScoreProps {
   totalRate: number;
@@ -22,7 +22,7 @@ function ReviewScore({ totalRate, cleanRate, noiseRate, accessRate, hostRate, fa
         onClick={handlerOpenChevron}
         className={`${openChevron && `border-b border-border_color`}`}
       >
-        <div className=" h-28 flex justify-between items-center px-[18px]">
+        <div className="h-20 flex justify-between items-center px-[18px]">
           <div>
             <div className="text-[17px] Pretendard-SemiBold">이 건물 후기</div>
             <div className="text-font_gray text-[12px] Pretendard-Regular">
@@ -44,7 +44,11 @@ function ReviewScore({ totalRate, cleanRate, noiseRate, accessRate, hostRate, fa
         <>
           <div className="px-[18px]">
             <div>
-              <ReviewStarRate rate={totalRate} />
+              <ReviewStarRate rate={totalRate} wh={110}/>
+              <div className="flex justify-center items-center">
+                <div className="text-[20px] Pretendard-ExtraBold text-dealType_Btn mr-[4px]">{totalRate}</div>
+                <div className="text-[12px] Pretendard-Regular text-font_gray">(5)</div>
+              </div>
               <div>
                 <ReviewRateBar title="청결도" rate={cleanRate} />
                 <ReviewRateBar title="방음" rate={noiseRate} />

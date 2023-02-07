@@ -6,7 +6,7 @@ function NoRoomHeader() {
   const goBack = useGoBack();
 
   return (
-    <header className="flex w-screen justify-between px-[18px] mb-[25px] py-4  h-24 items-center  border-b sm:w-[375px] sm:m-auto">
+    <header className="flex w-screen justify-between px-[18px] mb-[25px]  h-24 items-center  border-b sm:w-[375px] sm:m-auto">
       <div className="flex text-[17px] items-center Pretendard-SemiBold">
         <Link href="/" passHref>
           <a onClick={goBack}>

@@ -1,6 +1,10 @@
 import Image from 'next/image';
 
-function CompleteModal() {
+interface CompleteModalProps {
+  title: string;
+}
+
+function CompleteModal({title}:CompleteModalProps) {
   return (
     <div className="bg-blur w-full sm:w-[375px] h-screen fixed z-30">
       <div className="bg-white top-[350px] w-[250px] h-[130px] absolute z-30 rounded-standard_rounded translate-x-2/4 right-[50%]">
@@ -13,7 +17,7 @@ function CompleteModal() {
           />
         </div>
         <div className="Pretendard-SemiBold text-[15px] text-center mt-[13px]">
-          방 내놓기 완료!
+          {title}
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ function ReviewContent({ explain, regDate }: ReviewContentProps) {
         onClick={handlerOpen}
         className={`${open && `border-b border-border_color`}`}
       >
-        <div className=" h-28 flex justify-between items-center px-[18px]">
+        <div className=" h-20 flex justify-between items-center px-[18px]">
           <div>
             <div className="text-[17px] Pretendard-SemiBold">둥지냉면</div>
             <div className="flex gap-1 text-font_gray text-[14px] Pretendard-Regular">

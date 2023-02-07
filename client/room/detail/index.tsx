@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { mapApi } from '_api/room';
 import BriefInfo from 'client/room/detail/content/BriefInfo';
-import CompleteModal from 'client/room/detail/CompleteModal';
+import CompleteModal from 'components/common/CompleteModal';
 import Header from 'client/room/detail/Header';
 import NoRoomHeader from 'client/room/detail/NoRoomHeader';
 import Info from 'client/room/detail/content/Info';
@@ -49,7 +49,7 @@ function RoomDetail({roomId}: RoomDetailProps) {
     <div className="pb-[12rem] min-h-screen sm:w-[375px] sm:m-auto w-screen bg-background_beige">
       {roomId ? (
         <>
-          {popUp && <CompleteModal />}
+          {popUp && <CompleteModal title="방 내놓기 완료!"/>}
           <Header title={room.RoomInfo.address} />
           <div className="px-[18px]">
             <Title
