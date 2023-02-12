@@ -1,6 +1,6 @@
 import Image from 'next/image';
+import { NewRoomType } from 'types';
 import convertRoomSize from 'utils/convertRoomSize';
-import { newRoomType } from 'store/modules/main';
 
 interface NewRoomItemProps {
   data: NewRoomType;

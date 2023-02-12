@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
 import harfActive from 'assets/icon/별점_반.svg';
 import noActive from 'assets/icon/별점_비활성화.svg';
 import active from 'assets/icon/별점_활성화.svg';
-import useReviewRegisterReudx from 'hooks/useReviewRegisterRedux';
 import { dispatchTotal, dispatchTotalNum } from 'store/modules/reviewRegister';
+import { RootState } from 'types';
 
 function Total() {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
+import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import Header from 'components/layout/Header';
 import CancelHeader from 'components/layout/Header/CancelHeader';
-import useReviewRegisterRedux from 'hooks/useReviewRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
 import { RootState } from 'types';
 

@@ -1,6 +1,6 @@
+import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import Header from 'components/layout/Header';
 import CancelHeader from 'components/layout/Header/CancelHeader';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchPostCodeOpen } from 'store/modules/roomRegister';
 
 function RegisterHeader() {

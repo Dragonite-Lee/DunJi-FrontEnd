@@ -7,7 +7,6 @@ import BottomNextBtn from 'client/room/register/BottomNextBtn';
 import DetailInfo from 'client/room/register/extraComponents';
 import PhotoRegister from 'client/room/register/PhotoComponents';
 import RegisterHeader from 'client/room/register/RegisterHeader';
-import useRoomRegisterRedux from 'hooks/useRoomRegisterRedux';
 import { dispatchRegistrant } from 'store/modules/roomRegister';
 
 function Register() {

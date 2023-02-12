@@ -1,9 +1,9 @@
 import { ChangeEvent, useState, useCallback } from 'react';
 import Image from 'next/image';
 import Router from 'next/router';
+import useLoginRedux from 'hooks/useLoginRedux';
 import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 import useInterval from 'hooks/useInterval';
-import useLoginRedux from 'hooks/useLoginRedux';
 import {
   dispatchEmail,
   dispatchSchool,
