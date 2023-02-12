@@ -1,6 +1,5 @@
 import Sublease from "client/room/contract/sublease";
 
-
 function SubleasePage() {
   return <Sublease />
 }

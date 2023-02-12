@@ -1,6 +1,5 @@
 import Agree from 'client/room/register/agree';
 
-
 function AgreePage() {
   return <Agree />;
 }

@@ -1,9 +1,7 @@
 import Header from 'components/layout/Header';
 import CancelHeader from 'components/layout/Header/CancelHeader';
-import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import useGoBack from 'hooks/useGoback';
-import { dispatchPostCodeOpen } from 'store/modules/reviewRegister';
 import { RootState } from 'types';
 
 

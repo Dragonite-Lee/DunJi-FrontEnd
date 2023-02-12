@@ -1,9 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: "http://3.39.129.136:8090/DungziProject",
+  baseURL: process.env.NEXT_PUBLIC_AXIOS_BASE_URL,
+  withCredentials: true,
 });
-
-
-
-

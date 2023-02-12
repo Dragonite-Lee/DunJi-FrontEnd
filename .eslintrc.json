@@ -12,9 +12,7 @@
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -26,16 +24,9 @@
       "error",
       {
         "groups": [
-          [
-            "builtin",
-            "external"
-          ],
+          ["builtin", "external"],
           "internal",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ],
+          ["parent", "sibling", "index"],
           "type"
         ],
         "pathGroups": [
@@ -50,9 +41,7 @@
             "position": "before"
           }
         ],
-        "pathGroupsExcludedImportTypes": [
-          "react"
-        ],
+        "pathGroupsExcludedImportTypes": ["react"],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true

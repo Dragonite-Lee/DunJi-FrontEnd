@@ -1,5 +1,5 @@
 import Content from 'client/myPage/content';
-import Profile from 'client/myPage/Profile';
+import Profile from 'client/myPage/profile';
 import SquareZone from 'client/myPage/squareZone';
 import Header from 'components/layout/Header';
 import TabBar from 'components/main/TabBar';

@@ -1,9 +1,9 @@
 import Image from 'next/image';
+import { AllRoomType } from 'types';
 import convertRoomSize from 'utils/convertRoomSize';
-import { newRoomType } from 'store/modules/main';
 
 interface NewRoomItemProps {
-  data: NewRoomType;
+  data: AllRoomType;
 }
 
 function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
@@ -25,10 +25,10 @@ function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
           {data.priceUnit}세 {data.deposit} / {data.price}
         </div>
         <div className="pt-[4px] text-[12px] Pretendard-Regular">
-          {data.address}
+          {data.sigungu}
         </div>
         <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-          {data.struct} {data.roomType}, {data.floor}층
+          {data.structure} {data.roomType}, {data.floor}층
         </div>
         <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
           {data.roomSize}m<sup>2</sup> / {convertRoomSize(data.roomSize)}평

@@ -1,6 +1,5 @@
 import ContractGuide from 'client/room/contract';
 
-
 function ContractGuidePage() {
   return <ContractGuide />
 }

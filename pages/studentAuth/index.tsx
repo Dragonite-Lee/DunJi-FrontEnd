@@ -1,7 +1,7 @@
- import StudentAuth from "client/studentAuth";
+import StudentAuth from 'client/studentAuth';
 
 function StudentAuthPage() {
-  return <StudentAuth />
+  return <StudentAuth />;
 }
 
 export async function getServerSideProps() {
