@@ -1,4 +1,4 @@
-export default function password_reset({}) {
+export default function password_reset() {
   return (
     <section className=" flex items-center flex-col my-40 mx-auto w-main_width font-sans">
       <h1 className="w-full border-b border-yellow pb-4 text-3xl font-bold">

@@ -1,6 +1,6 @@
 import ReviewRegister from 'client/reviewRegister/index';
 
-function ReviewRegisterPage({}) {
+function ReviewRegisterPage() {
   return <ReviewRegister />;
 }
 

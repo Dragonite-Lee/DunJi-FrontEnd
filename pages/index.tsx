@@ -1,6 +1,6 @@
 import Home from 'client/main';
 
-function HomePage({}) {
+function HomePage() {
   return <Home />;
 }
 
