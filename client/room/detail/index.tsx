@@ -73,7 +73,7 @@ function RoomDetail({roomId}: RoomDetailProps) {
               startedAt={room.RoomInfo.startedAt}
               finishedAt={room.RoomInfo.finishedAt}
               tenancyAgreement={room.RoomInfo.tenancyAgreement}
-              roomSize={room.RoomInfo.roomSize}
+              // roomSize={room.RoomInfo.roomSize}
               floor={room.RoomInfo.floor}
               totalFloor={room.RoomInfo.totalFloor}
               structure={room.RoomInfo.structure}
@@ -85,10 +85,10 @@ function RoomDetail({roomId}: RoomDetailProps) {
               managementCost={room.RoomInfo.managementCost}
               utility={room.RoomInfo.utility}
             />
-            <Option
+            {/* <Option
               advantage={room.RoomInfo.advantage}
               option={room.RoomInfo.option}
-            />
+            /> */}
             <Location latitude={room.RoomInfo.latitude} longitude={room.RoomInfo.longitude} />
             <ReviewScore 
               totalRate={room.RoomReview.totalRate}

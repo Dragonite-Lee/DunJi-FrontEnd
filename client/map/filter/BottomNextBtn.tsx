@@ -14,9 +14,9 @@ function BottomNextBtn() {
   const checkHandler = useCallback(async () => {
     const formData = new FormData();
 
-    for (const item in mapFilter) {
-      if (!isEmpty(mapFilter[item])) formData.append(item, mapFilter[item]); //formdata에 값 입력
-    }
+    // for (const item in mapFilter) {
+    //   if (!isEmpty(mapFilter[item])) formData.append(item, mapFilter[item]); //formdata에 값 입력
+    // }
 
     // isEmpty에서 적절하게 처리 안되는 항목 제거 후 따로 formData에 입력
     const delete_arr = [
@@ -67,9 +67,9 @@ function BottomNextBtn() {
       formData.append('threeRoom', '1');
     }
 
-    if (mapFilter.floorFive == false) {
+    if (mapFilter.floorfive == false) {
       formData.append('floorFive', '0');
-    } else if (mapFilter.floorFive == true) {
+    } else if (mapFilter.floorfive == true) {
       formData.append('floorFive', '1');
     }
     if (mapFilter.floorsixup == false) {
@@ -173,9 +173,9 @@ function BottomNextBtn() {
       mapFilter.sizeTo,
     ];
 
-    for (let i = 0; i < price_arr.length; i++) {
-      formData.append(price_arr[i], price_value_arr[i]);
-    }
+    // for (let i = 0; i < price_arr.length; i++) {
+    //   formData.append(price_arr[i], price_value_arr[i]);
+    // }
 
     // const all_items_arr = [
     //     { dealType: "거래유형을" },

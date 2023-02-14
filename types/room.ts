@@ -23,10 +23,11 @@ export interface ReviewlistTypes { //후기 상세페이지의 리스트 타입
   regDate: string
 }
 
-export interface RoomTypes { //매물과 후기 상세페이지
+export interface RoomState { //매물과 후기 상세페이지
   RoomInfo: RoomInfoListTypes;
   RoomReview: RoomReviewListTypes;
   ReviewDetail: ReviewTypes;
+  MAP_ROOM_LIST: RoomListTypes;
 }
 
 export interface RoomInfoListTypes { //매물 상세페이지 Info 타입
@@ -74,4 +75,7 @@ export interface RoomReviewListTypes { //매물 상세페이지 Review 타입
 
 export interface MapRoomTypes { //지도상 매물 조회 타입
 
+}
+export interface RoomListTypes{
+  
 }

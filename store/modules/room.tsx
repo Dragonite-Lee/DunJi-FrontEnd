@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RoomTypes} from 'types';
+import { RoomState} from 'types';
 
-const initialState: RoomTypes = {
+const initialState: RoomState = {
   RoomInfo: {
     roomId: '',
     userNickname: '',
@@ -53,7 +53,8 @@ const initialState: RoomTypes = {
     facilityRate: 0,
     image: '',
     list: [],
-  }
+  },
+  MAP_ROOM_LIST:{}
 };
 
 const room = createSlice({
@@ -66,13 +67,17 @@ const room = createSlice({
     },
     dispatchReviewDetail: (state, action) => {
       state.ReviewDetail = action.payload;
-    }
+    },
+    dispatchMapRoomList: (state, action) => {
+      state.MAP_ROOM_LIST = action.payload;
+    },
   },
 });
 
 export const {
   dispatchRoomList,
   dispatchReviewDetail,
+  dispatchMapRoomList
 } = room.actions;
 
 export default room.reducer;

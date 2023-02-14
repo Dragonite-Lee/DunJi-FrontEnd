@@ -1,5 +1,5 @@
 interface BottomSubmitBtnLayoutProps {
-  state: any;
+  state?: any;
   content: string;
   onClick: () => void;
 }

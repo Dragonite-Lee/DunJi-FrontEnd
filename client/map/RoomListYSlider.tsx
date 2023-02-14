@@ -21,7 +21,7 @@ function RoomListYSlider() {
   return (
     <div className="w-full  bg-white  px-[18px] h-[76vh] overflow-scroll overflow-x-hidden">
       {slideData.map((item: RoomListTypes, index) => (
-        <Link key={index} href={`/room/${item.roomID}`} passHref>
+        <Link key={index} href={`/room/${item}`} passHref>
           <a>
             <div className="border-b pt-6">
               <Image
@@ -31,22 +31,22 @@ function RoomListYSlider() {
                 width={400}
                 height={180}
               />
-              <div className="flex justify-between items-center mt-2">
+              {/* <div className="flex justify-between items-center mt-2">
                 <div>
-                  {item.address} / {item.detailAddress}
+                  {item} / {item}
                 </div>
                 <div className="text-font_gray">
-                  {item.struct} , {item.floor}
+                  {item} , {item}
                 </div>
               </div>
               <div className="flex justify-between items-center pb-4">
                 <div className="font-[700] text-[1.5rem] ">
-                  {item.priceUnit} {item.deposit} / {item.price}
+                  {item} {item} / {item}
                 </div>
                 <div className="text-font_gray ">
-                  {item.roomSize}m<sup>2</sup> / {round(item.roomSize)}평
+                  {item}m<sup>2</sup> / {round(item)}평
                 </div>
-              </div>
+              </div> */}
             </div>
           </a>
         </Link>

@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { mapApi } from '_api';
+import { mapApi } from '_api/room';
 import Header from 'client/map/Header';
 import RoomList from 'client/map/RoomList';
 import TabBar from 'components/main/TabBar';
@@ -18,7 +18,7 @@ import { RootState } from 'types';
 
 function Map() {
   const dispatch = useDispatch();
-  const { ROOM_LIST } = useSelector((state: RootState) => state.room);
+  const { MAP_ROOM_LIST } = useSelector((state: RootState) => state.room);
   const mapFilter = useSelector((state: RootState) => state.mapFilter);
 
   const [load, setLoad] = useState(false); // kakao map script 로드 여부
@@ -83,7 +83,7 @@ function Map() {
           },
         ],
       });
-      const existData = ROOM_LIST; //기존 roomlist를 existData에 담음
+      const existData = MAP_ROOM_LIST; //기존 roomlist를 existData에 담음
       const newData = [];
       for (const item of data) {
         if (!existData.hasOwnProperty(item.roomID)) {
@@ -123,7 +123,7 @@ function Map() {
         clusterer.addMarkers([customOverlay]); //클러스터러에 마커들을 추가
       }
     },
-    [dispatch, openPopup, ROOM_LIST],
+    [dispatch, openPopup, MAP_ROOM_LIST],
   );
 
   /** 카카오맵 로드되면 할 동작 */
