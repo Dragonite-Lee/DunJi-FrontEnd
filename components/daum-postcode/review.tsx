@@ -7,7 +7,6 @@ import {
 import { RootState } from 'types';
 
 const PostCode = () => {
-
   const { POSTCODE_OPEN, ADDRESS_OPEN } = useSelector(
     (state: RootState) => state.reviewRegister,
   );

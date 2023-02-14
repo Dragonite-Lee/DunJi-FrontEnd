@@ -1,7 +1,7 @@
-import TransferAgreement from "client/room/contract/transfer-agreement";
+import TransferAgreement from 'client/room/contract/transfer-agreement';
 
 function TransferAgreementPage() {
-  return <TransferAgreement />
+  return <TransferAgreement />;
 }
 
 export default TransferAgreementPage;
