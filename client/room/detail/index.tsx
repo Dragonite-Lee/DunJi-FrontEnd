@@ -22,7 +22,6 @@ interface RoomDetailProps {
 
 function RoomDetail({roomId}: RoomDetailProps) {
   const room = useSelector((room: RootState) => room.room);
-  const roomRegister =useSelector((state: RootState) => state.roomRegister);
   const dispatch = useDispatch();
   const [popUp, handlerPopUp, handlerTool] = useToggle();
 
@@ -98,6 +97,7 @@ function RoomDetail({roomId}: RoomDetailProps) {
               accessRate={room.RoomReview.accessRate}
               hostRate={room.RoomReview.hostRate}
               facilityRate={room.RoomReview.facilityRate}
+              buildingID={room.RoomReview.buildingID}
             />
           </div>
         </>

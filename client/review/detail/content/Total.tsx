@@ -22,7 +22,9 @@ function Total({
                     {address}
                 </div>
                 <div className='flex'>
-                    <ReviewStarRate rate={averagetotalRate} wh={30} />
+                    <div className='mx-12'>
+                        <ReviewStarRate rate={averagetotalRate} wh={30} />
+                    </div>
                     <div className="ml-[2px] flex justify-center items-center">
                         <div className="text-[20px] Pretendard-ExtraBold text-dealType_Btn mr-[2px]">
                             {averagetotalRate}

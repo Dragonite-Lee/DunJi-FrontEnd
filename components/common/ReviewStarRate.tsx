@@ -106,7 +106,7 @@ interface ReviewStarRateProps {
 
     return (
       <div className='py-[6px]'>
-          <div className="flex justify-center mx-12">
+          <div className="flex justify-center">
             {map_result}
           </div>
       </div>
