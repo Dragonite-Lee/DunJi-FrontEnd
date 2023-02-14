@@ -1,22 +1,22 @@
-import { useCallback, useEffect, useMemo } from 'react';
-import Image from 'next/image';
+import { useEffect, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Image from 'next/image';
+import { RootState } from 'store/modules';
+import { dispatchTotal, dispatchTotalNum, dispatchTotalUrl } from 'store/modules/reviewRegister';
 import harfActive from 'assets/icon/별점_반.svg';
 import noActive from 'assets/icon/별점_비활성화.svg';
 import active from 'assets/icon/별점_활성화.svg';
-import { dispatchTotal, dispatchTotalNum } from 'store/modules/reviewRegister';
-import { RootState } from 'types';
+
 
 function Total() {
+  const {totalUrl, totalNum, total} = useSelector((state: RootState) => state.reviewRegister);
   const dispatch = useDispatch();
-
-  const { total } = useSelector((state: RootState) => state.reviewRegister);
 
   const starRatingState: Array<string> = useMemo(() => [], []);
   const StarRating: Array<string> = [];
-
-  //이 부분 함수 리펙토링 고민중
-  const clickRatingHandler = (index: number, src: any) => {
+  let url:any = [...totalUrl];
+  
+  const clickRatingHandler = useCallback((index: number, src: any) => {
     if (src * 2 == 1) {
       StarRating.push(harfActive);
       StarRating.push(noActive);
@@ -88,26 +88,15 @@ function Total() {
       StarRating.push(active);
       dispatch(dispatchTotalNum(5));
     }
-    dispatch(dispatchTotal(StarRating));
-  };
-  const starRatingFill = () => {
+    dispatch(dispatchTotalUrl(StarRating));
+  },[StarRating]);
+
+  const starRatingFill = useCallback(() => {
     for (let i = 0; i < 5; i++) {
       starRatingState.push(noActive);
     }
     dispatch(dispatchTotal(starRatingState));
-  };
-
-  useEffect(() => {
-    starRatingFill();
-  }, [dispatch, starRatingState]);
-
-  const url: any = [];
-
-  if (total.length) {
-    for (let i = 0; i < total.length; i++) {
-      url.push(total[i]);
-    }
-  }
+  },[starRatingState]);
 
   const location = (num: number, index: number) => {
     if (num > 29) {
@@ -117,7 +106,17 @@ function Total() {
     }
   };
 
-  const map_result = url.map(function (star: any, index: number) {
+  if (totalNum == 0) {
+    for (let i = 0; i < total.length; i++) {
+      url.push(total[i]);
+    }
+  };
+  
+  useEffect(() => {
+    starRatingFill()
+  }, [starRatingState]);
+
+  const map_result = url.map((star: any, index: number) => {
     return (
       <div key={index}>
         {star ? (
@@ -146,7 +145,7 @@ function Total() {
   });
 
   return (
-    <div className="mt-[31px] ">
+    <div className="mt-[31px] mb-[37px]">
       <div className="flex items-center mb-[17px] text-[17px] Pretendard-SemiBold">
         <div>방 어떠셨나요?</div>
         <div className="ml-[5px] text-hover_orange">*</div>

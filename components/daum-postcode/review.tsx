@@ -1,5 +1,4 @@
 import DaumPostcode from 'react-daum-postcode';
-
 import { useDispatch, useSelector } from 'react-redux';
 import {
   dispatchMainAddress,
@@ -8,11 +7,12 @@ import {
 import { RootState } from 'types';
 
 const PostCode = () => {
-  const dispatch = useDispatch();
 
   const { POSTCODE_OPEN, ADDRESS_OPEN } = useSelector(
     (state: RootState) => state.reviewRegister,
   );
+
+  const dispatch = useDispatch();
 
   const handleComplete = (data: any) => {
     const fullAddress = data.autoJibunAddress || data.jibunAddress;

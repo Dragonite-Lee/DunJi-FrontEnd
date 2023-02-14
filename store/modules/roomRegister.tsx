@@ -3,52 +3,48 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RoomRegisterState } from 'types';
 
 const initialState: RoomRegisterState = {
-  longitude: null,
-  latitude: null,
   COMPONENT_HANDLER: 0,
   POSTCODE_OPEN: false,
   ADDRESS_OPEN: true,
-  address: '',
-  sido: '',
+  DETAIL_COMPONENT_OPEN: false,
+  longitude: 0,
+  latitude: 0,
+  userId: '',
   sigungu: '',
   dong: '',
-  ri: '',
-  jibun: '',
-  detailAddress: '',
-  DETAIL_COMPONENT_OPEN: false,
+  address: '',
+  addressDetail: '',
   roomType: '',
   dealType: '',
   priceUnit: '',
   deposit: '',
   price: '',
   manage: 1,
-  manageCost: '',
-  manageSelect: [0, 0, 0, 0, 0],
-  wholeFloor: '전체층',
+  managementCost: '',
+  utility: [0, 0, 0, 0, 0],
+  totalFloor: '전체층',
   floor: '현재층',
-  struct: '구조',
-  elevator: 0,
+  structure: '구조',
   roomSize: '',
-  availFrom: '',
-  availTo: '',
-  availConsul: 0,
+  startedAt: '',
+  finishedAt: '',
+  tenancyAgreement: 0,
   optionAll: 1,
   option: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  advantage: [0, 0, 0, 0, 0],
+  elevator: 0,
   car: 2,
   pet: 2,
   women: 2,
   loan: 2,
   title: '',
-  explain: '',
+  content: '',
   mainImage: [],
   mainImageUrl: [],
   room1Image: [],
   room1ImageUrl: [],
   room2Image: [],
   room2ImageUrl: [],
-  postRoomSuccess: null,
-  postRoomFailure: null,
-  registrant: '',
 };
 
 const roomRegister = createSlice({
@@ -58,17 +54,14 @@ const roomRegister = createSlice({
     componentHandle: (state, action) => {
       state.COMPONENT_HANDLER = action.payload;
     },
-    dispatchRoomType: (state, action) => {
-      state.roomType = action.payload;
-    },
     dispatchPostCodeOpen: (state, action) => {
       state.POSTCODE_OPEN = action.payload;
     }, // postcode 컴포넌트 열고 닫기
     dispatchAddressOpen: (state, action) => {
       state.ADDRESS_OPEN = action.payload;
     },
-    dispatchMainAddress: (state, action) => {
-      state.address = action.payload;
+    detailComponentHandle: (state, action) => {
+      state.DETAIL_COMPONENT_OPEN = action.payload;
     },
     dispatchLongitude: (state, action) => {
       state.longitude = action.payload;
@@ -76,8 +69,8 @@ const roomRegister = createSlice({
     dispatchLatitude: (state, action) => {
       state.latitude = action.payload;
     },
-    dispatchSido: (state, action) => {
-      state.sido = action.payload;
+    dispatchUserId: (state, action) => {
+      state.userId = action.payload;
     },
     dispatchSigungu: (state, action) => {
       state.sigungu = action.payload;
@@ -85,19 +78,16 @@ const roomRegister = createSlice({
     dispatchDong: (state, action) => {
       state.dong = action.payload;
     },
-    dispatchRi: (state, action) => {
-      state.ri = action.payload;
+    dispatchMainAddress: (state, action) => {
+      state.address = action.payload;
     },
-    dispatchJibun: (state, action) => {
-      state.jibun = action.payload;
+    dispatchAddressDetail: (state, action) => {
+      state.addressDetail = action.payload;
     },
-    dispatchDetailAddress: (state, action) => {
-      state.detailAddress = action.payload;
+    dispatchRoomType: (state, action) => {
+      state.roomType = action.payload;
     },
-    detailComponentHandle: (state, action) => {
-      state.DETAIL_COMPONENT_OPEN = action.payload;
-    },
-    dispatchTransactionType: (state, action) => {
+    dispatchDealType: (state, action) => {
       state.dealType = action.payload;
     },
     dispatchPriceUnit: (state, action) => {
@@ -112,20 +102,20 @@ const roomRegister = createSlice({
     dispatchManage: (state, action) => {
       state.manage = action.payload;
     },
-    dispatchManageCost: (state, action) => {
-      state.manageCost = action.payload;
+    dispatchManagementCost: (state, action) => {
+      state.managementCost = action.payload;
     },
     dispatchManageSelect: (state, action) => {
-      state.manageSelect = action.payload;
+      state.utility = action.payload;
     },
-    dispatchWholeFloor: (state, action) => {
-      state.wholeFloor = action.payload;
+    dispatchTotalFloor: (state, action) => {
+      state.totalFloor = action.payload;
     },
     dispatchCurrentFloor: (state, action) => {
       state.floor = action.payload;
     },
-    dispatchStruct: (state, action) => {
-      state.struct = action.payload;
+    dispatchStructure: (state, action) => {
+      state.structure = action.payload;
     },
     dispatchElevator: (state, action) => {
       state.elevator = action.payload;
@@ -133,14 +123,14 @@ const roomRegister = createSlice({
     dispatchRoomSize: (state, action) => {
       state.roomSize = action.payload;
     },
-    dispatchFrom: (state, action) => {
-      state.availFrom = action.payload;
+    dispatchStartedAt: (state, action) => {
+      state.startedAt = action.payload;
     },
-    dispatchTo: (state, action) => {
-      state.availTo = action.payload;
+    dispatchFinishedAt: (state, action) => {
+      state.finishedAt = action.payload;
     },
-    dispatchNegotiable: (state, action) => {
-      state.availConsul = action.payload;
+    dispatchTenancyAgreement: (state, action) => {
+      state.tenancyAgreement = action.payload;
     },
     dispatchOption: (state, action) => {
       state.optionAll = action.payload;
@@ -163,8 +153,8 @@ const roomRegister = createSlice({
     dispatchTitle: (state, action) => {
       state.title = action.payload;
     },
-    dispatchExplain: (state, action) => {
-      state.explain = action.payload;
+    dispatchContent: (state, action) => {
+      state.content = action.payload;
     },
     dispatchMainImage: (state, action) => {
       state.mainImage = action.payload;
@@ -184,67 +174,51 @@ const roomRegister = createSlice({
     dispatchRoom2ImageUrl: (state, action) => {
       state.room2ImageUrl = action.payload;
     },
-    postRoom: (state, action) => { }, // state,action이 인자로 선언되어 있어야 postRoom을 처리하는 postRoomSaga에서 action.payload(즉 여기선 방 등록 정보인 formData)를 자동으로 인자로 받음
-    postRoomSuccess: (state, action) => {
-      state.postRoomSuccess = action.payload;
-      state.postRoomFailure = null;
-    },
-    postRoomFailure: (state, action) => {
-      state.postRoomFailure = action.payload;
-      state.postRoomSuccess = null;
-    },
-    dispatchRegistrant: (state, action) => {
-      state.registrant = action.payload;
-    },
   },
 });
 
 export const {
   componentHandle,
-  dispatchRoomType,
   dispatchPostCodeOpen,
   dispatchAddressOpen,
   dispatchMainAddress,
+  detailComponentHandle,
   dispatchLongitude,
   dispatchLatitude,
-  dispatchSido,
   dispatchSigungu,
   dispatchDong,
-  dispatchRi,
-  dispatchJibun,
-  dispatchDetailAddress,
-  detailComponentHandle,
-  dispatchTransactionType,
+  dispatchAddressDetail,
+  dispatchRoomType,
+  dispatchDealType,
   dispatchPriceUnit,
   dispatchDeposit,
   dispatchPrice,
   dispatchManage,
-  dispatchManageCost,
+  dispatchManagementCost,
   dispatchManageSelect,
-  dispatchWholeFloor,
+  dispatchTotalFloor,
   dispatchCurrentFloor,
-  dispatchStruct,
+  dispatchStructure,
   dispatchElevator,
   dispatchRoomSize,
-  dispatchFrom,
-  dispatchTo,
+  dispatchStartedAt,
+  dispatchFinishedAt,
   dispatchOption,
   dispatchOptionSelect,
-  dispatchNegotiable,
+  dispatchTenancyAgreement,
   dispatchCar,
   dispatchPet,
   dispatchWomen,
   dispatchLoan,
   dispatchTitle,
-  dispatchExplain,
+  dispatchContent,
   dispatchMainImage,
   dispatchMainImageUrl,
   dispatchRoom1Image,
   dispatchRoom1ImageUrl,
   dispatchRoom2Image,
   dispatchRoom2ImageUrl,
-  postRoom,
-  dispatchRegistrant,
+  dispatchUserId,
 } = roomRegister.actions;
 
 export default roomRegister.reducer;

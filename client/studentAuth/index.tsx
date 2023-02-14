@@ -1,9 +1,10 @@
 import { ChangeEvent, useState, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 import Router from 'next/router';
-import useLoginRedux from 'hooks/useLoginRedux';
-import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
+import BottomSubmitBtnLayout from 'components/common/BottomSubmitBtnLayout';
 import useInterval from 'hooks/useInterval';
+import { RootState } from 'types';
 import {
   dispatchEmail,
   dispatchSchool,
@@ -11,8 +12,10 @@ import {
   dispatchAuthNumberOpen,
 } from 'store/modules/login';
 
+
 function StudentAuth() {
-  const [state, dispatch] = useLoginRedux();
+  const dispatch = useDispatch();
+  const login = useSelector((login: RootState) => login.login);
   const [school, setSchool] = useState<string>('');
   const [email1, setEmail1] = useState<string>('');
   const [email2, setEmail2] = useState<string>('');
@@ -68,7 +71,7 @@ function StudentAuth() {
     }
 
     // try {
-    //   await studentAuthApi.postEmail(state.email).then((res) => {
+    //   await studentAuthApi.postEmail(login.email).then((res) => {
     //     dispatch(dispatchAuthNumber(res.content.authNumber))
     //   });
     // } catch (e) {
@@ -76,13 +79,13 @@ function StudentAuth() {
     // };
   }, [school, email1, email2]);
   const studentAuthIsSuccess = useCallback(() => {
-    if (inputAuthNumber.length > 5 && inputAuthNumber === state.authNumber) {
+    if (inputAuthNumber.length > 5 && Number(inputAuthNumber) === login.authNumber) {
       Router.push('/');
       //유저의 학교정보나 데이터등 저장할 것 같음
     } else {
       alert('인증번호가 틀렸습니다.');
     }
-  }, [state, inputAuthNumber]);
+  }, [login, inputAuthNumber]);
   const studentAuthAgain = useCallback(async () => {
     dispatch(dispatchSchool(school));
     dispatch(dispatchEmail(email1 + email2));
@@ -90,7 +93,7 @@ function StudentAuth() {
     setAuthTime(180);
     setTimePlay(true);
     // try {
-    //   await studentAuthApi.postEmail(state.email).then((res) => {
+    //   await studentAuthApi.postEmail(login.email).then((res) => {
     //     dispatch(dispatchAuthNumber(res.content.authNumber))
     //   });
     // } catch (e) {
@@ -152,7 +155,7 @@ function StudentAuth() {
             <option value="@hanyang.ac.kr">@hanyang.ac.kr</option>
           </select>
         </div>
-        {state.AUTHNUMBER_OPEN && (
+        {login.AUTHNUMBER_OPEN && (
           <div>
             <div className="flex items-center mt-12">
               <input
@@ -178,11 +181,7 @@ function StudentAuth() {
           </div>
         )}
       </div>
-      {state.AUTHNUMBER_OPEN ? (
-        <BottomNextBtnLayout content="확인" onClick={studentAuthIsSuccess} />
-      ) : (
-        <BottomNextBtnLayout content="학교 인증하기" onClick={studentAuth} />
-      )}
+      <BottomSubmitBtnLayout state={login.AUTHNUMBER_OPEN} content={`${login.AUTHNUMBER_OPEN}`?"확인":"학교 인증하기"} onClick={`${login.AUTHNUMBER_OPEN}`?studentAuthIsSuccess:studentAuth} />
     </div>
   );
 }

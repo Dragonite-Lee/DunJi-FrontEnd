@@ -17,7 +17,7 @@ const useToggle = (
   const [toggle, setToggle] = useState<boolean>(initialState ?? false);
 
   const handleToggleClick = useCallback(() => {
-    setToggle((prev) => !prev);
+    setToggle((toggle) => !toggle);
   }, []);
 
   const toggleOn = useCallback(() => {

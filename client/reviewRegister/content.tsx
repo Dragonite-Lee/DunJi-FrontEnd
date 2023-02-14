@@ -1,13 +1,13 @@
 import { ChangeEvent } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+// import { RootState } from 'store/modules';
 import { dispatchContent } from 'store/modules/reviewRegister';
 import { RootState } from 'types';
 
 function Content() {
-  const dispatch = useDispatch();
 
-  const { content } = useSelector((state: RootState) => state.reviewRegister);
+  const {content} = useSelector((state: RootState) => state.reviewRegister);
+  const dispatch = useDispatch();
 
   const getContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     dispatch(dispatchContent(e.target.value));

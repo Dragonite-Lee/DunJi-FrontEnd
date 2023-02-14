@@ -1,31 +1,35 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { ChangeEvent , useCallback } from 'react';
 import Map from 'client/room/register/AddressComponents/Map';
 import SubHeader from 'client/room/register/SubHeader';
 import PostCode from 'components/daum-postcode/index';
 import {
-  dispatchDetailAddress,
+  dispatchAddressDetail,
   dispatchPostCodeOpen,
+  componentHandle
 } from 'store/modules/roomRegister';
+import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 import { RootState } from 'types';
 
 function AddressRegister() {
   const dispatch = useDispatch();
 
   const {
-    detailAddress,
     COMPONENT_HANDLER,
     POSTCODE_OPEN,
     ADDRESS_OPEN,
     address,
+    addressDetail,
   } = useSelector((state: RootState) => state.roomRegister);
-
   const btnHandler = (val: boolean) => dispatch(dispatchPostCodeOpen(val));
-  const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    dispatch(dispatchDetailAddress(e.currentTarget.value));
+  const getAddress = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(dispatchAddressDetail(e.target.value));
   };
-
+  const componentNextHandler = useCallback(() => {
+    dispatch(componentHandle(1));
+  },[]);
+  
   return (
     <>
       {COMPONENT_HANDLER === 0 && (
@@ -67,8 +71,8 @@ function AddressRegister() {
                       <input
                         className="p-4 h-full w-full bg-transparent outline-0 placeholder:text-font_gray text-[15px] Pretendard-Regular"
                         type="text"
-                        value={detailAddress}
-                        onChange={inputHandler}
+                        value={addressDetail}
+                        onChange={(e) => getAddress(e)}
                         placeholder="상세 주소를 입력해주세요"
                       />
                     </div>
@@ -77,6 +81,7 @@ function AddressRegister() {
               )}
             </>
           )}
+          <BottomNextBtnLayout state={address && addressDetail} content="다음으로" onClick={componentNextHandler} />
         </>
       )}
     </>

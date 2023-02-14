@@ -27,7 +27,7 @@ function Size() {
   const round = (num: number | string, mul: number): number => {
     return Math.round((Number(num) * 10 * mul) / 10);
   };
-
+  
   return (
     <>
       <CategoryHeader title="방 크기" />
@@ -46,10 +46,7 @@ function Size() {
               else dispatch(dispatchRoomSize(''));
             }}
           ></input>
-          <div
-            className="absolute  text-[15px]
-            right-8 bottom-[50%] translate-y-[50%]"
-          >
+          <div className="absolute  text-[15px] right-8 bottom-[50%] translate-y-[50%]">
             평
           </div>
         </div>

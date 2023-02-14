@@ -1,4 +1,4 @@
-import Agree from 'client/pages/room/register/agree';
+import Agree from 'client/room/register/agree';
 
 function AgreePage() {
   return <Agree />;

@@ -41,8 +41,6 @@ function Option() {
     dispatchOptionSelect,
   );
 
-  // const state = useSelector((state: RootState) => state.roomRegister);
-
   const OptionHandler = () => {
     if (optionAll === 0) dispatch(dispatchOption(1));
     else {

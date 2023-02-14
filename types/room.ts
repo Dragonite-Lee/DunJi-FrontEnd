@@ -1,119 +1,77 @@
-export type RoomState = {
-  ROOM_INFO: { [id: string]: RoomInfoListTypes };
-  ROOM_REVIEW: { [id: string]: RoomReviewListTypes };
-  ROOM_POST: { [id: string]: RoomPostListTypes };
-  ROOM_LIST: { [id: string]: RoomListTypes };
-  MAP_ROOM_LIST: { [id: string]: RoomListTypes }; // 지도 상에 보이는 매물 정보
-  ROOM_ID: string;
-};
 
-export type RoomReviewListTypes = {
-  accessible: number;
+export interface ReviewTypes { //후기 상세페이지
   address: string;
-  count: number;
-  buildingID: string;
-  clean: number;
-  sound: number;
-  total: number;
-  landlord: number;
-  facility: number;
+  totalRate: number; //평균 total
+  cleanRate: number;
+  noiseRate: number;
+  accessRate: number;
+  hostRate: number;
+  facilityRate: number;
+  image: string;
+  list: ReviewlistTypes[];
 };
 
-export type RoomPostListTypes = {
-  title: any;
-  registrant: number;
-  roomID: string;
-  detailAddress: any;
-  regDate: string;
-  explain: any;
-  image: number;
-  recommend: number;
-  buildingID: string;
-  address: any;
-};
-
-export type RoomInfoListTypes = {
-  aircon: boolean;
-  availConsul: boolean;
-  availFrom: string;
-  availTo: string;
-  bed: boolean;
-  car: boolean;
-  closet: boolean;
-  dealType: string;
-  deposit: number;
-  desk: boolean;
-  elevator: boolean;
-  wholeFloor: number;
-  floor: number;
-  gas: boolean;
-  induc: boolean;
-  loan: boolean;
-  manage: number;
-  manageInclude: any;
-  micro: boolean;
-  pet: boolean;
-  price: number;
-  priceUnit: string;
-  refri: boolean;
-  roomSize: number;
+export interface ReviewlistTypes { //후기 상세페이지의 리스트 타입
+  reviewId: string;
+  userNickname: string;
   roomType: string;
-  shelf: boolean;
-  shoe: boolean;
-  sink: boolean;
-  struct: string;
-  washer: boolean;
-  women: boolean;
-};
+  totalRate: number;
+  image: string[];
+  period: string;
+  content: string;
+  addressDetail: string;
+  regDate: string
+}
 
-export type RoomListTypes = {
-  address: string;
-  aircon: boolean;
-  availPeriodConsul: boolean;
-  availPeriodFrom: string;
-  availPeriodTo: string;
-  bed: boolean;
-  car: boolean;
-  closet: boolean;
-  dealType: string;
-  deposit: number;
-  desk: boolean;
-  detailAddress: string;
-  dong: string;
-  elevator: boolean;
-  wholeFloor: number;
-  explain: string;
-  floor: number;
-  fullOption: false;
-  gas: boolean;
-  induc: boolean;
-  jibun: string;
-  latitude: number;
-  loan: boolean;
+export interface RoomTypes { //매물과 후기 상세페이지
+  RoomInfo: RoomInfoListTypes;
+  RoomReview: RoomReviewListTypes;
+  ReviewDetail: ReviewTypes;
+}
+
+export interface RoomInfoListTypes { //매물 상세페이지 Info 타입
+  roomId: string;
+  userNickname: string;
   longitude: number;
-  manage: boolean;
-  manageCost: number;
-  manageElec: boolean;
-  manageGas: boolean;
-  manageInternet: boolean;
-  manageTV: boolean;
-  manageWater: boolean;
-  micro: boolean;
-  pet: boolean;
-  price: number;
-  priceUnit: string;
-  refri: boolean;
-  ri: string;
-  roomID: string;
-  roomSize: number;
-  roomType: string;
-  shelf: boolean;
-  shoe: boolean;
-  sido: string;
+  latitude: number;
   sigungu: string;
-  sink: boolean;
-  struct: string;
+  dong: string;
+  address: string;
+  addressDetail: string;
   title: string;
-  washer: boolean;
-  ROOM_ID: string;
-};
+  content: string;
+  image: Array<string>;
+  heartNum: number;
+  viewCount: number;
+  regDate: string;
+  roomType: string;
+  dealType: string;
+  priceUnit: string;
+  price: number;
+  deposit: number;
+  managementCost: number;
+  utility: string; //추후에 어레이로 바뀔 수 있음
+  totalFloor: number;
+  floor: number;
+  structure: string;
+  roomSize: number;
+  startedAt: string;
+  finishedAt: string;
+  tenancyAgreement: boolean;
+  advantage: string; //추후에 어레이로 바뀔 수 있음
+  option: string; //추후에 어레이로 바뀔 수 있음
+}
+
+export interface RoomReviewListTypes { //매물 상세페이지 Review 타입
+  buildingID: string;
+  totalRate: number;
+  cleanRate: number;
+  noiseRate: number;
+  accessRate: number;
+  hostRate: number;
+  facilityRate: number;
+}
+
+export interface MapRoomTypes { //지도상 매물 조회 타입
+
+}
