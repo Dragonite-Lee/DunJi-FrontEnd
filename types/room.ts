@@ -51,7 +51,7 @@ export interface RoomInfoListTypes { //매물 상세페이지 Info 타입
   price: number;
   deposit: number;
   managementCost: number;
-  utility: string; //추후에 어레이로 바뀔 수 있음
+  utility: string;
   totalFloor: number;
   floor: number;
   structure: string;
@@ -59,8 +59,8 @@ export interface RoomInfoListTypes { //매물 상세페이지 Info 타입
   startedAt: string;
   finishedAt: string;
   tenancyAgreement: boolean;
-  advantage: string; //추후에 어레이로 바뀔 수 있음
-  option: string; //추후에 어레이로 바뀔 수 있음
+  advantage: Array<string>;
+  option: Array<string>;
 }
 
 export interface RoomReviewListTypes { //매물 상세페이지 Review 타입

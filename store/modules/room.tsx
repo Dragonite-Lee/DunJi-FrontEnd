@@ -23,7 +23,7 @@ const initialState: RoomState = {
     price: 0,
     deposit: 0,
     managementCost: 0,
-    utility: '', //추후에 어레이로 바뀔 수 있음
+    utility: "", 
     totalFloor: 0,
     floor: 0,
     structure: '',
@@ -31,8 +31,8 @@ const initialState: RoomState = {
     startedAt: '',
     finishedAt: '',
     tenancyAgreement: false,
-    advantage: '', //추후에 어레이로 바뀔 수 있음
-    option: '', //추후에 어레이로 바뀔 수 있음
+    advantage: [], 
+    option: [], 
   },
   RoomReview: {
     buildingID: '',
