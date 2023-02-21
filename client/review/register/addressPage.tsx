@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
-import Map from 'client/reviewRegister/map';
+import Map from 'client/review/register/map';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Period from 'client/reviewRegister/period';
-import SubHeader from 'client/reviewRegister/subHeader';
+import Period from 'client/review/register/period';
+import SubHeader from 'client/review/register/subHeader';
 import PostCode from 'components/daum-postcode/review';
 import BottomNextBtnLayout from 'components/common/BottomNextBtnLayout';
 import {

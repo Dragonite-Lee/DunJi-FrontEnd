@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Header from 'client/reviewRegister/header';
-import ReviewRegister from 'client/reviewRegister/reviewRegisterPage';
-import AddressRegister from 'client/reviewRegister/addressPage';
+import Header from 'client/review/register/header';
+import ReviewRegister from 'client/review/register/reviewRegisterPage';
+import AddressRegister from 'client/review/register/addressPage';
 import { dispatchUserId } from 'store/modules/reviewRegister';
 
 function Register() {
