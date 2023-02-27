@@ -1,82 +1,83 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import {
-  RoomListTypes,
-  RoomInfoListTypes,
-  RoomPostListTypes,
-  RoomReviewListTypes,
-  RoomState,
-} from 'types';
+import { RoomState} from 'types';
 
 const initialState: RoomState = {
-  ROOM_INFO: {},
-  ROOM_REVIEW: {},
-  ROOM_POST: {},
-  ROOM_LIST: {},
-  MAP_ROOM_LIST: {},
-  ROOM_ID: '',
+  RoomInfo: {
+    roomId: '',
+    userNickname: '',
+    longitude: 0,
+    latitude: 0,
+    sigungu: '',
+    dong: '',
+    address: '',
+    addressDetail: '',
+    title: '',
+    content: '',
+    image: [],
+    heartNum: 0,
+    viewCount: 0,
+    regDate: '',
+    roomType: '',
+    dealType: '',
+    priceUnit: '',
+    price: 0,
+    deposit: 0,
+    managementCost: 0,
+    utility: '', //추후에 어레이로 바뀔 수 있음
+    totalFloor: 0,
+    floor: 0,
+    structure: '',
+    roomSize: 0,
+    startedAt: '',
+    finishedAt: '',
+    tenancyAgreement: false,
+    advantage: '', //추후에 어레이로 바뀔 수 있음
+    option: '', //추후에 어레이로 바뀔 수 있음
+  },
+  RoomReview: {
+    buildingID: '',
+    totalRate: 0,
+    cleanRate: 0,
+    noiseRate: 0,
+    accessRate: 0,
+    hostRate: 0,
+    facilityRate: 0,
+  },
+  ReviewDetail:{
+    address: '',
+    totalRate: 0, //평균 total
+    cleanRate: 0,
+    noiseRate: 0,
+    accessRate: 0,
+    hostRate: 0,
+    facilityRate: 0,
+    image: '',
+    list: [],
+  },
+  MAP_ROOM_LIST:{}
 };
-
-type ReviewitemTypes = { [id: string]: RoomReviewListTypes }; //list[id].뭐시기하면 나옴
-type PostitemTypes = { [id: string]: RoomPostListTypes };
-type InfoitemTypes = { [id: string]: RoomInfoListTypes };
-type itemTypes = { [id: string]: RoomListTypes };
 
 const room = createSlice({
   name: 'room',
   initialState,
   reducers: {
-    dispatchRoomReviewList: (state, action) => {
-      const list: ReviewitemTypes = {};
-      for (const item of Object.keys(action.payload)) {
-        const content = action.payload[item];
-        list[item] = content;
-      }
-      state.ROOM_REVIEW = { ...state.ROOM_REVIEW, ...list };
-    },
-    dispatchRoomPostList: (state, action) => {
-      const list: PostitemTypes = {};
-      for (const item of Object.keys(action.payload)) {
-        const content = action.payload[item];
-        list[item] = content;
-      }
-      state.ROOM_POST = { ...state.ROOM_POST, ...list };
-    },
-    dispatchRoomInfoList: (state, action) => {
-      const list: InfoitemTypes = {};
-      for (const item of Object.keys(action.payload)) {
-        const content = action.payload[item];
-        list[item] = content;
-      }
-      state.ROOM_INFO = { ...state.ROOM_INFO, ...list };
-    },
     dispatchRoomList: (state, action) => {
-      const list: itemTypes = {};
-      for (const item of action.payload) {
-        list[item.roomID] = item;
-      }
-      state.ROOM_LIST = { ...state.ROOM_LIST, ...list };
+      state.RoomInfo = action.payload.RoomInfo;
+      state.RoomReview = action.payload.RoomReview;
+    },
+    dispatchReviewDetail: (state, action) => {
+      state.ReviewDetail = action.payload;
     },
     dispatchMapRoomList: (state, action) => {
-      const list: itemTypes = {};
-      for (const item of action.payload.data) {
-        list[item.roomID] = item;
-      }
-      state.MAP_ROOM_LIST = list;
-    },
-    dispatchRoomId: (state, action) => {
-      state.ROOM_ID = action.payload;
+      state.MAP_ROOM_LIST = action.payload;
     },
   },
 });
 
 export const {
-  dispatchRoomReviewList,
-  dispatchRoomPostList,
-  dispatchRoomInfoList,
   dispatchRoomList,
-  dispatchMapRoomList,
-  dispatchRoomId,
+  dispatchReviewDetail,
+  dispatchMapRoomList
 } = room.actions;
 
 export default room.reducer;

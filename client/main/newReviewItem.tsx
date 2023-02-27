@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { NewReviewType } from 'types';
+import { AllReviewType } from 'types';
 
 interface NewReviewItemProps {
-  data: NewReviewType;
+  data: AllReviewType;
 }
 
 function NewReviewItem({ data }: NewReviewItemProps) {

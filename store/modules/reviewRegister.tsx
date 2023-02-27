@@ -1,22 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { ReviewRegisterState } from 'types';
 
 const initialState: ReviewRegisterState = {
   COMPONENT_HANDLER: 0,
   POSTCODE_OPEN: false,
   ADDRESS_OPEN: true,
-  registrant: '',
+  userId: '',
   content: '',
+  sigungu: '',
+  dong: '',
   address: '',
-  detailAddress: '',
+  addressDetail: '',
   total: [],
   totalNum: 0,
-  clean: 3,
-  sound: 3,
-  accessible: 3,
-  landlord: 3,
-  facility: 3,
+  totalUrl: [],
+  clean: '',
+  sound: '',
+  accessible: '',
+  landlord: '',
+  facility: '',
   periodFrom: '',
   periodTo: '',
   Reviewfile: [],
@@ -36,8 +38,8 @@ const reviewRegister = createSlice({
     dispatchAddressOpen: (state, action) => {
       state.ADDRESS_OPEN = action.payload;
     },
-    dispatchRegistrant: (state, action) => {
-      state.registrant = action.payload;
+    dispatchUserId: (state, action) => {
+      state.userId = action.payload;
     },
     dispatchContent: (state, action) => {
       state.content = action.payload;
@@ -45,14 +47,17 @@ const reviewRegister = createSlice({
     dispatchMainAddress: (state, action) => {
       state.address = action.payload;
     },
-    dispatchDetailAddress: (state, action) => {
-      state.detailAddress = action.payload;
+    dispatchAddressDetail : (state, action) => {
+      state.addressDetail  = action.payload;
     },
     dispatchTotal: (state, action) => {
       state.total = action.payload;
     },
     dispatchTotalNum: (state, action) => {
       state.totalNum = action.payload;
+    },
+    dispatchTotalUrl: (state, action) => {
+      state.totalUrl = action.payload;
     },
     dispatchClean: (state, action) => {
       state.clean = action.payload;
@@ -79,7 +84,7 @@ const reviewRegister = createSlice({
       state.Reviewfile = action.payload;
     },
     dispatchFileUrl: (state, action) => {
-      state.ReviewfileUrl = action.payload;
+      state.ReviewfileUrl = [...action.payload];
     },
   },
 });
@@ -88,12 +93,13 @@ export const {
   componentHandle,
   dispatchPostCodeOpen,
   dispatchAddressOpen,
-  dispatchRegistrant,
+  dispatchUserId,
   dispatchContent,
   dispatchMainAddress,
-  dispatchDetailAddress,
+  dispatchAddressDetail,
   dispatchTotal,
   dispatchTotalNum,
+  dispatchTotalUrl,
   dispatchClean,
   dispatchSound,
   dispatchAccessible,

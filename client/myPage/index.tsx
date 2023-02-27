@@ -1,6 +1,6 @@
-import Content from 'client/myPage/index/content';
-import Profile from 'client/myPage/index/Profile';
-import SquareZone from 'client/myPage/index/squareZone';
+import Content from 'client/myPage/content';
+import Profile from 'client/myPage/profile';
+import SquareZone from 'client/myPage/squareZone';
 import Header from 'components/layout/Header';
 import TabBar from 'components/main/TabBar';
 

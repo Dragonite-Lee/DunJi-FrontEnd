@@ -1,7 +1,7 @@
-import Script from 'next/script';
-
 import { useSelector } from 'react-redux';
+import Script from 'next/script';
 import { RootState } from 'types';
+
 
 declare global {
   interface Window {
@@ -9,14 +9,14 @@ declare global {
   }
 }
 function Map() {
-  const { address } = useSelector((state: RootState) => state.reviewRegister);
-
+  
+  const reviewRegister = useSelector((state: RootState) => state.reviewRegister);
   const onLoadKakaoMap = () => {
     window.kakao.maps.load(() => {
       const container = document.getElementById('map');
 
       const geocoder = new window.kakao.maps.services.Geocoder();
-      geocoder.addressSearch(address, function (result: any, status: string) {
+      geocoder.addressSearch(reviewRegister.address, function (result: any, status: string) {
         if (status === window.kakao.maps.services.Status.OK) {
           const longitude = result[0].x; // 경도
           const latitude = result[0].y; //위도

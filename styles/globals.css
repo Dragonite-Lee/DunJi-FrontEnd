@@ -1,9 +1,9 @@
 @tailwind base;
 html {
-  -webkit-tap-highlight-color: transparent;
-  background-color: white;
-  /* font-family: NotoSansKR; */
-  min-width: 375px;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #f9f9f9;
+    /* font-family: NotoSansKR; */
+    min-width: 375px;
 }
 body {
   overscroll-behavior-y: none;

@@ -58,6 +58,10 @@ export const mapApi = {
       },
     }),
 
-  getRoomDetail: (ROOMID: string | string[] | undefined) =>
-    api.get('/room/detail', { params: { RoomID: ROOMID } }),
-};
+
+    getRoomDetail: (ROOMID: string | string[] | undefined) =>
+        api.get("/room", { params: { roomId : ROOMID } }),
+
+    getReviewDetail: (BUILDINGID: string | string[] | undefined) =>
+        api.get("/review", {params: {buildingId : BUILDINGID} }),
+}

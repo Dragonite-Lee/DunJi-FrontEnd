@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { mainApi } from '_api/main';
 import NewReviewItem from 'client/main/newReviewItem';
 import { dispatchNewReview } from 'store/modules/main';
-import { NewReviewType, RootState } from 'types';
+import { AllReviewType, RootState } from 'types';
 
 function NewReview() {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ function NewReview() {
         </Link>
       </div>
       <div className="pt-[14px] h-full flex overflow-x-hidden overflow-y-auto">
-        {newReview.map((data: NewReviewType, index: number) => (
+        {newReview.map((data: AllReviewType, index: number) => (
           <NewReviewItem key={index} data={data} />
         ))}
       </div>

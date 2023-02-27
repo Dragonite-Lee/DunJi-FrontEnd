@@ -37,6 +37,7 @@ module.exports = {
         red: '#FF9240',
         slide: '#0000004D',
         kakao: '#FAE100',
+        rate_bar: '#3F3C3A',
       },
       fontFamily: {
         sans: ['SegoeUI'],

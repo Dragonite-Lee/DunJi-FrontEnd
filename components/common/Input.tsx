@@ -1,7 +1,7 @@
 type propsType = {
   value: any;
   placeHolder: string;
-  setValue: Function;
+  setValue: (value: string) => void;
   unit: string;
 };
 

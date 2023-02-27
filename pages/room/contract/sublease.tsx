@@ -1,5 +1,4 @@
-import Sublease from 'client/pages/room/contract/sublease';
-
+import Sublease from 'client/room/contract/sublease';
 
 function SubleasePage() {
   return <Sublease />;

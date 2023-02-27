@@ -12,7 +12,7 @@ function Header() {
   // 모달창 열림 상태 (더보기창, 신고사유 선택창)
   const [isMoreModalOpen, handleMoreModalOpenToggle] = useToggle();
   const [isReportModalOpen, handleReportModalOpenToggle] = useToggle();
-
+  
   /** 뒤로가기 버튼 */
   const backBtnHandler = useCallback(() => {
     router.push('/chat');

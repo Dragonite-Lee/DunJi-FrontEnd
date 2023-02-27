@@ -16,7 +16,7 @@ function RoomType() {
     dispatchRoomType,
     roomType,
   );
-
+    
   return (
     <>
       <div className="pt-[30px] text-[17px] Pretendard-SemiBold">방 종류</div>
