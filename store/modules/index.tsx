@@ -9,6 +9,7 @@ import {
   ReviewRegisterState,
   RoomRegisterState,
   RoomState,
+  SignupState,
   TabState,
 } from 'types';
 import mapFilter from './filter';
@@ -18,6 +19,7 @@ import main from './main';
 import reviewRegister from './reviewRegister';
 import room from './room';
 import roomRegister from './roomRegister';
+import signup from './signup';
 import tab from './tab';
 
 const rootReducer = (state: any, action: any) => {
@@ -33,6 +35,7 @@ const rootReducer = (state: any, action: any) => {
         reviewRegister,
         room,
         roomRegister,
+        signup,
         tab,
       })(state, action);
     }
@@ -47,6 +50,7 @@ export type RootState = {
   reviewRegister: ReviewRegisterState;
   room: RoomState;
   roomRegister: RoomRegisterState;
+  signup: SignupState;
   tab: TabState;
 };
 
