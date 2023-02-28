@@ -108,11 +108,11 @@ function PolicyReg() {
     );
   }, [policyAge, policyCollectionAndUsage, policyOfferings, policyService]);
 
-  // TODO: 체크박스 디자인 수정, 약관 상세정보 확인 url 수정
+  // TODO: 체크박스 디자인 수정, 약관 상세정보 확인 url 수정, 헤더(뒤로가기 버튼) 추가
   return (
     <div className="h-screen bg-background_beige sm:w-[375px] sm:m-auto">
       <div className="h-[100%] flex flex-col">
-        <Header />
+        {/* <Header /> */}
         <div className="flex flex-col flex-auto text-center justify-center space-y-[6px]">
           <div className="Pretendard-SemiBold text-[28px]">환영합니다!</div>
           <div className="Pretendard-SemiBold text-[16px]">
