@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { NewReviewType } from 'types';
+import { AllReviewType } from 'types';
 
 interface NewReviewItemProps {
-  data: NewReviewType;
+  data: AllReviewType;
 }
 
 function NewReviewItem({ data }: NewReviewItemProps) {
@@ -29,7 +29,7 @@ function NewReviewItem({ data }: NewReviewItemProps) {
         <div>
           {/* *이미지칸 */}
           <Image
-            src={require('../../assets/icon/main/main_char.png')}
+            src={require('assets/icon/main/main_char.png')}
             layout="fixed"
             objectFit="fill"
             width={77}

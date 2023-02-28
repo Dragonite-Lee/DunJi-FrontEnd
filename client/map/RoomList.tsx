@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { useQuery } from 'react-query';
 
-import { mapApi } from '_api';
+import { mapApi } from '_api/room';
 import Popup from './Popup';
 import RoomListHeader from './RoomListHeader';
 import RoomListYSlider from './RoomListYSlider';

@@ -11,6 +11,7 @@ function SquareZoneItem({ image, content, path }: SquareZoneItemProps) {
   const handleMove = () => {
     Router.push(path);
   };
+
   return (
     <div className="h-[83px] flex items-center justify-center text-[17px] Pretendard-SemiBold bg-white py-[30px] rounded-standard_rounded">
       <Image src={image} width={35} height={35} alt={content} />

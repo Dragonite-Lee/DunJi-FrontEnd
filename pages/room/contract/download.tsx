@@ -1,5 +1,4 @@
-import Download from 'client/pages/room/contract/download';
-
+import Download from 'client/room/contract/download';
 
 function DownloadPage() {
   return <Download />;

@@ -1,22 +1,21 @@
 import Image from 'next/image';
-
 import { useDispatch, useSelector } from 'react-redux';
+import { useCallback } from 'react';
 import { dispatchFile, dispatchFileUrl } from 'store/modules/reviewRegister';
 import { RootState } from 'types';
 
 function ReviewImg() {
   const dispatch = useDispatch();
-
-  const { ReviewfileUrl } = useSelector(
-    (state: RootState) => state.reviewRegister,
-  );
-
+  
+  const {ReviewfileUrl} = useSelector((state: RootState) => state.reviewRegister);
+  
   //이미지 상대경로로 저장
   let file: any;
   const imageUrlLists: any = [];
   const imageShowLists: (string | ArrayBuffer | null)[] = [];
+  const url: any = [];
 
-  const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddImages = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const imageLists = e.target.files;
 
     if (imageLists instanceof FileList) {
@@ -35,19 +34,17 @@ function ReviewImg() {
         reader.readAsDataURL(file);
       }
     }
-
     dispatch(dispatchFile(imageUrlLists));
-  };
-
-  const url: any = [];
+  },[imageUrlLists, imageShowLists]);
 
   if (ReviewfileUrl.length) {
     for (let i = 0; i < ReviewfileUrl.length; i++) {
       url.push(ReviewfileUrl[i]);
-    }
-  }
 
-  const map_result = url.map(function (image: any, index: any) {
+    }
+  };
+
+  const map_result = url.map((image: any, index: any) => {
     return (
       <div className="w-[100px] h-[80px] mr-[8px]" key={index}>
         {image ? (
@@ -68,7 +65,7 @@ function ReviewImg() {
             width={100}
             height={80}
             alt="채팅메뉴앨범"
-            src={require('../../../assets/icon/채팅메뉴_앨범.svg')}
+            src={require('assets/icon/채팅메뉴_앨범.svg')}
           />
         )}
       </div>
@@ -85,12 +82,12 @@ function ReviewImg() {
                 className="Pretendard-Regular text-[12px] text-center text-font_gray w-[80px] h-[80px] items-center justify-center"
                 htmlFor="image-upload-review"
               >
-                {/* <FontAwesomeIcon icon="plus" /> */}
-                <Image
+              {/* <FontAwesomeIcon icon="plus" /> */}
+              <Image
                   width={50}
                   height={50}
                   alt="사진로고"
-                  src={require('../../../assets/icon/채팅메뉴_앨범.svg')}
+                  src={require('assets/icon/채팅메뉴_앨범.svg')}
                 />
                 <div>사진 선택</div>
               </label>
@@ -118,7 +115,7 @@ function ReviewImg() {
                 width={50}
                 height={50}
                 alt="사진로고"
-                src={require('../../../assets/icon/채팅메뉴_앨범.svg')}
+                src={require('assets/icon/채팅메뉴_앨범.svg')}
               />
               <div>사진 선택</div>
             </label>

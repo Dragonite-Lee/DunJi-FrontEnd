@@ -2,28 +2,29 @@ export type MainState = {
   SEARCHMODAL_OPEN: boolean;
   SEARCHRESULT: any[];
   SLIDEBOX: any[];
-  newRoom: NewRoomType[];
-  newReview: NewReviewType[];
+  newRoom: AllRoomType[];
+  newReview: AllReviewType[];
 };
 
-export type NewRoomType = {
-  address: any;
-  dealType: string;
-  deposit: number;
-  floor: string;
-  image: any;
-  latitude: number;
+export type AllRoomType = { //모든 매물 목록
+  roomId: string;
   longitude: number;
-  price: number;
+  latitude: number;
+  sigungu: string;
+  dong: string;
   priceUnit: string;
-  recommend: number;
-  roomID: any;
-  roomSize: number;
+  price: number;
+  deposit: number;
   roomType: string;
-  struct: string;
+  dealType: string;
+  structure: string;
+  floor: number;
+  roomSize: number;
+  heartNum: number;
+  image: string;
 };
 
-export type NewReviewType = {
+export type AllReviewType = { //모든 후기 목록
   address: string;
   regDate: number;
   registrant: number;

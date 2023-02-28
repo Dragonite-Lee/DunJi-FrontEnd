@@ -55,12 +55,12 @@ function PostModal() {
                 {imageHover1 ? (
                   <Image
                     alt="채팅로고"
-                    src={require('../../assets/icon/채팅메뉴_작성_활성화.svg')}
+                    src={require('assets/icon/채팅메뉴_작성_활성화.svg')}
                   />
                 ) : (
                   <Image
                     alt="채팅로고"
-                    src={require('../../assets/icon/채팅메뉴_작성.svg')}
+                    src={require('assets/icon/채팅메뉴_작성.svg')}
                   />
                 )}
               </div>
@@ -80,12 +80,12 @@ function PostModal() {
                 {imageHover2 ? (
                   <Image
                     alt="채팅로고"
-                    src={require('../../assets/icon/채팅메뉴_작성_활성화.svg')}
+                    src={require('assets/icon/채팅메뉴_작성_활성화.svg')}
                   />
                 ) : (
                   <Image
                     alt="채팅로고"
-                    src={require('../../assets/icon/채팅메뉴_작성.svg')}
+                    src={require('assets/icon/채팅메뉴_작성.svg')}
                   />
                 )}
               </div>

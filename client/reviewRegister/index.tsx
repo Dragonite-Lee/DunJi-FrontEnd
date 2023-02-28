@@ -1,16 +1,19 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import AddressRegister from 'client/reviewRegister/addressPage';
-import BottomNextBtn from 'client/reviewRegister/bottomNextBtn';
 import Header from 'client/reviewRegister/header';
 import ReviewRegister from 'client/reviewRegister/reviewRegisterPage';
-import { dispatchRegistrant } from 'store/modules/reviewRegister';
+import AddressRegister from 'client/reviewRegister/addressPage';
+import { dispatchUserId } from 'store/modules/reviewRegister';
 
 function Register() {
   const dispatch = useDispatch();
 
-  const localStorageGetUserID = useCallback(() => {
-    dispatch(dispatchRegistrant(localStorage.getItem('userId')));
+  function localStorageGetUserID()  {
+    dispatch(dispatchUserId(localStorage.getItem('userId')));
+  }
+
+  useEffect(() => {
+    localStorageGetUserID();
   }, [dispatch]);
 
   useEffect(() => {
@@ -22,7 +25,6 @@ function Register() {
       <Header />
       <AddressRegister />
       <ReviewRegister />
-      <BottomNextBtn />
     </div>
   );
 }

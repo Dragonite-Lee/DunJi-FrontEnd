@@ -1,10 +1,9 @@
 import Image from 'next/image';
-
-import { NewRoomType } from 'types';
+import { AllRoomType } from 'types';
 import convertRoomSize from 'utils/convertRoomSize';
 
 interface NewRoomItemProps {
-  data: NewRoomType;
+  data: AllRoomType;
 }
 
 function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
@@ -13,7 +12,7 @@ function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
       <div>
         {/* *이미지칸 */}
         <Image
-          src={require('../../assets/icon/main/main_char.png')}
+          src={require('assets/icon/main/main_char.png')}
           layout="fixed"
           objectFit="fill"
           width={140}
@@ -26,10 +25,10 @@ function NewRoomItem({ data }: NewRoomItemProps): JSX.Element {
           {data.priceUnit}세 {data.deposit} / {data.price}
         </div>
         <div className="pt-[4px] text-[12px] Pretendard-Regular">
-          {data.address}
+          {data.sigungu}
         </div>
         <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
-          {data.struct} {data.roomType}, {data.floor}층
+          {data.structure} {data.roomType}, {data.floor}층
         </div>
         <div className="pt-[2px] text-font_gray text-[14px] Pretendard-Regular">
           {data.roomSize}m<sup>2</sup> / {convertRoomSize(data.roomSize)}평

@@ -1,12 +1,13 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useToggle from 'hooks/useToggle';
 
 function ContractContent() {
-  const [openModal1, setopenModal1] = useState(false);
-  const [openModal2, setopenModal2] = useState(false);
-  const [openModal3, setopenModal3] = useState(false);
-  const [openModal4, setopenModal4] = useState(false);
+
+  const [openModal1, handleOpenModal1] = useToggle();
+  const [openModal2, handleOpenModal2] = useToggle();
+  const [openModal3, handleOpenModal3] = useToggle();
+  const [openModal4, handleOpenModal4] = useToggle();
 
   return (
     <div className="h-full px-[18px]">
@@ -16,16 +17,12 @@ function ContractContent() {
         {openModal1 === true ? (
           <FontAwesomeIcon
             icon="chevron-up"
-            onClick={() => {
-              setopenModal1(!openModal1);
-            }}
+            onClick={handleOpenModal1}
           />
         ) : (
           <FontAwesomeIcon
             icon="chevron-down"
-            onClick={() => {
-              setopenModal1(!openModal1);
-            }}
+            onClick={handleOpenModal1}
           />
         )}
       </div>
@@ -72,16 +69,12 @@ function ContractContent() {
         {openModal2 === true ? (
           <FontAwesomeIcon
             icon="chevron-up"
-            onClick={() => {
-              setopenModal2(!openModal2);
-            }}
+            onClick={handleOpenModal2}
           />
         ) : (
           <FontAwesomeIcon
             icon="chevron-down"
-            onClick={() => {
-              setopenModal2(!openModal2);
-            }}
+            onClick={handleOpenModal2}
           />
         )}
       </div>
@@ -107,16 +100,12 @@ function ContractContent() {
         {openModal3 === true ? (
           <FontAwesomeIcon
             icon="chevron-up"
-            onClick={() => {
-              setopenModal3(!openModal3);
-            }}
+            onClick={handleOpenModal3}
           />
         ) : (
           <FontAwesomeIcon
             icon="chevron-down"
-            onClick={() => {
-              setopenModal3(!openModal3);
-            }}
+            onClick={handleOpenModal3}
           />
         )}
       </div>
@@ -139,16 +128,12 @@ function ContractContent() {
         {openModal4 === true ? (
           <FontAwesomeIcon
             icon="chevron-up"
-            onClick={() => {
-              setopenModal4(!openModal4);
-            }}
+            onClick={handleOpenModal4}
           />
         ) : (
           <FontAwesomeIcon
             icon="chevron-down"
-            onClick={() => {
-              setopenModal4(!openModal4);
-            }}
+            onClick={handleOpenModal4}
           />
         )}
       </div>

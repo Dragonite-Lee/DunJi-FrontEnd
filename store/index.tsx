@@ -13,7 +13,7 @@ const makeStore = () => {
     ? configureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) =>
-          getDefaultMiddleware().concat(logger),
+          getDefaultMiddleware({serializableCheck: false}).concat(logger),
         devTools: isDev,
       })
     : configureStore({

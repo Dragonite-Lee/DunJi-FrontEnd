@@ -7,7 +7,7 @@ import InputSelectBox from 'components/common/InputSelectBox';
 import useDuplicateSelect from 'hooks/useDuplicateSelect';
 import {
   dispatchManage,
-  dispatchManageCost,
+  dispatchManagementCost,
   dispatchManageSelect,
 } from 'store/modules/roomRegister';
 import { RootState } from 'types';
@@ -15,14 +15,14 @@ import { RootState } from 'types';
 function Price() {
   const dispatch = useDispatch();
 
-  const { manageSelect, manageCost, manage } = useSelector(
+  const { utility, managementCost, manage } = useSelector(
     (state: RootState) => state.roomRegister,
   );
 
   const typeArr = useMemo(() => ['전기세', '가스', '수도', '인터넷', 'TV'], []);
 
   const [checkHandler, resetHandler] = useDuplicateSelect(
-    manageSelect,
+    utility,
     typeArr,
     dispatchManageSelect,
   );
@@ -30,9 +30,9 @@ function Price() {
   const feeHandler = (value: string) => {
     const num = Number(value);
     if (manage === 1) {
-      if (num === 0) dispatch(dispatchManageCost(''));
+      if (num === 0) dispatch(dispatchManagementCost(''));
       else {
-        dispatch(dispatchManageCost(num));
+        dispatch(dispatchManagementCost(num));
       }
     }
   };
@@ -41,11 +41,11 @@ function Price() {
     if (manage === 0) dispatch(dispatchManage(1));
     else {
       dispatch(dispatchManage(0));
-      dispatch(dispatchManageCost(''));
+      dispatch(dispatchManagementCost(''));
       resetHandler();
     }
   };
-
+  
   return (
     <>
       <CategoryHeader title="관리비" />
@@ -55,7 +55,7 @@ function Price() {
             type="number"
             className="bg-white  w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-font_gray outline-0"
             placeholder="관리비"
-            value={manageCost}
+            value={managementCost}
             onChange={(e) => {
               feeHandler(e.target.value);
             }}
@@ -79,7 +79,7 @@ function Price() {
           <DuplicateSelectBtn
             key={index}
             value={item}
-            check={manageSelect[index]}
+            check={utility[index]}
             index={index}
             checkHandler={checkHandler}
             blockCheck={manage}

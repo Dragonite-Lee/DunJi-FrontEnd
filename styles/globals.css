@@ -1,13 +1,12 @@
 @tailwind base;
 html {
-    font-size: 62.5%;
     -webkit-tap-highlight-color: transparent;
-    background-color: white;
+    background-color: #f9f9f9;
     /* font-family: NotoSansKR; */
     min-width: 375px;
 }
 body {
-    overscroll-behavior-y: none;
+  overscroll-behavior-y: none;
 }
 
 @tailwind components;
@@ -16,11 +15,11 @@ body {
 .root,
 #root,
 #docs-root {
-    --vh: 100%;
+  --vh: 100%;
 }
 
 @layer base {
-    /* @font-face {
+  /* @font-face {
         font-family: "SegoeUI";
         src: local("SegoeUI"), url("../fonts/SegoeUI.ttf") format("truetype");
         font-display: swap;
@@ -39,44 +38,45 @@ body {
             url("../fonts/NotoSansKR-Medium.otf") format("truetype");
         font-display: swap;
     } */
-    @font-face {
-        font-family: 'Pretendard-SemiBold';
-        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-        font-weight: 600;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff')
+      format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
 
-    @font-face {
-        font-family: 'Pretendard-Regular';
-        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-        font-weight: 400;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: 'Pretendard-Bold';
-        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: 'Pretendard-ExtraBold';
-        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
-        font-weight: 800;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+      format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+      format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Pretendard-ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff')
+      format('woff');
+    font-weight: 800;
+    font-style: normal;
+  }
 }
 .Pretendard-SemiBold {
-    font-family: "Pretendard-SemiBold";
-    
+  font-family: 'Pretendard-SemiBold';
 }
 .Pretendard-Regular {
-    font-family: "Pretendard-Regular";
+  font-family: 'Pretendard-Regular';
 }
 .Pretendard-Bold {
-    font-family: "Pretendard-Bold";
+  font-family: 'Pretendard-Bold';
 }
 .Pretendard-ExtraBold {
-    font-family: "Pretendard-ExtraBold";
+  font-family: 'Pretendard-ExtraBold';
 }
-
-

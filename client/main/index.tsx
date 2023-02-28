@@ -15,15 +15,15 @@ function Home() {
       userID = localStorage.getItem('userId');
       userNickname = localStorage.getItem('userNickname');
     }
-  }
+  };
   const searchClickHandler = () => {
     sessionStorage.clear();
     sessionStorage.setItem('search', 'true');
   };
 
-  useEffect(()=>{
-    getUserProfile()
-  },[])
+  useEffect(() => {
+    getUserProfile();
+  }, []);
 
   return (
     <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">

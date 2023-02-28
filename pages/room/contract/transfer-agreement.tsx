@@ -1,5 +1,4 @@
-import TransferAgreement from 'client/pages/room/contract/transfer-agreement';
-
+import TransferAgreement from 'client/room/contract/transfer-agreement';
 
 function TransferAgreementPage() {
   return <TransferAgreement />;

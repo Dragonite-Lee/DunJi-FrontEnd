@@ -27,7 +27,7 @@ function Mypage() {
           width={30}
           height={30}
           alt="마이로고"
-          src={require('../../../assets/icon/main/tabBar/메뉴바_마이_활성화.svg')}
+          src={require('assets/icon/main/tabBar/메뉴바_마이_활성화.svg')}
           onLoad={() => {
             localStorage.clear();
             localStorage.setItem('mypage', 'true');
@@ -41,7 +41,7 @@ function Mypage() {
               width={30}
               height={30}
               alt="마이로고"
-              src={require('../../../assets/icon/main/tabBar/메뉴바_마이_비활성화.svg')}
+              src={require('assets/icon/main/tabBar/메뉴바_마이_비활성화.svg')}
             />
           </a>
         </Link>

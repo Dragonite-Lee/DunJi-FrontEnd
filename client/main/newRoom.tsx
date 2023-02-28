@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { mainApi } from '_api/main';
 import NewRoomItem from 'client/main/newRoom-item';
 import { dispatchNewRoom } from 'store/modules/main';
-import { NewRoomType, RootState } from 'types';
+import { AllRoomType, RootState } from 'types';
 
 function NewRoom() {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function NewRoom() {
         </Link>
       </div>
       <div className="pt-[14px] h-full flex overflow-x-auto overflow-y-hidden">
-        {newRoom.map((newRoomData: NewRoomType, index: number) => (
+        {newRoom.map((newRoomData: AllRoomType, index: number) => (
           <NewRoomItem key={index} data={newRoomData} />
         ))}
       </div>

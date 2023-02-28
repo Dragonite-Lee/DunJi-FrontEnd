@@ -16,7 +16,7 @@ export default function useNoDuplicateSelect(
     const arr = Array.from({ length }, () => false);
     if (reduxValue === '') return arr;
     else {
-      const index = typeArr.indexOf(reduxValue);
+      const index = typeArr.indexOf(String(reduxValue));
       arr[index] = true;
       return arr;
     }
