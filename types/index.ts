@@ -5,6 +5,7 @@ export * from './main';
 export * from './reveiwRegister';
 export * from './room';
 export * from './roomRegister';
+export * from './signup';
 export * from './tab';
 
 export type { RootState } from 'store/modules';
