@@ -15,14 +15,14 @@ function ReviewContent({ explain, regDate }: ReviewContentProps) {
         onClick={handlerOpen}
         className={`${open && `border-b border-border_color`}`}
       >
-        <div className=" h-20 flex justify-between items-center px-[18px]">
+        <div className=" h-16 flex justify-between items-center px-[18px]">
           <div>
             <div className="text-[17px] Pretendard-SemiBold">둥지냉면</div>
             <div className="flex gap-1 text-font_gray text-[14px] Pretendard-Regular">
               {regDate && regDate.slice(0, -9)}
             </div>
           </div>
-          <div className={`ml-auto w-10 h-12 relative ${open && 'rotate-180'}`}>
+          <div className={`ml-auto w-8 h-8 relative ${open && 'rotate-180'}`}>
             <Image
               src={require('assets/icon/화살표_펼치기.svg')}
               alt="arrow"

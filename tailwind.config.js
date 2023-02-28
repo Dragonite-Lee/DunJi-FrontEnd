@@ -75,8 +75,8 @@ module.exports = {
         '80vh': '80vh',
         '90vh': '90vh',
         '100vh': '100vh',
-        room_register_btn_height1: '3.5rem',
-        room_register_btn_height2: '4.5rem',
+        room_register_btn_height1: '2.3rem',
+        room_register_btn_height2: '3rem',
         map_room_list_height: '25rem',
         nav_height: '5rem',
         map_header_height: '11rem',
@@ -92,7 +92,7 @@ module.exports = {
       },
       borderRadius: {
         middle: '40px 40px 40px 40px',
-        standard_rounded: '0.9rem',
+        standard_rounded: '0.8rem',
       },
       // animation: {
       //     "room-list-up": "room-list-up-key 0.3s linear reverse",

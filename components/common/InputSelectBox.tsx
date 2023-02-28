@@ -15,7 +15,7 @@ export default function InputSelectBox({
     <div className="flex justify-end gap-2 items-center text-[15px]">
       <label
         htmlFor="noFee"
-        className={`inline-block before:content-[''] w-[1.6rem] h-[1.6rem] border  border-black mr-2  algin-middle  rounded-[0.3rem] text-center  ${
+        className={`inline-block before:content-[''] w-[1rem] h-[1rem] border  border-black algin-middle  rounded-[0.2rem] text-center  ${
           (converse ? check === 0 : check === 1) &&
           "before:content-['✔️']  bg-font_gray border-0"
         }`}

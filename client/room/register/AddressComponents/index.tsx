@@ -65,11 +65,11 @@ function AddressRegister() {
                       <span className="text-main">*</span>
                     </div>
                     <div className="flex flex-col contents-center bg-component_white   rounded-2xl overflow-hidden">
-                      <div className="p-4 border-b border-border_color text-[15px] Pretendard-Regular">
+                      <div className="p-3 border-b border-border_color text-[15px] Pretendard-Regular">
                         {address}
                       </div>
                       <input
-                        className="p-4 h-full w-full bg-transparent outline-0 placeholder:text-font_gray text-[15px] Pretendard-Regular"
+                        className="p-3 h-full w-full bg-transparent outline-0 placeholder:text-font_gray text-[15px] Pretendard-Regular"
                         type="text"
                         value={addressDetail}
                         onChange={(e) => getAddress(e)}

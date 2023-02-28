@@ -13,7 +13,7 @@ function BottomSubmitBtnLayout({
     <div>
       {state ? (
         <div
-          className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+          className="sm:w-[375px] Pretendard-SemiBold sm:m-auto bg-main absolute bottom-0 w-screen flex flex-col items-center h-20 justify-around"
           onClick={onClick}
         >
           <div className="text-[17px] text-white">{content}</div>
@@ -21,7 +21,7 @@ function BottomSubmitBtnLayout({
         </div>
       ) : (
         <div
-          className="min-w-[375px] sm:w-[375px] sm:m-auto bg-font_gray fixed bottom-0 w-screen flex flex-col items-center h-[8rem] justify-around"
+          className="min-w-[375px] sm:w-[375px] sm:m-auto bg-font_gray fixed bottom-0 w-screen flex flex-col items-center h-20 justify-around"
           onClick={onClick}
         >
           <div className="text-[17px] Pretendard-SemiBold text-white">
