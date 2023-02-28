@@ -4,9 +4,9 @@ import errorIcon from 'assets/icon/error_basic.png';
 import ResultContainer from 'client/myPage/index/Inquiry/ResultContainer';
 import Alert from 'components/common/Alert';
 import useToggle from 'hooks/useToggle';
-import { RoomInfoType } from 'types';
+import { AllRoomType } from 'types';
 
-const DUMMY: RoomInfoType[] = [
+const DUMMY: AllRoomType[] = [
   {
     roomId: '8L72IJCK',
     latitude: 35.45049592,
@@ -19,7 +19,7 @@ const DUMMY: RoomInfoType[] = [
     roomType: '원룸',
     dealType: '단기임대',
     structure: '오픈형',
-    floor: '2',
+    floor: 2,
     roomSize: 25,
     heartNum: 2,
     image: 'assets/images/room2.png',
@@ -30,7 +30,7 @@ function Inquiry() {
   const [input, setInput] = useState('');
   const isValidSaleNumber = validSaleNumber(input);
   const [isAlertOn, handleAlert] = useToggle();
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState<AllRoomType[]>([]);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };

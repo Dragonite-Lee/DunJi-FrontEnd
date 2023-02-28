@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Card from 'client/myPage/Card';
 import EmptyLike from 'client/myPage/EmptyLike';
 import ToggleNav from 'components/common/ToggleNav';
-import { RoomInfoType } from 'types';
+import { AllRoomType } from 'types';
 
 const NAV = [
   {
@@ -15,7 +15,7 @@ const NAV = [
   },
 ];
 
-const DUMMY: RoomInfoType[] = [
+const DUMMY: AllRoomType[] = [
   {
     roomId: '8L72IJCK',
     latitude: 35.45049592,
@@ -28,7 +28,7 @@ const DUMMY: RoomInfoType[] = [
     roomType: '원룸',
     dealType: '단기임대',
     structure: '오픈형',
-    floor: '2',
+    floor: 2,
     roomSize: 25,
     heartNum: 2,
     image: 'assets/images/room2.png',
@@ -36,7 +36,7 @@ const DUMMY: RoomInfoType[] = [
 ];
 
 function Sale() {
-  const [list, setList] = useState<RoomInfoType[]>([]);
+  const [list, setList] = useState<AllRoomType[]>([]);
 
   return (
     <>

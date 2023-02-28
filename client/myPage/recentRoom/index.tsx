@@ -2,9 +2,9 @@ import { useState } from 'react';
 import Card from 'client/myPage/Card';
 import EmptyLike from 'client/myPage/EmptyLike';
 import Header from 'components/layout/Header';
-import { RoomInfoType } from 'types';
+import { AllRoomType } from 'types';
 
-const DUMMY: RoomInfoType[] = [
+const DUMMY: AllRoomType[] = [
   {
     roomId: '8L72IJCK',
     latitude: 35.45049592,
@@ -17,7 +17,7 @@ const DUMMY: RoomInfoType[] = [
     roomType: '원룸',
     dealType: '단기임대',
     structure: '오픈형',
-    floor: '2',
+    floor: 2,
     roomSize: 25,
     heartNum: 2,
     image: 'assets/images/room2.png',
@@ -25,7 +25,7 @@ const DUMMY: RoomInfoType[] = [
 ];
 
 function RecentRoom() {
-  const [list, setList] = useState<RoomInfoType[]>(DUMMY);
+  const [list, setList] = useState<AllRoomType[]>(DUMMY);
   return (
     <div className="bg-background_beige h-full min-h-[100vh] sm:w-[375px] sm:m-auto flex flex-col">
       <Header title="최근 본 매물" />

@@ -4,6 +4,7 @@ interface ToastProps {
   content: string;
   handleClose: () => void;
 }
+
 function Toast({ content, handleClose }: ToastProps) {
   const innerContent = content
     .split('\n')

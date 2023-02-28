@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { RoomInfoType } from 'types';
+import { AllRoomType } from 'types';
 
-interface CardProps extends RoomInfoType {
+interface CardProps extends AllRoomType {
   isTransfer?: boolean;
 }
 function Card({

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { testApi } from '_api';
 import { chatApi } from '_api/chat';
 import ChatItem from 'client/chat/list/ChatItem';
 import ChatListNav from 'client/chat/list/Nav';
