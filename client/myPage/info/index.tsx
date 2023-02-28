@@ -26,13 +26,13 @@ function Info({ nickname, email, phone, school }: InfoProps) {
           className="rounded-[50px]"
         />
         <div className="absolute bottom-2 right-1 bg-white rounded-[50px] border-[#E3E2E0] w-[30px] h-[30px]">
-          <Image
+          {/* <Image
             src={require('assets/icon/채팅메뉴_앨범.svg')}
             width={20}
             height={28}
             alt="카메라"
             className="rounded-[50px]"
-          />
+          /> */}
         </div>
       </div>
       <div className="w-full bg-white rounded-[10px] overflow-hidden">
