@@ -1,12 +1,32 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import TabBar from 'components/main/TabBar';
+import { chatApi } from '_api/chat';
+import ChatList from 'client/chat/list';
 
-export default function Chat() {
-  return (
-    <div className="bg-background_beige h-screen sm:w-[375px] sm:m-auto">
-      <TabBar />
-      Chat 개발중
-    </div>
-  );
+interface ChatListPageProps {
+  list: {
+    chatRoomId: string;
+    opponentName: string;
+  }[];
+  error?: boolean;
 }
+function ChatListPage({ list }: ChatListPageProps) {
+  console.log('list: ', list);
+  return <ChatList />;
+}
+
+export async function getServerSideProps() {
+  try {
+    const res = await chatApi.seek();
+    console.log('res: ', res);
+
+    return {
+      props: { list: res?.data || [] },
+    };
+  } catch (e) {
+    console.log('e: ', e);
+    return {
+      props: { list: [], error: true },
+    };
+  }
+}
+
+export default ChatListPage;

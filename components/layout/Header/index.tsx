@@ -13,7 +13,7 @@ function Header({ title, rightElement, subElement, backAction }: HeaderProps) {
   const goBack = useGoBack();
 
   return (
-    <header className="flex w-screen justify-between px-[18px] bg-background_beige py-4  h-24 items-center text-xl  border-b min-w-[375px] sm:w-[375px]">
+    <header className="flex  justify-between px-[18px] bg-background_beige py-4  h-[50px] items-center text-xl  border-b min-w-[375px] sm:w-[375px]">
       <div className="flex text-[17px] items-center">
         <div onClick={backAction ?? goBack}>
           <FontAwesomeIcon icon="chevron-left" />

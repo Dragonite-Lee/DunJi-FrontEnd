@@ -1,7 +1,7 @@
-import MyPage from 'client/myPage/like';
+import MyApelike from 'client/myPage/like';
 
 function MyPageLike() {
-  return <MyPage />;
+  return <MyApelike />;
 }
 
 export async function getServerSideProps() {
