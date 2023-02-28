@@ -1,4 +1,4 @@
-import ReviewRegister from 'client/reviewRegister/index';
+import ReviewRegister from 'client/review/register/index';
 
 function ReviewRegisterPage() {
   return <ReviewRegister />;

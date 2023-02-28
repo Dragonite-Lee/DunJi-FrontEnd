@@ -12,7 +12,7 @@ function ContractContent() {
   return (
     <div className="h-full px-[18px]">
       {/* 전대동의서 확인 */}
-      <div className="Pretendard-SemiBold py-12 px-[18px] mt-10 bg-white rounded-standard_rounded rounded-b-none border-b-2 border-background_beige h-room_register_btn_height1 text-[17px] flex justify-between items-center">
+      <div className="Pretendard-SemiBold py-8 px-[18px] mt-10 bg-white rounded-standard_rounded rounded-b-none border-b-2 border-background_beige h-room_register_btn_height1 text-[17px] flex justify-between items-center">
         <div>1. 전대동의서 확인하기</div>
         {openModal1 === true ? (
           <FontAwesomeIcon
@@ -64,7 +64,7 @@ function ContractContent() {
         </div>
       )}
       {/* 임대차 계약서 확인 */}
-      <div className="Pretendard-SemiBold py-12 px-[18px] mt-2 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center">
+      <div className="Pretendard-SemiBold py-8 px-[18px] mt-1 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-[17px] flex justify-between items-center">
         <div>2. 임대차 계약서 확인하기</div>
         {openModal2 === true ? (
           <FontAwesomeIcon
@@ -95,7 +95,7 @@ function ContractContent() {
         </div>
       )}
       {/* 신상정보 일치여부 확인 */}
-      <div className="Pretendard-SemiBold py-12 px-[18px] mt-2 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center">
+      <div className="Pretendard-SemiBold py-8 px-[18px] mt-1 bg-white border-b-2 border-background_beige h-room_register_btn_height1 text-[17px] flex justify-between items-center">
         <div>3. 신상정보 일치여부 확인하기</div>
         {openModal3 === true ? (
           <FontAwesomeIcon
@@ -120,8 +120,8 @@ function ContractContent() {
       )}
       {/* 전대차계약서 작성 */}
       <div
-        className={`Pretendard-SemiBold py-12 px-[18px] mt-2 bg-white rounded-standard_rounded  
-                rounded-t-none border-b-2 border-background_beige h-room_register_btn_height1 text-2xl flex justify-between items-center
+        className={`Pretendard-SemiBold py-8 px-[18px] mt-1 bg-white rounded-standard_rounded  
+                rounded-t-none border-b-2 border-background_beige h-room_register_btn_height1 text-[17px] flex justify-between items-center
                 ${openModal4 === true ? 'rounded-b-none' : ''}`}
       >
         <div>4. 전대차계약서 작성하기</div>
@@ -149,7 +149,7 @@ function ContractContent() {
           />
         </div>
       )}
-      <div className="Pretendard-Regular px-[18px] bg-background_beige text-font_gray pt-24 pb-44 text-xl text-center">
+      <div className="Pretendard-Regular px-[18px] bg-background_beige text-font_gray pt-24 pb-44 text-[12px] text-center">
         둥지를 도와주시는 법무사분이 계십니다.
         <br />
         추가로 궁금하신 부분은 채팅으로 문의해주세요.

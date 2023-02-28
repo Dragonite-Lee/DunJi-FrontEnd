@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'types';
-import SubHeader from 'client/reviewRegister/subHeader';
-import Content from 'client/reviewRegister/content';
-import ReviewImg from 'client/reviewRegister/reviewImg';
-import Total from 'client/reviewRegister/total';
-import ReviewOption from 'client/reviewRegister/reviewOption';
-import BottomNextBtn from 'client/reviewRegister/bottomSubmitBtn';
+import SubHeader from 'client/review/register/subHeader';
+import Content from 'client/review/register/content';
+import ReviewImg from 'client/review/register/reviewImg';
+import Total from 'client/review/register/total';
+import ReviewOption from 'client/review/register/reviewOption';
+import BottomNextBtn from 'client/review/register/bottomSubmitBtn';
 import { dispatchClean, dispatchSound, dispatchAccessible, dispatchLandlord, dispatchFacility } from 'store/modules/reviewRegister';
 
 function ReviewRegister() {

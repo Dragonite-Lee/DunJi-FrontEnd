@@ -112,7 +112,7 @@ function UploadImageSmall() {
         ) : (
           <div className="bg-component_white h-[80px] w-full rounded-standard_rounded flex items-center justify-center relative">
             <label
-              className="Pretendard-Regular text-[12px] text-center text-font_gray w-24 h-28  items-center justify-center"
+              className="Pretendard-Regular text-[12px] text-center text-font_gray w-20 h-20  items-center justify-center"
               htmlFor="image-upload-room"
             >
               <Image

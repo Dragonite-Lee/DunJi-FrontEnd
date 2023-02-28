@@ -49,11 +49,11 @@ function Price() {
   return (
     <>
       <CategoryHeader title="관리비" />
-      <div className="w-full grid grid-cols-[2fr_1fr] h-[3.5rem] mb-4 Pretendard-Regular">
-        <div className="relative h-full mb-4">
+      <div className="w-full grid grid-cols-[2fr_1fr] h-[3rem] mb-4 Pretendard-Regular">
+        <div className="relative h-full mr-2 mb-4">
           <input
             type="number"
-            className="bg-white  w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-font_gray outline-0"
+            className="bg-white w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-font_gray outline-0"
             placeholder="관리비"
             value={managementCost}
             onChange={(e) => {
@@ -61,8 +61,8 @@ function Price() {
             }}
           />
           <div
-            className="absolute  text-[15px]
-            right-8 bottom-[50%] translate-y-[50%]"
+            className="absolute text-[15px]
+            right-4 bottom-[50%] translate-y-[50%]"
           >
             만원
           </div>
@@ -74,7 +74,7 @@ function Price() {
           converse={true}
         />
       </div>
-      <div className="w-full grid grid-cols-3 h-[7rem] gap-2 Pretendard-Regular">
+      <div className="w-full grid grid-cols-3 h-[6rem] gap-1 Pretendard-Regular">
         {typeArr.map((item, index) => (
           <DuplicateSelectBtn
             key={index}

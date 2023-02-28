@@ -32,7 +32,7 @@ function Size() {
     <>
       <CategoryHeader title="방 크기" />
       <div className="flex gap-room_register_gap Pretendard-Regular">
-        <div className="relative h-room_register_btn_height2 mb-4 w-full">
+        <div className="relative h-room_register_btn_height1 mb-4 w-full">
           <input
             type="number"
             className="w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-text_gray outline-0 focus:border-main"
@@ -46,11 +46,11 @@ function Size() {
               else dispatch(dispatchRoomSize(''));
             }}
           ></input>
-          <div className="absolute  text-[15px] right-8 bottom-[50%] translate-y-[50%]">
+          <div className="absolute  text-[15px] right-4 bottom-[50%] translate-y-[50%]">
             평
           </div>
         </div>
-        <div className="relative h-room_register_btn_height2 mb-4 w-full">
+        <div className="relative h-room_register_btn_height1 mb-4 w-full">
           <input
             type="number"
             className="w-full rounded-standard_rounded h-full text-[15px] pl-4 placeholder-text_gray outline-0 focus:border-main"
@@ -66,7 +66,7 @@ function Size() {
           ></input>
           <div
             className="absolute  text-[15px]
-            right-8 bottom-[50%] translate-y-[50%]"
+            right-4 bottom-[50%] translate-y-[50%]"
           >
             m<sup>2</sup>
           </div>

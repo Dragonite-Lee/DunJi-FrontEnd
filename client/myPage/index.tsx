@@ -1,6 +1,6 @@
 import Profile from 'client/myPage/index/Profile';
 import SquareZone from 'client/myPage/index/squareZone';
-import Content from 'client/reviewRegister/content';
+import Content from 'client/myPage/index/content';
 import Header from 'components/layout/Header';
 import TabBar from 'components/main/TabBar';
 

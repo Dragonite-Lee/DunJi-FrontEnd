@@ -16,10 +16,10 @@ function Location({ latitude, longitude }: LocationProps) {
         onClick={handlerOpen}
         className={`${
           open && `border-b border-border_color`
-        } h-20 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}
+        } h-16 text-[17px] Pretendard-SemiBold  flex items-center px-[18px]`}
       >
         위치 / 주변
-        <div className={`ml-auto w-10 h-12 relative ${open && 'rotate-180'}`}>
+        <div className={`ml-auto w-8 h-8 relative ${open && 'rotate-180'}`}>
           <Image
             src={require('assets/icon/화살표_펼치기.svg')}
             alt="arrow"

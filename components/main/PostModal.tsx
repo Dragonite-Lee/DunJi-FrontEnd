@@ -74,7 +74,7 @@ function PostModal() {
           onMouseOver={mouseOver2}
           onMouseLeave={mouseLeave2}
         >
-          <Link href="/review/">
+          <Link href="/review/register">
             <a>
               <div className="ml-[8px]">
                 {imageHover2 ? (

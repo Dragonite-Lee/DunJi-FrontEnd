@@ -39,14 +39,14 @@ function ReviewScore({ totalRate, cleanRate, noiseRate, accessRate, hostRate, fa
         onClick={handlerOpenChevron}
         className={`${openChevron && `border-b border-border_color`}`}
       >
-        <div className="h-20 flex justify-between items-center px-[18px]">
+        <div className="h-16 flex justify-between items-center px-[18px]">
           <div>
             <div className="text-[17px] Pretendard-SemiBold">이 건물 후기</div>
             <div className="text-font_gray text-[12px] Pretendard-Regular">
               <span className='text-red mr-[2px]'>*</span>이 건물에 살았던 둥지인들의 후기를 참고해보세요
             </div>
           </div>
-          <div className={`ml-auto w-10 h-12 relative ${openChevron && 'rotate-180'}`}>
+          <div className={`ml-auto w-8 h-8 relative ${openChevron && 'rotate-180'}`}>
             <Image
               src={require('assets/icon/화살표_펼치기.svg')}
               alt="arrow"
