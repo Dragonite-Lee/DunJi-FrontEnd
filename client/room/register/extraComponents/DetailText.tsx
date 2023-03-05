@@ -19,7 +19,7 @@ function Parking() {
       <textarea
         value={content}
         onChange={(e) => getContent(e)}
-        className="border border-border_color rounded-standard_rounded w-full h-[220px] p-4 text-xl outline-0"
+        className="border border-border_color rounded-standard_rounded w-full h-[220px] p-4 text-xl Pretendard-Regular outline-0"
       ></textarea>
     </>
   );

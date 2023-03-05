@@ -35,7 +35,7 @@ function Modal({ arr, title, openHandler, dispatchHandler }: ModalProps) {
         }
       }}
     >
-      <div className="rounded-standard_rounded  w-[180px] bg-component_white text-[15px] mt-[82rem]">
+      <div className="rounded-standard_rounded  w-[180px] bg-component_white text-[15px] mt-[30rem]">
         <div className="relative border-b h-14 flex flex-col items-center justify-center Pretendard-SemiBold">
           {title}
           <FontAwesomeIcon
