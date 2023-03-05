@@ -20,7 +20,7 @@ function MoveDate() {
       ? dispatch(dispatchTenancyAgreement(1))
       : dispatch(dispatchTenancyAgreement(0));
   };
-  console.log(startedAt, finishedAt, tenancyAgreement)
+  
   return (
     <>
       <div className="py-4 text-[17px] border-t border-border_color mt-4 flex justify-between Pretendard-SemiBold">
