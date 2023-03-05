@@ -1,5 +1,5 @@
-import { ContentItemType } from 'client/myPage/ContentItem';
-import ContentList from 'client/myPage/ContentList';
+import { ContentItemType } from 'client/myPage/index/ContentItem';
+import ContentList from 'client/myPage/index/ContentList';
 
 const DUMMY_PATH = '/#';
 
@@ -38,7 +38,7 @@ function Content() {
     },
     {
       content: '회원 탈퇴',
-      path: DUMMY_PATH,
+      path: '/myPage/withdrawal',
     },
     {
       content: '로그아웃',

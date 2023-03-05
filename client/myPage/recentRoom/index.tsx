@@ -24,15 +24,15 @@ const DUMMY: AllRoomType[] = [
   },
 ];
 
-function Like() {
+function RecentRoom() {
   const [list, setList] = useState<AllRoomType[]>(DUMMY);
   return (
     <div className="bg-background_beige h-full min-h-[100vh] sm:w-[375px] sm:m-auto flex flex-col">
-      <Header title="찜한매물" />
+      <Header title="최근 본 매물" />
       <div className="p-[18px] flex-1 flex flex-col">
         {list.length === 0 && (
           <EmptyLike
-            title={'찜한 매물'}
+            title={'최근 본 매물'}
             desc="지도에서 마음에 드는 매물을 둘러보세요!"
           />
         )}
@@ -43,4 +43,4 @@ function Like() {
     </div>
   );
 }
-export default Like;
+export default RecentRoom;

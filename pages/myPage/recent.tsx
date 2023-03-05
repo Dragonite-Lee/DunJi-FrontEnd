@@ -1,7 +1,7 @@
-import MyPage from 'client/myPage/index';
+import RecentRoom from 'client/myPage/recentRoom';
 
-function MyPageAuth() {
-  return <MyPage />;
+function React() {
+  return <RecentRoom />;
 }
 
 export async function getServerSideProps() {
@@ -9,4 +9,4 @@ export async function getServerSideProps() {
   return { props: {} };
 }
 
-export default MyPageAuth;
+export default React;

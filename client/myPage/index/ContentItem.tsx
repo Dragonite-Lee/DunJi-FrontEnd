@@ -9,12 +9,12 @@ export interface ContentItemType {
 
 function ContentItem({ content, path, onAction }: ContentItemType) {
   return (
-    <div className="flex items-center justify-between text-[15px] Pretendard-Regular py-[16px]">
+    <div className="flex items-center justify-between text-[15px] Pretendard-Regular py-[16px] text-[#3F3C3A]">
       <div>{content}</div>
       <Link href={path} passHref>
         <div onClick={onAction}>
           <a>
-            <FontAwesomeIcon icon="chevron-right" />
+            <FontAwesomeIcon icon="chevron-right" color="#A9A7A2" />
           </a>
         </div>
       </Link>

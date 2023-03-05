@@ -6,7 +6,8 @@ export type MainState = {
   newReview: AllReviewType[];
 };
 
-export type AllRoomType = { //모든 매물 목록
+export type AllRoomType = {
+  //모든 매물 목록
   roomId: string;
   longitude: number;
   latitude: number;
@@ -24,7 +25,8 @@ export type AllRoomType = { //모든 매물 목록
   image: string;
 };
 
-export type AllReviewType = { //모든 후기 목록
+export type AllReviewType = {
+  //모든 후기 목록
   address: string;
   regDate: number;
   registrant: number;

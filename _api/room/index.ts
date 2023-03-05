@@ -58,6 +58,7 @@ export const mapApi = {
       },
     }),
 
+
     getRoomDetail: (ROOMID: string | string[] | undefined) =>
         api.get("/room", { params: { roomId : ROOMID } }),
 

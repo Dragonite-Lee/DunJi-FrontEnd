@@ -1,5 +1,5 @@
-
-export interface ReviewTypes { //후기 상세페이지
+export interface ReviewTypes {
+  //후기 상세페이지
   address: string;
   totalRate: number; //평균 total
   cleanRate: number;
@@ -9,9 +9,10 @@ export interface ReviewTypes { //후기 상세페이지
   facilityRate: number;
   image: string;
   list: ReviewlistTypes[];
-};
+}
 
-export interface ReviewlistTypes { //후기 상세페이지의 리스트 타입
+export interface ReviewlistTypes {
+  //후기 상세페이지의 리스트 타입
   reviewId: string;
   userNickname: string;
   roomType: string;
@@ -20,17 +21,19 @@ export interface ReviewlistTypes { //후기 상세페이지의 리스트 타입
   period: string;
   content: string;
   addressDetail: string;
-  regDate: string
+  regDate: string;
 }
 
-export interface RoomState { //매물과 후기 상세페이지
+export interface RoomState {
+  //매물과 후기 상세페이지
   RoomInfo: RoomInfoListTypes;
   RoomReview: RoomReviewListTypes;
   ReviewDetail: ReviewTypes;
   MAP_ROOM_LIST: RoomListTypes;
 }
 
-export interface RoomInfoListTypes { //매물 상세페이지 Info 타입
+export interface RoomInfoListTypes {
+  //매물 상세페이지 Info 타입
   roomId: string;
   userNickname: string;
   longitude: number;
@@ -63,7 +66,8 @@ export interface RoomInfoListTypes { //매물 상세페이지 Info 타입
   option: Array<string>;
 }
 
-export interface RoomReviewListTypes { //매물 상세페이지 Review 타입
+export interface RoomReviewListTypes {
+  //매물 상세페이지 Review 타입
   buildingID: string;
   totalRate: number;
   cleanRate: number;
@@ -73,9 +77,7 @@ export interface RoomReviewListTypes { //매물 상세페이지 Review 타입
   facilityRate: number;
 }
 
-export interface MapRoomTypes { //지도상 매물 조회 타입
-
+export interface MapRoomTypes {
+  //지도상 매물 조회 타입
 }
-export interface RoomListTypes{
-  
-}
+export interface RoomListTypes {}
