@@ -17,7 +17,7 @@ function Title({
     <div className="mt-[16px] mb-[8px]">
       <div className="flex justify-between items-center mb-[3px] Pretendard-Regular">
         <div className="flex items-center">
-          <div className="text-[12px] h-8 flex items-center px-2 text-white bg-dealType_Btn rounded-standard_rounded mr-[8px]">
+          <div className="text-[12px] h-4 flex items-center px-2 text-white bg-dealType_Btn rounded-standard_rounded mr-[8px]">
             {dealType}
           </div>
         </div>

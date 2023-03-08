@@ -7,7 +7,7 @@ interface infoProps {
   startedAt: string;
   finishedAt: string;
   tenancyAgreement: boolean;
-  roomSize?: string;
+  roomSize: number;
   floor: number;
   totalFloor: number;
   structure: string;

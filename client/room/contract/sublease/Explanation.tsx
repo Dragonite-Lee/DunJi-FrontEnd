@@ -5,7 +5,7 @@ function Explanation() {
         전대차 계약일 경우
         <span className="Pretendard-Regular">(단기임대 포함)</span>
       </div>
-      <div className="text-font_gray mt-10 text-lg">
+      <div className="text-font_gray mt-4 text-[12px]">
         <span className="font-bold">*전대:</span> 빌려온 것을 다시 또 다른
         남에게 빌려주는 것<br />
         <span className="font-bold">*전대인:</span> 매물을 올린 사람

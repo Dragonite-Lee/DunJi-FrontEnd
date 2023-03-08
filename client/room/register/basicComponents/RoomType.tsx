@@ -19,7 +19,7 @@ function RoomType() {
     
   return (
     <>
-      <div className="pt-[30px] text-[17px] Pretendard-SemiBold">방 종류</div>
+      <div className="pt-[30px] pb-[8px] text-[17px] Pretendard-SemiBold">방 종류</div>
       <div className="w-full grid grid-cols-3 gap-room_register_gap Pretendard-Regular">
         {typeArr.map((item, index) => (
           <NoDuplicateSelectBtn
